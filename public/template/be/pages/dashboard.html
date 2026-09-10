@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard — Admin LMS Template</title>
+  <title>Dashboard Overview — Admin LMS Template</title>
 
   <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +38,7 @@
       </div>
 
       <div class="sidebar-content">
-        <div class="sidebar-section-label">Catalog</div>
+        <div class="sidebar-section-label">Main</div>
         <ul class="sidebar-nav">
           <li class="sidebar-nav-item">
             <a href="../index.html" class="sidebar-nav-link">
@@ -46,16 +46,16 @@
               <span>Component Library</span>
             </a>
           </li>
-        </ul>
-
-        <div class="sidebar-section-label">Example Pages</div>
-        <ul class="sidebar-nav">
           <li class="sidebar-nav-item">
             <a href="dashboard.html" class="sidebar-nav-link active">
               <i class="ti ti-dashboard"></i>
               <span>Dashboard</span>
             </a>
           </li>
+        </ul>
+
+        <div class="sidebar-section-label">Management Pages</div>
+        <ul class="sidebar-nav">
           <li class="sidebar-nav-item">
             <a href="table-example.html" class="sidebar-nav-link">
               <i class="ti ti-table"></i>
@@ -81,11 +81,76 @@
             </a>
           </li>
         </ul>
+
+        <div class="sidebar-section-label">Authentication</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="login.html" class="sidebar-nav-link">
+              <i class="ti ti-login"></i>
+              <span>Sign In / Login</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="register.html" class="sidebar-nav-link">
+              <i class="ti ti-user-plus"></i>
+              <span>Sign Up / Register</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="forgot-password.html" class="sidebar-nav-link">
+              <i class="ti ti-key"></i>
+              <span>Forgot Password</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="reset-password.html" class="sidebar-nav-link">
+              <i class="ti ti-shield-lock"></i>
+              <span>Reset Password</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="verify-email.html" class="sidebar-nav-link">
+              <i class="ti ti-mail-forward"></i>
+              <span>Verify Email</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="confirm-password.html" class="sidebar-nav-link">
+              <i class="ti ti-shield-check"></i>
+              <span>Confirm Password</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-section-label">Error Pages</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="404.html" class="sidebar-nav-link">
+              <i class="ti ti-ghost"></i>
+              <span>404 Not Found</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="403.html" class="sidebar-nav-link">
+              <i class="ti ti-lock-access"></i>
+              <span>403 Forbidden</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="500.html" class="sidebar-nav-link">
+              <i class="ti ti-server-off"></i>
+              <span>500 Server Error</span>
+            </a>
+          </li>
+        </ul>
       </div>
 
       <div class="sidebar-footer">
         <div class="d-flex align-items-center gap-2">
-          <div class="avatar avatar-sm bg-primary text-white">GP</div>
+          <div class="position-relative">
+            <div class="avatar avatar-sm bg-primary text-white">GP</div>
+            <span class="status-indicator status-indicator-online position-absolute bottom-0 end-0"></span>
+          </div>
           <div class="overflow-hidden">
             <div class="fw-semibold text-truncate small heading-custom">Gana Purba</div>
             <div class="text-muted-custom small text-truncate">Administrator</div>
@@ -112,12 +177,15 @@
 
           <div class="dropdown">
             <a href="#" class="d-flex align-items-center gap-2 text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              <div class="avatar avatar-sm bg-primary text-white">GP</div>
+              <div class="position-relative">
+                <div class="avatar avatar-sm bg-primary text-white">GP</div>
+                <span class="status-indicator status-indicator-online position-absolute bottom-0 end-0"></span>
+              </div>
               <span class="d-none d-md-inline fw-medium heading-custom">Gana Purba</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
               <li><a class="dropdown-item" href="profile.html"><i class="ti ti-user me-2"></i> Profile</a></li>
-              <li><a class="dropdown-item text-danger" href="#"><i class="ti ti-logout me-2"></i> Logout</a></li>
+              <li><a class="dropdown-item text-danger" href="login.html"><i class="ti ti-logout me-2"></i> Logout</a></li>
             </ul>
           </div>
         </div>
@@ -128,11 +196,11 @@
         <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
           <div>
             <span class="badge badge-soft-primary mb-2">OVERVIEW</span>
-            <h2 class="h3 fw-bold heading-custom mb-1">Welcome back, Gana!</h2>
-            <p class="text-muted-custom mb-0">Here is what is happening with your courses today.</p>
+            <h2 class="h3 fw-bold heading-custom mb-1">Selamat Datang Kembali, Gana!</h2>
+            <p class="text-muted-custom mb-0">Berikut adalah statistik dan performa sistem pembelajaran Anda hari ini.</p>
           </div>
           <div>
-            <a href="form-example.html" class="btn btn-primary"><i class="ti ti-plus me-1"></i> New Course</a>
+            <a href="form-example.html" class="btn btn-primary"><i class="ti ti-plus me-1"></i> Tambah Kursus Baru</a>
           </div>
         </div>
 
@@ -142,11 +210,11 @@
             <div class="card card-hover stat-card-accent-primary mb-0">
               <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="text-muted-custom small fw-bold text-uppercase">TOTAL STUDENTS</span>
+                  <span class="text-muted-custom small fw-bold text-uppercase">TOTAL SISWA</span>
                   <div class="avatar-icon-box avatar-icon-primary"><i class="ti ti-users"></i></div>
                 </div>
                 <div class="h2 fw-bold heading-custom mb-1">2,840</div>
-                <div class="small text-success fw-semibold"><i class="ti ti-arrow-up-right me-1"></i> +14.2% from last month</div>
+                <div class="small text-success fw-semibold"><i class="ti ti-arrow-up-right me-1"></i> +14.2% dari bulan lalu</div>
               </div>
             </div>
           </div>
@@ -155,11 +223,11 @@
             <div class="card card-hover stat-card-accent-success mb-0">
               <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="text-muted-custom small fw-bold text-uppercase">ACTIVE COURSES</span>
+                  <span class="text-muted-custom small fw-bold text-uppercase">KURSUS AKTIF</span>
                   <div class="avatar-icon-box avatar-icon-success"><i class="ti ti-book-2"></i></div>
                 </div>
                 <div class="h2 fw-bold heading-custom mb-1">42</div>
-                <div class="small text-muted-custom">8 published this week</div>
+                <div class="small text-muted-custom">8 dipublikasi minggu ini</div>
               </div>
             </div>
           </div>
@@ -168,11 +236,11 @@
             <div class="card card-hover stat-card-accent-warning mb-0">
               <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="text-muted-custom small fw-bold text-uppercase">TOTAL REVENUE</span>
+                  <span class="text-muted-custom small fw-bold text-uppercase">TOTAL PENDAPATAN</span>
                   <div class="avatar-icon-box avatar-icon-warning"><i class="ti ti-currency-dollar"></i></div>
                 </div>
                 <div class="h2 fw-bold heading-custom mb-1">$38,920</div>
-                <div class="small text-success fw-semibold"><i class="ti ti-arrow-up-right me-1"></i> +9.1%</div>
+                <div class="small text-success fw-semibold"><i class="ti ti-arrow-up-right me-1"></i> +9.1% pertambahan</div>
               </div>
             </div>
           </div>
@@ -181,30 +249,71 @@
             <div class="card card-hover stat-card-accent-danger mb-0">
               <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="text-muted-custom small fw-bold text-uppercase">COMPLETION RATE</span>
+                  <span class="text-muted-custom small fw-bold text-uppercase">TINGKAT KELULUSAN</span>
                   <div class="avatar-icon-box avatar-icon-danger"><i class="ti ti-subtask"></i></div>
                 </div>
                 <div class="h2 fw-bold heading-custom mb-1">88.5%</div>
-                <div class="small text-success fw-semibold"><i class="ti ti-arrow-up-right me-1"></i> +3.2%</div>
+                <div class="small text-success fw-semibold"><i class="ti ti-arrow-up-right me-1"></i> +3.2% efisiensi</div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Recent Activity Table & Quick Info -->
-        <div class="row g-3">
+        <!-- Charts Section: Row 1 (Revenue Area Chart & Category Donut Chart) -->
+        <div class="row g-3 mb-4">
           <div class="col-lg-8">
-            <div class="card card-hover mb-0">
+            <div class="card card-hover mb-0 h-100">
+              <div class="card-header d-flex align-items-center justify-content-between">
+                <h3 class="card-title mb-0"><i class="ti ti-chart-line me-2 text-primary"></i> Grafik Pendapatan & Pendaftaran</h3>
+                <div class="btn-group btn-group-sm" role="group">
+                  <button type="button" class="btn btn-outline-secondary active">12 Bulan</button>
+                  <button type="button" class="btn btn-outline-secondary">30 Hari</button>
+                  <button type="button" class="btn btn-outline-secondary">7 Hari</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div id="chart-revenue" style="min-height: 310px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="card card-hover mb-0 h-100">
               <div class="card-header">
-                <h3 class="card-title"><i class="ti ti-list-check me-2 text-primary"></i> Recent Course Enrollments</h3>
-                <a href="table-example.html" class="btn btn-sm btn-outline-secondary">View All</a>
+                <h3 class="card-title mb-0"><i class="ti ti-chart-donut me-2 text-success"></i> Distribusi Kategori Kursus</h3>
+              </div>
+              <div class="card-body d-flex align-items-center justify-content-center">
+                <div id="chart-categories" class="w-100" style="min-height: 290px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Section: Row 2 (Bar Chart & Recent Table) -->
+        <div class="row g-3 mb-4">
+          <div class="col-lg-6">
+            <div class="card card-hover mb-0 h-100">
+              <div class="card-header">
+                <h3 class="card-title mb-0"><i class="ti ti-chart-bar me-2 text-warning"></i> Pertumbuhan Siswa & Kelulusan</h3>
+              </div>
+              <div class="card-body">
+                <div id="chart-acquisition" style="min-height: 300px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card card-hover mb-0 h-100">
+              <div class="card-header d-flex align-items-center justify-content-between">
+                <h3 class="card-title mb-0"><i class="ti ti-list-check me-2 text-info"></i> Pendaftaran Kursus Terbaru</h3>
+                <a href="table-example.html" class="btn btn-sm btn-outline-secondary">Lihat Semua</a>
               </div>
               <div class="table-responsive">
                 <table class="table table-vcenter table-hover card-table">
                   <thead>
                     <tr>
-                      <th>Student</th>
-                      <th>Course Title</th>
+                      <th>Siswa</th>
+                      <th>Materi Kursus</th>
                       <th>Progress</th>
                       <th>Status</th>
                     </tr>
@@ -221,7 +330,7 @@
                           <div class="progress-bar bg-success" style="width: 75%;"></div>
                         </div>
                       </td>
-                      <td><span class="badge badge-soft-success">Active</span></td>
+                      <td><span class="badge badge-soft-success">Aktif</span></td>
                     </tr>
                     <tr>
                       <td>
@@ -234,7 +343,7 @@
                           <div class="progress-bar bg-primary" style="width: 40%;"></div>
                         </div>
                       </td>
-                      <td><span class="badge badge-soft-primary">In Progress</span></td>
+                      <td><span class="badge badge-soft-primary">Proses</span></td>
                     </tr>
                     <tr>
                       <td>
@@ -249,38 +358,84 @@
                       </td>
                       <td><span class="badge badge-soft-warning">Pending</span></td>
                     </tr>
+                    <tr>
+                      <td>
+                        <div class="fw-bold heading-custom">Budi Santoso</div>
+                        <div class="small text-muted-custom">budi@example.com</div>
+                      </td>
+                      <td>Flutter & Dart App Dev</td>
+                      <td>
+                        <div class="progress" style="height: 6px;">
+                          <div class="progress-bar bg-info" style="width: 90%;"></div>
+                        </div>
+                      </td>
+                      <td><span class="badge badge-soft-primary">Hampir Selesai</span></td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="col-lg-4">
+        <!-- Activity Log & Quick Info Row -->
+        <div class="row g-3">
+          <div class="col-lg-6">
             <div class="card card-hover mb-0">
               <div class="card-header">
-                <h3 class="card-title"><i class="ti ti-activity me-2 text-primary"></i> System Log</h3>
+                <h3 class="card-title mb-0"><i class="ti ti-activity me-2 text-danger"></i> Log Aktivitas Sistem</h3>
               </div>
               <div class="card-body">
                 <ul class="list-group list-group-flush border-0">
                   <li class="list-group-item bg-transparent border-bottom px-0 py-2">
                     <div class="d-flex align-items-center justify-content-between">
-                      <div class="small fw-semibold heading-custom">New student registered</div>
-                      <span class="small text-muted-custom">10m ago</span>
+                      <div class="small fw-semibold heading-custom"><i class="ti ti-user-plus text-primary me-2"></i> Siswa baru mendaftar di kursus Fullstack</div>
+                      <span class="small text-muted-custom">10m yang lalu</span>
                     </div>
                   </li>
                   <li class="list-group-item bg-transparent border-bottom px-0 py-2">
                     <div class="d-flex align-items-center justify-content-between">
-                      <div class="small fw-semibold heading-custom">Database backup finished</div>
-                      <span class="small text-muted-custom">1h ago</span>
+                      <div class="small fw-semibold heading-custom"><i class="ti ti-database-check text-success me-2"></i> Backup otomatis database selesai</div>
+                      <span class="small text-muted-custom">1j yang lalu</span>
                     </div>
                   </li>
                   <li class="list-group-item bg-transparent px-0 py-2">
                     <div class="d-flex align-items-center justify-content-between">
-                      <div class="small fw-semibold heading-custom">Course #12 published</div>
-                      <span class="small text-muted-custom">3h ago</span>
+                      <div class="small fw-semibold heading-custom"><i class="ti ti-book text-warning me-2"></i> Modul baru #12 dipublikasikan</div>
+                      <span class="small text-muted-custom">3j yang lalu</span>
                     </div>
                   </li>
                 </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card card-hover mb-0">
+              <div class="card-header">
+                <h3 class="card-title mb-0"><i class="ti ti-award me-2 text-warning"></i> Pengajar Terbaik Bulan Ini</h3>
+              </div>
+              <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="avatar bg-primary text-white">AP</div>
+                    <div>
+                      <div class="fw-bold heading-custom">Andi Pratama, M.Kom</div>
+                      <div class="small text-muted-custom">Seni & Desain Web — 1,240 Siswa</div>
+                    </div>
+                  </div>
+                  <span class="badge badge-soft-success">Rating 4.9 ★</span>
+                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="avatar bg-success text-white">SN</div>
+                    <div>
+                      <div class="fw-bold heading-custom">Siti Nurhaliza, S.T</div>
+                      <div class="small text-muted-custom">Data Science & Python — 980 Siswa</div>
+                    </div>
+                  </div>
+                  <span class="badge badge-soft-success">Rating 4.8 ★</span>
+                </div>
               </div>
             </div>
           </div>
@@ -291,7 +446,7 @@
       <footer class="app-footer">
         <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
           <div>© 2026 Admin LMS Template. All rights reserved.</div>
-          <div>Inspired by Tabler. Built with Bootstrap 5.</div>
+          <div>Inspired by Tabler. Built with Bootstrap 5 & ApexCharts.</div>
         </div>
       </footer>
     </div>
@@ -300,8 +455,130 @@
   <!-- Bootstrap 5 JS Bundle CDN -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+  <!-- ApexCharts CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
   <!-- Custom Scripts -->
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/sidebar.js"></script>
+
+  <!-- Dashboard ApexCharts Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const textColor = isDark ? '#8a99ad' : '#64748b';
+      const borderColor = isDark ? '#243049' : '#e2e8f0';
+
+      // 1. Revenue Area Chart
+      const revenueOptions = {
+        series: [{
+          name: 'Pendapatan ($)',
+          data: [14200, 18500, 21000, 25400, 22800, 31200, 29500, 34800, 38920, 41500, 44200, 48500]
+        }, {
+          name: 'Pendaftaran Siswa',
+          data: [210, 280, 310, 390, 340, 460, 420, 510, 580, 620, 670, 710]
+        }],
+        chart: {
+          type: 'area',
+          height: 310,
+          toolbar: { show: false },
+          fontFamily: 'Plus Jakarta Sans, sans-serif',
+          background: 'transparent'
+        },
+        colors: ['#206bc4', '#0ca678'],
+        stroke: { curve: 'smooth', width: 2.5 },
+        fill: {
+          type: 'gradient',
+          gradient: { shadeIntensity: 1, opacityFrom: 0.35, opacityTo: 0.03 }
+        },
+        dataLabels: { enabled: false },
+        xaxis: {
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+          labels: { style: { colors: textColor } },
+          axisBorder: { color: borderColor },
+          axisTicks: { color: borderColor }
+        },
+        yaxis: {
+          labels: { style: { colors: textColor } }
+        },
+        grid: { borderColor: borderColor, strokeDashArray: 4 },
+        legend: { position: 'top', horizontalAlign: 'right', labels: { colors: textColor } },
+        tooltip: { theme: isDark ? 'dark' : 'light' }
+      };
+      const revenueChart = new ApexCharts(document.querySelector("#chart-revenue"), revenueOptions);
+      revenueChart.render();
+
+      // 2. Category Donut Chart
+      const categoryOptions = {
+        series: [45, 25, 18, 12],
+        labels: ['Web Development', 'UI/UX Design', 'Data Science', 'Mobile Dev'],
+        chart: {
+          type: 'donut',
+          height: 290,
+          fontFamily: 'Plus Jakarta Sans, sans-serif',
+          background: 'transparent'
+        },
+        colors: ['#206bc4', '#0ca678', '#f59f00', '#4299e1'],
+        legend: { position: 'bottom', labels: { colors: textColor } },
+        dataLabels: { enabled: true },
+        stroke: { width: 0 },
+        plotOptions: {
+          pie: {
+            donut: {
+              size: '68%',
+              labels: {
+                show: true,
+                total: {
+                  show: true,
+                  label: 'Total Kursus',
+                  color: textColor,
+                  formatter: () => '100'
+                }
+              }
+            }
+          }
+        },
+        tooltip: { theme: isDark ? 'dark' : 'light' }
+      };
+      const categoryChart = new ApexCharts(document.querySelector("#chart-categories"), categoryOptions);
+      categoryChart.render();
+
+      // 3. Student Acquisition Bar Chart
+      const acquisitionOptions = {
+        series: [{
+          name: 'Siswa Baru',
+          data: [65, 80, 95, 110, 125, 140, 160, 175, 190, 210, 230, 250]
+        }, {
+          name: 'Lulusan',
+          data: [40, 55, 60, 75, 90, 105, 115, 130, 145, 160, 180, 200]
+        }],
+        chart: {
+          type: 'bar',
+          height: 300,
+          toolbar: { show: false },
+          fontFamily: 'Plus Jakarta Sans, sans-serif',
+          background: 'transparent'
+        },
+        plotOptions: {
+          bar: { horizontal: false, columnWidth: '55%', borderRadius: 4 }
+        },
+        colors: ['#206bc4', '#f59f00'],
+        dataLabels: { enabled: false },
+        xaxis: {
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+          labels: { style: { colors: textColor } },
+          axisBorder: { color: borderColor }
+        },
+        yaxis: {
+          labels: { style: { colors: textColor } }
+        },
+        grid: { borderColor: borderColor, strokeDashArray: 4 },
+        legend: { position: 'top', horizontalAlign: 'right', labels: { colors: textColor } },
+        tooltip: { theme: isDark ? 'dark' : 'light' }
+      };
+      const acquisitionChart = new ApexCharts(document.querySelector("#chart-acquisition"), acquisitionOptions);
+      acquisitionChart.render();
+    });
+  </script>
 </body>
 </html>
