@@ -41,7 +41,7 @@
       </div>
 
       <div class="sidebar-content">
-        <div class="sidebar-section-label">Catalog</div>
+        <div class="sidebar-section-label">Main</div>
         <ul class="sidebar-nav">
           <li class="sidebar-nav-item">
             <a href="index.html" class="sidebar-nav-link active">
@@ -49,16 +49,16 @@
               <span>Component Library</span>
             </a>
           </li>
-        </ul>
-
-        <div class="sidebar-section-label">Example Pages</div>
-        <ul class="sidebar-nav">
           <li class="sidebar-nav-item">
             <a href="pages/dashboard.html" class="sidebar-nav-link">
               <i class="ti ti-dashboard"></i>
               <span>Dashboard</span>
             </a>
           </li>
+        </ul>
+
+        <div class="sidebar-section-label">Management Pages</div>
+        <ul class="sidebar-nav">
           <li class="sidebar-nav-item">
             <a href="pages/table-example.html" class="sidebar-nav-link">
               <i class="ti ti-table"></i>
@@ -81,6 +81,46 @@
             <a href="pages/blank.html" class="sidebar-nav-link">
               <i class="ti ti-file-text"></i>
               <span>Blank Page</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-section-label">Authentication</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="pages/login.html" class="sidebar-nav-link">
+              <i class="ti ti-login"></i>
+              <span>Sign In / Login</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="pages/register.html" class="sidebar-nav-link">
+              <i class="ti ti-user-plus"></i>
+              <span>Sign Up / Register</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="pages/forgot-password.html" class="sidebar-nav-link">
+              <i class="ti ti-key"></i>
+              <span>Forgot Password</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="pages/reset-password.html" class="sidebar-nav-link">
+              <i class="ti ti-shield-lock"></i>
+              <span>Reset Password</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="pages/verify-email.html" class="sidebar-nav-link">
+              <i class="ti ti-mail-forward"></i>
+              <span>Verify Email</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="pages/confirm-password.html" class="sidebar-nav-link">
+              <i class="ti ti-shield-check"></i>
+              <span>Confirm Password</span>
             </a>
           </li>
         </ul>
@@ -110,7 +150,10 @@
 
       <div class="sidebar-footer">
         <div class="d-flex align-items-center gap-2">
-          <div class="avatar avatar-sm bg-primary text-white">GP</div>
+          <div class="position-relative">
+            <div class="avatar avatar-sm bg-primary text-white">GP</div>
+            <span class="status-indicator status-indicator-online position-absolute bottom-0 end-0"></span>
+          </div>
           <div class="overflow-hidden">
             <div class="fw-semibold text-truncate small heading-custom">Gana Purba</div>
             <div class="text-muted-custom small text-truncate">Administrator</div>
