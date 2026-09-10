@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Table Example — Admin LMS Template</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  
+  <!-- DataTables Bootstrap 5 CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css">
+
+  <!-- Tabler Icons Webfont CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+
+  <!-- Custom Template CSS -->
+  <link rel="stylesheet" href="../assets/css/custom.css">
+</head>
+<body>
+
+  <div class="app-wrapper">
+
+    <!-- Sidebar Navigation -->
+    <aside class="app-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <div class="sidebar-brand-icon">
+            <i class="ti ti-brand-tabler"></i>
+          </div>
+          <span>LMS Template</span>
+        </a>
+        <button type="button" class="navbar-toggle-btn d-lg-none sidebar-toggle-btn" aria-label="Close sidebar">
+          <i class="ti ti-x"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-content">
+        <div class="sidebar-section-label">Catalog</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="../index.html" class="sidebar-nav-link">
+              <i class="ti ti-layout-grid"></i>
+              <span>Component Library</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-section-label">Example Pages</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="dashboard.html" class="sidebar-nav-link">
+              <i class="ti ti-dashboard"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="table-example.html" class="sidebar-nav-link active">
+              <i class="ti ti-table"></i>
+              <span>Data Table</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="form-example.html" class="sidebar-nav-link">
+              <i class="ti ti-forms"></i>
+              <span>Form Elements</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="profile.html" class="sidebar-nav-link">
+              <i class="ti ti-user"></i>
+              <span>Profile Settings</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="blank.html" class="sidebar-nav-link">
+              <i class="ti ti-file-text"></i>
+              <span>Blank Page</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="d-flex align-items-center gap-2">
+          <div class="avatar avatar-sm bg-primary text-white">GP</div>
+          <div class="overflow-hidden">
+            <div class="fw-semibold text-truncate small heading-custom">Gana Purba</div>
+            <div class="text-muted-custom small text-truncate">Administrator</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Section -->
+    <div class="app-main">
+      <!-- Navbar Header -->
+      <header class="app-navbar">
+        <div class="d-flex align-items-center gap-3">
+          <button type="button" class="navbar-toggle-btn d-lg-none sidebar-toggle-btn" aria-label="Toggle Sidebar">
+            <i class="ti ti-menu-2"></i>
+          </button>
+          <h1 class="h4 mb-0 fw-bold heading-custom">User Directory</h1>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <button type="button" class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
+            <i class="ti ti-moon fs-4"></i>
+          </button>
+
+          <div class="dropdown">
+            <a href="#" class="d-flex align-items-center gap-2 text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="avatar avatar-sm bg-primary text-white">GP</div>
+              <span class="d-none d-md-inline fw-medium heading-custom">Gana Purba</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+              <li><a class="dropdown-item" href="profile.html"><i class="ti ti-user me-2"></i> Profile</a></li>
+              <li><a class="dropdown-item text-danger" href="#"><i class="ti ti-logout me-2"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="app-content">
+        <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+          <div>
+            <span class="badge badge-soft-primary mb-2">DIRECTORY</span>
+            <h2 class="h3 fw-bold heading-custom mb-1">Student Management</h2>
+            <p class="text-muted-custom mb-0">Manage registered students, active subscriptions, and account status with DataTables.</p>
+          </div>
+          <div>
+            <a href="form-example.html" class="btn btn-primary"><i class="ti ti-user-plus me-1"></i> Register Student</a>
+          </div>
+        </div>
+
+        <!-- Table Card with DataTables -->
+        <div class="card card-hover mb-4">
+          <div class="card-body px-0">
+            <div class="table-responsive">
+              <table id="studentDataTable" class="table table-vcenter table-hover card-table w-100 mb-0">
+                <thead>
+                  <tr>
+                    <th>Student Name</th>
+                    <th>Email Address</th>
+                    <th>Enrolled Course</th>
+                    <th>Status</th>
+                    <th>Registration Date</th>
+                    <th class="text-end">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar avatar-sm bg-primary text-white">AK</div>
+                        <span class="fw-bold heading-custom">Ahmad Kadin</span>
+                      </div>
+                    </td>
+                    <td>ahmad.kadin@example.com</td>
+                    <td>Laravel Masterclass 2026</td>
+                    <td><span class="badge badge-soft-success">Active</span></td>
+                    <td>14 Jan 2026</td>
+                    <td class="text-end">
+                      <button type="button" class="btn btn-sm btn-outline-secondary me-1"><i class="ti ti-edit"></i> Edit</button>
+                      <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal" data-item-name="Ahmad Kadin"><i class="ti ti-trash"></i> Hapus</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar avatar-sm bg-info text-white">SR</div>
+                        <span class="fw-bold heading-custom">Siti Rahma</span>
+                      </div>
+                    </td>
+                    <td>siti.rahma@example.com</td>
+                    <td>Frontend Vue & Tailwind</td>
+                    <td><span class="badge badge-soft-primary">Pending</span></td>
+                    <td>02 Feb 2026</td>
+                    <td class="text-end">
+                      <button type="button" class="btn btn-sm btn-outline-secondary me-1"><i class="ti ti-edit"></i> Edit</button>
+                      <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal" data-item-name="Siti Rahma"><i class="ti ti-trash"></i> Hapus</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar avatar-sm bg-warning text-white">BP</div>
+                        <span class="fw-bold heading-custom">Budi Prasetyo</span>
+                      </div>
+                    </td>
+                    <td>budi.p@example.com</td>
+                    <td>Database Optimization</td>
+                    <td><span class="badge badge-soft-danger">Inactive</span></td>
+                    <td>18 Feb 2026</td>
+                    <td class="text-end">
+                      <button type="button" class="btn btn-sm btn-outline-secondary me-1"><i class="ti ti-edit"></i> Edit</button>
+                      <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal" data-item-name="Budi Prasetyo"><i class="ti ti-trash"></i> Hapus</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="avatar avatar-sm bg-success text-white">DW</div>
+                        <span class="fw-bold heading-custom">Dian Wijaya</span>
+                      </div>
+                    </td>
+                    <td>dian.w@example.com</td>
+                    <td>UI/UX Mobile Design</td>
+                    <td><span class="badge badge-soft-success">Active</span></td>
+                    <td>25 Feb 2026</td>
+                    <td class="text-end">
+                      <button type="button" class="btn btn-sm btn-outline-secondary me-1"><i class="ti ti-edit"></i> Edit</button>
+                      <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal" data-item-name="Dian Wijaya"><i class="ti ti-trash"></i> Hapus</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="app-footer">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+          <div>© 2026 Admin LMS Template. All rights reserved.</div>
+          <div>Inspired by Tabler. Built with Bootstrap 5.</div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0">
+        <div class="modal-body text-center p-4">
+          <div class="modal-icon-danger-box">
+            <i class="ti ti-trash"></i>
+          </div>
+          <h4 class="h5 fw-bold heading-custom mb-2">Konfirmasi Hapus Data</h4>
+          <p class="text-muted-custom mb-4">
+            Apakah Anda yakin ingin menghapus data <strong id="deleteItemName" class="text-dark">Selected Item</strong>? Tindakan ini tidak dapat dibatalkan.
+          </p>
+          <div class="d-flex align-items-center justify-content-center gap-2">
+            <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Batal</button>
+            <button type="button" class="btn btn-danger px-4" id="confirmDeleteBtn"><i class="ti ti-trash me-1"></i> Ya, Hapus</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery & DataTables JS CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
+
+  <!-- Custom Scripts -->
+  <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/sidebar.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      // Initialize DataTables
+      $('#studentDataTable').DataTable({
+        responsive: true,
+        language: {
+          search: "Cari:",
+          lengthMenu: "Tampilkan _MENU_ data per halaman",
+          info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+          infoEmpty: "Menampilkan 0 sampai 0 dari 0 data",
+          paginate: {
+            first: "Pertama",
+            last: "Terakhir",
+            next: "Selanjutnya",
+            previous: "Sebelumnya"
+          }
+        }
+      });
+
+      // Handle Delete Modal Dynamic Item Name
+      $(document).on('click', '[data-bs-target="#deleteConfirmModal"]', function() {
+        const itemName = $(this).attr('data-item-name') || 'Item Ini';
+        $('#deleteItemName').text(itemName);
+      });
+    });
+  </script>
+</body>
+</html>
