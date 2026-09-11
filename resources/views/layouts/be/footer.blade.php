@@ -25,6 +25,33 @@
   <script src="{{ asset('template/be/assets/js/theme-toggle.js') }}"></script>
   <script src="{{ asset('template/be/assets/js/sidebar.js') }}"></script>
 
+  <!-- Global DataTable Auto-Init (kelas: data-table) -->
+  <script>
+  $(document).ready(function() {
+    if ($.fn.DataTable) {
+      $('table.data-table').each(function() {
+        $(this).DataTable({
+          responsive: true,
+          columnDefs: [{ orderable: false, targets: -1 }],
+          language: {
+            search: "Cari:",
+            lengthMenu: "Tampilkan _MENU_ data",
+            info: "Menampilkan _START_ - _END_ dari _TOTAL_ data",
+            infoEmpty: "Tidak ada data",
+            zeroRecords: "Tidak ada data yang cocok",
+            paginate: {
+              first: "Pertama",
+              last: "Terakhir",
+              next: "Berikutnya",
+              previous: "Sebelumnya"
+            }
+          }
+        });
+      });
+    }
+  });
+  </script>
+
   @stack('scripts')
 </body>
 </html>

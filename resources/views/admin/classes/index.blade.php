@@ -20,7 +20,7 @@
 <div class="card shadow-sm border-0">
     <div class="card-body p-0">
         <div class="table-responsive">
-            <table id="classesTable" class="table table-vcenter table-hover card-table w-100 mb-0">
+            <table class="table table-vcenter table-hover card-table w-100 mb-0 data-table">
                 <thead>
                     <tr>
                         <th class="ps-4" style="width: 70px;">No</th>
@@ -72,21 +72,3 @@
     @endif
 </div>
 @endsection
-
-@push('scripts')
-<script>
-$(document).ready(function() {
-    $('#classesTable').DataTable({
-        responsive: true,
-        columnDefs: [{ orderable: false, targets: -1 }],
-        language: {
-            search: "Cari:",
-            lengthMenu: "Tampilkan _MENU_ data",
-            info: "Menampilkan _START_ - _END_ dari _TOTAL_ data",
-            infoEmpty: "Tidak ada data",
-            paginate: { first: "Pertama", last: "Terakhir", next: "Berikutnya", previous: "Sebelumnya" }
-        }
-    });
-});
-</script>
-@endpush
