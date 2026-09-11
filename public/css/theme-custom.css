@@ -1,12 +1,12 @@
 /* ==========================================================================
-   LMS Dani Custom Theme - Edusite Education Template Style
+   LMS Dani Custom Theme - Arsha Bootstrap Template Style (For SMA Students)
    Primary Main : #66A3BF
-   Primary Dark : #3368A0
+   Primary Dark : #3368A0 (Arsha Navy)
    Soft Mint    : #C8DFDB
    Warm Light   : #F2EFE7
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
     --color-primary-main: #66A3BF;
@@ -30,226 +30,262 @@
 
 body {
     background-color: var(--tblr-body-bg, #F2EFE7);
-    font-family: 'Plus Jakarta Sans', 'Montserrat', system-ui, -apple-system, sans-serif;
+    font-family: 'Open Sans', 'Poppins', 'Plus Jakarta Sans', sans-serif;
     color: #374151;
     -webkit-font-smoothing: antialiased;
 }
 
-/* Edusite Transparent Navbar */
-.edusite-header {
-    background: #ffffff;
-    border-bottom: 2px solid rgba(102, 163, 191, 0.2);
-    box-shadow: 0 4px 15px rgba(51, 104, 160, 0.08);
+h1, h2, h3, h4, h5, h6, .sitename {
+    font-family: 'Jost', 'Poppins', sans-serif;
 }
 
-.edusite-brand-title {
-    font-family: 'Montserrat', sans-serif;
+/* Floating Animation Keyframe */
+@keyframes img-float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-18px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.animated-float {
+    animation: img-float 4s ease-in-out infinite;
+}
+
+/* Arsha Header & Navbar */
+.arsha-header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(102, 163, 191, 0.2);
+    box-shadow: 0 4px 20px rgba(51, 104, 160, 0.08);
+}
+
+.arsha-sitename {
+    font-family: 'Jost', sans-serif;
+    font-size: 1.75rem;
     font-weight: 800;
+    letter-spacing: 1px;
     color: #3368A0;
-    font-size: 1.5rem;
+    text-transform: uppercase;
 }
 
-/* Edusite Hero Area */
-.edusite-hero {
-    position: relative;
-    background: linear-gradient(135deg, rgba(51, 104, 160, 0.92) 0%, rgba(102, 163, 191, 0.88) 100%), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1600&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
+/* Arsha Hero Section */
+.arsha-hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3368A0 60%, #66A3BF 100%);
     color: #ffffff;
-    padding: 5rem 0;
-    border-radius: 0 0 2rem 2rem;
-    box-shadow: 0 15px 35px rgba(51, 104, 160, 0.2);
-}
-
-.edusite-hero h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-size: 2.75rem;
-    line-height: 1.25;
-    color: #ffffff;
-}
-
-/* Edusite Section Headers */
-.edusite-section-header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.edusite-section-header h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    color: #1f2937;
-    font-size: 2.25rem;
+    padding: 5rem 0 6rem 0;
     position: relative;
+    overflow: hidden;
+    border-radius: 0 0 2.5rem 2.5rem;
+    box-shadow: 0 20px 40px rgba(30, 58, 138, 0.25);
+}
+
+.arsha-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 1.25rem;
+}
+
+.arsha-hero p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
+}
+
+/* Arsha Hero Buttons */
+.arsha-btn-get-started {
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 1px;
     display: inline-block;
-    padding-bottom: 0.75rem;
+    padding: 0.75rem 2.25rem;
+    border-radius: 50px;
+    transition: 0.4s;
+    color: #ffffff !important;
+    background: #66A3BF;
+    box-shadow: 0 8px 20px rgba(102, 163, 191, 0.4);
+    text-decoration: none;
 }
 
-.edusite-section-header h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
-    background-color: #66A3BF;
-    border-radius: 2px;
-}
-
-/* Edusite Feature Cards (3 Box About Section) */
-.edusite-feature-card {
+.arsha-btn-get-started:hover {
     background: #ffffff;
-    border-radius: 1.25rem;
-    padding: 2.25rem 1.75rem;
-    border: 1px solid rgba(102, 163, 191, 0.2);
-    box-shadow: 0 10px 25px rgba(51, 104, 160, 0.06);
-    transition: all 0.3s ease;
+    color: #3368A0 !important;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(255, 255, 255, 0.3);
+}
+
+.arsha-btn-watch-video {
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    color: #ffffff !important;
+    text-decoration: none;
+    transition: 0.3s;
+    margin-left: 1.5rem;
+}
+
+.arsha-btn-watch-video i {
+    font-size: 2rem;
+    color: #C8DFDB;
+    margin-right: 0.5rem;
+    transition: 0.3s;
+}
+
+.arsha-btn-watch-video:hover i {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+/* Arsha Section Title */
+.arsha-section-title {
     text-align: center;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+}
+
+.arsha-section-title h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #3368A0;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.arsha-section-title h2::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+}
+
+.arsha-section-title h2::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #66A3BF;
+    bottom: 0;
+    left: calc(50% - 20px);
+}
+
+/* Arsha Icon Box Services / Features */
+.arsha-icon-box {
+    box-shadow: 0 10px 29px 0 rgba(51, 104, 160, 0.08);
+    padding: 2.25rem;
+    transition: all 0.3s ease-in-out;
+    border-radius: 1.25rem;
+    background: #fff;
+    border: 1px solid rgba(102, 163, 191, 0.15);
     height: 100%;
 }
 
-.edusite-feature-card:hover {
+.arsha-icon-box:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 35px rgba(51, 104, 160, 0.15);
+    box-shadow: 0 20px 40px 0 rgba(51, 104, 160, 0.18);
     border-color: #66A3BF;
 }
 
-.edusite-feature-icon {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #C8DFDB 0%, #66A3BF 100%);
-    color: #1e3a8a;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
+.arsha-icon-box .icon {
     margin-bottom: 1.25rem;
-    box-shadow: 0 8px 16px rgba(102, 163, 191, 0.3);
 }
 
-/* Edusite Course Cards */
-.edusite-course-card {
+.arsha-icon-box .icon i {
+    font-size: 2.5rem;
+    color: #3368A0;
+    transition: 0.3s;
+}
+
+.arsha-icon-box:hover .icon i {
+    color: #66A3BF;
+    transform: scale(1.1);
+}
+
+/* Arsha Course / Portfolio Card */
+.arsha-course-card {
     background: #ffffff;
     border-radius: 1.25rem;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(51, 104, 160, 0.08);
     border: 1px solid rgba(102, 163, 191, 0.2);
-    box-shadow: 0 8px 25px rgba(51, 104, 160, 0.07);
     transition: all 0.3s ease;
 }
 
-.edusite-course-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 18px 35px rgba(51, 104, 160, 0.14);
+.arsha-course-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 20px 40px rgba(51, 104, 160, 0.18);
 }
 
-.edusite-course-img {
-    height: 160px;
+.arsha-course-banner {
+    height: 150px;
     background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%);
+    position: relative;
+    padding: 1.25rem;
     display: flex;
     align-items: flex-end;
-    padding: 1rem;
-    position: relative;
 }
 
-.edusite-course-badge {
+.arsha-badge-pill {
     background-color: #C8DFDB;
     color: #1e3a8a;
     font-weight: 700;
     font-size: 0.8rem;
     padding: 0.35rem 0.85rem;
-    border-radius: 2rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(200, 223, 219, 0.5);
 }
 
-/* Edusite Counter Band */
-.edusite-counter-band {
+/* Arsha Counter Section */
+.arsha-counter-section {
     background: linear-gradient(135deg, #1e3a8a 0%, #3368A0 100%);
     color: #ffffff;
-    padding: 3.5rem 0;
+    padding: 4rem 0;
     margin: 4rem 0;
-    box-shadow: 0 15px 35px rgba(30, 58, 138, 0.25);
+    box-shadow: 0 15px 35px rgba(30, 58, 138, 0.3);
 }
 
-.edusite-counter-number {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.75rem;
+.arsha-counter-num {
+    font-family: 'Jost', sans-serif;
+    font-size: 3rem;
     font-weight: 800;
     color: #ffffff;
 }
 
-.edusite-counter-label {
-    text-transform: uppercase;
+.arsha-counter-txt {
     font-size: 0.85rem;
+    text-transform: uppercase;
     letter-spacing: 1px;
     color: #C8DFDB;
     font-weight: 700;
 }
 
-/* Edusite Main Buttons */
-.btn-edusite-main {
-    background: #66A3BF;
-    color: #ffffff !important;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    padding: 0.85rem 2.25rem;
-    border-radius: 2rem;
-    border: none;
-    box-shadow: 0 8px 20px rgba(102, 163, 191, 0.4);
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-size: 0.9rem;
-}
-
-.btn-edusite-main:hover {
-    background: #3368A0;
-    box-shadow: 0 12px 25px rgba(51, 104, 160, 0.5);
-    transform: translateY(-2px);
-}
-
-.btn-edusite-outline {
-    background: transparent;
-    color: #ffffff !important;
-    border: 2px solid #ffffff;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    padding: 0.8rem 2.25rem;
-    border-radius: 2rem;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-size: 0.9rem;
-}
-
-.btn-edusite-outline:hover {
-    background: #ffffff;
-    color: #3368A0 !important;
-}
-
-/* Edusite Footer */
-.edusite-footer {
+/* Arsha Footer */
+.arsha-footer {
     background-color: #1e293b;
     color: #94a3b8;
     padding: 4rem 0 2rem 0;
     border-top: 4px solid #66A3BF;
 }
 
-.edusite-footer h5 {
+.arsha-footer h4 {
     color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-weight: 700;
     margin-bottom: 1.25rem;
-}
-
-.edusite-footer a {
-    color: #94a3b8;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.edusite-footer a:hover {
-    color: #66A3BF;
 }
 
 /* Mobile-First PWA Bottom Nav Bar */

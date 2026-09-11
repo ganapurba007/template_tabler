@@ -17,6 +17,9 @@
         <!-- Tabler Icons -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 
+        <!-- AOS (Animate On Scroll) -->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
         <!-- Custom Theme CSS -->
         <link rel="stylesheet" href="{{ asset('css/theme-custom.css') }}">
 
@@ -50,10 +53,10 @@
                                 <div class="rounded-circle text-white flex items-center justify-center p-2" style="background-color: #66A3BF; width: 36px; height: 36px;">
                                     <i class="ti ti-school text-xl"></i>
                                 </div>
-                                <span class="edusite-brand-title text-white">Edusite LMS</span>
+                                <span class="edusite-brand-title text-white">Arsha LMS SMA</span>
                             </div>
                             <p class="small text-slate-400 pe-lg-4">
-                                Platform E-Learning terpadu untuk mengakses materi interaktif, mengumpulkan tugas kelas, dan mengikuti kuis online dengan pengalaman belajar yang menyenangkan.
+                                Platform E-Learning SMA terpadu untuk mengasah ilmu, mengerjakan kuis interaktif, dan raih prestasi impianmu!
                             </p>
                         </div>
                         <div class="col-6 col-lg-3">
@@ -73,7 +76,7 @@
                         </div>
                     </div>
                     <div class="border-top border-slate-700 pt-3 text-center small text-slate-500">
-                        &copy; {{ date('Y') }} LMS Dani (Edusite Theme). All rights reserved.
+                        &copy; {{ date('Y') }} LMS Dani (Arsha Theme). All rights reserved.
                     </div>
                 </div>
             </footer>
@@ -98,6 +101,20 @@
                 <span>Kuis</span>
             </a>
         </nav>
+
+        <!-- AOS JS -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 800,
+                        once: true,
+                        easing: 'ease-in-out'
+                    });
+                }
+            });
+        </script>
 
         <!-- Service Worker Registration -->
         <script>

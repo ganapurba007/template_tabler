@@ -1,15 +1,15 @@
-<nav x-data="{ open: false }" class="edusite-header sticky-top">
+<nav x-data="{ open: false }" class="edusite-header arsha-header sticky-top">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-20 items-center">
             
-            <!-- Left: Brand Logo (Edusite Style) -->
+            <!-- Left: Brand Logo (Arsha Style) -->
             <div class="flex items-center space-x-6">
                 <div class="shrink-0 flex items-center">
                     <a href="{{ Auth::user() && Auth::user()->isGuru() ? route('admin.dashboard') : route('dashboard') }}" class="flex items-center gap-3 text-decoration-none">
                         <div class="rounded-circle text-white flex items-center justify-center p-2.5 shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 44px; height: 44px;">
                             <i class="ti ti-school text-2xl"></i>
                         </div>
-                        <span class="edusite-brand-title">Edusite LMS</span>
+                        <span class="arsha-sitename" style="font-family: 'Jost', sans-serif; font-size: 1.6rem; font-weight: 800; color: #3368A0; letter-spacing: 0.5px;">ARSHA <span style="color: #66A3BF;">LMS</span></span>
                     </a>
                 </div>
 
