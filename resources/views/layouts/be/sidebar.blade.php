@@ -1,11 +1,11 @@
-<!-- Sidebar Component Partial -->
+<!-- Sidebar Navigation -->
 <aside class="app-sidebar">
   <div class="sidebar-header">
-    <a href="{{ url('/') }}" class="sidebar-brand">
+    <a href="{{ route('admin.dashboard') }}" class="sidebar-brand">
       <div class="sidebar-brand-icon">
         <i class="ti ti-brand-tabler"></i>
       </div>
-      <span>{{ config('app.name', 'LMS Template') }}</span>
+      <span>LMS Dani</span>
     </a>
     <button type="button" class="navbar-toggle-btn d-lg-none sidebar-toggle-btn" aria-label="Close sidebar">
       <i class="ti ti-x"></i>
@@ -16,59 +16,81 @@
     <div class="sidebar-section-label">Main</div>
     <ul class="sidebar-nav">
       <li class="sidebar-nav-item">
-        <a href="{{ url('/') }}" class="sidebar-nav-link {{ request()->is('/') ? 'active' : '' }}">
-          <i class="ti ti-layout-grid"></i>
-          <span>Component Library</span>
-        </a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a href="{{ route('dashboard') }}" class="sidebar-nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+        <a href="{{ route('admin.dashboard') }}" class="sidebar-nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
           <i class="ti ti-dashboard"></i>
           <span>Dashboard</span>
         </a>
       </li>
     </ul>
 
-    <div class="sidebar-section-label">Management Pages</div>
+    <div class="sidebar-section-label">Master Data</div>
     <ul class="sidebar-nav">
       <li class="sidebar-nav-item">
-        <a href="{{ url('template/be/pages/table-example.html') }}" class="sidebar-nav-link">
-          <i class="ti ti-table"></i>
-          <span>Data Table</span>
+        <a href="{{ route('admin.roles.index') }}" class="sidebar-nav-link {{ request()->routeIs('admin.roles.*') ? 'active' : '' }}">
+          <i class="ti ti-shield-check"></i>
+          <span>Master Role</span>
         </a>
       </li>
       <li class="sidebar-nav-item">
-        <a href="{{ url('template/be/pages/form-example.html') }}" class="sidebar-nav-link">
-          <i class="ti ti-forms"></i>
-          <span>Form Elements</span>
+        <a href="{{ route('admin.users.index') }}" class="sidebar-nav-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
+          <i class="ti ti-users"></i>
+          <span>Master User</span>
         </a>
       </li>
       <li class="sidebar-nav-item">
-        <a href="{{ url('template/be/pages/profile.html') }}" class="sidebar-nav-link">
-          <i class="ti ti-user"></i>
-          <span>Profile Settings</span>
+        <a href="{{ route('admin.classes.index') }}" class="sidebar-nav-link {{ request()->routeIs('admin.classes.*') ? 'active' : '' }}">
+          <i class="ti ti-school"></i>
+          <span>Master Kelas</span>
         </a>
       </li>
       <li class="sidebar-nav-item">
-        <a href="{{ url('template/be/pages/blank.html') }}" class="sidebar-nav-link">
-          <i class="ti ti-file-text"></i>
-          <span>Blank Page</span>
+        <a href="{{ route('admin.subjects.index') }}" class="sidebar-nav-link {{ request()->routeIs('admin.subjects.*') ? 'active' : '' }}">
+          <i class="ti ti-book"></i>
+          <span>Mata Pelajaran</span>
+        </a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a href="{{ route('admin.question-banks.index') }}" class="sidebar-nav-link {{ request()->routeIs('admin.question-banks.*') ? 'active' : '' }}">
+          <i class="ti ti-database"></i>
+          <span>Bank Soal</span>
         </a>
       </li>
     </ul>
 
-    <div class="sidebar-section-label">Authentication</div>
+    <div class="sidebar-section-label">Pembelajaran & Evaluasi</div>
     <ul class="sidebar-nav">
       <li class="sidebar-nav-item">
-        <a href="{{ route('login') }}" class="sidebar-nav-link {{ request()->routeIs('login') ? 'active' : '' }}">
-          <i class="ti ti-login"></i>
-          <span>Sign In / Login</span>
+        <a href="{{ route('admin.materials.index') }}" class="sidebar-nav-link {{ request()->routeIs('admin.materials.*') ? 'active' : '' }}">
+          <i class="ti ti-file-text"></i>
+          <span>Materi Kelas</span>
         </a>
       </li>
       <li class="sidebar-nav-item">
-        <a href="{{ route('register') }}" class="sidebar-nav-link {{ request()->routeIs('register') ? 'active' : '' }}">
-          <i class="ti ti-user-plus"></i>
-          <span>Sign Up / Register</span>
+        <a href="{{ route('admin.assignments.index') }}" class="sidebar-nav-link {{ request()->routeIs('admin.assignments.*') ? 'active' : '' }}">
+          <i class="ti ti-clipboard-list"></i>
+          <span>Tugas Kelas</span>
+        </a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a href="{{ route('admin.quizzes.index') }}" class="sidebar-nav-link {{ request()->routeIs('admin.quizzes.*') ? 'active' : '' }}">
+          <i class="ti ti-help-circle"></i>
+          <span>Kuis & Ujian</span>
+        </a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a href="{{ route('admin.submissions.index') }}" class="sidebar-nav-link {{ request()->routeIs('admin.submissions.*') ? 'active' : '' }}">
+          <i class="ti ti-checkup-list"></i>
+          <span>Koreksi Tugas</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-section-label">Laporan</div>
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+        <a href="{{ route('admin.reports.index') }}" class="sidebar-nav-link {{ request()->routeIs('admin.reports.*') ? 'active' : '' }}">
+          <i class="ti ti-chart-bar"></i>
+          <span>Laporan Analytics</span>
         </a>
       </li>
     </ul>
@@ -78,17 +100,13 @@
     <div class="d-flex align-items-center gap-2">
       <div class="position-relative">
         <div class="avatar avatar-sm bg-primary text-white">
-          {{ Auth::check() ? strtoupper(substr(Auth::user()->name, 0, 2)) : 'GP' }}
+          {{ strtoupper(substr(Auth::user()->name ?? 'G', 0, 2)) }}
         </div>
         <span class="status-indicator status-indicator-online position-absolute bottom-0 end-0"></span>
       </div>
       <div class="overflow-hidden">
-        <div class="fw-semibold text-truncate small heading-custom">
-          {{ Auth::check() ? Auth::user()->name : 'Gana Purba' }}
-        </div>
-        <div class="text-muted-custom small text-truncate">
-          {{ Auth::check() ? Auth::user()->email : 'Administrator' }}
-        </div>
+        <div class="fw-semibold text-truncate small heading-custom">{{ Auth::user()->name ?? 'User' }}</div>
+        <div class="text-muted-custom small text-truncate">{{ Auth::user()->role->display_name ?? 'Guru / Admin' }}</div>
       </div>
     </div>
   </div>

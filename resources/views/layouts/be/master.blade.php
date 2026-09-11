@@ -2,13 +2,13 @@
 
 <div class="app-wrapper">
 
-  <!-- Sidebar Component -->
+  <!-- Sidebar Navigation -->
   @include('layouts.be.sidebar')
 
   <!-- Main Section -->
   <div class="app-main">
 
-    <!-- Navbar Component -->
+    <!-- Navbar Header -->
     @include('layouts.be.navbar')
 
     <!-- Main Content Container -->
@@ -16,4 +16,5 @@
       @yield('content')
     </main>
 
-@include('layouts.be.footer')
+    <!-- Footer Bar -->
+    @include('layouts.be.footer')
