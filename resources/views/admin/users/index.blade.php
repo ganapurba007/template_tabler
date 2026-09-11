@@ -48,21 +48,23 @@
 <div class="card shadow-sm border-0">
     <div class="card-body p-0">
         <div class="table-responsive">
-            <table class="table table-hover align-middle mb-0">
+            <table id="usersTable" class="table table-vcenter table-hover card-table w-100 mb-0">
                 <thead>
                     <tr>
-                        <th class="ps-4">Pengguna</th>
+                        <th class="ps-4" style="width: 70px;">No</th>
+                        <th>Pengguna</th>
                         <th>Email</th>
                         <th>NIP</th>
                         <th>Role</th>
                         <th>Kelas</th>
-                        <th class="pe-4 text-end" style="width: 100px;">Aksi</th>
+                        <th class="pe-4 text-end no-sort" style="width: 100px;">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($users as $user)
                         <tr>
-                            <td class="ps-4">
+                            <td class="ps-4 fw-bold">{{ $loop->iteration }}</td>
+                            <td>
                                 <div class="d-flex align-items-center">
                                     <div class="avatar-icon-box avatar-icon-primary me-3">
                                         <i class="ti ti-user"></i>
@@ -119,3 +121,21 @@
     @endif
 </div>
 @endsection
+
+@push('scripts')
+<script>
+$(document).ready(function() {
+    $('#usersTable').DataTable({
+        responsive: true,
+        columnDefs: [{ orderable: false, targets: -1 }],
+        language: {
+            search: "Cari:",
+            lengthMenu: "Tampilkan _MENU_ data",
+            info: "Menampilkan _START_ - _END_ dari _TOTAL_ data",
+            infoEmpty: "Tidak ada data",
+            paginate: { first: "Pertama", last: "Terakhir", next: "Berikutnya", previous: "Sebelumnya" }
+        }
+    });
+});
+</script>
+@endpush

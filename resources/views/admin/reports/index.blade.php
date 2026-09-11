@@ -45,10 +45,10 @@
             <div class="card shadow-sm border-0">
                 <div class="card-body p-0">
                     <div class="table-responsive">
-                        <table class="table table-hover align-middle mb-0">
+                        <table id="reportsTable" class="table table-vcenter table-hover card-table w-100 mb-0">
                             <thead>
                                 <tr>
-                                    <th class="ps-4" style="width: 70px;">ID</th>
+                                    <th class="ps-4" style="width: 70px;">No</th>
                                     <th>Nama Siswa</th>
                                     <th>Kelas</th>
                                     <th style="width: 220px;">Progres Penyelesaian Materi</th>
@@ -59,7 +59,7 @@
                             <tbody>
                                 @forelse($students as $student)
                                     <tr>
-                                        <td class="ps-4 fw-bold">#{{ $student->id }}</td>
+                                        <td class="ps-4 fw-bold">{{ $loop->iteration }}</td>
                                         <td>
                                             <div class="fw-bold">{{ $student->name }}</div>
                                             <div class="small text-muted">{{ $student->email }}</div>
@@ -114,3 +114,20 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+<script>
+$(document).ready(function() {
+    $('#reportsTable').DataTable({
+        responsive: true,
+        columnDefs: [{ orderable: false, targets: -1 }],
+        language: {
+            search: "Cari:",
+            lengthMenu: "Tampilkan _MENU_ data",
+            info: "Menampilkan _START_ - _END_ dari _TOTAL_ data",
+            infoEmpty: "Tidak ada data",
+            paginate: { first: "Pertama", last: "Terakhir", next: "Berikutnya", previous: "Sebelumnya" }
+        }
+    });
+});
+</script>
+@endpush
