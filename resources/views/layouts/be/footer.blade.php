@@ -55,6 +55,22 @@
   });
   </script>
 
+  <!-- Global Auto-Dismiss Alerts -->
+  <script>
+  $(document).ready(function() {
+    // Auto-dismiss alerts: success/info setelah 4 detik, warning/danger setelah 7 detik
+    $('.alert').each(function() {
+      var $alert = $(this);
+      var delay = ($alert.hasClass('alert-warning') || $alert.hasClass('alert-danger')) ? 7000 : 4000;
+      setTimeout(function() {
+        $alert.fadeTo(500, 0).slideUp(300, function() {
+          $(this).remove();
+        });
+      }, delay);
+    });
+  });
+  </script>
+
   @stack('scripts')
 </body>
 </html>

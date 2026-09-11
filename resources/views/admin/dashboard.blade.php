@@ -3,8 +3,9 @@
 @section('header_title', 'Admin / Guru Dashboard')
 
 @section('content')
-<div class="alert alert-info border-0 shadow-sm mb-4">
+<div class="alert alert-info alert-dismissible fade show border-0 shadow-sm mb-4" role="alert">
     <h4 class="alert-heading fw-bold mb-1"><i class="ti ti-user-check me-2"></i> Selamat Datang, {{ Auth::user()->name }}!</h4>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Tutup"></button>
 </div>
 
 <!-- Admin Overview Cards -->
