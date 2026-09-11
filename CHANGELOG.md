@@ -2,6 +2,16 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 6] Master — Mata Pelajaran CRUD + Guru Pengampu — 2026-09-11
+
+### Ditambahkan
+- `SubjectController` (`app/Http/Controllers/Admin/SubjectController.php`) untuk pengelolaan CRUD Mata Pelajaran dan penetapan guru pengampu (many-to-many via pivot `subject_user`).
+- Blade Views Tabler UI di `resources/views/admin/subjects/`: `index.blade.php`, `create.blade.php`, `edit.blade.php`.
+- Feature Test `tests/Feature/Admin/SubjectCrudTest.php` untuk memverifikasi daftar mata pelajaran, pembuatan & pengeditan mata pelajaran, sinkronisasi pivot `subject_user`, dan pembatasan akses siswa.
+
+### Diubah
+- `routes/web.php`: Menambahkan rute resource `subjects` di dalam grup `/admin`.
+
 ## [Fase 5] Master — User (Daftar & Assign Role) — 2026-09-11
 
 ### Ditambahkan

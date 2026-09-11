@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,9 @@ Route::middleware(['auth', 'role:guru'])->prefix('admin')->as('admin.')->group(f
 
     // Master User (List & Assign Role)
     Route::resource('users', UserController::class)->only(['index', 'edit', 'update']);
+
+    // Master Mata Pelajaran CRUD
+    Route::resource('subjects', SubjectController::class);
 });
 
 // Profile Routes
