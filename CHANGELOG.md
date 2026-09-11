@@ -2,6 +2,17 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 3] Pusher & Echo Setup — 2026-09-11
+
+### Ditambahkan
+- Paket `pusher/pusher-php-server` (^7.3) dan konfigurasi `config/broadcasting.php`.
+- Definisi channel otoritas privat di `routes/channels.php`: `class.{classId}` (materi & tugas) dan `material.{materialId}` (diskusi).
+- Event Classes realtime yang mengimplementasikan `ShouldBroadcast`:
+  - `DiscussionCommentSent` (`app/Events/DiscussionCommentSent.php`) pada channel `material.{id}`.
+  - `MaterialCreated` (`app/Events/MaterialCreated.php`) pada channel `class.{id}`.
+  - `AssignmentCreated` (`app/Events/AssignmentCreated.php`) pada channel `class.{id}`.
+- Feature Test `tests/Feature/PusherBroadcastTest.php` untuk memverifikasi pemanggilan event broadcasting realtime.
+
 ## [Fase 2] Auth & Middleware — 2026-09-11
 
 ### Ditambahkan
