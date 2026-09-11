@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="d-flex align-items-center justify-content-between">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight m-0">
-                <i class="ti ti-rocket text-primary me-2"></i>{{ __('Ruang Belajar Siswa') }}
+                <i class="ti ti-rocket text-primary me-2"></i>{{ __('Dashboard Siswa') }}
             </h2>
             <span class="badge rounded-pill text-white px-3 py-2" style="background-color: #3368A0;">
                 <i class="ti ti-school me-1"></i> Kelas: {{ $user->schoolClass->name ?? 'Siswa' }}

@@ -4,8 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="theme-color" content="#66A3BF">
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
+    <link rel="apple-touch-icon" href="{{ asset('tabler/static/logo-small.svg') }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'LMS Dani') }}</title>
 
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,38 +21,22 @@
     <!-- Tabler Icons Webfont CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 
-    <!-- Custom Template CSS -->
-    <link rel="stylesheet" href="{{ asset('template/be/assets/css/custom.css') }}">
+    <!-- Custom Theme CSS -->
+    <link rel="stylesheet" href="{{ asset('css/theme-custom.css') }}">
 </head>
-<body>
+<body style="background-color: var(--color-warm-light, #F2EFE7); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem 1rem;">
 
-    <div class="error-page-wrapper">
-        <div class="auth-card-container" style="max-width: 440px; width: 100%;">
-            
-            <!-- Brand Logo -->
-            <div class="text-center mb-4">
-                <a href="{{ url('/') }}" class="d-inline-flex align-items-center gap-2 text-decoration-none">
-                    <div class="sidebar-brand-icon">
-                        <i class="ti ti-brand-tabler"></i>
-                    </div>
-                    <span class="fs-4 fw-bold heading-custom">{{ config('app.name', 'LMS Template') }}</span>
-                </a>
-            </div>
-
-            <!-- Auth Card Slot Content -->
-            {{ $slot }}
-
-            <!-- Theme Toggle Switch -->
-            <div class="text-center mt-3">
-                <button type="button" class="theme-toggle-btn mx-auto" id="theme-toggle" aria-label="Toggle Theme">
-                    <i class="ti ti-moon fs-5"></i>
-                </button>
-            </div>
-
-        </div>
+    <div style="width: 100%; max-width: 1100px;">
+        {{ $slot }}
     </div>
 
-    <!-- Custom Scripts -->
-    <script src="{{ asset('template/be/assets/js/theme-toggle.js') }}"></script>
+    <!-- PWA Service Worker Registration -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js');
+        });
+    }
+    </script>
 </body>
 </html>
