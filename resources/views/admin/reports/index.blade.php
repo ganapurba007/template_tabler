@@ -46,7 +46,7 @@
                 <div class="card-body p-0">
                     <div class="table-responsive">
                         <table class="table table-hover align-middle mb-0">
-                            <thead class="table-light">
+                            <thead>
                                 <tr>
                                     <th class="ps-4" style="width: 70px;">ID</th>
                                     <th>Nama Siswa</th>
@@ -61,7 +61,7 @@
                                     <tr>
                                         <td class="ps-4 fw-bold">#{{ $student->id }}</td>
                                         <td>
-                                            <div class="fw-bold text-dark">{{ $student->name }}</div>
+                                            <div class="fw-bold">{{ $student->name }}</div>
                                             <div class="small text-muted">{{ $student->email }}</div>
                                         </td>
                                         <td>
@@ -74,7 +74,7 @@
                                                 <div class="progress flex-grow-1" style="height: 8px;">
                                                     <div class="progress-bar bg-primary" role="progressbar" style="width: {{ $student->materials_percentage }}%" aria-valuenow="{{ $student->materials_percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
-                                                <span class="small fw-bold text-dark">{{ $student->materials_percentage }}%</span>
+                                                <span class="small fw-bold">{{ $student->materials_percentage }}%</span>
                                             </div>
                                         </td>
                                         <td>
@@ -106,7 +106,7 @@
                     </div>
                 </div>
                 @if($students->hasPages())
-                    <div class="card-footer bg-white d-flex justify-content-end py-3">
+                    <div class="card-footer d-flex justify-content-end py-3">
                         {{ $students->appends(request()->query())->links() }}
                     </div>
                 @endif

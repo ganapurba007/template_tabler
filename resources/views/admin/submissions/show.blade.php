@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold m-0 text-dark">Detail &amp; Koreksi Tugas Siswa</h3>
+    <h3 class="fw-bold m-0">Detail &amp; Koreksi Tugas Siswa</h3>
     <a href="{{ route('admin.submissions.index') }}" class="btn btn-outline-secondary">
         <i class="ti ti-arrow-left me-1"></i> Kembali ke Daftar Submissions
     </a>
@@ -20,18 +20,18 @@
 <div class="row justify-content-center">
     <div class="col-md-9">
         <div class="card shadow-sm border-0 mb-4">
-            <div class="card-header bg-white py-3">
+            <div class="card-header py-3">
                 <h5 class="card-title fw-bold mb-0">Informasi Pengumpulan</h5>
             </div>
             <div class="card-body">
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
                         <span class="text-muted small text-uppercase">Nama Siswa</span>
-                        <div class="fw-bold fs-6 text-dark">{{ $submission->student->name ?? '-' }} ({{ $submission->student->email ?? '-' }})</div>
+                        <div class="fw-bold fs-6">{{ $submission->student->name ?? '-' }} ({{ $submission->student->email ?? '-' }})</div>
                     </div>
                     <div class="col-md-6">
                         <span class="text-muted small text-uppercase">Kelas</span>
-                        <div class="fw-bold fs-6 text-dark">{{ $submission->assignment->schoolClass->name ?? '-' }}</div>
+                        <div class="fw-bold fs-6">{{ $submission->assignment->schoolClass->name ?? '-' }}</div>
                     </div>
                 </div>
                 <div class="row g-3 mb-3">
@@ -41,12 +41,12 @@
                     </div>
                     <div class="col-md-6">
                         <span class="text-muted small text-uppercase">Dikumpulkan Pada</span>
-                        <div class="fw-bold fs-6 text-dark"><i class="ti ti-clock me-1"></i> {{ $submission->submitted_at ? $submission->submitted_at->format('d M Y H:i:s') : '-' }}</div>
+                        <div class="fw-bold fs-6"><i class="ti ti-clock me-1"></i> {{ $submission->submitted_at ? $submission->submitted_at->format('d M Y H:i:s') : '-' }}</div>
                     </div>
                 </div>
                 <div class="mb-3">
                     <span class="text-muted small text-uppercase d-block mb-1">Jawaban / Catatan Siswa</span>
-                    <div class="p-3 bg-light rounded border text-dark">
+                    <div class="p-3 bg-light rounded border">
                         {!! nl2br(e($submission->answer_text)) !!}
                     </div>
                 </div>
@@ -55,7 +55,7 @@
 
         <!-- Grading Form Card -->
         <div class="card shadow-sm border-0">
-            <div class="card-header bg-white py-3">
+            <div class="card-header py-3">
                 <h5 class="card-title fw-bold mb-0"><i class="ti ti-pencil-check me-1 text-success"></i> Penilaian Guru</h5>
             </div>
             <div class="card-body">

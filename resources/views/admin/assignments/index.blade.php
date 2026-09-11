@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold m-0 text-dark">Daftar Tugas Siswa Kelas</h3>
+    <h3 class="fw-bold m-0">Daftar Tugas Siswa Kelas</h3>
     <a href="{{ route('admin.assignments.create') }}" class="btn btn-primary">
         <i class="ti ti-plus me-1"></i> Buat Tugas Baru
     </a>
@@ -21,7 +21,7 @@
     <div class="card-body p-0">
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
-                <thead class="table-light">
+                <thead>
                     <tr>
                         <th class="ps-4" style="width: 70px;">ID</th>
                         <th>Judul Tugas</th>
@@ -37,7 +37,7 @@
                         <tr>
                             <td class="ps-4 fw-bold">#{{ $assignment->id }}</td>
                             <td>
-                                <div class="fw-bold text-dark">{{ $assignment->title }}</div>
+                                <div class="fw-bold">{{ $assignment->title }}</div>
                                 <div class="small text-muted">{{ Str::limit($assignment->description, 60) }}</div>
                             </td>
                             <td>
@@ -85,7 +85,7 @@
         </div>
     </div>
     @if($assignments->hasPages())
-        <div class="card-footer bg-white d-flex justify-content-end py-3">
+        <div class="card-footer d-flex justify-content-end py-3">
             {{ $assignments->links() }}
         </div>
     @endif

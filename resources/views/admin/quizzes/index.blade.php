@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold m-0 text-dark">Daftar Kuis &amp; Ujian Online</h3>
+    <h3 class="fw-bold m-0">Daftar Kuis &amp; Ujian Online</h3>
     <a href="{{ route('admin.quizzes.create') }}" class="btn btn-primary">
         <i class="ti ti-plus me-1"></i> Buat Kuis Baru
     </a>
@@ -21,7 +21,7 @@
     <div class="card-body p-0">
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
-                <thead class="table-light">
+                <thead>
                     <tr>
                         <th class="ps-4" style="width: 70px;">ID</th>
                         <th>Judul Kuis</th>
@@ -38,7 +38,7 @@
                         <tr>
                             <td class="ps-4 fw-bold">#{{ $quiz->id }}</td>
                             <td>
-                                <div class="fw-bold text-dark">{{ $quiz->title }}</div>
+                                <div class="fw-bold">{{ $quiz->title }}</div>
                             </td>
                             <td>
                                 <span class="badge bg-primary-subtle text-primary px-2 py-1 fs-6">
@@ -51,7 +51,7 @@
                                 </span>
                             </td>
                             <td>
-                                <div class="small fw-semibold text-dark"><i class="ti ti-clock me-1"></i> {{ $quiz->duration_minutes }} Menit</div>
+                                <div class="small fw-semibold"><i class="ti ti-clock me-1"></i> {{ $quiz->duration_minutes }} Menit</div>
                                 <div class="small text-muted">{{ $quiz->points_per_question }} Poin/Soal</div>
                             </td>
                             <td>
@@ -92,7 +92,7 @@
         </div>
     </div>
     @if($quizzes->hasPages())
-        <div class="card-footer bg-white d-flex justify-content-end py-3">
+        <div class="card-footer d-flex justify-content-end py-3">
             {{ $quizzes->links() }}
         </div>
     @endif

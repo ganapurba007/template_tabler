@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold m-0 text-dark">Koreksi &amp; Penilaian Tugas Siswa</h3>
+    <h3 class="fw-bold m-0">Koreksi &amp; Penilaian Tugas Siswa</h3>
 </div>
 
 @if(session('success'))
@@ -43,7 +43,7 @@
     <div class="card-body p-0">
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
-                <thead class="table-light">
+                <thead>
                     <tr>
                         <th class="ps-4" style="width: 70px;">ID</th>
                         <th>Nama Siswa</th>
@@ -59,11 +59,11 @@
                         <tr>
                             <td class="ps-4 fw-bold">#{{ $sub->id }}</td>
                             <td>
-                                <div class="fw-bold text-dark">{{ $sub->student->name ?? '-' }}</div>
+                                <div class="fw-bold">{{ $sub->student->name ?? '-' }}</div>
                                 <div class="small text-muted">{{ $sub->student->email ?? '-' }}</div>
                             </td>
                             <td>
-                                <div class="fw-semibold text-dark">{{ $sub->assignment->title ?? '-' }}</div>
+                                <div class="fw-semibold">{{ $sub->assignment->title ?? '-' }}</div>
                             </td>
                             <td>
                                 <span class="badge bg-primary-subtle text-primary px-2 py-1 fs-6">
@@ -102,7 +102,7 @@
         </div>
     </div>
     @if($submissions->hasPages())
-        <div class="card-footer bg-white d-flex justify-content-end py-3">
+        <div class="card-footer d-flex justify-content-end py-3">
             {{ $submissions->links() }}
         </div>
     @endif

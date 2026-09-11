@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold m-0 text-dark">Kelola Soal Kuis: {{ $quiz->title }}</h3>
+    <h3 class="fw-bold m-0">Kelola Soal Kuis: {{ $quiz->title }}</h3>
     <a href="{{ route('admin.quizzes.index') }}" class="btn btn-outline-secondary">
         <i class="ti ti-arrow-left me-1"></i> Kembali ke Daftar Kuis
     </a>
@@ -31,7 +31,7 @@
             </div>
             <div class="col-md-3">
                 <span class="text-muted small text-uppercase fw-bold">Durasi Pengerjaan</span>
-                <div class="fw-bold fs-5 text-dark"><i class="ti ti-clock me-1"></i> {{ $quiz->duration_minutes }} Menit</div>
+                <div class="fw-bold fs-5"><i class="ti ti-clock me-1"></i> {{ $quiz->duration_minutes }} Menit</div>
             </div>
             <div class="col-md-3">
                 <span class="text-muted small text-uppercase fw-bold">Poin per Soal</span>
@@ -45,14 +45,14 @@
     <!-- Left Column: Current Quiz Questions List -->
     <div class="col-lg-7">
         <div class="card shadow-sm border-0">
-            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
                 <h5 class="card-title fw-bold mb-0">Daftar Soal Kuis ({{ $quiz->questions->count() }} Soal)</h5>
             </div>
             <div class="card-body p-0">
                 @forelse($quiz->questions as $index => $q)
                     <div class="p-3 border-bottom {{ $loop->last ? 'border-0' : '' }}">
                         <div class="d-flex justify-content-between align-items-start mb-2">
-                            <h6 class="fw-bold text-dark mb-0">Soal {{ $index + 1 }}</h6>
+                            <h6 class="fw-bold mb-0">Soal {{ $index + 1 }}</h6>
                             <form method="POST" action="{{ route('admin.quizzes.destroy-question', [$quiz, $q]) }}" onsubmit="return confirm('Hapus soal ini dari kuis?')">
                                 @csrf
                                 @method('DELETE')
@@ -61,7 +61,7 @@
                                 </button>
                             </form>
                         </div>
-                        <p class="text-dark mb-2 fw-medium">{{ $q->question_text }}</p>
+                        <p class="mb-2 fw-medium">{{ $q->question_text }}</p>
                         <div class="ps-3 border-start border-3 border-primary">
                             @foreach($q->options as $opt)
                                 <div class="small mb-1 {{ $opt->is_correct ? 'text-success fw-bold' : 'text-muted' }}">
@@ -89,7 +89,7 @@
     <div class="col-lg-5">
         <!-- Import Card -->
         <div class="card shadow-sm border-0 mb-4">
-            <div class="card-header bg-white py-3">
+            <div class="card-header py-3">
                 <h5 class="card-title fw-bold mb-0"><i class="ti ti-file-import me-1 text-primary"></i> Impor Soal dari Bank Soal</h5>
             </div>
             <div class="card-body">
@@ -99,7 +99,7 @@
                         @forelse($questionBanks as $qb)
                             <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" name="question_bank_ids[]" value="{{ $qb->id }}" id="qb_{{ $qb->id }}">
-                                <label class="form-check-label small text-dark" for="qb_{{ $qb->id }}">
+                                <label class="form-check-label small" for="qb_{{ $qb->id }}">
                                     {{ Str::limit($qb->question_text, 70) }}
                                 </label>
                             </div>
@@ -116,7 +116,7 @@
 
         <!-- Manual Question Form Card -->
         <div class="card shadow-sm border-0">
-            <div class="card-header bg-white py-3">
+            <div class="card-header py-3">
                 <h5 class="card-title fw-bold mb-0"><i class="ti ti-plus me-1 text-success"></i> Tambah Soal Manual</h5>
             </div>
             <div class="card-body">

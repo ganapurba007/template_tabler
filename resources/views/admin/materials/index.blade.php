@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold m-0 text-dark">Daftar Materi Pembelajaran Kelas</h3>
+    <h3 class="fw-bold m-0">Daftar Materi Pembelajaran Kelas</h3>
     <a href="{{ route('admin.materials.create') }}" class="btn btn-primary">
         <i class="ti ti-plus me-1"></i> Tambah Materi Baru
     </a>
@@ -21,7 +21,7 @@
     <div class="card-body p-0">
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
-                <thead class="table-light">
+                <thead>
                     <tr>
                         <th class="ps-4" style="width: 70px;">ID</th>
                         <th>Judul Materi</th>
@@ -37,7 +37,7 @@
                         <tr>
                             <td class="ps-4 fw-bold">#{{ $material->id }}</td>
                             <td>
-                                <div class="fw-bold text-dark">{{ $material->title }}</div>
+                                <div class="fw-bold">{{ $material->title }}</div>
                                 <div class="small text-muted">Urutan: {{ $material->order }}</div>
                             </td>
                             <td>
@@ -54,7 +54,7 @@
                                 @if($material->content_type === 'text')
                                     <span class="badge bg-success px-2 py-1"><i class="ti ti-file-text me-1"></i> Teks / HTML</span>
                                 @elseif($material->content_type === 'document')
-                                    <span class="badge bg-warning text-dark px-2 py-1"><i class="ti ti-file-download me-1"></i> Dokumen</span>
+                                    <span class="badge bg-warning px-2 py-1"><i class="ti ti-file-download me-1"></i> Dokumen</span>
                                 @elseif($material->content_type === 'youtube')
                                     <span class="badge bg-danger px-2 py-1"><i class="ti ti-brand-youtube me-1"></i> YouTube</span>
                                 @endif
@@ -85,7 +85,7 @@
         </div>
     </div>
     @if($materials->hasPages())
-        <div class="card-footer bg-white d-flex justify-content-end py-3">
+        <div class="card-footer d-flex justify-content-end py-3">
             {{ $materials->links() }}
         </div>
     @endif

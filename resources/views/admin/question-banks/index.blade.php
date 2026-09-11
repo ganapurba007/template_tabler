@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold m-0 text-dark">Bank Soal &amp; Pilihan Jawaban</h3>
+    <h3 class="fw-bold m-0">Bank Soal &amp; Pilihan Jawaban</h3>
     <a href="{{ route('admin.question-banks.create') }}" class="btn btn-primary">
         <i class="ti ti-plus me-1"></i> Buat Soal Baru
     </a>
@@ -21,7 +21,7 @@
     <div class="card-body p-0">
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
-                <thead class="table-light">
+                <thead>
                     <tr>
                         <th class="ps-4" style="width: 70px;">ID</th>
                         <th>Pertanyaan Soal</th>
@@ -35,7 +35,7 @@
                         <tr>
                             <td class="ps-4 fw-bold">#{{ $qb->id }}</td>
                             <td>
-                                <div class="fw-semibold text-dark text-wrap" style="max-width: 450px;">
+                                <div class="fw-semibold text-wrap" style="max-width: 450px;">
                                     {{ Str::limit($qb->question_text, 120) }}
                                 </div>
                             </td>
@@ -81,7 +81,7 @@
         </div>
     </div>
     @if($questionBanks->hasPages())
-        <div class="card-footer bg-white d-flex justify-content-end py-3">
+        <div class="card-footer d-flex justify-content-end py-3">
             {{ $questionBanks->links() }}
         </div>
     @endif
