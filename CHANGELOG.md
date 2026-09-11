@@ -2,6 +2,17 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 15] Student Materi & Diskusi Realtime — 2026-09-11
+
+### Ditambahkan
+- `Student\MaterialController` (`app/Http/Controllers/Student/MaterialController.php`) untuk pengelolaan penayangan materi kelas siswa, penandaan progres selesai (`toggleComplete`), dan penambahan komentar di ruang diskusi (`storeComment`).
+- Dispatching Event Realtime `DiscussionCommentSent` (`event(new DiscussionCommentSent($discussion))`) pada channel privat `material.{material_id}` saat komentar dikirim.
+- Blade Views Tabler UI di `resources/views/student/materials/`: `index.blade.php` (daftar materi per kelas) dan `show.blade.php` (penayang konten teks/dokumen/video & ruang diskusi).
+- Feature Test `tests/Feature/Student/StudentMaterialTest.php` untuk memverifikasi isolasi materi per kelas siswa, toggle penandaan selesai (`material_progress`), pengiriman komentar diskusi realtime, dan proteksi otorisasi antar-kelas.
+
+### Diubah
+- `routes/web.php`: Menambahkan rute `student.materials.index`, `show`, `complete`, dan `discussions`.
+
 ## [Fase 14] Student Dashboard — 2026-09-11
 
 ### Ditambahkan
