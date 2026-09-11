@@ -67,7 +67,7 @@
                         <div class="mb-4">
                             <h6 class="fw-bold mb-2"><i class="ti ti-file-text me-1 text-success"></i> Isi / Artikel Materi</h6>
                             <div class="p-3 bg-light rounded text-dark fs-6" style="line-height: 1.7;">
-                                {!! nl2br(e($material->content)) !!}
+                                {!! $material->content !!}
                             </div>
                         </div>
                     @endif

@@ -24,6 +24,47 @@
   <!-- Select2 JS CDN -->
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+  <!-- TinyMCE CDN & Global Auto-Init (kelas: tinymce) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.2/tinymce.min.js"></script>
+  <script>
+  window.initTinyMCE = function(selector) {
+    if (typeof tinymce === 'undefined') return;
+    var targetSelector = selector || 'textarea.tinymce';
+    if ($(targetSelector).length === 0) return;
+
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+    tinymce.init({
+      selector: targetSelector,
+      height: 400,
+      menubar: true,
+      plugins: [
+        'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+        'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+        'insertdatetime', 'media', 'table', 'help', 'wordcount'
+      ],
+      toolbar: 'undo redo | blocks | ' +
+        'bold italic backcolor forecolor | alignleft aligncenter ' +
+        'alignright alignjustify | bullist numlist outdent indent | ' +
+        'removeformat | link image media table | help',
+      content_style: 'body { font-family: "Plus Jakarta Sans", sans-serif; font-size: 14px; line-height: 1.6; }',
+      skin: isDark ? 'oxide-dark' : 'oxide',
+      content_css: isDark ? 'dark' : 'default',
+      branding: false,
+      promotion: false,
+      setup: function(editor) {
+        editor.on('change keyup blur', function() {
+          editor.save();
+        });
+      }
+    });
+  };
+
+  $(document).ready(function() {
+    window.initTinyMCE();
+  });
+  </script>
+
   <!-- Custom Scripts -->
   <script src="{{ asset('template/be/assets/js/theme-toggle.js') }}"></script>
   <script src="{{ asset('template/be/assets/js/sidebar.js') }}"></script>

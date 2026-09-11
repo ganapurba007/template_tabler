@@ -39,7 +39,7 @@ class MaterialController extends Controller
             'class_id' => ['required', 'exists:classes,id'],
             'content_type' => ['nullable', 'string'],
             'content' => ['nullable', 'string'],
-            'document_file' => ['nullable', 'file', 'mimes:pdf,doc,docx,ppt,pptx,xls,xlsx,zip,rar,txt,png,jpg,jpeg', 'max:20480'],
+            'document_file' => ['nullable', 'file', 'mimes:pdf,doc,docx,ppt,pptx,xls,xlsx,png,jpg,jpeg', 'max:20480'],
             'video_url' => ['nullable', 'url'],
             'order' => ['nullable', 'integer', 'min:0'],
         ]);

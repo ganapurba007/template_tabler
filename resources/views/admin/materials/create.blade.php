@@ -58,7 +58,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="order" class="form-label fw-semibold">Urutan Urut Tampil</label>
+                        <label for="order" class="form-label fw-semibold">Urutan Tampil</label>
                         <input type="number" class="form-control @error('order') is-invalid @enderror" id="order" name="order" value="{{ old('order', 0) }}" min="0">
                         @error('order')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -71,7 +71,7 @@
                     <!-- Field: Text Content -->
                     <div class="mb-4">
                         <label for="content" class="form-label fw-semibold"><i class="ti ti-file-text me-1 text-success"></i> Isi Teks / Artikel Materi</label>
-                        <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="6" placeholder="Tuliskan teks atau artikel materi pelajaran di sini...">{{ old('content') }}</textarea>
+                        <textarea class="form-control tinymce @error('content') is-invalid @enderror" id="content" name="content" rows="6" placeholder="Tuliskan teks atau artikel materi pelajaran di sini...">{{ old('content') }}</textarea>
                         @error('content')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -91,7 +91,7 @@
                         <div class="col-md-6">
                             <label for="document_file" class="form-label fw-semibold"><i class="ti ti-file-download me-1 text-warning"></i> File Dokumen Lampiran (Opsional, Maks 20MB)</label>
                             <input type="file" class="form-control @error('document_file') is-invalid @enderror" id="document_file" name="document_file">
-                            <div class="form-text">Format: PDF, DOCX, PPTX, XLSX, ZIP, RAR, PNG, JPG.</div>
+                            <div class="form-text">Format: PDF, DOCX, PPTX, XLSX, PNG, JPG.</div>
                             @error('document_file')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
