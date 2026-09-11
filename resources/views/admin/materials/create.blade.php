@@ -57,54 +57,45 @@
                         </div>
                     </div>
 
-                    <div class="row g-3 mb-3">
-                        <div class="col-md-6">
-                            <label for="content_type" class="form-label fw-semibold">Tipe Konten Materi <span class="text-danger">*</span></label>
-                            <select class="form-select select2 @error('content_type') is-invalid @enderror" id="content_type" name="content_type" required onchange="toggleContentTypeFields()">
-                                <option value="text" {{ old('content_type', 'text') == 'text' ? 'selected' : '' }}>Teks / HTML</option>
-                                <option value="document" {{ old('content_type') == 'document' ? 'selected' : '' }}>Upload Dokumen (PDF, Word, Zip, dll)</option>
-                                <option value="youtube" {{ old('content_type') == 'youtube' ? 'selected' : '' }}>Video YouTube (Embed Link)</option>
-                            </select>
-                            @error('content_type')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="order" class="form-label fw-semibold">Urutan Urut Tampil</label>
-                            <input type="number" class="form-control @error('order') is-invalid @enderror" id="order" name="order" value="{{ old('order', 0) }}" min="0">
-                            @error('order')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                    <div class="mb-3">
+                        <label for="order" class="form-label fw-semibold">Urutan Urut Tampil</label>
+                        <input type="number" class="form-control @error('order') is-invalid @enderror" id="order" name="order" value="{{ old('order', 0) }}" min="0">
+                        @error('order')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
 
-                    <!-- Content Type: Text -->
-                    <div id="field_text" class="mb-3">
-                        <label for="content" class="form-label fw-semibold">Isi Teks / Artikel Materi</label>
-                        <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="6" placeholder="Tuliskan materi pelajaran di sini...">{{ old('content') }}</textarea>
+                    <hr class="my-4">
+                    <h5 class="fw-bold mb-3"><i class="ti ti-layers-intersect me-2 text-primary"></i>Konten &amp; Media Pembelajaran</h5>
+
+                    <!-- Field: Text Content -->
+                    <div class="mb-4">
+                        <label for="content" class="form-label fw-semibold"><i class="ti ti-file-text me-1 text-success"></i> Isi Teks / Artikel Materi</label>
+                        <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="6" placeholder="Tuliskan teks atau artikel materi pelajaran di sini...">{{ old('content') }}</textarea>
                         @error('content')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
-                    <!-- Content Type: Document -->
-                    <div id="field_document" class="mb-3 d-none">
-                        <label for="document_file" class="form-label fw-semibold">File Dokumen Materi (Maks. 20MB)</label>
-                        <input type="file" class="form-control @error('document_file') is-invalid @enderror" id="document_file" name="document_file">
-                        <div class="form-text">Format didukung: PDF, DOCX, PPTX, XLSX, ZIP, RAR, PNG, JPG.</div>
-                        @error('document_file')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
+                    <div class="row g-3 mb-3">
+                        <!-- Field: YouTube URL -->
+                        <div class="col-md-6">
+                            <label for="video_url" class="form-label fw-semibold"><i class="ti ti-brand-youtube me-1 text-danger"></i> URL Video YouTube (Opsional)</label>
+                            <input type="url" class="form-control @error('video_url') is-invalid @enderror" id="video_url" name="video_url" value="{{ old('video_url') }}" placeholder="https://www.youtube.com/watch?v=...">
+                            @error('video_url')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
 
-                    <!-- Content Type: YouTube -->
-                    <div id="field_youtube" class="mb-3 d-none">
-                        <label for="video_url" class="form-label fw-semibold">URL Video YouTube</label>
-                        <input type="url" class="form-control @error('video_url') is-invalid @enderror" id="video_url" name="video_url" value="{{ old('video_url') }}" placeholder="https://www.youtube.com/watch?v=...">
-                        @error('video_url')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                        <!-- Field: Document File -->
+                        <div class="col-md-6">
+                            <label for="document_file" class="form-label fw-semibold"><i class="ti ti-file-download me-1 text-warning"></i> File Dokumen Lampiran (Opsional, Maks 20MB)</label>
+                            <input type="file" class="form-control @error('document_file') is-invalid @enderror" id="document_file" name="document_file">
+                            <div class="form-text">Format: PDF, DOCX, PPTX, XLSX, ZIP, RAR, PNG, JPG.</div>
+                            @error('document_file')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
 
                     <div class="d-flex justify-content-end gap-2 mt-4">
@@ -118,14 +109,4 @@
         </div>
     </div>
 </div>
-
-<script>
-    function toggleContentTypeFields() {
-        const type = document.getElementById('content_type').value;
-        document.getElementById('field_text').classList.toggle('d-none', type !== 'text');
-        document.getElementById('field_document').classList.toggle('d-none', type !== 'document');
-        document.getElementById('field_youtube').classList.toggle('d-none', type !== 'youtube');
-    }
-    document.addEventListener('DOMContentLoaded', toggleContentTypeFields);
-</script>
 @endsection

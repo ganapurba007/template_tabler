@@ -1,10 +1,10 @@
 @extends('layouts.be.master')
 
-@section('header_title', 'Edit & Assign Role Pengguna — ' . $user->name)
+@section('header_title', 'Edit User — ' . $user->name)
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold m-0">Edit &amp; Assign Role Pengguna</h3>
+    <h3 class="fw-bold m-0">Edit User</h3>
     <a href="{{ route('admin.users.index') }}" class="btn btn-outline-secondary">
         <i class="ti ti-arrow-left me-1"></i> Kembali
     </a>
@@ -35,46 +35,16 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="nip" class="form-label fw-semibold">NIP (Nomor Induk Pegawai)</label>
-                        <input type="text" id="nip" name="nip" class="form-control @error('nip') is-invalid @enderror" value="{{ old('nip', $user->nip) }}" placeholder="Khusus Guru / Opsional">
+                        <label for="nip" class="form-label fw-semibold">NIP (Nomor Induk Pegawai) <span class="text-danger">*</span></label>
+                        <input type="text" id="nip" name="nip" class="form-control @error('nip') is-invalid @enderror" value="{{ old('nip', $user->nip) }}" placeholder="123456789..." required>
                         @error('nip')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                        <div class="form-text">Isi NIP jika pengguna adalah Guru / Pengajar (NIP harus unik).</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="role_id" class="form-label fw-semibold">Role <span class="text-danger">*</span></label>
-                        <select id="role_id" name="role_id" class="form-select select2 @error('role_id') is-invalid @enderror" required>
-                            @foreach($roles as $role)
-                                <option value="{{ $role->id }}" {{ old('role_id', $user->role_id) == $role->id ? 'selected' : '' }}>
-                                    {{ ucfirst($role->name) }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('role_id')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="class_id" class="form-label fw-semibold">Kelas Siswa</label>
-                        <select id="class_id" name="class_id" class="form-select select2 @error('class_id') is-invalid @enderror">
-                            <option value="">-- Tanpa Kelas (Guru / Staf) --</option>
-                            @foreach($classes as $class)
-                                <option value="{{ $class->id }}" {{ old('class_id', $user->class_id) == $class->id ? 'selected' : '' }}>
-                                    {{ $class->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('class_id')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="d-flex justify-content-end gap-2">
                         <a href="{{ route('admin.users.index') }}" class="btn btn-light">Batal</a>
-                        <button type="submit" class="btn btn-primary"><i class="ti ti-device-floppy me-1"></i> Update Pengguna</button>
+                        <button type="submit" class="btn btn-primary"><i class="ti ti-device-floppy me-1"></i> Update User</button>
                     </div>
                 </form>
             </div>

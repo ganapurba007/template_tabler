@@ -47,33 +47,46 @@
                 </div>
 
                 <div class="card-body p-4">
-                    <!-- Content Viewer -->
-                    @if($material->content_type === 'text')
-                        <div class="p-3 bg-light rounded text-dark fs-6" style="line-height: 1.7;">
-                            {!! nl2br(e($material->content)) !!}
+                    <!-- Content Viewer: Show all available components -->
+                    @if($material->video_url)
+                        <div class="mb-4">
+                            <h6 class="fw-bold mb-2"><i class="ti ti-brand-youtube me-1 text-danger"></i> Video Pembelajaran</h6>
+                            <div class="ratio ratio-16x9 rounded overflow-hidden shadow-sm">
+                                @php
+                                    $embedUrl = $material->video_url;
+                                    if (str_contains($embedUrl, 'watch?v=')) {
+                                        $embedUrl = str_replace('watch?v=', 'embed/', $embedUrl);
+                                    }
+                                @endphp
+                                <iframe src="{{ $embedUrl }}" allowfullscreen></iframe>
+                            </div>
                         </div>
-                    @elseif($material->content_type === 'document')
-                        <div class="p-4 text-center bg-light rounded border">
-                            <i class="ti ti-file-text fs-1 text-warning d-block mb-2"></i>
-                            <h6 class="fw-bold mb-2">Dokumen Pembelajaran</h6>
-                            @if($material->document_path)
+                    @endif
+
+                    @if($material->content)
+                        <div class="mb-4">
+                            <h6 class="fw-bold mb-2"><i class="ti ti-file-text me-1 text-success"></i> Isi / Artikel Materi</h6>
+                            <div class="p-3 bg-light rounded text-dark fs-6" style="line-height: 1.7;">
+                                {!! nl2br(e($material->content)) !!}
+                            </div>
+                        </div>
+                    @endif
+
+                    @if($material->document_path)
+                        <div class="mb-3">
+                            <h6 class="fw-bold mb-2"><i class="ti ti-file-download me-1 text-warning"></i> Lampiran Dokumen</h6>
+                            <div class="p-4 text-center bg-light rounded border">
+                                <i class="ti ti-file-text fs-1 text-warning d-block mb-2"></i>
+                                <h6 class="fw-bold mb-2">Dokumen Pembelajaran</h6>
                                 <a href="{{ asset('storage/'.$material->document_path) }}" target="_blank" class="btn btn-warning px-4">
                                     <i class="ti ti-download me-1"></i> Unduh / Buka Dokumen
                                 </a>
-                            @else
-                                <div class="text-muted small">Berkas tidak ditemukan.</div>
-                            @endif
+                            </div>
                         </div>
-                    @elseif($material->content_type === 'youtube')
-                        <div class="ratio ratio-16x9 rounded overflow-hidden shadow-sm">
-                            @php
-                                $embedUrl = $material->video_url;
-                                if (str_contains($embedUrl, 'watch?v=')) {
-                                    $embedUrl = str_replace('watch?v=', 'embed/', $embedUrl);
-                                }
-                            @endphp
-                            <iframe src="{{ $embedUrl }}" allowfullscreen></iframe>
-                        </div>
+                    @endif
+
+                    @if(!$material->video_url && !$material->content && !$material->document_path)
+                        <div class="text-center py-4 text-muted">Belum ada konten pada materi ini.</div>
                     @endif
                 </div>
             </div>

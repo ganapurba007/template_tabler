@@ -51,13 +51,20 @@
                                 </span>
                             </td>
                             <td>
-                                @if($material->content_type === 'text')
-                                    <span class="badge badge-soft-success"><i class="ti ti-file-text me-1"></i> Teks / HTML</span>
-                                @elseif($material->content_type === 'document')
-                                    <span class="badge badge-soft-warning"><i class="ti ti-file-download me-1"></i> Dokumen</span>
-                                @elseif($material->content_type === 'youtube')
-                                    <span class="badge badge-soft-danger"><i class="ti ti-brand-youtube me-1"></i> YouTube</span>
-                                @endif
+                                <div class="d-flex flex-wrap gap-1">
+                                    @if($material->content)
+                                        <span class="badge badge-soft-success" title="Ada Isi Teks"><i class="ti ti-file-text me-1"></i> Teks</span>
+                                    @endif
+                                    @if($material->video_url)
+                                        <span class="badge badge-soft-danger" title="Ada Video YouTube"><i class="ti ti-brand-youtube me-1"></i> YouTube</span>
+                                    @endif
+                                    @if($material->document_path)
+                                        <span class="badge badge-soft-warning" title="Ada File Lampiran"><i class="ti ti-file-download me-1"></i> Dokumen</span>
+                                    @endif
+                                    @if(!$material->content && !$material->video_url && !$material->document_path)
+                                        <span class="badge badge-soft-secondary">-</span>
+                                    @endif
+                                </div>
                             </td>
                             <td>{{ $material->instructor->name ?? '-' }}</td>
                             <td class="pe-4 text-end">

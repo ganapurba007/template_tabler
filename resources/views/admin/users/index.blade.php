@@ -1,10 +1,10 @@
 @extends('layouts.be.master')
 
-@section('header_title', 'Master Data — Pengguna')
+@section('header_title', 'Master Data — User')
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold m-0">Daftar Pengguna Sistem</h3>
+    <h3 class="fw-bold m-0">Daftar User</h3>
 </div>
 
 @if(session('success'))
@@ -13,37 +13,6 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
-
-<!-- Search & Filter Bar -->
-<div class="card shadow-sm border-0 mb-4">
-    <div class="card-body p-3">
-        <form method="GET" action="{{ route('admin.users.index') }}" class="row g-2 align-items-center">
-            <div class="col-12 col-md-5">
-                <div class="input-group">
-                    <span class="input-group-text"><i class="ti ti-search text-muted"></i></span>
-                    <input type="text" name="search" class="form-control border-start-0" placeholder="Cari Nama, Email, NIP..." value="{{ request('search') }}">
-                </div>
-            </div>
-
-            <div class="col-12 col-md-4">
-                <select name="role_id" class="form-select select2" onchange="this.form.submit()">
-                    <option value="">-- Semua Role --</option>
-                    @foreach($roles as $role)
-                        <option value="{{ $role->id }}" {{ request('role_id') == $role->id ? 'selected' : '' }}>{{ ucfirst($role->name) }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="col-12 col-md-3 d-flex gap-2">
-                <button type="submit" class="btn btn-primary w-100"><i class="ti ti-filter me-1"></i> Filter</button>
-                @if(request()->anyFilled(['search', 'role_id']))
-                    <a href="{{ route('admin.users.index') }}" class="btn btn-outline-secondary" title="Reset Filter"><i class="ti ti-refresh"></i></a>
-                @endif
-            </div>
-        </form>
-    </div>
-</div>
-
 <!-- Users Table Card -->
 <div class="card shadow-sm border-0">
     <div class="card-body p-0">
@@ -52,11 +21,10 @@
                 <thead>
                     <tr>
                         <th class="ps-4" style="width: 70px;">No</th>
-                        <th>Pengguna</th>
+                        <th>User</th>
                         <th>Email</th>
                         <th>NIP</th>
                         <th>Role</th>
-                        <th>Kelas</th>
                         <th class="pe-4 text-end no-sort" style="width: 100px;">Aksi</th>
                     </tr>
                 </thead>
@@ -71,7 +39,6 @@
                                     </div>
                                     <div>
                                         <div class="fw-semibold">{{ $user->name }}</div>
-                                        <div class="small text-muted">ID: #{{ $user->id }}</div>
                                     </div>
                                 </div>
                             </td>
@@ -92,13 +59,6 @@
                                     <span class="badge badge-soft-secondary">{{ ucfirst($user->role->name ?? 'None') }}</span>
                                 @endif
                             </td>
-                            <td>
-                                @if($user->schoolClass)
-                                    <span class="badge badge-soft-info">{{ $user->schoolClass->name }}</span>
-                                @else
-                                    <span class="text-muted small">-</span>
-                                @endif
-                            </td>
                             <td class="pe-4 text-end">
                                 <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-sm btn-outline-primary" title="Assign Role / Edit">
                                     <i class="ti ti-edit me-1"></i> Edit
@@ -107,7 +67,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="text-center py-4 text-muted">Tidak ada pengguna ditemukan.</td>
+                            <td colspan="7" class="text-center py-4 text-muted">Tidak ada user ditemukan.</td>
                         </tr>
                     @endforelse
                 </tbody>

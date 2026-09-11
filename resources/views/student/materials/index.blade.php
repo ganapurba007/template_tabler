@@ -42,15 +42,19 @@
                                                 {{ $mat->subject->name ?? '-' }}
                                             </span>
                                         </td>
-                                        <td>
-                                            @if($mat->content_type === 'text')
-                                                <span class="badge bg-success px-2 py-1"><i class="ti ti-file-text me-1"></i> Teks</span>
-                                            @elseif($mat->content_type === 'document')
-                                                <span class="badge bg-warning text-dark px-2 py-1"><i class="ti ti-file-download me-1"></i> Dokumen</span>
-                                            @elseif($mat->content_type === 'youtube')
-                                                <span class="badge bg-danger px-2 py-1"><i class="ti ti-brand-youtube me-1"></i> YouTube</span>
-                                            @endif
-                                        </td>
+                                         <td>
+                                             <div class="d-flex flex-wrap gap-1">
+                                                 @if($mat->content)
+                                                     <span class="badge bg-success px-2 py-1"><i class="ti ti-file-text me-1"></i> Teks</span>
+                                                 @endif
+                                                 @if($mat->video_url)
+                                                     <span class="badge bg-danger px-2 py-1"><i class="ti ti-brand-youtube me-1"></i> YouTube</span>
+                                                 @endif
+                                                 @if($mat->document_path)
+                                                     <span class="badge bg-warning text-dark px-2 py-1"><i class="ti ti-file-download me-1"></i> Dokumen</span>
+                                                 @endif
+                                             </div>
+                                         </td>
                                         <td>{{ $mat->instructor->name ?? '-' }}</td>
                                         <td>
                                             @if($isDone)

@@ -17,11 +17,10 @@ class UserController extends Controller
         $query = User::with(['role', 'schoolClass']);
 
         if ($request->filled('search')) {
-            $search = $request->search;
-            $query->where(function ($q) use ($search) {
-                $q->where('name', 'like', "%{$search}%")
-                  ->orWhere('email', 'like', "%{$search}%")
-                  ->orWhere('nip', 'like', "%{$search}%");
+            $query->where(function ($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->search . '%')
+                  ->orWhere('email', 'like', '%' . $request->search . '%')
+                  ->orWhere('nip', 'like', '%' . $request->search . '%');
             });
         }
 
@@ -29,7 +28,7 @@ class UserController extends Controller
             $query->where('role_id', $request->role_id);
         }
 
-        $users = $query->orderBy('id', 'desc')->paginate(10)->withQueryString();
+        $users = $query->latest()->paginate(10)->withQueryString();
         $roles = Role::orderBy('name')->get();
 
         return view('admin.users.index', compact('users', 'roles'));
@@ -47,8 +46,8 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$user->id],
-            'nip' => ['nullable', 'string', 'max:50', 'unique:users,nip,'.$user->id],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
+            'nip' => ['nullable', 'string', 'max:50', 'unique:users,nip,' . $user->id],
             'role_id' => ['required', 'exists:roles,id'],
             'class_id' => ['nullable', 'exists:classes,id'],
         ]);
@@ -61,6 +60,6 @@ class UserController extends Controller
             'class_id' => $request->class_id,
         ]);
 
-        return redirect()->route('admin.users.index')->with('success', 'Data pengguna berhasil diperbarui.');
+        return redirect()->route('admin.users.index')->with('success', 'Data user berhasil diperbarui.');
     }
 }
