@@ -18,7 +18,7 @@
 @endif
 
 <div class="row justify-content-center">
-    <div class="col-md-9">
+    <div class="col-md-12">
         <div class="card shadow-sm border-0 mb-4">
             <div class="card-header py-3">
                 <h5 class="card-title fw-bold mb-0">Informasi Pengumpulan</h5>
