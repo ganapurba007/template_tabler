@@ -2,6 +2,17 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 16] Student Tugas — 2026-09-11
+
+### Ditambahkan
+- `Student\AssignmentController` (`app/Http/Controllers/Student/AssignmentController.php`) untuk menyajikan daftar tugas kelas siswa (`index`), petunjuk pengerjaan (`show`), serta pengumpulan/pembaharuan jawaban tugas (`submit`).
+- Penayangan status pengumpulan (Belum Dikumpulkan / Sudah Dikumpulkan / Sudah Dinilai Guru), nilai (`grade`), dan umpan balik (`feedback`).
+- Blade Views Tabler UI di `resources/views/student/assignments/`: `index.blade.php` dan `show.blade.php`.
+- Feature Test `tests/Feature/Student/StudentAssignmentTest.php` untuk memverifikasi isolasi tugas kelas siswa, pengumpulan jawaban tugas, dan proteksi otorisasi antar-kelas.
+
+### Diubah
+- `routes/web.php`: Menambahkan rute `student.assignments.index`, `show`, dan `submit`.
+
 ## [Fase 15] Student Materi & Diskusi Realtime — 2026-09-11
 
 ### Ditambahkan

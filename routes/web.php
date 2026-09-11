@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SchoolClassController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Student\AssignmentController as StudentAssignmentController;
 use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
 use App\Http\Controllers\Student\MaterialController as StudentMaterialController;
 use Illuminate\Support\Facades\Route;
@@ -24,12 +25,16 @@ Route::get('/dashboard', [StudentDashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-// Route Siswa Materials & Discussion
+// Route Siswa Materials, Assignments & Discussion
 Route::middleware(['auth'])->prefix('student')->as('student.')->group(function () {
     Route::get('materials', [StudentMaterialController::class, 'index'])->name('materials.index');
     Route::get('materials/{material}', [StudentMaterialController::class, 'show'])->name('materials.show');
     Route::post('materials/{material}/complete', [StudentMaterialController::class, 'toggleComplete'])->name('materials.complete');
     Route::post('materials/{material}/discussions', [StudentMaterialController::class, 'storeComment'])->name('materials.discussions');
+
+    Route::get('assignments', [StudentAssignmentController::class, 'index'])->name('assignments.index');
+    Route::get('assignments/{assignment}', [StudentAssignmentController::class, 'show'])->name('assignments.show');
+    Route::post('assignments/{assignment}/submit', [StudentAssignmentController::class, 'submit'])->name('assignments.submit');
 });
 
 // Route Group Admin / Guru
