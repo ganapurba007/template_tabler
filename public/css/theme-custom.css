@@ -1,5 +1,5 @@
 /* ==========================================================================
-   LMS Dani Custom Theme - Color Palette & Mobile-First PWA Styling
+   LMS Dani Custom Theme - Color Palette & Quizizz/E-Learning Landing Page
    Primary Main : #66A3BF
    Primary Dark : #3368A0
    Soft Mint    : #C8DFDB
@@ -16,7 +16,6 @@
     --color-soft-mint-rgb: 200, 223, 219;
     --color-warm-light-rgb: 242, 239, 231;
 
-    /* Override standard Tabler / Bootstrap theme variables */
     --tblr-primary: #66A3BF;
     --tblr-primary-rgb: 102, 163, 191;
     --tblr-primary-darken: #3368A0;
@@ -24,70 +23,117 @@
     --tblr-body-bg: #F2EFE7;
 }
 
-/* Dark mode theme variable adjustments */
 [data-bs-theme="dark"], body.theme-dark {
-    --color-warm-light: #1b2431;
+    --color-warm-light: #151f2c;
     --color-soft-mint: #253846;
     --tblr-body-bg: #151f2c;
     --tblr-card-bg: #1c2738;
 }
 
-/* Base Body background */
 body {
     background-color: var(--tblr-body-bg, #F2EFE7);
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: #2b3648;
 }
 
-/* Primary Button Styling */
-.btn-primary, 
-.bg-primary {
-    background-color: #66A3BF !important;
-    border-color: #66A3BF !important;
+/* Quizizz Style Hero Banner */
+.hero-banner-quizizz {
+    background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%);
+    color: #ffffff;
+    border-radius: 1.25rem;
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(51, 104, 160, 0.2);
+}
+
+.hero-banner-quizizz::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+
+/* Quizizz Style Cards */
+.quizizz-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    border: 1px solid rgba(102, 163, 191, 0.2);
+    box-shadow: 0 4px 15px rgba(51, 104, 160, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quizizz-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(51, 104, 160, 0.12);
+}
+
+/* Custom Soft Pills & Badges */
+.pill-mint {
+    background-color: #C8DFDB;
+    color: #274b5e;
+    font-weight: 700;
+    padding: 0.35rem 0.85rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+}
+
+.pill-primary-soft {
+    background-color: rgba(102, 163, 191, 0.18);
+    color: #3368A0;
+    font-weight: 700;
+    padding: 0.35rem 0.85rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+}
+
+.pill-warning-soft {
+    background-color: rgba(245, 159, 0, 0.18);
+    color: #b06f00;
+    font-weight: 700;
+    padding: 0.35rem 0.85rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+}
+
+.btn-quizizz-primary {
+    background-color: #66A3BF;
     color: #ffffff !important;
+    border: none;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    padding: 0.6rem 1.4rem;
+    transition: all 0.2s ease;
 }
 
-.btn-primary:hover, 
-.btn-primary:focus, 
-.btn-primary:active {
-    background-color: #3368A0 !important;
-    border-color: #3368A0 !important;
+.btn-quizizz-primary:hover {
+    background-color: #3368A0;
+    box-shadow: 0 4px 12px rgba(51, 104, 160, 0.3);
+}
+
+.btn-quizizz-accent {
+    background-color: #3368A0;
     color: #ffffff !important;
+    border: none;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    padding: 0.6rem 1.4rem;
 }
 
-.btn-outline-primary {
-    color: #3368A0 !important;
-    border-color: #66A3BF !important;
+.btn-quizizz-accent:hover {
+    background-color: #244b75;
 }
 
-.btn-outline-primary:hover {
-    background-color: #66A3BF !important;
-    border-color: #66A3BF !important;
-    color: #ffffff !important;
-}
-
-/* Light / White Button with clear border for both Light and Dark modes */
 .btn-light, .btn-white {
     border: 1px solid rgba(102, 163, 191, 0.4) !important;
 }
 
-/* Custom Card & Container styling */
-.card-theme-mint {
-    background-color: #C8DFDB;
-    color: #1c2738;
-}
-
-.badge-mint {
-    background-color: #C8DFDB;
-    color: #274b5e;
-    font-weight: 600;
-}
-
-.badge-primary-soft {
-    background-color: rgba(102, 163, 191, 0.15);
-    color: #3368A0;
-}
-
-/* Mobile-First PWA Bottom Nav Bar for Student View */
+/* Mobile-First PWA Bottom Nav Bar */
 .mobile-bottom-nav {
     display: flex;
     position: fixed;
