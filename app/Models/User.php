@@ -80,6 +80,11 @@ class User extends Authenticatable
         return $this->hasMany(QuizAttempt::class, 'student_id');
     }
 
+    public function notifications(): HasMany
+    {
+        return $this->hasMany(Notification::class);
+    }
+
     public function isGuru(): bool
     {
         return $this->role && $this->role->name === 'guru';

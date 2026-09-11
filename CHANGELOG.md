@@ -2,6 +2,43 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 21] Front-End Overhaul, Visual UI Improvements & PRD v1.9 Backend Alignment — 2026-09-11
+
+### Ditambahkan
+- **PWA Mobile-First Foundation (Frontend)**:
+  - File `public/manifest.json` (Web App Manifest dengan `theme_color: #66A3BF`).
+  - File `public/sw.js` (PWA Service Worker dengan strategi network-first untuk halaman dinamis dan cache-first untuk aset statis).
+  - Tampilan Mobile Bottom Navigation Bar khusus untuk antarmuka siswa di perangkat ponsel (`layouts/app.blade.php`).
+- **Skema Warna Frontend Baru (`PRD v1.9 §2.1 & §3.9`)**:
+  - File CSS `public/css/theme-custom.css` berisi variabel CSS warna utama (`#66A3BF`), aksen dark (`#3368A0`), soft mint (`#C8DFDB`), dan warm background (`#F2EFE7`).
+- **Audit & Penyesuaian Dashboard Admin Guru (`PRD v1.9 §3.2b`)**:
+  - `Admin\DashboardController` (`app/Http/Controllers/Admin/DashboardController.php`) untuk menghitung 4 statistik ringkasan dinamis: Total Kelas, Total Siswa, Tugas Belum Dikoreksi, dan Kuis Aktif.
+  - Penayangan 4 kartu statistik di `resources/views/admin/dashboard.blade.php` lengkap dengan link navigasi ke modul master terkait.
+- **Skema Notifikasi Database (`PRD v1.9 §4`)**:
+  - File migrasi `database/migrations/2026_09_11_000018_create_notifications_table.php` (`user_id`, `type`, `title`, `message`, `related_url`, `is_read`, `read_at`).
+  - Model `app/Models/Notification.php` dan penambahan relasi `notifications()` di Model `User`.
+
+### Diubah & Diperbaiki
+- **Isolasi Tema Backend vs Frontend**:
+  - Mengembalikan tampilan **Dashboard Admin Guru** 100% menggunakan tema asli dari `public/template/be/index.html` dengan mencabut `theme-custom.css` dari `layouts/be/header.blade.php`.
+  - Mengisolasi palet warna baru (`#66A3BF`, `#3368A0`, `#C8DFDB`, `#F2EFE7`) khusus pada **Frontend Siswa & Public** (`layouts/app.blade.php`).
+- **Perbaikan Query SQL pada Admin Dashboard**:
+  - Mengoreksi nama kolom pada `DashboardController`: `score` menjadi `grade` pada tabel `assignment_submissions`.
+  - Mengoreksi nama kolom pada `DashboardController`: `due_date` menjadi `deadline` pada tabel `quizzes`.
+- **Manajemen Alert & Persistence (`localStorage`)**:
+  - Semua alert flash notifikasi otomatis tertutup (4 detik untuk info/success, 7 detik untuk warning/danger).
+  - Tombol close (`x`) alert menyimpan state penutupan di `localStorage` per ID alert agar tidak muncul kembali saat halaman di-refresh.
+- **Auto-Init Select2 Dropdown**:
+  - Inisialisasi otomatis Select2 dengan Bootstrap 5 theme (`window.initSelect2()`) untuk seluruh `<select class="select2">` tanpa perlu membuat skrip berulang di setiap view Blade.
+- **Kontras Tombol Mode Terang (Light Mode)**:
+  - Menambahkan border yang jelas pada `.btn-light` dan `.btn-white` di `theme-custom.css` agar tetap terlihat bersih dan kontras baik di mode light maupun dark.
+- **Input Materi Pembelajaran Simultaneous**:
+  - Halaman `admin.materials.create` dan `edit` diperbarui agar mendukung pengisian **Artikel Teks (TinyMCE 6)**, **Link YouTube Embed**, dan **Upload File Dokumen** secara bersamaan tanpa perlu memilih tipe melalui dropdown.
+- **Autentikasi & Guard Redirection**:
+  - `Route::fallback()` dan rute akar `/` otomatis mengarah ke `/dashboard`.
+  - Permintaan ke rute `/register` otomatis diarahkan ke `/login`.
+  - Proses Logout langsung mengarahkan pengguna kembali ke `/login`.
+
 ## [Fase 20] Polish & Audit Final — 2026-09-11
 
 ### Ditambahkan

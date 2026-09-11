@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AssignmentController;
 use App\Http\Controllers\Admin\AssignmentSubmissionController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\QuestionBankController;
 use App\Http\Controllers\Admin\QuizController;
@@ -50,9 +51,7 @@ Route::middleware(['auth'])->prefix('student')->as('student.')->group(function (
 
 // Route Group Admin / Guru
 Route::middleware(['auth', 'role:guru'])->prefix('admin')->as('admin.')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
     // Master Role CRUD
     Route::resource('roles', RoleController::class);

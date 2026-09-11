@@ -6,7 +6,7 @@
 | ----------- | --------------------- |
 | **Author**  | Gana Purba Kusuma     |
 | **Status**  | Ready for Development |
-| **Version** | 1.8                   |
+| **Version** | 1.9                   |
 
 ---
 
@@ -45,6 +45,15 @@ Membangun LMS sederhana untuk portfolio, menunjukkan penerapan clean code practi
 | Realtime                  | Laravel Echo + Pusher (WebSocket) — untuk diskusi & notifikasi |
 
 **Keputusan arsitektur**: full Laravel Blade dipilih karena seluruh konten LMS berada di balik login (tidak butuh SEO), sehingga kelebihan SPA/Vue tidak relevan. Pendekatan ini memaksimalkan kecepatan development dan kemudahan maintenance dengan 1 codebase. **Laravel Breeze** dipilih sebagai starter kit autentikasi. **Vanilla JS** digunakan untuk countdown timer kuis (tanpa dependency tambahan). **Laravel Echo + Pusher** digunakan untuk: (a) komentar diskusi materi realtime, (b) notifikasi siswa saat ada materi/tugas baru, dan (c) notifikasi guru di backend saat ada komentar baru di ruang diskusi.
+
+### 2.1 Design System & PWA Specification
+
+| Layer / Scope             | Spesifikasi & Nilai                                                                                        |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **Backend (Admin Guru)**  | Menggunakan tema asli dari template [`public/template/be/index.html`](file:///c:/laragon/www/KELAS/lms_dani/public/template/be/index.html) tanpa penimpaan warna |
+| **Frontend (Siswa/Public)**| Halaman siswa & landing page dengan warna utama **`#66A3BF`**, aksen **`#3368A0`**, mint **`#C8DFDB`**, background **`#F2EFE7`** |
+| **Pendekatan Layout**     | **User-Friendly, Clean, & PWA Mobile-First** — Tampilan responsif seluler khusus Frontend                 |
+| **PWA Capabilities**      | Web App Manifest (`manifest.json`), Service Worker (`sw.js`), Installable Standalone App, Offline Caching |
 
 ---
 
@@ -201,7 +210,7 @@ Frontend adalah tampilan **di luar** admin dashboard (`/admin/*`) — dipakai ol
 | **Siswa** | **Dashboard**, **Notifikasi**, **Kelas Saya** (→ pilih Mata Pelajaran → Materi / Tugas / Kuis), **Profil & Laporan Diri**, Logout                    |
 | **Guru**  | **Dashboard**, **Kelas Saya** (→ pilih Kelas & Mata Pelajaran yang diampu → lihat Materi / Tugas / Kuis yang sudah dibuat, ikut diskusi), **Notifikasi**, Logout |
 
-**Catatan**: menu berat seperti CRUD Materi/Tugas/Kuis/Bank Soal, Laporan, dan Koreksi Tugas **tetap dikerjakan di admin dashboard** (`/admin/*`, §3.2). Menu **Kelas Saya** di frontend guru bersifat **read/interaksi ringan** — misalnya guru ingin cepat melihat tampilan materi persis seperti yang dilihat siswa, atau membalas diskusi, tanpa harus masuk ke panel admin.
+**Catatan**: menu berat seperti CRUD Materi/Tugas/Kuis/Bank Soal, Laporan, dan Koreksi Tugas **tetap dikerjakan di admin dashboard** (`/admin/*`, §3.2). Menu **Kelas Saya** di frontend, untuk **aktivitas melihat/membaca konten** (materi, tugas, kuis, diskusi), **memakai Blade view yang SAMA** baik diakses siswa maupun guru — dibedakan lewat `@can` directive (guru pemilik konten melihat tombol Edit/Hapus tambahan, siswa tidak). Ini menghindari duplikasi 2 halaman terpisah untuk konten yang sama; lihat §3.9.3 untuk detail pola implementasinya.
 
 ---
 
@@ -276,6 +285,178 @@ Frontend adalah tampilan **di luar** admin dashboard (`/admin/*`) — dipakai ol
 
 ---
 
+### 3.9 Frontend — Spesifikasi Teknis & PWA
+
+#### 3.9.1 Struktur Folder View
+
+```
+resources/views/
+├── layouts/
+│   ├── admin.blade.php          ← layout admin, pakai tema public/template/be/
+│   └── frontend.blade.php       ← layout frontend siswa/guru, warna sesuai §2.1
+├── frontend/
+│   ├── dashboard/
+│   │   ├── student.blade.php    ← FR-8.0a–8.0d
+│   │   └── teacher.blade.php    ← FR-8.0f–8.0g
+│   ├── notifications/
+│   │   └── index.blade.php      ← FR-8.0h–8.0j
+│   ├── my-class/
+│   │   ├── subjects.blade.php   ← daftar mapel (siswa) / kelas+mapel (guru), FR-8.0k–8.0m
+│   │   ├── materials/
+│   │   │   ├── index.blade.php  ← list materi per mapel, FR-8.1
+│   │   │   └── show.blade.php   ← DIPAKAI BERSAMA siswa & guru (lihat §3.9.3), FR-8.2–8.3
+│   │   ├── assignments/
+│   │   │   ├── index.blade.php  ← FR-8.4
+│   │   │   └── show.blade.php   ← form submit (siswa) / lihat jawaban (guru), FR-8.5–8.7
+│   │   └── quizzes/
+│   │       ├── index.blade.php  ← FR-8.8
+│   │       ├── take.blade.php   ← halaman pengerjaan + timer JS, FR-8.9–8.10
+│   │       └── result.blade.php ← FR-8.11–8.12
+│   └── profile/
+│       └── index.blade.php      ← FR-8.13–8.14
+└── auth/                         ← bawaan Laravel Breeze (login, register, forgot/reset password)
+```
+
+#### 3.9.2 Daftar Route Frontend
+
+| Route | Method | Akses | Keterangan |
+|---|---|---|---|
+| `/dashboard` | GET | siswa, guru | Redirect ke view berbeda sesuai role (FR-1.2) |
+| `/notifikasi` | GET | siswa, guru | FR-8.0h |
+| `/notifikasi/{id}/read` | POST | siswa, guru | Tandai 1 notifikasi sebagai dibaca |
+| `/kelas-saya` | GET | siswa, guru | FR-8.0k / FR-8.0l |
+| `/kelas-saya/{subject}/materi` | GET | siswa, guru | FR-8.1 |
+| `/kelas-saya/materi/{material}` | GET | siswa, guru | View sama, `@can` membedakan aksi (FR-8.2–8.3) |
+| `/kelas-saya/materi/{material}/selesai` | POST | siswa | Tandai materi selesai (FR-8.2) |
+| `/kelas-saya/materi/{material}/diskusi` | POST | siswa, guru | Kirim komentar (FR-3.5) |
+| `/kelas-saya/{subject}/tugas` | GET | siswa, guru | FR-8.4 |
+| `/kelas-saya/tugas/{assignment}` | GET | siswa, guru | FR-8.5 |
+| `/kelas-saya/tugas/{assignment}/submit` | POST | siswa | FR-8.6 |
+| `/kelas-saya/{subject}/kuis` | GET | siswa, guru | FR-8.8 |
+| `/kelas-saya/kuis/{quiz}/mulai` | GET/POST | siswa | Mulai attempt, catat `started_at` (FR-8.9) |
+| `/kelas-saya/kuis/{quiz}/submit` | POST | siswa | Submit jawaban, hitung skor (FR-8.9) |
+| `/kelas-saya/kuis/{quiz}/hasil` | GET | siswa | FR-8.11–8.12 |
+| `/profil` | GET | siswa | FR-8.13 |
+| `/profil/ganti-password` | POST | siswa, guru | FR-1.8 |
+
+#### 3.9.3 Pola Shared View (Siswa & Guru)
+
+Untuk menghindari duplikasi, halaman **melihat konten** (materi/tugas/kuis) memakai **1 Blade view yang sama**, dibedakan lewat Policy:
+
+```blade
+{{-- resources/views/frontend/my-class/materials/show.blade.php --}}
+@extends('layouts.frontend')
+
+@section('content')
+<h1>{{ $material->title }}</h1>
+<div>{!! $material->content !!}</div>
+
+@can('update', $material)
+    {{-- Cuma tampil untuk guru pemilik materi ini --}}
+    <a href="{{ route('admin.materials.edit', $material) }}" class="btn btn-warning">Edit di Admin</a>
+@endcan
+
+@if (auth()->user()->isSiswa())
+    {{-- Cuma tampil untuk siswa --}}
+    <form action="{{ route('materials.complete', $material) }}" method="POST">
+        @csrf
+        <button type="submit" class="btn btn-success">Tandai Selesai</button>
+    </form>
+@endif
+
+@include('frontend.my-class.materials._discussion', ['material' => $material])
+@endsection
+```
+
+Controller yang menangani route ini **satu**, tidak dipecah jadi `StudentMaterialController` dan `TeacherMaterialController` terpisah.
+
+#### 3.9.4 PWA — Konfigurasi
+
+**`public/manifest.json`**
+```json
+{
+  "name": "LMS - Learning Management System",
+  "short_name": "LMS",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#F2EFE7",
+  "theme_color": "#3368A0",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
+```
+
+**`public/sw.js`** — Service Worker dengan strategi **cache-first untuk assets statis**, **network-first untuk halaman dinamis** (supaya data materi/tugas/kuis tetap update, tapi CSS/JS/icon di-cache untuk load cepat & offline shell):
+```javascript
+const CACHE_NAME = 'lms-static-v1';
+const STATIC_ASSETS = ['/css/frontend.css', '/js/frontend.js', '/manifest.json'];
+
+self.addEventListener('install', (event) => {
+    event.waitUntil(
+        caches.open(CACHE_NAME).then((cache) => cache.addAll(STATIC_ASSETS))
+    );
+});
+
+self.addEventListener('fetch', (event) => {
+    if (event.request.destination === 'document') {
+        // Network-first untuk halaman (butuh data terbaru)
+        event.respondWith(
+            fetch(event.request).catch(() => caches.match(event.request))
+        );
+    } else {
+        // Cache-first untuk CSS/JS/gambar
+        event.respondWith(
+            caches.match(event.request).then((cached) => cached || fetch(event.request))
+        );
+    }
+});
+```
+
+**Registrasi di layout frontend** (`layouts/frontend.blade.php`):
+```blade
+<link rel="manifest" href="{{ asset('manifest.json') }}">
+<meta name="theme-color" content="#3368A0">
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js');
+    }
+</script>
+```
+
+#### 3.9.5 Design Token (CSS Variables)
+
+```css
+/* resources/css/frontend.css */
+:root {
+    --color-primary: #66A3BF;
+    --color-accent: #3368A0;
+    --color-mint: #C8DFDB;
+    --color-bg: #F2EFE7;
+}
+
+body {
+    background-color: var(--color-bg);
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+}
+```
+
+#### 3.9.6 Functional Requirements — PWA & Teknis
+
+| ID | Requirement |
+|---|---|
+| FR-9.1 | Frontend dapat di-install sebagai aplikasi standalone di HP (via `manifest.json`) |
+| FR-9.2 | Service Worker meng-cache asset statis (CSS/JS/icon) untuk mempercepat load dan menyediakan offline shell |
+| FR-9.3 | Halaman dinamis (materi/tugas/kuis) **tidak** di-cache penuh — selalu ambil data terbaru dari server saat online (network-first) |
+| FR-9.4 | Warna frontend konsisten memakai 4 token di §2.1 lewat CSS Variables, bukan hardcode hex di tiap file |
+| FR-9.5 | Layout frontend mobile-first: dirancang dari breakpoint terkecil (320px) dahulu, diperluas ke `sm`/`md`/`lg` |
+
+---
+
 ## 4. Data Model
 
 ```
@@ -347,6 +528,11 @@ quiz_attempts
 
 quiz_answers
 ├── id, quiz_attempt_id (FK), quiz_question_id (FK), selected_option_id (FK)
+
+notifications
+├── id, user_id (FK → users, penerima), type (comment/new_material/new_assignment),
+│   title, message, related_url, is_read (boolean, default false), read_at (nullable),
+│   created_at, updated_at
 ```
 
 ## Entity Relationship
