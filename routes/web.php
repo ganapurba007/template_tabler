@@ -99,3 +99,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Fallback route for non-existent routes -> redirect to dashboard
+Route::fallback(function () {
+    return redirect()->route('dashboard');
+});

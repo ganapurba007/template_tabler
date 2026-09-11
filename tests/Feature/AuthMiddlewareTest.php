@@ -97,7 +97,7 @@ class AuthMiddlewareTest extends TestCase
 
         $response = $this->actingAs($siswa)->post('/logout');
 
-        $response->assertRedirect('/');
+        $response->assertRedirect('/login');
         $this->assertGuest();
     }
 }

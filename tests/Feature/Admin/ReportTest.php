@@ -40,7 +40,7 @@ class ReportTest extends TestCase
     {
         $response = $this->actingAs($this->guru)->get(route('admin.reports.index'));
         $response->assertStatus(200);
-        $response->assertSee('Laporan Analytics & Rekap Nilai Siswa');
+        $response->assertSee('Laporan &amp; Rekap Nilai Siswa', false);
     }
 
     public function test_guru_can_export_csv(): void

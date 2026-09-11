@@ -14,6 +14,11 @@ class DashboardController extends Controller
     public function index()
     {
         $user = Auth::user();
+
+        if ($user && $user->isGuru()) {
+            return redirect()->route('admin.dashboard');
+        }
+
         $classId = $user->class_id;
 
         $upcomingAssignments = Assignment::where('class_id', $classId)

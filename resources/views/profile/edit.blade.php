@@ -11,7 +11,7 @@
 </div>
 
 <div class="row g-4 justify-content-center">
-    <div class="col-lg-8">
+    <div class="col-lg-12">
         <!-- Informasi Profil -->
         <div class="card shadow-sm border-0 mb-4">
             <div class="card-header bg-white py-3 border-bottom">
