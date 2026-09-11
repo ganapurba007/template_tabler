@@ -228,39 +228,7 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Interactive Subject Filter Bar (Ramai, Colorful, tapi Clean) -->
-        <div class="mb-5" data-aos="fade-up">
-            <div class="d-flex align-items-center justify-content-between mb-3">
-                <h5 class="fw-bold text-dark m-0 d-flex align-items-center gap-2" style="font-family: 'Jost', sans-serif;">
-                    <i class="ti ti-category text-primary fs-4"></i> Pilih Mata Pelajaran Populer
-                </h5>
-                <span class="text-muted small">Akses cepat materi per bidang ilmu</span>
-            </div>
-
-            <div class="d-flex flex-wrap gap-2">
-                <a href="{{ route('student.materials.index') }}" class="btn text-white rounded-pill px-4 py-2 font-bold shadow-sm d-inline-flex align-items-center gap-2 text-decoration-none hover-lift" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%);">
-                    <i class="ti ti-layout-grid fs-5"></i> Semua Mapel
-                </a>
-                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none hover-lift" style="background-color: #fee2e2; border-color: #fca5a5 !important;">
-                    <i class="ti ti-calculator text-danger fs-5"></i> Matematika
-                </a>
-                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none hover-lift" style="background-color: #e0f2fe; border-color: #7dd3fc !important;">
-                    <i class="ti ti-atom text-info fs-5"></i> Fisika & IPA
-                </a>
-                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none hover-lift" style="background-color: #dcfce7; border-color: #86efac !important;">
-                    <i class="ti ti-dna text-success fs-5"></i> Biologi
-                </a>
-                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none hover-lift" style="background-color: #f3e8ff; border-color: #d8b4fe !important;">
-                    <i class="ti ti-language fs-5" style="color: #8b5cf6;"></i> Bahasa Inggris
-                </a>
-                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none hover-lift" style="background-color: #fef3c7; border-color: #fde047 !important;">
-                    <i class="ti ti-device-laptop text-warning fs-5"></i> Informatika & TIK
-                </a>
-            </div>
-        </div>
-
-        <!-- Arsha Features & Services Section (4 Cards) -->
+                <!-- Arsha Features & Services Section (4 Cards) -->
         <div class="mb-5">
             <div class="arsha-section-title text-center mb-5" data-aos="fade-up">
                 <span class="badge rounded-pill px-3 py-1.5 font-bold uppercase tracking-wider text-xs mb-2 d-inline-flex align-items-center gap-1.5" style="background: rgba(102, 163, 191, 0.15); color: #3368A0 !important;">
@@ -342,17 +310,21 @@
             </div>
         </div>
 
-        <!-- Arsha Courses Catalog Section -->
-        <div class="mb-5">
-            <div class="arsha-section-title text-center mb-5" data-aos="fade-up">
-                <span class="badge rounded-pill px-3 py-1.5 font-bold uppercase tracking-wider text-xs mb-2 d-inline-flex align-items-center gap-1.5" style="background: rgba(102, 163, 191, 0.15); color: #3368A0 !important;">
-                    <i class="ti ti-books text-primary"></i> Modul Terpopuler
+        <!-- Arsha Courses Catalog Section (Styled Container with Soft Tint Background) -->
+        <div class="p-4 p-md-5 rounded-4 shadow-sm mb-5 position-relative overflow-hidden border" style="background: linear-gradient(180deg, rgba(200, 223, 219, 0.45) 0%, rgba(242, 239, 231, 0.95) 100%); border-color: rgba(102, 163, 191, 0.35) !important;">
+            <!-- Ambient Corner Glow Effects -->
+            <div class="position-absolute top-0 end-0 translate-middle-y me-n5 mt-n5 pointer-events-none rounded-circle" style="width: 350px; height: 350px; background: radial-gradient(circle, rgba(102, 163, 191, 0.22) 0%, rgba(242, 239, 231, 0) 70%);"></div>
+            <div class="position-absolute bottom-0 start-0 translate-middle-y ms-n5 mb-n5 pointer-events-none rounded-circle" style="width: 300px; height: 300px; background: radial-gradient(circle, rgba(51, 104, 160, 0.15) 0%, rgba(242, 239, 231, 0) 70%);"></div>
+
+            <div class="arsha-section-title text-center mb-5 position-relative z-1" data-aos="fade-up">
+                <span class="badge rounded-pill px-3.5 py-2 font-bold uppercase tracking-wider text-xs mb-2 d-inline-flex align-items-center gap-1.5 shadow-sm" style="background: linear-gradient(135deg, #3368A0, #66A3BF); color: #ffffff !important;">
+                    <i class="ti ti-books text-white"></i> Modul Terpopuler SMA
                 </span>
-                <h2>COURSES / MATERI PELAJARAN</h2>
-                <p>Pilih materi pelajaran kelasmu dan eksplorasi modul interaktif, video pembelajaran, serta dokumen PDF</p>
+                <h2 style="color: #3368A0;">COURSES / MATERI PELAJARAN</h2>
+                <p class="text-secondary fw-medium">Pilih materi pelajaran kelasmu dan eksplorasi modul interaktif, video pembelajaran, serta dokumen PDF</p>
             </div>
 
-            <div class="row g-4">
+            <div class="row g-4 position-relative z-1">
                 @forelse($materials as $index => $mat)
                     @php
                         // Color theme presets for course card headers
@@ -441,6 +413,13 @@
                         </div>
                     </div>
                 @endforelse
+            </div>
+
+            <!-- Bottom CTA Action Button -->
+            <div class="text-center mt-5 position-relative z-1" data-aos="fade-up">
+                <a href="{{ route('student.materials.index') }}" class="btn text-white px-5 py-3 rounded-pill font-bold shadow-md hover-lift d-inline-flex align-items-center gap-2" style="background: linear-gradient(135deg, #3368A0 0%, #1e3a8a 100%);">
+                    <i class="ti ti-layout-grid fs-5"></i> Jelajahi Seluruh Katalog Materi Pelajaran <i class="ti ti-arrow-right fs-5"></i>
+                </a>
             </div>
         </div>
 

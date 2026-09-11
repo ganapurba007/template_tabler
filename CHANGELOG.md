@@ -10,8 +10,8 @@
   - Hero section Arsha kini menempel langsung secara seamless di bawah top navbar tanpa celah (gap 0px).
   - Teks assertion pengujian `Dashboard Siswa` dan nama kelas dipindahkan ke dalam Hero Welcome Badge Pill pada area banner Hero.
 - **Overhaul Seksi Courses / Materi Pelajaran (`dashboard.blade.php`)**:
-  - Mengubah header kartu materi menggunakan gradien kustom berwarna-warni (`#3368A0`, `#10B981`, `#8B5CF6`, `#F59E0B`, `#E11D48`, `#0284C7`), ikon watermark semi-transparan (`opacity: 0.20`), avatar inisial guru pengampu, serta badge tipe format materi (`Artikel WYSIWYG`, `Video HD`, `PDF Handout`).
-  - Meng-upgrade filter pills mata pelajaran dengan warna latar pastel kontras, banner Quiz Championship berlatar gradien navy gelap, dan kartu kuis/tugas dengan border aksen kiri (`border-left: 5px solid`).
+  - Mengemas seksi *Courses / Materi Pelajaran* dalam kontainer terpisah berlatar gradien lembut (`background: linear-gradient(180deg, rgba(200, 223, 219, 0.45) 0%, rgba(242, 239, 231, 0.95) 100%)`), border halus, dan **Ambient Radial Corner Glow** di sudut atas kanan & bawah kiri.
+  - Mengubah header kartu materi menggunakan gradien kustom berwarna-warni (`#3368A0`, `#10B981`, `#8B5CF6`, `#F59E0B`, `#E11D48`, `#0284C7`), ikon watermark semi-transparan (`opacity: 0.20`), avatar inisial guru pengampu, badge format materi, serta tombol pendorong katalog utama di bagian bawah.
 
 ### Diuji & Diverifikasi
 - Seluruh 111 PHPUnit feature tests passed (100% PASS).
