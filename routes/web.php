@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SchoolClassController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,9 +19,9 @@ Route::get('/', function () {
 });
 
 // Route Dashboard Siswa
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [StudentDashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 // Route Group Admin / Guru
 Route::middleware(['auth', 'role:guru'])->prefix('admin')->as('admin.')->group(function () {

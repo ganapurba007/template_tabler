@@ -2,6 +2,16 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 14] Student Dashboard — 2026-09-11
+
+### Ditambahkan
+- `Student\DashboardController` (`app/Http/Controllers/Student/DashboardController.php`) untuk menyajikan metrik portal siswa: nama kelas siswa, hitungan & persentase progres penyelesaian materi, daftar tugas mendatang (deadline >= now()), kuis evaluasi aktif, dan materi pembelajaran terbaru.
+- Blade View Tabler UI `resources/views/dashboard.blade.php` dengan visual ringkasan siswa yang responsif & modern.
+- Feature Test `tests/Feature/Student/StudentDashboardTest.php` untuk memverifikasi penayangan dashboard siswa dan pengalihan guest ke halaman login.
+
+### Diubah
+- `routes/web.php`: Mengarahkan rute `/dashboard` ke `Student\DashboardController::class`.
+
 ## [Fase 13] Admin Laporan & Rekapitulasi Analytics — 2026-09-11
 
 ### Ditambahkan
