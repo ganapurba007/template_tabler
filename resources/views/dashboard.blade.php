@@ -229,7 +229,7 @@
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <!-- Interactive Subject Filter Bar (Ramai tapi Clean) -->
+        <!-- Interactive Subject Filter Bar (Ramai, Colorful, tapi Clean) -->
         <div class="mb-5" data-aos="fade-up">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <h5 class="fw-bold text-dark m-0 d-flex align-items-center gap-2" style="font-family: 'Jost', sans-serif;">
@@ -239,22 +239,22 @@
             </div>
 
             <div class="d-flex flex-wrap gap-2">
-                <a href="{{ route('student.materials.index') }}" class="btn btn-primary rounded-pill px-4 py-2 font-bold shadow-sm d-inline-flex align-items-center gap-2 text-decoration-none">
+                <a href="{{ route('student.materials.index') }}" class="btn text-white rounded-pill px-4 py-2 font-bold shadow-sm d-inline-flex align-items-center gap-2 text-decoration-none hover-lift" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%);">
                     <i class="ti ti-layout-grid fs-5"></i> Semua Mapel
                 </a>
-                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none" style="background-color: #F2EFE7;">
+                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none hover-lift" style="background-color: #fee2e2; border-color: #fca5a5 !important;">
                     <i class="ti ti-calculator text-danger fs-5"></i> Matematika
                 </a>
-                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none" style="background-color: #F2EFE7;">
+                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none hover-lift" style="background-color: #e0f2fe; border-color: #7dd3fc !important;">
                     <i class="ti ti-atom text-info fs-5"></i> Fisika & IPA
                 </a>
-                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none" style="background-color: #F2EFE7;">
+                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none hover-lift" style="background-color: #dcfce7; border-color: #86efac !important;">
                     <i class="ti ti-dna text-success fs-5"></i> Biologi
                 </a>
-                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none" style="background-color: #F2EFE7;">
-                    <i class="ti ti-language text-purple fs-5" style="color: #8b5cf6;"></i> Bahasa Inggris
+                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none hover-lift" style="background-color: #f3e8ff; border-color: #d8b4fe !important;">
+                    <i class="ti ti-language fs-5" style="color: #8b5cf6;"></i> Bahasa Inggris
                 </a>
-                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none" style="background-color: #F2EFE7;">
+                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none hover-lift" style="background-color: #fef3c7; border-color: #fde047 !important;">
                     <i class="ti ti-device-laptop text-warning fs-5"></i> Informatika & TIK
                 </a>
             </div>
@@ -263,48 +263,55 @@
         <!-- Arsha Features & Services Section (4 Cards) -->
         <div class="mb-5">
             <div class="arsha-section-title text-center mb-5" data-aos="fade-up">
+                <span class="badge rounded-pill px-3 py-1.5 font-bold uppercase tracking-wider text-xs mb-2 d-inline-flex align-items-center gap-1.5" style="background: rgba(102, 163, 191, 0.15); color: #3368A0 !important;">
+                    <i class="ti ti-star text-warning"></i> Fasilitas Belajar
+                </span>
                 <h2>FITUR & FASILITAS PEMBELAJARAN</h2>
                 <p>Nikmati pengalaman belajar digital SMA terbaik dengan berbagai fasilitas interaktif pilihan kami</p>
             </div>
 
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-shadow transition-all text-center" style="background-color: #F2EFE7;">
-                        <div class="icon-wrapper mx-auto mb-3 text-white rounded-circle flex items-center justify-center p-3 shadow" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 60px; height: 60px;">
+                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-lift text-center position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(51, 104, 160, 0.25) !important;">
+                        <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #3368A0, #66A3BF);"></div>
+                        <div class="icon-wrapper mx-auto mb-3 text-white rounded-4 d-flex align-items-center justify-content-center shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 60px; height: 60px; box-shadow: 0 8px 18px rgba(51, 104, 160, 0.3) !important;">
                             <i class="ti ti-book-2 fs-2"></i>
                         </div>
                         <h5 class="fw-bold text-dark mb-2" style="font-family: 'Jost', sans-serif;">Modul Interaktif</h5>
-                        <p class="text-muted small">Materi pembelajaran lengkap berupa artikel WYSIWYG, link video YouTube embed, dan dokumen PDF panduan.</p>
+                        <p class="text-muted small mb-0">Materi pembelajaran lengkap berupa artikel WYSIWYG, link video YouTube embed, dan dokumen PDF panduan.</p>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-shadow transition-all text-center" style="background-color: #F2EFE7;">
-                        <div class="icon-wrapper mx-auto mb-3 text-white rounded-circle flex items-center justify-center p-3 shadow" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); width: 60px; height: 60px;">
+                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-lift text-center position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(16, 185, 129, 0.25) !important;">
+                        <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #10B981, #34D399);"></div>
+                        <div class="icon-wrapper mx-auto mb-3 text-white rounded-4 d-flex align-items-center justify-content-center shadow-sm pulse-glow" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); width: 60px; height: 60px; box-shadow: 0 8px 18px rgba(16, 185, 129, 0.3) !important;">
                             <i class="ti ti-pencil fs-2"></i>
                         </div>
                         <h5 class="fw-bold text-dark mb-2" style="font-family: 'Jost', sans-serif;">Tugas Essay Online</h5>
-                        <p class="text-muted small">Kumpulkan jawaban tugas essay dengan praktis, dapatkan skor transparan, serta catatan feedback dari guru.</p>
+                        <p class="text-muted small mb-0">Kumpulkan jawaban tugas essay dengan praktis, dapatkan skor transparan, serta catatan feedback dari guru.</p>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-shadow transition-all text-center" style="background-color: #F2EFE7;">
-                        <div class="icon-wrapper mx-auto mb-3 text-white rounded-circle flex items-center justify-center p-3 shadow" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); width: 60px; height: 60px;">
+                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-lift text-center position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(245, 158, 11, 0.25) !important;">
+                        <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #F59E0B, #FBBF24);"></div>
+                        <div class="icon-wrapper mx-auto mb-3 text-white rounded-4 d-flex align-items-center justify-content-center shadow-sm" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); width: 60px; height: 60px; box-shadow: 0 8px 18px rgba(245, 158, 11, 0.3) !important;">
                             <i class="ti ti-clock-play fs-2"></i>
                         </div>
                         <h5 class="fw-bold text-dark mb-2" style="font-family: 'Jost', sans-serif;">Kuis Realtime</h5>
-                        <p class="text-muted small">Uji pemahaman lewat kuis pilihan ganda berbatas waktu (countdown JS) dengan auto-submit dan review kunci jawaban.</p>
+                        <p class="text-muted small mb-0">Uji pemahaman lewat kuis pilihan ganda berbatas waktu (countdown JS) dengan auto-submit dan review kunci jawaban.</p>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
-                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-shadow transition-all text-center" style="background-color: #F2EFE7;">
-                        <div class="icon-wrapper mx-auto mb-3 text-white rounded-circle flex items-center justify-center p-3 shadow" style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); width: 60px; height: 60px;">
+                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-lift text-center position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(139, 92, 246, 0.25) !important;">
+                        <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #8B5CF6, #A78BFA);"></div>
+                        <div class="icon-wrapper mx-auto mb-3 text-white rounded-4 d-flex align-items-center justify-content-center shadow-sm" style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); width: 60px; height: 60px; box-shadow: 0 8px 18px rgba(139, 92, 246, 0.3) !important;">
                             <i class="ti ti-chart-dots fs-2"></i>
                         </div>
                         <h5 class="fw-bold text-dark mb-2" style="font-family: 'Jost', sans-serif;">Laporan Diri</h5>
-                        <p class="text-muted small">Pantau perkembangan akademik, statistik pengerjaan kuis, dan perolehan nilai kelasmu secara real-time.</p>
+                        <p class="text-muted small mb-0">Pantau perkembangan akademik, statistik pengerjaan kuis, dan perolehan nilai kelasmu secara real-time.</p>
                     </div>
                 </div>
             </div>
@@ -312,23 +319,23 @@
 
         <!-- Quiz Showcase Banner with Learning Image -->
         <div class="mb-5" data-aos="zoom-in">
-            <div class="card border-0 rounded-4 overflow-hidden shadow-lg" style="background: linear-gradient(135deg, #F2EFE7 0%, #C8DFDB 100%);">
+            <div class="card border-0 rounded-4 overflow-hidden shadow-lg text-white" style="background: linear-gradient(135deg, #1e3a8a 0%, #3368A0 60%, #66A3BF 100%);">
                 <div class="card-body p-4 p-lg-5">
                     <div class="row align-items-center g-4">
                         <div class="col-lg-5 text-center text-lg-start">
-                            <span class="badge bg-warning text-dark font-bold px-3 py-2 rounded-pill mb-2">
-                                <i class="ti ti-trophy text-dark me-1"></i> QUIZ CHAMPIONSHIP
+                            <span class="badge bg-warning text-dark font-bold px-3 py-2 rounded-pill mb-2 d-inline-flex align-items-center gap-1 shadow-sm">
+                                <i class="ti ti-trophy-filled text-dark"></i> QUIZ CHAMPIONSHIP
                             </span>
-                            <h3 class="fw-bold text-dark display-6 mb-3" style="font-family: 'Jost', sans-serif;">Uji Pemahamanmu & Raih Skor Tertinggi!</h3>
-                            <p class="text-secondary fs-6 mb-4">
+                            <h3 class="fw-extrabold text-white display-6 mb-3" style="font-family: 'Jost', sans-serif;">Uji Pemahamanmu & Raih Skor Tertinggi!</h3>
+                            <p class="text-white-50 fs-6 mb-4">
                                 Tantang dirimu mengerjakan kuis online pilihan ganda dengan timer hitung mundur. Dapatkan evaluasi instan dan pembahasan jawaban secara langsung.
                             </p>
-                            <a href="{{ route('student.quizzes.index') }}" class="btn text-white font-bold px-4 py-3 rounded-pill text-decoration-none shadow" style="background-color: #3368A0;">
+                            <a href="{{ route('student.quizzes.index') }}" class="btn text-primary font-bold px-4 py-3 rounded-pill text-decoration-none shadow hover-lift" style="background-color: #F2EFE7; color: #3368A0 !important;">
                                 <i class="ti ti-help-hexagon me-1"></i> Lihat Daftar Kuis Aktif
                             </a>
                         </div>
                         <div class="col-lg-7 text-center">
-                            <img src="{{ asset('images/quiz-achievement.jpg') }}" alt="Prestasi Kuis Siswa SMA" class="img-fluid rounded-4 shadow-md border-3" style="border-color: #F2EFE7; max-height: 320px; width: 100%; object-fit: cover;">
+                            <img src="{{ asset('images/quiz-achievement.jpg') }}" alt="Prestasi Kuis Siswa SMA" class="img-fluid rounded-4 shadow-md border-3" style="border-color: rgba(255, 255, 255, 0.2); max-height: 320px; width: 100%; object-fit: cover;">
                         </div>
                     </div>
                 </div>
@@ -338,42 +345,99 @@
         <!-- Arsha Courses Catalog Section -->
         <div class="mb-5">
             <div class="arsha-section-title text-center mb-5" data-aos="fade-up">
+                <span class="badge rounded-pill px-3 py-1.5 font-bold uppercase tracking-wider text-xs mb-2 d-inline-flex align-items-center gap-1.5" style="background: rgba(102, 163, 191, 0.15); color: #3368A0 !important;">
+                    <i class="ti ti-books text-primary"></i> Modul Terpopuler
+                </span>
                 <h2>COURSES / MATERI PELAJARAN</h2>
-                <p>Pilih materi pelajaran terbaru untuk kelasmu dan mulai belajar sekarang!</p>
+                <p>Pilih materi pelajaran kelasmu dan eksplorasi modul interaktif, video pembelajaran, serta dokumen PDF</p>
             </div>
 
             <div class="row g-4">
-                @forelse($materials as $mat)
-                    <div class="col-12 col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="card h-100 border rounded-4 shadow-sm hover-shadow transition-all overflow-hidden d-flex flex-column justify-content-between" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.25) !important;">
+                @forelse($materials as $index => $mat)
+                    @php
+                        // Color theme presets for course card headers
+                        $gradients = [
+                            'linear-gradient(135deg, #1e3a8a 0%, #3368A0 100%)',
+                            'linear-gradient(135deg, #059669 0%, #10B981 100%)',
+                            'linear-gradient(135deg, #6D28D9 0%, #8B5CF6 100%)',
+                            'linear-gradient(135deg, #D97706 0%, #F59E0B 100%)',
+                            'linear-gradient(135deg, #E11D48 0%, #F43F5E 100%)',
+                            'linear-gradient(135deg, #0284C7 0%, #38BDF8 100%)',
+                        ];
+                        $cardBgGradient = $gradients[$index % count($gradients)];
+                    @endphp
+                    <div class="col-12 col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="{{ 100 + ($index % 3) * 100 }}">
+                        <div class="card h-100 border rounded-4 shadow-sm hover-lift overflow-hidden d-flex flex-column justify-content-between position-relative" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.3) !important;">
                             <div>
-                                <div class="p-4 text-white position-relative" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); min-height: 120px;">
-                                    <span class="badge text-primary font-bold px-3 py-1.5 rounded-pill shadow-sm mb-2 d-inline-block" style="background-color: #F2EFE7; color: #3368A0 !important;">
-                                        <i class="ti ti-bookmark me-1"></i> {{ $mat->subject->name ?? 'Mata Pelajaran' }}
-                                    </span>
-                                    <h5 class="fw-bold text-white mb-0" style="font-family: 'Jost', sans-serif; font-size: 1.25rem;">{{ $mat->title }}</h5>
+                                <!-- Rich Colorful Course Card Banner Header -->
+                                <div class="p-4 text-white position-relative overflow-hidden d-flex flex-column justify-content-between" style="background: {{ $cardBgGradient }}; min-height: 135px;">
+                                    <!-- Giant Background Watermark Icon -->
+                                    <i class="ti ti-bookmark position-absolute bottom-0 end-0 me-n2 mb-n3 opacity-20 text-white pointer-events-none" style="font-size: 5.5rem;"></i>
+                                    
+                                    <div class="d-flex align-items-center justify-content-between mb-2 position-relative z-1">
+                                        <span class="badge text-white font-bold px-3 py-1.5 rounded-pill shadow-sm d-inline-flex align-items-center gap-1" style="background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(6px);">
+                                            <i class="ti ti-tag me-1"></i> {{ $mat->subject->name ?? 'Mata Pelajaran' }}
+                                        </span>
+                                        <span class="badge bg-white text-dark rounded-pill px-2.5 py-1 font-bold shadow-sm" style="font-size: 0.72rem;">
+                                            <i class="ti ti-star-filled text-warning me-1"></i> Modul SMA
+                                        </span>
+                                    </div>
+                                    
+                                    <h5 class="fw-extrabold text-white mb-0 position-relative z-1" style="font-family: 'Jost', sans-serif; font-size: 1.2rem; line-height: 1.3;">
+                                        {{ $mat->title }}
+                                    </h5>
                                 </div>
+
+                                <!-- Card Body Content -->
                                 <div class="p-4">
-                                    <p class="text-muted small mb-2">
-                                        <i class="ti ti-user me-1 text-primary"></i> Guru Pengampu: <strong class="text-dark">{{ $mat->instructor->name ?? 'Pengajar' }}</strong>
-                                    </p>
-                                    <p class="text-muted small mb-0">
-                                        <i class="ti ti-clock me-1 text-warning"></i> Estimasi Waktu: <span class="text-dark font-semibold">15-30 Menit</span>
-                                    </p>
+                                    <!-- Instructor Row -->
+                                    <div class="d-flex align-items-center gap-2.5 mb-3">
+                                        <div class="rounded-circle text-white fw-bold d-flex align-items-center justify-content-center shadow-sm" style="background: linear-gradient(135deg, #3368A0, #66A3BF); width: 34px; height: 34px; font-size: 0.85rem;">
+                                            {{ strtoupper(substr($mat->instructor->name ?? 'G', 0, 1)) }}
+                                        </div>
+                                        <div>
+                                            <div class="text-muted small" style="font-size: 0.72rem;">Guru Pengampu</div>
+                                            <div class="fw-bold text-dark small" style="margin-top: -2px;">{{ $mat->instructor->name ?? 'Pengajar SMA' }}</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Content Format Badges -->
+                                    <div class="d-flex flex-wrap gap-1.5 mb-3">
+                                        <span class="badge rounded-pill text-primary font-bold px-2.5 py-1" style="background: rgba(51, 104, 160, 0.12); font-size: 0.72rem;">
+                                            <i class="ti ti-article me-1"></i> Artikel WYSIWYG
+                                        </span>
+                                        @if($mat->youtube_url)
+                                            <span class="badge rounded-pill text-danger font-bold px-2.5 py-1" style="background: rgba(220, 38, 38, 0.12); font-size: 0.72rem;">
+                                                <i class="ti ti-brand-youtube me-1"></i> Video HD
+                                            </span>
+                                        @endif
+                                        @if($mat->document_path)
+                                            <span class="badge rounded-pill text-success font-bold px-2.5 py-1" style="background: rgba(16, 185, 129, 0.15); font-size: 0.72rem;">
+                                                <i class="ti ti-file-text me-1"></i> PDF Handout
+                                            </span>
+                                        @endif
+                                    </div>
+
+                                    <!-- Meta Strip -->
+                                    <div class="d-flex align-items-center justify-content-between text-muted small pt-3 border-top" style="border-color: rgba(102, 163, 191, 0.2) !important;">
+                                        <span><i class="ti ti-clock text-warning me-1"></i> 15-30 Menit</span>
+                                        <span><i class="ti ti-school text-info me-1"></i> {{ $mat->schoolClass->name ?? 'Kelas SMA' }}</span>
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="p-4 pt-0">
-                                <a href="{{ route('student.materials.show', $mat) }}" class="btn text-white btn-sm w-100 text-center text-decoration-none rounded-pill py-2.5 font-bold shadow-sm d-inline-block" style="background-color: #3368A0;">
-                                    Mulai Pelajari Materi <i class="ti ti-arrow-right ms-1"></i>
+                                <a href="{{ route('student.materials.show', $mat) }}" class="btn text-white w-100 rounded-pill py-2.5 font-bold shadow-sm d-flex align-items-center justify-content-center gap-2 hover-lift" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%);">
+                                    Pelajari Modul Ini <i class="ti ti-arrow-right"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                 @empty
                     <div class="col-12">
-                        <div class="arsha-icon-box py-5 text-center text-muted rounded-4 border" style="background-color: #F2EFE7;">
+                        <div class="arsha-icon-box py-5 text-center text-muted rounded-4 border" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.25) !important;">
                             <i class="ti ti-notes-off fs-1 text-secondary mb-2 d-block"></i>
-                            <h5>Belum ada materi untuk kelas Anda saat ini.</h5>
+                            <h5 class="fw-bold">Belum ada materi untuk kelas Anda saat ini.</h5>
                         </div>
                     </div>
                 @endforelse
@@ -388,26 +452,27 @@
             
             <!-- Active Quizzes -->
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="p-4 rounded-4 border shadow-sm text-start h-100" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.25) !important;">
+                <div class="p-4 rounded-4 border shadow-sm text-start h-100 position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(139, 92, 246, 0.3) !important;">
+                    <div class="position-absolute top-0 start-0 bottom-0" style="width: 5px; background: linear-gradient(180deg, #8B5CF6, #6D28D9);"></div>
                     <div class="d-flex align-items-center justify-content-between mb-4 border-bottom pb-3">
                         <h4 class="fw-bold text-dark m-0 d-flex align-items-center" style="font-family: 'Jost', sans-serif;">
-                            <i class="ti ti-help-hexagon text-primary me-2 fs-3"></i> Kuis Online Aktif
+                            <i class="ti ti-help-hexagon text-purple me-2 fs-3" style="color: #8B5CF6;"></i> Kuis Online Aktif
                         </h4>
                         <a href="{{ route('student.quizzes.index') }}" class="text-decoration-none small font-bold text-primary">Lihat Semua <i class="ti ti-chevron-right"></i></a>
                     </div>
 
                     <div class="d-flex flex-column gap-3">
                         @forelse($activeQuizzes as $qz)
-                            <div class="p-3 rounded-3 border shadow-sm d-flex align-items-center justify-content-between transition-all hover-shadow" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.2) !important;">
+                            <div class="p-3 rounded-3 border shadow-sm d-flex align-items-center justify-content-between transition-all hover-lift" style="background-color: #F2EFE7; border-color: rgba(139, 92, 246, 0.25) !important;">
                                 <div>
-                                    <span class="badge text-white px-2.5 py-1 mb-1 me-2" style="background-color: #3368A0;">{{ $qz->subject->name ?? 'Kuis' }}</span>
+                                    <span class="badge text-white px-2.5 py-1 mb-1 me-2 rounded-pill shadow-sm" style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);">{{ $qz->subject->name ?? 'Kuis' }}</span>
                                     <h6 class="fw-bold text-dark mb-1">{{ $qz->title }}</h6>
                                     <div class="small text-muted">
                                         <i class="ti ti-clock me-1 text-primary"></i> {{ $qz->duration_minutes }} Menit | 
                                         <i class="ti ti-calendar me-1 text-danger"></i> Deadline: {{ $qz->deadline ? $qz->deadline->format('d M H:i') : '-' }}
                                     </div>
                                 </div>
-                                <a href="{{ route('student.quizzes.show', $qz) }}" class="btn text-white btn-sm px-4 py-2 text-decoration-none rounded-pill shadow-sm font-bold" style="background-color: #3368A0;">
+                                <a href="{{ route('student.quizzes.show', $qz) }}" class="btn text-white btn-sm px-4 py-2 text-decoration-none rounded-pill shadow-sm font-bold hover-lift" style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);">
                                     Mulai
                                 </a>
                             </div>
@@ -423,7 +488,8 @@
 
             <!-- Upcoming Assignments -->
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="p-4 rounded-4 border shadow-sm text-start h-100" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.25) !important;">
+                <div class="p-4 rounded-4 border shadow-sm text-start h-100 position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(245, 158, 11, 0.3) !important;">
+                    <div class="position-absolute top-0 start-0 bottom-0" style="width: 5px; background: linear-gradient(180deg, #F59E0B, #D97706);"></div>
                     <div class="d-flex align-items-center justify-content-between mb-4 border-bottom pb-3">
                         <h4 class="fw-bold text-dark m-0 d-flex align-items-center" style="font-family: 'Jost', sans-serif;">
                             <i class="ti ti-notebook text-warning me-2 fs-3"></i> Tugas Perlu Dikumpulkan
@@ -433,15 +499,15 @@
 
                     <div class="d-flex flex-column gap-3">
                         @forelse($upcomingAssignments as $asg)
-                            <div class="p-3 rounded-3 border shadow-sm d-flex align-items-center justify-content-between transition-all hover-shadow" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.2) !important;">
+                            <div class="p-3 rounded-3 border shadow-sm d-flex align-items-center justify-content-between transition-all hover-lift" style="background-color: #F2EFE7; border-color: rgba(245, 158, 11, 0.25) !important;">
                                 <div>
-                                    <span class="badge bg-warning text-dark px-2.5 py-1 mb-1 me-2">{{ $asg->subject->name ?? 'Tugas' }}</span>
+                                    <span class="badge text-white px-2.5 py-1 mb-1 me-2 rounded-pill shadow-sm" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);">{{ $asg->subject->name ?? 'Tugas' }}</span>
                                     <h6 class="fw-bold text-dark mb-1">{{ $asg->title }}</h6>
                                     <div class="small text-muted">
                                         <i class="ti ti-calendar-event me-1 text-danger"></i> Deadline: <span class="fw-bold text-danger">{{ $asg->due_date ? $asg->due_date->format('d M H:i') : '-' }}</span>
                                     </div>
                                 </div>
-                                <a href="{{ route('student.assignments.show', $asg) }}" class="btn text-white btn-sm px-4 py-2 text-decoration-none rounded-pill shadow-sm font-bold" style="background-color: #3368A0;">
+                                <a href="{{ route('student.assignments.show', $asg) }}" class="btn text-white btn-sm px-4 py-2 text-decoration-none rounded-pill shadow-sm font-bold hover-lift" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);">
                                     Kerjakan
                                 </a>
                             </div>

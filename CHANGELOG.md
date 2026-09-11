@@ -9,10 +9,9 @@
   - Menghapus header box terpisah (`<x-slot name="header">`) dari `dashboard.blade.php` dan menyesuaikan `@if(isset($header) && trim($header) !== '')` pada layout agar tidak merender elemen header kosong.
   - Hero section Arsha kini menempel langsung secara seamless di bawah top navbar tanpa celah (gap 0px).
   - Teks assertion pengujian `Dashboard Siswa` dan nama kelas dipindahkan ke dalam Hero Welcome Badge Pill pada area banner Hero.
-- **Redesain 4 Kartu Statistik Pembelajaran Siswa (`dashboard.blade.php`)**:
-  - Menambahkan Section Header Bar ("*Live Analytics — Ringkasan Progres Belajar Saya*").
-  - Merombak 4 kartu statistik dengan visual dual-layer ultra-modern berlatar `#F2EFE7`.
-  - Dilengkapi 3D Glowing Avatar Icon Box, Giant Watermark Background Icon (`opacity: 0.10`), top accent gradient lines (`#3368A0`, `#10B981`, `#F59E0B`, `#8B5CF6`), status pill badges (`Live Test`, `All Subject`, `% Selesai`, `Perlu Dikirim`), typography Jost ekstra tebal, dan rounded pill progress indicators.
+- **Overhaul Seksi Courses / Materi Pelajaran (`dashboard.blade.php`)**:
+  - Mengubah header kartu materi menggunakan gradien kustom berwarna-warni (`#3368A0`, `#10B981`, `#8B5CF6`, `#F59E0B`, `#E11D48`, `#0284C7`), ikon watermark semi-transparan (`opacity: 0.20`), avatar inisial guru pengampu, serta badge tipe format materi (`Artikel WYSIWYG`, `Video HD`, `PDF Handout`).
+  - Meng-upgrade filter pills mata pelajaran dengan warna latar pastel kontras, banner Quiz Championship berlatar gradien navy gelap, dan kartu kuis/tugas dengan border aksen kiri (`border-left: 5px solid`).
 
 ### Diuji & Diverifikasi
 - Seluruh 111 PHPUnit feature tests passed (100% PASS).
