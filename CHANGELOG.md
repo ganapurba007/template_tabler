@@ -9,9 +9,9 @@
   - Menghapus header box terpisah (`<x-slot name="header">`) dari `dashboard.blade.php` dan menyesuaikan `@if(isset($header) && trim($header) !== '')` pada layout agar tidak merender elemen header kosong.
   - Hero section Arsha kini menempel langsung secara seamless di bawah top navbar tanpa celah (gap 0px).
   - Teks assertion pengujian `Dashboard Siswa` dan nama kelas dipindahkan ke dalam Hero Welcome Badge Pill pada area banner Hero.
-- **Overhaul Seksi Courses Catalog & Active Quizzes & Assignments (`dashboard.blade.php` & `theme-custom.css`)**:
-  - Mengubah latar belakang seksi *Courses Catalog*, *Kuis Online Aktif*, dan *Tugas Perlu Dikumpulkan* menggunakan motif pola abstrak geometris (`.bg-abstract-catalog`, `.bg-abstract-quizzes`, `.bg-abstract-assignments`).
-  - Menambahkan ornamen bentuk geometris SVG transparan (lingkaran konsentris, persegi terrotasi 45°, poligon), watermark ikon raksasa (`8.5rem`), badge header `LIVE EVALUATION` & `ASSIGNMENT TASK`, serta kartu item bergaris aksen gradien dan tombol pendorong beranimasi *hover-lift*.
+- **Penyempurnaan UI/UX (Clean, Elegan & Tidak Ramai) (`dashboard.blade.php` & `theme-custom.css`)**:
+  - Mengeliminasi ornamen SVG stroke yang menumpuk dan menggantinya dengan pencahayaan gradien radial halus (`.bg-abstract-catalog`, `.bg-abstract-quizzes`, `.bg-abstract-assignments`).
+  - Mempertahankan motif latar abstrak yang lembut, merapikan hirarki visual teks, menyelaraskan kartu materi, kuis, dan tugas agar tampilan lebih bersih (*clean UI*), tidak ramai, namun tetap menarik (*engaging UX*).
 
 ### Diuji & Diverifikasi
 - Seluruh 111 PHPUnit feature tests passed (100% PASS).

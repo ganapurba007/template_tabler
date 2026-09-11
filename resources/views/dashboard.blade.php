@@ -310,24 +310,8 @@
             </div>
         </div>
 
-        <!-- Arsha Courses Catalog Section (Styled Container with Abstract Geometric Motif Background) -->
-        <div class="p-4 p-md-5 rounded-4 shadow-sm mb-5 position-relative overflow-hidden border bg-abstract-catalog" style="border-color: rgba(102, 163, 191, 0.35) !important;">
-            <!-- Floating Decorative Abstract SVG Motif Elements -->
-            <div class="position-absolute top-0 end-0 pointer-events-none opacity-20 me-n3 mt-n3" style="width: 280px; height: 280px;">
-                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#3368A0" stroke-width="1.5">
-                    <circle cx="100" cy="100" r="80" stroke-dasharray="4 4" />
-                    <circle cx="100" cy="100" r="60" />
-                    <circle cx="100" cy="100" r="40" stroke-dasharray="6 6" />
-                    <rect x="65" y="65" width="70" height="70" transform="rotate(45 100 100)" stroke="#66A3BF" stroke-opacity="0.6" />
-                </svg>
-            </div>
-            <div class="position-absolute bottom-0 start-0 pointer-events-none opacity-15 ms-n4 mb-n4" style="width: 250px; height: 250px;">
-                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#8B5CF6" stroke-width="1.5">
-                    <polygon points="100,20 180,160 20,160" stroke-dasharray="5 5" />
-                    <circle cx="100" cy="110" r="35" stroke="#3368A0" />
-                </svg>
-            </div>
-
+        <!-- Arsha Courses Catalog Section (Clean & Elegant Styled Container) -->
+        <div class="p-4 p-md-5 rounded-4 shadow-sm mb-5 position-relative overflow-hidden border bg-abstract-catalog" style="border-color: rgba(102, 163, 191, 0.25) !important;">
             <div class="arsha-section-title text-center mb-5 position-relative z-1" data-aos="fade-up">
                 <span class="badge rounded-pill px-3.5 py-2 font-bold uppercase tracking-wider text-xs mb-2 d-inline-flex align-items-center gap-1.5 shadow-sm" style="background: linear-gradient(135deg, #3368A0, #66A3BF); color: #ffffff !important;">
                     <i class="ti ti-books text-white"></i> Modul Terpopuler SMA
@@ -351,7 +335,7 @@
                         $cardBgGradient = $gradients[$index % count($gradients)];
                     @endphp
                     <div class="col-12 col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="{{ 100 + ($index % 3) * 100 }}">
-                        <div class="card h-100 border rounded-4 shadow-sm hover-lift overflow-hidden d-flex flex-column justify-content-between position-relative" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.3) !important;">
+                        <div class="card h-100 border rounded-4 shadow-sm hover-lift overflow-hidden d-flex flex-column justify-content-between position-relative" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.25) !important;">
                             <div>
                                 <!-- Rich Colorful Course Card Banner Header -->
                                 <div class="p-4 text-white position-relative overflow-hidden d-flex flex-column justify-content-between" style="background: {{ $cardBgGradient }}; min-height: 135px;">
@@ -437,21 +421,14 @@
 
     </div>
 
-    <!-- Active Quizzes & Assignments Section (Abstract Geometric Motif Styling) -->
+    <!-- Active Quizzes & Assignments Section (Clean & Refined Styling) -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-5">
         <div class="row g-4">
             
             <!-- Active Quizzes Section Container -->
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="p-4 p-md-4.5 rounded-4 border shadow-sm text-start h-100 position-relative overflow-hidden bg-abstract-quizzes" style="border-color: rgba(139, 92, 246, 0.35) !important;">
-                    <!-- Floating Abstract Watermark & SVG Geometrics -->
-                    <i class="ti ti-help-hexagon position-absolute bottom-0 end-0 me-n3 mb-n4 text-purple opacity-10 pointer-events-none" style="font-size: 8.5rem; color: #8B5CF6 !important;"></i>
-                    <div class="position-absolute top-0 end-0 me-n2 mt-n2 pointer-events-none opacity-20" style="width: 140px; height: 140px;">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#8B5CF6" stroke-width="2">
-                            <rect x="20" y="20" width="60" height="60" rx="10" transform="rotate(30 50 50)" stroke-dasharray="3 3" />
-                            <circle cx="50" cy="50" r="25" />
-                        </svg>
-                    </div>
+                <div class="p-4 p-md-4.5 rounded-4 border shadow-sm text-start h-100 position-relative overflow-hidden bg-abstract-quizzes" style="border-color: rgba(139, 92, 246, 0.25) !important;">
+                    <i class="ti ti-help-hexagon position-absolute bottom-0 end-0 me-n2 mb-n3 text-purple opacity-10 pointer-events-none" style="font-size: 7.5rem; color: #8B5CF6 !important;"></i>
 
                     <div class="d-flex align-items-center justify-content-between mb-4 border-bottom pb-3 position-relative z-1" style="border-color: rgba(139, 92, 246, 0.2) !important;">
                         <div>
@@ -469,7 +446,7 @@
 
                     <div class="d-flex flex-column gap-3 position-relative z-1">
                         @forelse($activeQuizzes as $qz)
-                            <div class="p-3.5 rounded-4 border shadow-sm d-flex align-items-center justify-content-between transition-all hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(139, 92, 246, 0.3) !important;">
+                            <div class="p-3.5 rounded-4 border shadow-sm d-flex align-items-center justify-content-between transition-all hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(139, 92, 246, 0.25) !important;">
                                 <div class="position-absolute top-0 start-0 bottom-0" style="width: 4px; background: linear-gradient(180deg, #8B5CF6, #6D28D9);"></div>
                                 <div class="ps-2">
                                     <div class="d-flex align-items-center gap-2 mb-1">
@@ -504,15 +481,8 @@
 
             <!-- Upcoming Assignments Section Container -->
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="p-4 p-md-4.5 rounded-4 border shadow-sm text-start h-100 position-relative overflow-hidden bg-abstract-assignments" style="border-color: rgba(245, 158, 11, 0.35) !important;">
-                    <!-- Floating Abstract Watermark & SVG Geometrics -->
-                    <i class="ti ti-notebook position-absolute bottom-0 end-0 me-n3 mb-n4 text-warning opacity-10 pointer-events-none" style="font-size: 8.5rem;"></i>
-                    <div class="position-absolute top-0 end-0 me-n2 mt-n2 pointer-events-none opacity-20" style="width: 140px; height: 140px;">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#F59E0B" stroke-width="2">
-                            <polygon points="50,15 90,85 10,85" stroke-dasharray="3 3" />
-                            <circle cx="50" cy="55" r="20" />
-                        </svg>
-                    </div>
+                <div class="p-4 p-md-4.5 rounded-4 border shadow-sm text-start h-100 position-relative overflow-hidden bg-abstract-assignments" style="border-color: rgba(245, 158, 11, 0.25) !important;">
+                    <i class="ti ti-notebook position-absolute bottom-0 end-0 me-n2 mb-n3 text-warning opacity-10 pointer-events-none" style="font-size: 7.5rem;"></i>
 
                     <div class="d-flex align-items-center justify-content-between mb-4 border-bottom pb-3 position-relative z-1" style="border-color: rgba(245, 158, 11, 0.2) !important;">
                         <div>
@@ -530,7 +500,7 @@
 
                     <div class="d-flex flex-column gap-3 position-relative z-1">
                         @forelse($upcomingAssignments as $asg)
-                            <div class="p-3.5 rounded-4 border shadow-sm d-flex align-items-center justify-content-between transition-all hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(245, 158, 11, 0.3) !important;">
+                            <div class="p-3.5 rounded-4 border shadow-sm d-flex align-items-center justify-content-between transition-all hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(245, 158, 11, 0.25) !important;">
                                 <div class="position-absolute top-0 start-0 bottom-0" style="width: 4px; background: linear-gradient(180deg, #F59E0B, #D97706);"></div>
                                 <div class="ps-2">
                                     <div class="d-flex align-items-center gap-2 mb-1">
