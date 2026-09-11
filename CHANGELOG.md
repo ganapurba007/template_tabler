@@ -2,6 +2,16 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 18] Student Profil & Laporan Diri — 2026-09-11
+
+### Ditambahkan
+- `Student\ReportController` (`app/Http/Controllers/Student/ReportController.php`) untuk menghitung dan menyajikan rekapitulasi progres materi (`material_progress`), rata-rata nilai tugas, rata-rata skor kuis, dan performa evaluasi gabungan siswa.
+- Blade View `resources/views/student/report/index.blade.php` dengan ringkasan kartu metrik dan tabel riwayat nilai tugas & skor kuis siswa.
+- Feature Test `tests/Feature/Student/StudentReportTest.php` untuk memverifikasi penayangan laporan progres belajar diri siswa.
+
+### Diubah
+- `routes/web.php`: Menambahkan rute `student.report.index`.
+
 ## [Fase 17] Student Kuis (Timer Vanilla JS + Preview/Review Jawaban) — 2026-09-11
 
 ### Ditambahkan

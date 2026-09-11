@@ -15,6 +15,7 @@ use App\Http\Controllers\Student\AssignmentController as StudentAssignmentContro
 use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
 use App\Http\Controllers\Student\MaterialController as StudentMaterialController;
 use App\Http\Controllers\Student\QuizController as StudentQuizController;
+use App\Http\Controllers\Student\ReportController as StudentReportController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -26,7 +27,7 @@ Route::get('/dashboard', [StudentDashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-// Route Siswa Materials, Assignments, Quizzes & Discussion
+// Route Siswa Materials, Assignments, Quizzes, Report & Discussion
 Route::middleware(['auth'])->prefix('student')->as('student.')->group(function () {
     Route::get('materials', [StudentMaterialController::class, 'index'])->name('materials.index');
     Route::get('materials/{material}', [StudentMaterialController::class, 'show'])->name('materials.show');
@@ -43,6 +44,8 @@ Route::middleware(['auth'])->prefix('student')->as('student.')->group(function (
     Route::get('quizzes/{quiz}/attempt', [StudentQuizController::class, 'attempt'])->name('quizzes.attempt');
     Route::post('quizzes/{quiz}/submit', [StudentQuizController::class, 'submit'])->name('quizzes.submit');
     Route::get('quizzes/{quiz}/result', [StudentQuizController::class, 'result'])->name('quizzes.result');
+
+    Route::get('report', [StudentReportController::class, 'index'])->name('report.index');
 });
 
 // Route Group Admin / Guru
