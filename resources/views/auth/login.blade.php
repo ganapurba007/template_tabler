@@ -31,6 +31,7 @@
                     <div class="input-group">
                         <span class="input-group-text bg-transparent border-end-0 text-muted-custom"><i class="ti ti-lock"></i></span>
                         <input type="password" id="password" class="form-control border-start-0 ps-0 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="••••••••">
+                        <button type="button" class="btn btn-outline-secondary toggle-password" data-target="password"><i class="ti ti-eye"></i></button>
                     </div>
                     <x-input-error :messages="$errors->get('password')" class="mt-1" />
                 </div>
@@ -52,4 +53,21 @@
             <p class="text-muted-custom small">{{ __('Belum memiliki akun?') }} <a href="{{ route('register') }}" class="text-primary fw-semibold">{{ __('Daftar Sekarang') }}</a></p>
         </div>
     @endif
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.toggle-password').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          const target = document.getElementById(this.dataset.target);
+          if (target.type === 'password') {
+            target.type = 'text';
+            this.innerHTML = '<i class="ti ti-eye-off"></i>';
+          } else {
+            target.type = 'password';
+            this.innerHTML = '<i class="ti ti-eye"></i>';
+          }
+        });
+      });
+    });
+    </script>
 </x-guest-layout>
