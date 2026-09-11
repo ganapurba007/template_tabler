@@ -1,19 +1,8 @@
-<x-app-layout>
-    <x-slot name="header">
-        <div class="d-flex justify-content-between align-items-center">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ __('Laporan Analytics & Rekap Nilai Siswa') }}
-            </h2>
-            <a href="{{ route('admin.reports.export-csv', ['class_id' => $selectedClassId, 'subject_id' => $selectedSubjectId]) }}" class="btn btn-success btn-sm">
-                <i class="ti ti-file-spreadsheet me-1"></i> Export Data (CSV)
-            </a>
-        </div>
-    </x-slot>
+@extends('layouts.be.master')
+@section('header_title', 'Laporan Analytics & Rekap Nilai Siswa')
+@section('content')
 
-    <!-- Include Bootstrap & Custom CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-    <link rel="stylesheet" href="{{ asset('template/be/assets/css/custom.css') }}">
+
 
     <div class="py-6 px-4">
         <div class="max-w-7xl mx-auto">
@@ -124,4 +113,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection
