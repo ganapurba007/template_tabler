@@ -41,12 +41,12 @@
                                 <div class="small text-muted">{{ Str::limit($assignment->description, 60) }}</div>
                             </td>
                             <td>
-                                <span class="badge bg-primary-subtle text-primary px-2 py-1 fs-6">
+                                <span class="badge badge-soft-primary">
                                     {{ $assignment->subject->name ?? '-' }}
                                 </span>
                             </td>
                             <td>
-                                <span class="badge bg-info-subtle text-info px-2 py-1 fs-6">
+                                <span class="badge badge-soft-info">
                                     {{ $assignment->schoolClass->name ?? '-' }}
                                 </span>
                             </td>
@@ -56,7 +56,7 @@
                                 </div>
                             </td>
                             <td>
-                                <span class="badge bg-secondary-subtle text-secondary px-2 py-1 fs-6">
+                                <span class="badge badge-soft-secondary">
                                     {{ $assignment->submissions_count }} Siswa
                                 </span>
                             </td>

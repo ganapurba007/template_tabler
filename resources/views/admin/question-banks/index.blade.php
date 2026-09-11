@@ -40,7 +40,7 @@
                                 </div>
                             </td>
                             <td>
-                                <span class="badge bg-secondary-subtle text-secondary px-2 py-1 fs-6">
+                                <span class="badge badge-soft-secondary">
                                     {{ $qb->options_count }} Opsi
                                 </span>
                             </td>
@@ -49,7 +49,7 @@
                                     $correct = $qb->options->firstWhere('is_correct', true);
                                 @endphp
                                 @if($correct)
-                                    <span class="badge bg-success-subtle text-success px-2 py-1 fs-6">
+                                    <span class="badge badge-soft-success">
                                         <i class="ti ti-check me-1"></i> {{ Str::limit($correct->option_text, 35) }}
                                     </span>
                                 @else

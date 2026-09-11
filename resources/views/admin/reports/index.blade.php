@@ -65,7 +65,7 @@
                                             <div class="small text-muted">{{ $student->email }}</div>
                                         </td>
                                         <td>
-                                            <span class="badge bg-secondary-subtle text-secondary px-2 py-1 fs-6">
+                                            <span class="badge badge-soft-secondary">
                                                 {{ $student->schoolClass->name ?? '-' }}
                                             </span>
                                         </td>
@@ -79,7 +79,7 @@
                                         </td>
                                         <td>
                                             @if(!is_null($student->avg_assignment_grade))
-                                                <span class="badge bg-success-subtle text-success px-2 py-1 fs-6 fw-bold">
+                                                <span class="badge badge-soft-success fw-bold">
                                                     {{ $student->avg_assignment_grade }} / 100
                                                 </span>
                                             @else
@@ -88,7 +88,7 @@
                                         </td>
                                         <td>
                                             @if(!is_null($student->avg_quiz_score))
-                                                <span class="badge bg-info-subtle text-info px-2 py-1 fs-6 fw-bold">
+                                                <span class="badge badge-soft-info fw-bold">
                                                     {{ $student->avg_quiz_score }} / 100
                                                 </span>
                                             @else

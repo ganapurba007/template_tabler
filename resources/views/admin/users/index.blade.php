@@ -83,16 +83,16 @@
                             </td>
                             <td>
                                 @if($user->isGuru())
-                                    <span class="badge bg-primary-subtle text-primary px-2 py-1 fs-6"><i class="ti ti-school me-1"></i> Guru</span>
+                                    <span class="badge badge-soft-primary"><i class="ti ti-school me-1"></i> Guru</span>
                                 @elseif($user->isSiswa())
-                                    <span class="badge bg-success-subtle text-success px-2 py-1 fs-6"><i class="ti ti-user-check me-1"></i> Siswa</span>
+                                    <span class="badge badge-soft-success"><i class="ti ti-user-check me-1"></i> Siswa</span>
                                 @else
-                                    <span class="badge bg-secondary-subtle text-secondary px-2 py-1 fs-6">{{ ucfirst($user->role->name ?? 'None') }}</span>
+                                    <span class="badge badge-soft-secondary">{{ ucfirst($user->role->name ?? 'None') }}</span>
                                 @endif
                             </td>
                             <td>
                                 @if($user->schoolClass)
-                                    <span class="badge bg-info-subtle text-info fs-6">{{ $user->schoolClass->name }}</span>
+                                    <span class="badge badge-soft-info">{{ $user->schoolClass->name }}</span>
                                 @else
                                     <span class="text-muted small">-</span>
                                 @endif

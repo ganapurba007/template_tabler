@@ -41,12 +41,12 @@
                                 <div class="fw-bold">{{ $quiz->title }}</div>
                             </td>
                             <td>
-                                <span class="badge bg-primary-subtle text-primary px-2 py-1 fs-6">
+                                <span class="badge badge-soft-primary">
                                     {{ $quiz->subject->name ?? '-' }}
                                 </span>
                             </td>
                             <td>
-                                <span class="badge bg-info-subtle text-info px-2 py-1 fs-6">
+                                <span class="badge badge-soft-info">
                                     {{ $quiz->schoolClass->name ?? '-' }}
                                 </span>
                             </td>
@@ -55,7 +55,7 @@
                                 <div class="small text-muted">{{ $quiz->points_per_question }} Poin/Soal</div>
                             </td>
                             <td>
-                                <span class="badge bg-secondary-subtle text-secondary px-2 py-1 fs-6">
+                                <span class="badge badge-soft-secondary">
                                     {{ $quiz->questions_count }} Soal
                                 </span>
                             </td>

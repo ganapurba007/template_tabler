@@ -41,22 +41,22 @@
                                 <div class="small text-muted">Urutan: {{ $material->order }}</div>
                             </td>
                             <td>
-                                <span class="badge bg-primary-subtle text-primary px-2 py-1 fs-6">
+                                <span class="badge badge-soft-primary">
                                     {{ $material->subject->name ?? '-' }}
                                 </span>
                             </td>
                             <td>
-                                <span class="badge bg-info-subtle text-info px-2 py-1 fs-6">
+                                <span class="badge badge-soft-info">
                                     {{ $material->schoolClass->name ?? '-' }}
                                 </span>
                             </td>
                             <td>
                                 @if($material->content_type === 'text')
-                                    <span class="badge bg-success px-2 py-1"><i class="ti ti-file-text me-1"></i> Teks / HTML</span>
+                                    <span class="badge badge-soft-success"><i class="ti ti-file-text me-1"></i> Teks / HTML</span>
                                 @elseif($material->content_type === 'document')
-                                    <span class="badge bg-warning px-2 py-1"><i class="ti ti-file-download me-1"></i> Dokumen</span>
+                                    <span class="badge badge-soft-warning"><i class="ti ti-file-download me-1"></i> Dokumen</span>
                                 @elseif($material->content_type === 'youtube')
-                                    <span class="badge bg-danger px-2 py-1"><i class="ti ti-brand-youtube me-1"></i> YouTube</span>
+                                    <span class="badge badge-soft-danger"><i class="ti ti-brand-youtube me-1"></i> YouTube</span>
                                 @endif
                             </td>
                             <td>{{ $material->instructor->name ?? '-' }}</td>

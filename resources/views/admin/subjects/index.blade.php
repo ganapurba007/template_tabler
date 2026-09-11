@@ -39,7 +39,7 @@
                             </td>
                             <td>
                                 @forelse($subject->instructors as $guru)
-                                    <span class="badge bg-primary-subtle text-primary mb-1 me-1">
+                                    <span class="badge badge-soft-primary mb-1 me-1">
                                         <i class="ti ti-user me-1"></i> {{ $guru->name }}
                                     </span>
                                 @empty

@@ -37,7 +37,7 @@
                                 <span class="fw-semibold">{{ $class->name }}</span>
                             </td>
                             <td>
-                                <span class="badge bg-info-subtle text-info px-2 py-1 fs-6">
+                                <span class="badge badge-soft-info">
                                     <i class="ti ti-users me-1"></i> {{ $class->students_count }} Siswa
                                 </span>
                             </td>

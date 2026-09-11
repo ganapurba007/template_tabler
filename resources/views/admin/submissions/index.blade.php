@@ -66,7 +66,7 @@
                                 <div class="fw-semibold">{{ $sub->assignment->title ?? '-' }}</div>
                             </td>
                             <td>
-                                <span class="badge bg-primary-subtle text-primary px-2 py-1 fs-6">
+                                <span class="badge badge-soft-primary">
                                     {{ $sub->assignment->subject->name ?? '-' }}
                                 </span>
                             </td>
@@ -77,11 +77,11 @@
                             </td>
                             <td>
                                 @if(!is_null($sub->grade))
-                                    <span class="badge bg-success-subtle text-success px-2 py-1 fs-6 fw-bold">
+                                    <span class="badge badge-soft-success fw-bold">
                                         {{ number_format($sub->grade, 1) }} / 100
                                     </span>
                                 @else
-                                    <span class="badge bg-warning-subtle text-warning px-2 py-1 fs-6">
+                                    <span class="badge badge-soft-warning">
                                         Belum Dinilai
                                     </span>
                                 @endif
