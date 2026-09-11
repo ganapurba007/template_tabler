@@ -2,6 +2,19 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 17] Student Kuis (Timer Vanilla JS + Preview/Review Jawaban) — 2026-09-11
+
+### Ditambahkan
+- `Student\QuizController` (`app/Http/Controllers/Student/QuizController.php`) untuk pengelolaan pengerjaan kuis online siswa (`index`, `show`, `start`, `attempt`, `submit`, `result`).
+- Interactive Vanilla JS Countdown Timer yang menghitung mundur sisa waktu secara otomatis dan melakukan auto-submit jika durasi kuis habis.
+- Perhitungan skor kuis berbasis persentase jawaban benar dan pencatatan riwayat `QuizAttempt` & `QuizAnswer`.
+- Penayangan Preview & Review Jawaban (`resources/views/student/quizzes/result.blade.php`) sesuai User Request: menampilkan skor, daftar seluruh soal, jawaban yang dipilih siswa ("Jawaban Anda"), dan jawaban yang benar ("Jawaban Benar").
+- Blade Views UI di `resources/views/student/quizzes/`: `index.blade.php`, `show.blade.php`, `attempt.blade.php`, dan `result.blade.php`.
+- Feature Test `tests/Feature/Student/StudentQuizTest.php` untuk memverifikasi pengerjaan kuis, pengolesan skor otomatis, preview review jawaban, dan proteksi otorisasi antar-kelas.
+
+### Diubah
+- `routes/web.php`: Menambahkan rute `student.quizzes.index`, `show`, `start`, `attempt`, `submit`, dan `result`.
+
 ## [Fase 16] Student Tugas — 2026-09-11
 
 ### Ditambahkan

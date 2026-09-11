@@ -14,6 +14,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Student\AssignmentController as StudentAssignmentController;
 use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
 use App\Http\Controllers\Student\MaterialController as StudentMaterialController;
+use App\Http\Controllers\Student\QuizController as StudentQuizController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,7 +26,7 @@ Route::get('/dashboard', [StudentDashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-// Route Siswa Materials, Assignments & Discussion
+// Route Siswa Materials, Assignments, Quizzes & Discussion
 Route::middleware(['auth'])->prefix('student')->as('student.')->group(function () {
     Route::get('materials', [StudentMaterialController::class, 'index'])->name('materials.index');
     Route::get('materials/{material}', [StudentMaterialController::class, 'show'])->name('materials.show');
@@ -35,6 +36,13 @@ Route::middleware(['auth'])->prefix('student')->as('student.')->group(function (
     Route::get('assignments', [StudentAssignmentController::class, 'index'])->name('assignments.index');
     Route::get('assignments/{assignment}', [StudentAssignmentController::class, 'show'])->name('assignments.show');
     Route::post('assignments/{assignment}/submit', [StudentAssignmentController::class, 'submit'])->name('assignments.submit');
+
+    Route::get('quizzes', [StudentQuizController::class, 'index'])->name('quizzes.index');
+    Route::get('quizzes/{quiz}', [StudentQuizController::class, 'show'])->name('quizzes.show');
+    Route::post('quizzes/{quiz}/start', [StudentQuizController::class, 'start'])->name('quizzes.start');
+    Route::get('quizzes/{quiz}/attempt', [StudentQuizController::class, 'attempt'])->name('quizzes.attempt');
+    Route::post('quizzes/{quiz}/submit', [StudentQuizController::class, 'submit'])->name('quizzes.submit');
+    Route::get('quizzes/{quiz}/result', [StudentQuizController::class, 'result'])->name('quizzes.result');
 });
 
 // Route Group Admin / Guru
