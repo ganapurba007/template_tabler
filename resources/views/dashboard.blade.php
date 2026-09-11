@@ -1,42 +1,17 @@
 <x-app-layout>
-    <x-slot name="header">
-        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
-            <div class="d-flex align-items-center gap-3">
-                <div class="rounded-circle text-white flex items-center justify-center p-2 shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 42px; height: 42px;">
-                    <i class="ti ti-rocket text-xl"></i>
-                </div>
-                <div>
-                    <h2 class="font-bold text-xl text-gray-800 leading-tight m-0" style="font-family: 'Jost', sans-serif;">
-                        {{ __('Dashboard Siswa') }}
-                    </h2>
-                    <p class="text-muted small mb-0">Selamat datang kembali, <strong>{{ $user->name }}</strong>!</p>
-                </div>
-            </div>
-            
-            <div class="d-flex align-items-center gap-2">
-                <span class="badge text-dark shadow-sm px-3 py-2 rounded-pill border d-inline-flex align-items-center gap-1.5" style="background-color: #F2EFE7; color: #3368A0 !important; font-size: 0.85rem; border-color: rgba(102, 163, 191, 0.3) !important;">
-                    <i class="ti ti-school text-primary"></i> Kelas: <strong class="text-dark">{{ $user->schoolClass->name ?? 'Siswa SMA' }}</strong>
-                </span>
-                <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-3 py-2 rounded-pill d-inline-flex align-items-center gap-1" style="font-size: 0.85rem;">
-                    <i class="ti ti-flame text-warning"></i> Study Streak: <strong>Active</strong>
-                </span>
-            </div>
-        </div>
-    </x-slot>
-
     <!-- Include Bootstrap & Webfonts -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
     <link rel="stylesheet" href="{{ asset('css/theme-custom.css') }}">
 
-    <!-- Arsha Hero Section with Real High-Res Learning Photo -->
-    <section id="hero" class="arsha-hero mb-5 py-5" data-aos="zoom-out" data-aos-delay="100" style="background: linear-gradient(135deg, #3368A0 0%, #20456E 100%);">
+    <!-- Arsha Hero Section with Real High-Res Learning Photo (Attaches directly under top navbar) -->
+    <section id="hero" class="arsha-hero py-5" data-aos="zoom-out" data-aos-delay="100" style="background: linear-gradient(135deg, #3368A0 0%, #20456E 100%); margin-top: 0;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6 d-flex flex-column justify-content-center text-center text-lg-start">
                     <div class="mb-3" data-aos="fade-up" data-aos-delay="150">
-                        <span class="badge text-primary font-bold px-3 py-2 rounded-pill shadow-sm" style="background-color: #F2EFE7; color: #3368A0 !important;">
-                            <i class="ti ti-sparkles text-warning me-1"></i> LMS SMA DANI — PORTAL BELAJAR MODERN
+                        <span class="badge text-primary font-bold px-3.5 py-2 rounded-pill shadow-sm d-inline-flex align-items-center gap-2" style="background-color: #F2EFE7; color: #3368A0 !important; font-size: 0.85rem;">
+                            <i class="ti ti-rocket text-warning"></i> Dashboard Siswa — Kelas {{ $user->schoolClass->name ?? 'Siswa SMA' }}
                         </span>
                     </div>
                     
@@ -45,7 +20,7 @@
                     </h1>
                     
                     <p class="lead text-white-50 fs-5 mb-4" data-aos="fade-up" data-aos-delay="300">
-                        Akses modul materi pelajaran terlengkap, kerjakan tugas online dengan mudah, dan uji pemahamanmu melalui kuis interaktif real-time.
+                        Selamat datang kembali, <strong>{{ $user->name }}</strong>! Akses modul materi pelajaran terlengkap, kerjakan tugas online, dan uji pemahamanmu melalui kuis real-time.
                     </p>
 
                     <!-- Quick Search Bar inside Hero -->
@@ -58,10 +33,10 @@
                     </div>
 
                     <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start" data-aos="fade-up" data-aos-delay="400">
-                        <a class="btn text-white font-bold px-4 py-3 rounded-pill text-decoration-none shadow-lg d-inline-flex align-items-center gap-2" href="{{ route('student.materials.index') }}" style="background: linear-gradient(135deg, #66A3BF 0%, #3368A0 100%);">
+                        <a class="btn text-white font-bold px-4 py-3 rounded-pill text-decoration-none shadow-lg d-inline-flex align-items-center gap-2 hover-lift" href="{{ route('student.materials.index') }}" style="background: linear-gradient(135deg, #66A3BF 0%, #3368A0 100%);">
                             <i class="ti ti-player-play-filled fs-5 text-warning"></i> Mulai Belajar Sekarang
                         </a>
-                        <a class="btn text-white font-bold px-4 py-3 rounded-pill text-decoration-none d-inline-flex align-items-center gap-2" href="{{ route('student.quizzes.index') }}" style="border: 2px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);">
+                        <a class="btn text-white font-bold px-4 py-3 rounded-pill text-decoration-none d-inline-flex align-items-center gap-2 hover-lift" href="{{ route('student.quizzes.index') }}" style="border: 2px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);">
                             <i class="ti ti-help-hexagon fs-5"></i> Ikuti Kuis Online
                         </a>
                     </div>
@@ -99,6 +74,87 @@
             </div>
         </div>
     </section>
+
+    <!-- Upgraded & Beautiful Statistics Section Cards -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-5" data-aos="fade-up">
+        <div class="row g-4">
+            <!-- Stat Card 1: Total Materi -->
+            <div class="col-6 col-md-3">
+                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift overflow-hidden position-relative" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); color: #ffffff;">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <div class="rounded-circle flex items-center justify-center p-2.5" style="background: rgba(255, 255, 255, 0.2); width: 48px; height: 48px;">
+                                <i class="ti ti-books fs-2 text-white"></i>
+                            </div>
+                            <span class="badge bg-white bg-opacity-20 text-white rounded-pill px-2.5 py-1 small" style="backdrop-filter: blur(5px);">Mapel Kelas</span>
+                        </div>
+                        <h2 class="display-6 font-extrabold text-white mb-1" style="font-family: 'Jost', sans-serif;">{{ $totalClassMaterials }}</h2>
+                        <div class="font-semibold text-white-50 small mb-2">Total Materi Pelajaran</div>
+                        <div class="progress bg-white bg-opacity-20" style="height: 5px;">
+                            <div class="progress-bar bg-white" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stat Card 2: Materi Selesai -->
+            <div class="col-6 col-md-3">
+                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift overflow-hidden position-relative" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: #ffffff;">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <div class="rounded-circle flex items-center justify-center p-2.5" style="background: rgba(255, 255, 255, 0.2); width: 48px; height: 48px;">
+                                <i class="ti ti-circle-check fs-2 text-white"></i>
+                            </div>
+                            <span class="badge bg-white bg-opacity-20 text-white rounded-pill px-2.5 py-1 small" style="backdrop-filter: blur(5px);">Completed</span>
+                        </div>
+                        <h2 class="display-6 font-extrabold text-white mb-1" style="font-family: 'Jost', sans-serif;">{{ $completedMaterialsCount }}</h2>
+                        <div class="font-semibold text-white-50 small mb-2">Materi Selesai Dipelajari</div>
+                        <div class="progress bg-white bg-opacity-20" style="height: 5px;">
+                            <div class="progress-bar bg-white" style="width: {{ $totalClassMaterials > 0 ? min(100, round(($completedMaterialsCount / $totalClassMaterials) * 100)) : 0 }}%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stat Card 3: Tugas Mendatang -->
+            <div class="col-6 col-md-3">
+                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift overflow-hidden position-relative" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #ffffff;">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <div class="rounded-circle flex items-center justify-center p-2.5" style="background: rgba(255, 255, 255, 0.2); width: 48px; height: 48px;">
+                                <i class="ti ti-notebook fs-2 text-white"></i>
+                            </div>
+                            <span class="badge bg-white bg-opacity-20 text-white rounded-pill px-2.5 py-1 small" style="backdrop-filter: blur(5px);">Deadline</span>
+                        </div>
+                        <h2 class="display-6 font-extrabold text-white mb-1" style="font-family: 'Jost', sans-serif;">{{ $upcomingAssignments->count() }}</h2>
+                        <div class="font-semibold text-white-50 small mb-2">Tugas Perlu Dikumpulkan</div>
+                        <div class="progress bg-white bg-opacity-20" style="height: 5px;">
+                            <div class="progress-bar bg-white" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stat Card 4: Kuis Aktif -->
+            <div class="col-6 col-md-3">
+                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift overflow-hidden position-relative" style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); color: #ffffff;">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <div class="rounded-circle flex items-center justify-center p-2.5" style="background: rgba(255, 255, 255, 0.2); width: 48px; height: 48px;">
+                                <i class="ti ti-help-hexagon fs-2 text-white"></i>
+                            </div>
+                            <span class="badge bg-white bg-opacity-20 text-white rounded-pill px-2.5 py-1 small" style="backdrop-filter: blur(5px);">Real-Time</span>
+                        </div>
+                        <h2 class="display-6 font-extrabold text-white mb-1" style="font-family: 'Jost', sans-serif;">{{ $activeQuizzes->count() }}</h2>
+                        <div class="font-semibold text-white-50 small mb-2">Kuis Online Aktif</div>
+                        <div class="progress bg-white bg-opacity-20" style="height: 5px;">
+                            <div class="progress-bar bg-white" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -253,30 +309,6 @@
             </div>
         </div>
 
-    </div>
-
-    <!-- Arsha Counter Section Band -->
-    <div class="arsha-counter-section my-5 py-5" data-aos="fade-up" style="background: linear-gradient(135deg, #3368A0 0%, #1A3959 100%);">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="row text-center g-4 text-white">
-                <div class="col-6 col-md-3">
-                    <div class="arsha-counter-number font-extrabold display-5 mb-1" style="color: #C8DFDB;"><i class="ti ti-books me-2"></i>{{ $totalClassMaterials }}</div>
-                    <div class="arsha-counter-label text-white-50 font-semibold">Materi Pelajaran</div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="arsha-counter-number font-extrabold display-5 mb-1" style="color: #10B981;"><i class="ti ti-circle-check me-2"></i>{{ $completedMaterialsCount }}</div>
-                    <div class="arsha-counter-label text-white-50 font-semibold">Materi Selesai</div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="arsha-counter-number font-extrabold display-5 mb-1" style="color: #F59E0B;"><i class="ti ti-notebook me-2"></i>{{ $upcomingAssignments->count() }}</div>
-                    <div class="arsha-counter-label text-white-50 font-semibold">Tugas Mendatang</div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="arsha-counter-number font-extrabold display-5 mb-1" style="color: #66A3BF;"><i class="ti ti-help-hexagon me-2"></i>{{ $activeQuizzes->count() }}</div>
-                    <div class="arsha-counter-label text-white-50 font-semibold">Kuis Aktif</div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Active Quizzes & Assignments Section -->

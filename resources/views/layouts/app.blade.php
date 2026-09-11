@@ -31,13 +31,13 @@
             @include('layouts.navigation')
 
             <!-- Page Heading -->
-            @isset($header)
+            @if(isset($header) && trim($header) !== '')
                 <header class="shadow-sm border-b" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.2);">
                     <div class="max-w-7xl mx-auto py-5 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>
-            @endisset
+            @endif
 
             <!-- Page Content -->
             <main>
