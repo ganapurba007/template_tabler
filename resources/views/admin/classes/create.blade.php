@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold m-0 text-dark">Tambah Kelas Pembelajaran Baru</h3>
+    <h3 class="fw-bold m-0">Tambah Kelas Pembelajaran Baru</h3>
     <a href="{{ route('admin.classes.index') }}" class="btn btn-outline-secondary">
         <i class="ti ti-arrow-left me-1"></i> Kembali
     </a>

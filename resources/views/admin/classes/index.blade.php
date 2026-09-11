@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold m-0 text-dark">Daftar Kelas Pembelajaran</h3>
+    <h3 class="fw-bold m-0">Daftar Kelas Pembelajaran</h3>
     <a href="{{ route('admin.classes.create') }}" class="btn btn-primary">
         <i class="ti ti-plus me-1"></i> Tambah Kelas Baru
     </a>
@@ -21,7 +21,7 @@
     <div class="card-body p-0">
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
-                <thead class="table-light">
+                <thead>
                     <tr>
                         <th class="ps-4" style="width: 80px;">ID</th>
                         <th>Nama Kelas</th>
@@ -34,7 +34,7 @@
                         <tr>
                             <td class="ps-4 fw-bold">#{{ $class->id }}</td>
                             <td>
-                                <span class="fw-semibold text-dark">{{ $class->name }}</span>
+                                <span class="fw-semibold">{{ $class->name }}</span>
                             </td>
                             <td>
                                 <span class="badge bg-info-subtle text-info px-2 py-1 fs-6">
@@ -66,7 +66,7 @@
         </div>
     </div>
     @if($classes->hasPages())
-        <div class="card-footer bg-white d-flex justify-content-end py-3">
+        <div class="card-footer d-flex justify-content-end py-3">
             {{ $classes->links() }}
         </div>
     @endif

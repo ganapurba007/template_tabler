@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold m-0 text-dark">Daftar Pengguna Sistem</h3>
+    <h3 class="fw-bold m-0">Daftar Pengguna Sistem</h3>
 </div>
 
 @if(session('success'))
@@ -20,7 +20,7 @@
         <form method="GET" action="{{ route('admin.users.index') }}" class="row g-2 align-items-center">
             <div class="col-12 col-md-5">
                 <div class="input-group">
-                    <span class="input-group-text bg-white"><i class="ti ti-search text-muted"></i></span>
+                    <span class="input-group-text"><i class="ti ti-search text-muted"></i></span>
                     <input type="text" name="search" class="form-control border-start-0" placeholder="Cari Nama, Email, NIP..." value="{{ request('search') }}">
                 </div>
             </div>
@@ -49,7 +49,7 @@
     <div class="card-body p-0">
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
-                <thead class="table-light">
+                <thead>
                     <tr>
                         <th class="ps-4">Pengguna</th>
                         <th>Email</th>
@@ -68,7 +68,7 @@
                                         <i class="ti ti-user"></i>
                                     </div>
                                     <div>
-                                        <div class="fw-semibold text-dark">{{ $user->name }}</div>
+                                        <div class="fw-semibold">{{ $user->name }}</div>
                                         <div class="small text-muted">ID: #{{ $user->id }}</div>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@
                             <td><span class="text-muted">{{ $user->email }}</span></td>
                             <td>
                                 @if($user->nip)
-                                    <span class="font-monospace text-dark fw-medium">{{ $user->nip }}</span>
+                                    <span class="font-monospace fw-medium">{{ $user->nip }}</span>
                                 @else
                                     <span class="text-muted small">-</span>
                                 @endif
@@ -113,7 +113,7 @@
         </div>
     </div>
     @if($users->hasPages())
-        <div class="card-footer bg-white d-flex justify-content-end py-3">
+        <div class="card-footer d-flex justify-content-end py-3">
             {{ $users->links() }}
         </div>
     @endif

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold m-0 text-dark">Tambah Role Hak Akses Baru</h3>
+    <h3 class="fw-bold m-0">Tambah Role Hak Akses Baru</h3>
     <a href="{{ route('admin.roles.index') }}" class="btn btn-outline-secondary">
         <i class="ti ti-arrow-left me-1"></i> Kembali
     </a>

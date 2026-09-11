@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold m-0 text-dark">Edit Mata Pelajaran</h3>
+    <h3 class="fw-bold m-0">Edit Mata Pelajaran</h3>
     <a href="{{ route('admin.subjects.index') }}" class="btn btn-outline-secondary">
         <i class="ti ti-arrow-left me-1"></i> Kembali
     </a>
@@ -37,7 +37,7 @@
                                 @endphp
                                 <div class="form-check mb-2">
                                     <input class="form-check-input" type="checkbox" name="instructor_ids[]" value="{{ $guru->id }}" id="guru_{{ $guru->id }}" {{ $checked ? 'checked' : '' }}>
-                                    <label class="form-check-label fw-medium text-dark" for="guru_{{ $guru->id }}">
+                                    <label class="form-check-label fw-medium" for="guru_{{ $guru->id }}">
                                         {{ $guru->name }} <span class="text-muted small">({{ $guru->email }})</span>
                                     </label>
                                 </div>

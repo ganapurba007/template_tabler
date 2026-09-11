@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold m-0 text-dark">Daftar Mata Pelajaran &amp; Guru Pengampu</h3>
+    <h3 class="fw-bold m-0">Daftar Mata Pelajaran &amp; Guru Pengampu</h3>
     <a href="{{ route('admin.subjects.create') }}" class="btn btn-primary">
         <i class="ti ti-plus me-1"></i> Tambah Mata Pelajaran
     </a>
@@ -21,7 +21,7 @@
     <div class="card-body p-0">
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
-                <thead class="table-light">
+                <thead>
                     <tr>
                         <th class="ps-4" style="width: 80px;">ID</th>
                         <th>Nama Mata Pelajaran</th>
@@ -35,7 +35,7 @@
                         <tr>
                             <td class="ps-4 fw-bold">#{{ $subject->id }}</td>
                             <td>
-                                <span class="fw-semibold text-dark">{{ $subject->name }}</span>
+                                <span class="fw-semibold">{{ $subject->name }}</span>
                             </td>
                             <td>
                                 @forelse($subject->instructors as $guru)
@@ -76,7 +76,7 @@
         </div>
     </div>
     @if($subjects->hasPages())
-        <div class="card-footer bg-white d-flex justify-content-end py-3">
+        <div class="card-footer d-flex justify-content-end py-3">
             {{ $subjects->links() }}
         </div>
     @endif

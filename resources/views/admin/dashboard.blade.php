@@ -5,7 +5,6 @@
 @section('content')
 <div class="alert alert-info border-0 shadow-sm mb-4">
     <h4 class="alert-heading fw-bold mb-1"><i class="ti ti-user-check me-2"></i> Selamat Datang, {{ Auth::user()->name }}!</h4>
-    <p class="mb-0">Anda terautentikasi sebagai <strong>Guru / Instruktur</strong>. Kelola Master Data, Materi, Tugas, Kuis, dan Laporan melalui panel admin ini.</p>
 </div>
 
 <!-- Admin Overview Cards -->
@@ -65,7 +64,7 @@
 
 <!-- Quick Links Grid -->
 <div class="card shadow-sm border-0">
-    <div class="card-header bg-light py-3">
+    <div class="card-header py-3">
         <h5 class="fw-bold m-0"><i class="ti ti-menu me-2 text-primary"></i>Menu Akses Cepat Admin</h5>
     </div>
     <div class="card-body">

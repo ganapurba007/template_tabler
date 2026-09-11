@@ -15,7 +15,7 @@
                     <label class="form-label" for="email">{{ __('Email') }}</label>
                     <div class="input-group">
                         <span class="input-group-text bg-transparent border-end-0 text-muted-custom"><i class="ti ti-mail"></i></span>
-                        <input type="email" id="email" class="form-control border-start-0 ps-0 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" placeholder="nama@domain.com">
+                        <input type="email" id="email" class="form-control border-start-2 ps-2 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" placeholder="nama@domain.com">
                     </div>
                     <x-input-error :messages="$errors->get('email')" class="mt-1" />
                 </div>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="input-group">
                         <span class="input-group-text bg-transparent border-end-0 text-muted-custom"><i class="ti ti-lock"></i></span>
-                        <input type="password" id="password" class="form-control border-start-0 ps-0 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="••••••••">
+                        <input type="password" id="password" class="form-control border-start-2 ps-2 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="••••••••">
                         <button type="button" class="btn btn-outline-secondary toggle-password" data-target="password"><i class="ti ti-eye"></i></button>
                     </div>
                     <x-input-error :messages="$errors->get('password')" class="mt-1" />
@@ -49,9 +49,9 @@
 
     <!-- Register link -->
     @if (Route::has('register'))
-        <div class="text-center mt-4">
+        {{-- <div class="text-center mt-4">
             <p class="text-muted-custom small">{{ __('Belum memiliki akun?') }} <a href="{{ route('register') }}" class="text-primary fw-semibold">{{ __('Daftar Sekarang') }}</a></p>
-        </div>
+        </div> --}}
     @endif
 
     <script>
