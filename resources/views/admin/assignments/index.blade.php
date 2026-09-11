@@ -46,7 +46,7 @@
                                 </span>
                             </td>
                             <td>
-                                <span class="badge badge-soft-info">
+                                <span class="badge badge-soft-primary">
                                     {{ $assignment->schoolClass->name ?? '-' }}
                                 </span>
                             </td>
@@ -56,7 +56,7 @@
                                 </div>
                             </td>
                             <td>
-                                <span class="badge badge-soft-secondary">
+                                <span class="badge badge-soft-success">
                                     {{ $assignment->submissions_count }} Siswa
                                 </span>
                             </td>

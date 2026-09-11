@@ -46,7 +46,7 @@
                                 </span>
                             </td>
                             <td>
-                                <span class="badge badge-soft-info">
+                                <span class="badge badge-soft-primary">
                                     {{ $material->schoolClass->name ?? '-' }}
                                 </span>
                             </td>

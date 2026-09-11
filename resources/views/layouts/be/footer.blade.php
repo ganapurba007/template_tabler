@@ -1,8 +1,8 @@
       <!-- Footer Bar -->
       <footer class="app-footer">
         <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
-          <div>© {{ date('Y') }} LMS Dani — Admin &amp; Teacher Portal</div>
-          <div>Inspired by Tabler. Built with Bootstrap 5.</div>
+          <div>© {{ date('Y') }} LMS Dani. All rights reserved.</div>
+          {{-- <div>Inspired by Tabler. Built with Bootstrap 5.</div> --}}
         </div>
       </footer>
     </div>

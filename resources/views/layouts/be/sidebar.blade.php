@@ -90,7 +90,7 @@
       <li class="sidebar-nav-item">
         <a href="{{ route('admin.reports.index') }}" class="sidebar-nav-link {{ request()->routeIs('admin.reports.*') ? 'active' : '' }}">
           <i class="ti ti-chart-bar"></i>
-          <span>Laporan Analytics</span>
+          <span>Laporan</span>
         </a>
       </li>
     </ul>

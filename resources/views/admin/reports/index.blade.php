@@ -1,5 +1,5 @@
 @extends('layouts.be.master')
-@section('header_title', 'Laporan Analytics & Rekap Nilai Siswa')
+@section('header_title', 'Laporan & Rekap Nilai Siswa')
 @section('content')
 
 
@@ -65,7 +65,7 @@
                                             <div class="small text-muted">{{ $student->email }}</div>
                                         </td>
                                         <td>
-                                            <span class="badge badge-soft-secondary">
+                                            <span class="badge badge-soft-primary">
                                                 {{ $student->schoolClass->name ?? '-' }}
                                             </span>
                                         </td>

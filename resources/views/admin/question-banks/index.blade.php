@@ -40,7 +40,7 @@
                                 </div>
                             </td>
                             <td>
-                                <span class="badge badge-soft-secondary">
+                                <span class="badge badge-soft-primary">
                                     {{ $qb->options_count }} Opsi
                                 </span>
                             </td>

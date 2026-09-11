@@ -46,7 +46,7 @@
                                 </span>
                             </td>
                             <td>
-                                <span class="badge badge-soft-info">
+                                <span class="badge badge-soft-primary">
                                     {{ $quiz->schoolClass->name ?? '-' }}
                                 </span>
                             </td>
@@ -55,7 +55,7 @@
                                 <div class="small text-muted">{{ $quiz->points_per_question }} Poin/Soal</div>
                             </td>
                             <td>
-                                <span class="badge badge-soft-secondary">
+                                <span class="badge badge-soft-success">
                                     {{ $quiz->questions_count }} Soal
                                 </span>
                             </td>
@@ -66,7 +66,7 @@
                             </td>
                             <td class="pe-4 text-end">
                                 <div class="d-inline-flex gap-2">
-                                    <a href="{{ route('admin.quizzes.show', $quiz) }}" class="btn btn-sm btn-outline-info" title="Kelola Soal Kuis">
+                                    <a href="{{ route('admin.quizzes.show', $quiz) }}" class="btn btn-sm btn-outline-warning" title="Kelola Soal Kuis">
                                         <i class="ti ti-list-check"></i>
                                     </a>
                                     <a href="{{ route('admin.quizzes.edit', $quiz) }}" class="btn btn-sm btn-outline-primary" title="Edit Kuis">
