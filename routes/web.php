@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,9 @@ Route::middleware(['auth', 'role:guru'])->prefix('admin')->as('admin.')->group(f
 
     // Master Role CRUD
     Route::resource('roles', RoleController::class);
+
+    // Master User (List & Assign Role)
+    Route::resource('users', UserController::class)->only(['index', 'edit', 'update']);
 });
 
 // Profile Routes

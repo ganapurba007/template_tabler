@@ -2,6 +2,16 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 5] Master — User (Daftar & Assign Role) — 2026-09-11
+
+### Ditambahkan
+- `UserController` (`app/Http/Controllers/Admin/UserController.php`) untuk melihat daftar seluruh pengguna, pencarian kata kunci (Nama, Email, NIP), filter berdasarkan role, serta pengalokasian role, kelas, dan NIP.
+- Blade Views Tabler UI di `resources/views/admin/users/`: `index.blade.php` dan `edit.blade.php`.
+- Feature Test `tests/Feature/Admin/UserCrudTest.php` untuk memverifikasi pencarian, filter role, pengalokasian role/kelas, validasi NIP unik, dan pembatasan akses siswa.
+
+### Diubah
+- `routes/web.php`: Menambahkan rute resource `users` (`index`, `edit`, `update`) di dalam grup `/admin`.
+
 ## [Fase 4] Master — Role CRUD — 2026-09-11
 
 ### Ditambahkan
