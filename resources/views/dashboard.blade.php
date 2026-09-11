@@ -310,9 +310,9 @@
             </div>
         </div>
 
-        <!-- Arsha Courses Catalog Section (Clean & Elegant Styled Container) -->
-        <div class="p-4 p-md-5 rounded-4 shadow-sm mb-5 position-relative overflow-hidden border bg-abstract-catalog" style="border-color: rgba(102, 163, 191, 0.25) !important;">
-            <div class="arsha-section-title text-center mb-5 position-relative z-1" data-aos="fade-up">
+        <!-- Arsha Courses Catalog Section (Clean & Open Layout) -->
+        <div class="mb-5">
+            <div class="arsha-section-title text-center mb-4" data-aos="fade-up">
                 <span class="badge rounded-pill px-3.5 py-2 font-bold uppercase tracking-wider text-xs mb-2 d-inline-flex align-items-center gap-1.5 shadow-sm" style="background: linear-gradient(135deg, #3368A0, #66A3BF); color: #ffffff !important;">
                     <i class="ti ti-books text-white"></i> Modul Terpopuler SMA
                 </span>
@@ -320,7 +320,7 @@
                 <p class="text-secondary fw-medium">Pilih materi pelajaran kelasmu dan eksplorasi modul interaktif, video pembelajaran, serta dokumen PDF</p>
             </div>
 
-            <div class="row g-4 position-relative z-1">
+            <div class="row g-4">
                 @forelse($materials as $index => $mat)
                     @php
                         // Color theme presets for course card headers
@@ -335,7 +335,7 @@
                         $cardBgGradient = $gradients[$index % count($gradients)];
                     @endphp
                     <div class="col-12 col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="{{ 100 + ($index % 3) * 100 }}">
-                        <div class="card h-100 border rounded-4 shadow-sm hover-lift overflow-hidden d-flex flex-column justify-content-between position-relative" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.25) !important;">
+                        <div class="card h-100 border rounded-4 shadow-sm hover-lift overflow-hidden d-flex flex-column justify-content-between position-relative" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.3) !important;">
                             <div>
                                 <!-- Rich Colorful Course Card Banner Header -->
                                 <div class="p-4 text-white position-relative overflow-hidden d-flex flex-column justify-content-between" style="background: {{ $cardBgGradient }}; min-height: 135px;">
@@ -403,16 +403,16 @@
                     </div>
                 @empty
                     <div class="col-12">
-                        <div class="arsha-icon-box py-5 text-center text-muted rounded-4 border" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.25) !important;">
+                        <div class="py-5 text-center text-muted rounded-4 border" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.3) !important;">
                             <i class="ti ti-notes-off fs-1 text-secondary mb-2 d-block"></i>
-                            <h5 class="fw-bold">Belum ada materi untuk kelas Anda saat ini.</h5>
+                            <h5 class="fw-bold text-dark">Belum ada materi untuk kelas Anda saat ini.</h5>
                         </div>
                     </div>
                 @endforelse
             </div>
 
             <!-- Bottom CTA Action Button -->
-            <div class="text-center mt-5 position-relative z-1" data-aos="fade-up">
+            <div class="text-center mt-4" data-aos="fade-up">
                 <a href="{{ route('student.materials.index') }}" class="btn text-white px-5 py-3 rounded-pill font-bold shadow-md hover-lift d-inline-flex align-items-center gap-2" style="background: linear-gradient(135deg, #3368A0 0%, #1e3a8a 100%);">
                     <i class="ti ti-layout-grid fs-5"></i> Jelajahi Seluruh Katalog Materi Pelajaran <i class="ti ti-arrow-right fs-5"></i>
                 </a>
@@ -421,13 +421,13 @@
 
     </div>
 
-    <!-- Active Quizzes & Assignments Section (Clean & Refined Styling) -->
+    <!-- Active Quizzes & Assignments Section (Clean & Refined Layout) -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-5">
         <div class="row g-4">
             
             <!-- Active Quizzes Section Container -->
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="p-4 p-md-4.5 rounded-4 border shadow-sm text-start h-100 position-relative overflow-hidden bg-abstract-quizzes" style="border-color: rgba(139, 92, 246, 0.25) !important;">
+                <div class="p-4 rounded-4 border shadow-sm text-start h-100 position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(139, 92, 246, 0.3) !important;">
                     <i class="ti ti-help-hexagon position-absolute bottom-0 end-0 me-n2 mb-n3 text-purple opacity-10 pointer-events-none" style="font-size: 7.5rem; color: #8B5CF6 !important;"></i>
 
                     <div class="d-flex align-items-center justify-content-between mb-4 border-bottom pb-3 position-relative z-1" style="border-color: rgba(139, 92, 246, 0.2) !important;">
@@ -469,7 +469,7 @@
                                 </a>
                             </div>
                         @empty
-                            <div class="text-center py-4 text-muted bg-white bg-opacity-40 rounded-4 border p-4">
+                            <div class="text-center py-4 text-muted rounded-4 p-4" style="background-color: rgba(139, 92, 246, 0.06); border: 1px dashed rgba(139, 92, 246, 0.25) !important;">
                                 <i class="ti ti-circle-check fs-1 text-success mb-2 d-block"></i>
                                 <div class="fw-bold text-dark mb-1">Tidak Ada Kuis Aktif</div>
                                 <div class="small">Semua evaluasi kuis online untuk kelas Anda telah selesai dikerjakan.</div>
@@ -481,7 +481,7 @@
 
             <!-- Upcoming Assignments Section Container -->
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="p-4 p-md-4.5 rounded-4 border shadow-sm text-start h-100 position-relative overflow-hidden bg-abstract-assignments" style="border-color: rgba(245, 158, 11, 0.25) !important;">
+                <div class="p-4 rounded-4 border shadow-sm text-start h-100 position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(245, 158, 11, 0.3) !important;">
                     <i class="ti ti-notebook position-absolute bottom-0 end-0 me-n2 mb-n3 text-warning opacity-10 pointer-events-none" style="font-size: 7.5rem;"></i>
 
                     <div class="d-flex align-items-center justify-content-between mb-4 border-bottom pb-3 position-relative z-1" style="border-color: rgba(245, 158, 11, 0.2) !important;">
@@ -521,7 +521,7 @@
                                 </a>
                             </div>
                         @empty
-                            <div class="text-center py-4 text-muted bg-white bg-opacity-40 rounded-4 border p-4">
+                            <div class="text-center py-4 text-muted rounded-4 p-4" style="background-color: rgba(245, 158, 11, 0.06); border: 1px dashed rgba(245, 158, 11, 0.25) !important;">
                                 <i class="ti ti-mood-smile fs-1 text-primary mb-2 d-block"></i>
                                 <div class="fw-bold text-dark mb-1">Tugas Tuntas!</div>
                                 <div class="small">Semua tugas kelas Anda sudah berhasil dikumpulkan tepat waktu.</div>
