@@ -2,6 +2,17 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 13] Admin Laporan & Rekapitulasi Analytics — 2026-09-11
+
+### Ditambahkan
+- `ReportController` (`app/Http/Controllers/Admin/ReportController.php`) untuk menyajikan rekapitulasi progres materi (`material_progress`), rata-rata nilai tugas (`assignment_submissions`), dan rata-rata skor kuis (`quiz_attempts`) per siswa.
+- Fitur Filter per Kelas dan Mata Pelajaran serta Unduh Berkas Laporan CSV (`exportCsv`).
+- Blade View Tabler UI `resources/views/admin/reports/index.blade.php` dengan progress bar visual penyelesaian materi.
+- Feature Test `tests/Feature/Admin/ReportTest.php` untuk memverifikasi halaman laporan analytics, ekspor CSV, dan proteksi role siswa.
+
+### Diubah
+- `routes/web.php`: Menambahkan rute `reports.index` dan `reports.export-csv` di dalam grup `/admin`.
+
 ## [Fase 12] Admin Koreksi Tugas — 2026-09-11
 
 ### Ditambahkan

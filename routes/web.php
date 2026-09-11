@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AssignmentSubmissionController;
 use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\QuestionBankController;
 use App\Http\Controllers\Admin\QuizController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SchoolClassController;
 use App\Http\Controllers\Admin\SubjectController;
@@ -58,6 +59,10 @@ Route::middleware(['auth', 'role:guru'])->prefix('admin')->as('admin.')->group(f
     Route::get('submissions', [AssignmentSubmissionController::class, 'index'])->name('submissions.index');
     Route::get('submissions/{submission}', [AssignmentSubmissionController::class, 'show'])->name('submissions.show');
     Route::post('submissions/{submission}/grade', [AssignmentSubmissionController::class, 'grade'])->name('submissions.grade');
+
+    // Admin Laporan & Rekapitulasi Nilai
+    Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
+    Route::get('reports/export-csv', [ReportController::class, 'exportCsv'])->name('reports.export-csv');
 });
 
 // Profile Routes
