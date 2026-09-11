@@ -29,6 +29,9 @@
   <script>
   $(document).ready(function() {
     if ($.fn.DataTable) {
+      // Suppress DataTables alert warnings (use console instead)
+      $.fn.dataTable.ext.errMode = 'none';
+
       $('table.data-table').each(function() {
         $(this).DataTable({
           responsive: true,

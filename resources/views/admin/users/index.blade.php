@@ -107,7 +107,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="text-center py-4 text-muted">Tidak ada pengguna ditemukan.</td>
+                            <td colspan="7" class="text-center py-4 text-muted">Tidak ada pengguna ditemukan.</td>
                         </tr>
                     @endforelse
                 </tbody>
