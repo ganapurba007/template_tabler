@@ -15,8 +15,8 @@
                 </a>
             </div>
 
-            <!-- Middle: Main Menu Navigation Links (Always Visible on Laptop/Desktop - NEVER Hamburger) -->
-            <div class="hidden md:flex items-center space-x-1 lg:space-x-2">
+            <!-- Middle: Main Menu Navigation Links (ALWAYS Visible on Laptop/Desktop - GUARANTEED NO HAMBURGER) -->
+            <div class="arsha-nav-desktop items-center space-x-1 lg:space-x-2">
                 <a href="{{ route('dashboard') }}" class="text-xs lg:text-sm font-bold text-decoration-none px-3 py-2 rounded-full transition flex items-center gap-1.5 {{ request()->routeIs('dashboard') ? 'text-white' : 'text-gray-700 hover:text-primary hover:bg-gray-100' }}" style="{{ request()->routeIs('dashboard') ? 'background-color: #3368A0; color: #ffffff !important;' : '' }}">
                     <i class="ti ti-smart-home text-base"></i>
                     <span>Dashboard</span>
@@ -43,10 +43,10 @@
             </div>
 
             <!-- Right: User Account & Notifications -->
-            <div class="hidden md:flex items-center gap-3">
+            <div class="arsha-nav-desktop items-center gap-3">
                 <!-- Notification Indicator Icon -->
                 <div class="relative">
-                    <button class="p-2 rounded-full text-gray-500 hover:text-primary hover:bg-gray-100 focus:outline-none transition relative">
+                    <button class="p-2 rounded-full text-gray-500 hover:text-primary hover:bg-gray-100 focus:outline-none transition relative pulse-glow">
                         <i class="ti ti-bell fs-5"></i>
                         <span class="position-absolute top-1 end-1 p-1 bg-danger border border-light rounded-circle">
                             <span class="visually-hidden">Notifikasi Baru</span>
@@ -91,7 +91,7 @@
             </div>
 
             <!-- Mobile Hamburger Button (ONLY visible on mobile phones under 768px) -->
-            <div class="-me-2 flex items-center md:hidden">
+            <div class="-me-2 arsha-hamburger-btn items-center">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-xl text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:outline-none transition">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
