@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AssignmentController;
 use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\QuestionBankController;
 use App\Http\Controllers\Admin\RoleController;
@@ -41,6 +42,9 @@ Route::middleware(['auth', 'role:guru'])->prefix('admin')->as('admin.')->group(f
 
     // Master Materi CRUD
     Route::resource('materials', MaterialController::class);
+
+    // Master Tugas CRUD
+    Route::resource('assignments', AssignmentController::class);
 });
 
 // Profile Routes

@@ -2,6 +2,18 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 10] Master — Tugas CRUD + Broadcast Event — 2026-09-11
+
+### Ditambahkan
+- `AssignmentController` (`app/Http/Controllers/Admin/AssignmentController.php`) untuk pengelolaan CRUD Tugas Siswa (Judul, Deskripsi/Petunjuk, Batas Waktu/Deadline, Mata Pelajaran, dan Kelas Target).
+- Proteksi otorisasi mata pelajaran: Guru hanya dapat menambahkan/mengubah tugas pada mata pelajaran yang diampunya (`subject_user`).
+- Dispatching Event Realtime `AssignmentCreated` (`event(new AssignmentCreated($assignment))`) pada channel `class.{class_id}` saat tugas baru dibuat.
+- Blade Views Tabler UI di `resources/views/admin/assignments/`: `index.blade.php`, `create.blade.php`, `edit.blade.php`.
+- Feature Test `tests/Feature/Admin/AssignmentCrudTest.php` untuk memverifikasi pembuatan tugas, validasi otorisasi mata pelajaran guru, penyiaran event realtime `assignment.created`, dan proteksi role siswa.
+
+### Diubah
+- `routes/web.php`: Menambahkan rute resource `assignments` di dalam grup `/admin`.
+
 ## [Fase 9] Master — Materi CRUD + Broadcast Event — 2026-09-11
 
 ### Ditambahkan

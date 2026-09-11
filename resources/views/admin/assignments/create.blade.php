@@ -1,0 +1,92 @@
+<x-app-layout>
+    <x-slot name="header">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                {{ __('Buat Tugas Siswa Baru') }}
+            </h2>
+            <a href="{{ route('admin.assignments.index') }}" class="btn btn-outline-secondary btn-sm">
+                <i class="ti ti-arrow-left me-1"></i> Kembali
+            </a>
+        </div>
+    </x-slot>
+
+    <!-- Include Bootstrap & Custom CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('template/be/assets/css/custom.css') }}">
+
+    <div class="py-6 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <form action="{{ route('admin.assignments.store') }}" method="POST">
+                        @csrf
+
+                        <div class="mb-3">
+                            <label for="title" class="form-label fw-semibold">Judul Tugas <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title') }}" required placeholder="Contoh: Tugas Mandiri Bab 1 Aljabar">
+                            @error('title')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label for="subject_id" class="form-label fw-semibold">Mata Pelajaran <span class="text-danger">*</span></label>
+                                <select class="form-select @error('subject_id') is-invalid @enderror" id="subject_id" name="subject_id" required>
+                                    <option value="">-- Pilih Mata Pelajaran --</option>
+                                    @foreach($subjects as $subject)
+                                        <option value="{{ $subject->id }}" {{ old('subject_id') == $subject->id ? 'selected' : '' }}>
+                                            {{ $subject->name }} ({{ $subject->code }})
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('subject_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="class_id" class="form-label fw-semibold">Kelas Target <span class="text-danger">*</span></label>
+                                <select class="form-select @error('class_id') is-invalid @enderror" id="class_id" name="class_id" required>
+                                    <option value="">-- Pilih Kelas --</option>
+                                    @foreach($classes as $class)
+                                        <option value="{{ $class->id }}" {{ old('class_id') == $class->id ? 'selected' : '' }}>
+                                            {{ $class->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('class_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="due_date" class="form-label fw-semibold">Batas Waktu Pengumpulan (Deadline) <span class="text-danger">*</span></label>
+                            <input type="datetime-local" class="form-control @error('due_date') is-invalid @enderror" id="due_date" name="due_date" value="{{ old('due_date') }}" required>
+                            @error('due_date')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label fw-semibold">Petunjuk / Deskripsi Tugas</label>
+                            <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="5" placeholder="Tuliskan petunjuk pengerjaan tugas di sini...">{{ old('description') }}</textarea>
+                            @error('description')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2 mt-4">
+                            <a href="{{ route('admin.assignments.index') }}" class="btn btn-light">Batal</a>
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="ti ti-device-floppy me-1"></i> Simpan Tugas & Broadcaster
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
