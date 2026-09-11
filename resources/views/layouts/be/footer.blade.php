@@ -58,7 +58,23 @@
   <!-- Global Auto-Dismiss Alerts -->
   <script>
   $(document).ready(function() {
-    // Auto-dismiss alerts: success/info setelah 4 detik, warning/danger setelah 7 detik
+    // Sembunyikan alert yang sudah pernah ditutup (data-alert-id disimpan di localStorage)
+    $('[data-alert-id]').each(function() {
+      var alertId = $(this).data('alert-id');
+      if (localStorage.getItem('alert_dismissed_' + alertId)) {
+        $(this).remove();
+      }
+    });
+
+    // Saat tombol X diklik pada alert dengan data-alert-id, simpan ke localStorage
+    $(document).on('click', '[data-alert-id] .btn-close', function() {
+      var alertId = $(this).closest('[data-alert-id]').data('alert-id');
+      if (alertId) {
+        localStorage.setItem('alert_dismissed_' + alertId, '1');
+      }
+    });
+
+    // Auto-dismiss semua alert biasa (session flash): success/info 4 detik, warning/danger 7 detik
     $('.alert').each(function() {
       var $alert = $(this);
       var delay = ($alert.hasClass('alert-warning') || $alert.hasClass('alert-danger')) ? 7000 : 4000;
