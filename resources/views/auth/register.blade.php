@@ -32,7 +32,7 @@
                     <label class="form-label" for="class_id">{{ __('Kelas') }}</label>
                     <div class="input-group">
                         <span class="input-group-text bg-transparent border-end-0 text-muted-custom"><i class="ti ti-school"></i></span>
-                        <select id="class_id" class="form-select border-start-2 ps-2 @error('class_id') is-invalid @enderror" name="class_id" required>
+                        <select id="class_id" class="form-select select2 border-start-2 ps-2 @error('class_id') is-invalid @enderror" name="class_id" required>
                             <option value="" disabled {{ old('class_id') ? '' : 'selected' }}>-- Pilih Kelas --</option>
                             @foreach($classes as $class)
                                 <option value="{{ $class->id }}" {{ old('class_id') == $class->id ? 'selected' : '' }}>{{ $class->name }}</option>

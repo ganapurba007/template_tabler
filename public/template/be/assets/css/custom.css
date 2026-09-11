@@ -952,3 +952,55 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 .btn, .sidebar-nav-link {
   min-height: 36px;
 }
+
+/* ==========================================================================
+   Select2 Bootstrap 5 Theme Dark Mode & Custom Polish
+   ========================================================================== */
+.select2-container--bootstrap-5 .select2-selection {
+  background-color: var(--tblr-surface-bg) !important;
+  border-color: var(--tblr-border-color) !important;
+  color: var(--tblr-body-color) !important;
+  border-radius: 0.5rem !important;
+  min-height: 38px !important;
+  padding-top: 2px !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered {
+  color: var(--tblr-body-color) !important;
+  padding-left: 0.5rem !important;
+}
+
+.select2-container--bootstrap-5 .select2-dropdown {
+  background-color: var(--tblr-surface-bg) !important;
+  border-color: var(--tblr-border-color) !important;
+  color: var(--tblr-body-color) !important;
+  box-shadow: var(--tblr-shadow);
+  border-radius: 0.5rem !important;
+}
+
+.select2-container--bootstrap-5 .select2-search__field {
+  background-color: var(--tblr-surface-bg) !important;
+  border-color: var(--tblr-border-color) !important;
+  color: var(--tblr-body-color) !important;
+  border-radius: 0.375rem !important;
+}
+
+.select2-container--bootstrap-5 .select2-results__option {
+  color: var(--tblr-body-color) !important;
+  padding: 8px 12px;
+  font-size: 0.875rem;
+}
+
+.select2-container--bootstrap-5 .select2-results__option--highlighted[aria-selected] {
+  background-color: var(--tblr-primary) !important;
+  color: #ffffff !important;
+}
+
+.select2-container--bootstrap-5 .select2-results__option[aria-selected="true"] {
+  background-color: var(--tblr-primary-light) !important;
+  color: var(--tblr-primary) !important;
+}
+
+[data-theme="dark"] .select2-container--bootstrap-5 .select2-selection__placeholder {
+  color: var(--tblr-text-muted) !important;
+}

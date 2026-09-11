@@ -20,7 +20,7 @@
         <form method="GET" action="{{ route('admin.submissions.index') }}" class="row g-3 align-items-center">
             <div class="col-md-8">
                 <label class="form-label small fw-bold">Filter Berdasarkan Tugas</label>
-                <select name="assignment_id" class="form-select" onchange="this.form.submit()">
+                <select name="assignment_id" class="form-select select2" onchange="this.form.submit()">
                     <option value="">-- Semua Tugas Siswa --</option>
                     @foreach($assignments as $asg)
                         <option value="{{ $asg->id }}" {{ request('assignment_id') == $asg->id ? 'selected' : '' }}>

@@ -12,7 +12,7 @@
                     <form method="GET" action="{{ route('admin.reports.index') }}" class="row g-3 align-items-center">
                         <div class="col-md-5">
                             <label class="form-label small fw-bold">Pilih Kelas</label>
-                            <select name="class_id" class="form-select" onchange="this.form.submit()">
+                            <select name="class_id" class="form-select select2" onchange="this.form.submit()">
                                 <option value="">-- Semua Kelas --</option>
                                 @foreach($classes as $c)
                                     <option value="{{ $c->id }}" {{ $selectedClassId == $c->id ? 'selected' : '' }}>
@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-md-5">
                             <label class="form-label small fw-bold">Pilih Mata Pelajaran (Opsional)</label>
-                            <select name="subject_id" class="form-select" onchange="this.form.submit()">
+                            <select name="subject_id" class="form-select select2" onchange="this.form.submit()">
                                 <option value="">-- Semua Mata Pelajaran --</option>
                                 @foreach($subjects as $s)
                                     <option value="{{ $s->id }}" {{ $selectedSubjectId == $s->id ? 'selected' : '' }}>

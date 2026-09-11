@@ -45,7 +45,7 @@
 
                     <div class="mb-3">
                         <label for="role_id" class="form-label fw-semibold">Role <span class="text-danger">*</span></label>
-                        <select id="role_id" name="role_id" class="form-select @error('role_id') is-invalid @enderror" required>
+                        <select id="role_id" name="role_id" class="form-select select2 @error('role_id') is-invalid @enderror" required>
                             @foreach($roles as $role)
                                 <option value="{{ $role->id }}" {{ old('role_id', $user->role_id) == $role->id ? 'selected' : '' }}>
                                     {{ ucfirst($role->name) }}
@@ -59,7 +59,7 @@
 
                     <div class="mb-4">
                         <label for="class_id" class="form-label fw-semibold">Kelas Siswa</label>
-                        <select id="class_id" name="class_id" class="form-select @error('class_id') is-invalid @enderror">
+                        <select id="class_id" name="class_id" class="form-select select2 @error('class_id') is-invalid @enderror">
                             <option value="">-- Tanpa Kelas (Guru / Staf) --</option>
                             @foreach($classes as $class)
                                 <option value="{{ $class->id }}" {{ old('class_id', $user->class_id) == $class->id ? 'selected' : '' }}>

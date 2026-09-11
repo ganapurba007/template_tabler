@@ -28,7 +28,7 @@
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label for="subject_id" class="form-label fw-semibold">Mata Pelajaran <span class="text-danger">*</span></label>
-                            <select class="form-select @error('subject_id') is-invalid @enderror" id="subject_id" name="subject_id" required>
+                            <select class="form-select select2 @error('subject_id') is-invalid @enderror" id="subject_id" name="subject_id" required>
                                 <option value="">-- Pilih Mata Pelajaran --</option>
                                 @foreach($subjects as $subject)
                                     <option value="{{ $subject->id }}" {{ old('subject_id') == $subject->id ? 'selected' : '' }}>
@@ -43,7 +43,7 @@
 
                         <div class="col-md-6">
                             <label for="class_id" class="form-label fw-semibold">Kelas Target <span class="text-danger">*</span></label>
-                            <select class="form-select @error('class_id') is-invalid @enderror" id="class_id" name="class_id" required>
+                            <select class="form-select select2 @error('class_id') is-invalid @enderror" id="class_id" name="class_id" required>
                                 <option value="">-- Pilih Kelas --</option>
                                 @foreach($classes as $class)
                                     <option value="{{ $class->id }}" {{ old('class_id') == $class->id ? 'selected' : '' }}>
@@ -60,7 +60,7 @@
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label for="content_type" class="form-label fw-semibold">Tipe Konten Materi <span class="text-danger">*</span></label>
-                            <select class="form-select @error('content_type') is-invalid @enderror" id="content_type" name="content_type" required onchange="toggleContentTypeFields()">
+                            <select class="form-select select2 @error('content_type') is-invalid @enderror" id="content_type" name="content_type" required onchange="toggleContentTypeFields()">
                                 <option value="text" {{ old('content_type', 'text') == 'text' ? 'selected' : '' }}>Teks / HTML</option>
                                 <option value="document" {{ old('content_type') == 'document' ? 'selected' : '' }}>Upload Dokumen (PDF, Word, Zip, dll)</option>
                                 <option value="youtube" {{ old('content_type') == 'youtube' ? 'selected' : '' }}>Video YouTube (Embed Link)</option>

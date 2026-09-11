@@ -29,7 +29,7 @@
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label for="subject_id" class="form-label fw-semibold">Mata Pelajaran <span class="text-danger">*</span></label>
-                            <select class="form-select @error('subject_id') is-invalid @enderror" id="subject_id" name="subject_id" required>
+                            <select class="form-select select2 @error('subject_id') is-invalid @enderror" id="subject_id" name="subject_id" required>
                                 <option value="">-- Pilih Mata Pelajaran --</option>
                                 @foreach($subjects as $subject)
                                     <option value="{{ $subject->id }}" {{ old('subject_id', $assignment->subject_id) == $subject->id ? 'selected' : '' }}>
@@ -44,7 +44,7 @@
 
                         <div class="col-md-6">
                             <label for="class_id" class="form-label fw-semibold">Kelas Target <span class="text-danger">*</span></label>
-                            <select class="form-select @error('class_id') is-invalid @enderror" id="class_id" name="class_id" required>
+                            <select class="form-select select2 @error('class_id') is-invalid @enderror" id="class_id" name="class_id" required>
                                 <option value="">-- Pilih Kelas --</option>
                                 @foreach($classes as $class)
                                     <option value="{{ $class->id }}" {{ old('class_id', $assignment->class_id) == $class->id ? 'selected' : '' }}>

@@ -21,9 +21,47 @@
   <!-- ApexCharts CDN -->
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
+  <!-- Select2 JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
   <!-- Custom Scripts -->
   <script src="{{ asset('template/be/assets/js/theme-toggle.js') }}"></script>
   <script src="{{ asset('template/be/assets/js/sidebar.js') }}"></script>
+
+  <!-- Global Select2 Auto-Init (kelas: select2) -->
+  <script>
+  window.initSelect2 = function(targetSelector) {
+    if (!$.fn.select2) return;
+    
+    var $targets = targetSelector ? $(targetSelector) : $('.select2, select.select2');
+    $targets.each(function() {
+      var $el = $(this);
+      if ($el.hasClass('select2-hidden-accessible') || $el.data('no-select2')) {
+        return;
+      }
+
+      var placeholder = $el.attr('placeholder') || $el.find('option[value=""]').first().text() || 'Pilih...';
+      $el.select2({
+        theme: 'bootstrap-5',
+        width: $el.data('width') ? $el.data('width') : '100%',
+        placeholder: placeholder,
+        allowClear: $el.data('allow-clear') !== undefined ? $el.data('allow-clear') : true,
+        dropdownParent: $el.closest('.modal').length ? $el.closest('.modal') : $(document.body)
+      });
+    });
+  };
+
+  $(document).ready(function() {
+    window.initSelect2();
+
+    // Trigger onchange handler for form submits on select2 change
+    $(document).on('select2:select select2:unselect select2:clear', 'select.select2', function(e) {
+      if (typeof this.onchange === 'function') {
+        this.onchange();
+      }
+    });
+  });
+  </script>
 
   <!-- Global DataTable Auto-Init (kelas: data-table) -->
   <script>

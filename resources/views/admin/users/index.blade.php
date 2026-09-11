@@ -26,7 +26,7 @@
             </div>
 
             <div class="col-12 col-md-4">
-                <select name="role_id" class="form-select" onchange="this.form.submit()">
+                <select name="role_id" class="form-select select2" onchange="this.form.submit()">
                     <option value="">-- Semua Role --</option>
                     @foreach($roles as $role)
                         <option value="{{ $role->id }}" {{ request('role_id') == $role->id ? 'selected' : '' }}>{{ ucfirst($role->name) }}</option>
