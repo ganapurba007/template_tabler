@@ -1,0 +1,26 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('nip')->unique()->nullable()->after('email');
+            $table->foreignId('role_id')->nullable()->constrained('roles')->cascadeOnDelete()->after('password');
+            $table->foreignId('class_id')->nullable()->constrained('classes')->nullOnDelete()->after('role_id');
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['role_id']);
+            $table->dropForeign(['class_id']);
+            $table->dropColumn(['nip', 'role_id', 'class_id']);
+        });
+    }
+};
