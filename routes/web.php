@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AssignmentController;
 use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\QuestionBankController;
+use App\Http\Controllers\Admin\QuizController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SchoolClassController;
 use App\Http\Controllers\Admin\SubjectController;
@@ -45,6 +46,12 @@ Route::middleware(['auth', 'role:guru'])->prefix('admin')->as('admin.')->group(f
 
     // Master Tugas CRUD
     Route::resource('assignments', AssignmentController::class);
+
+    // Master Kuis CRUD & Question Management
+    Route::resource('quizzes', QuizController::class);
+    Route::post('quizzes/{quiz}/import-questions', [QuizController::class, 'importQuestions'])->name('quizzes.import-questions');
+    Route::post('quizzes/{quiz}/questions', [QuizController::class, 'storeQuestion'])->name('quizzes.store-question');
+    Route::delete('quizzes/{quiz}/questions/{question}', [QuizController::class, 'destroyQuestion'])->name('quizzes.destroy-question');
 });
 
 // Profile Routes

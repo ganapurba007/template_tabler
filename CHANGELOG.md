@@ -2,6 +2,21 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 11] Master — Kuis CRUD & Question Management — 2026-09-11
+
+### Ditambahkan
+- `QuizController` (`app/Http/Controllers/Admin/QuizController.php`) untuk pengelolaan CRUD Kuis Evaluasi (Judul, Durasi Pengerjaan, Poin per Soal, Batas Waktu/Deadline, Mata Pelajaran, dan Kelas Target).
+- Fitur Pengelolaan Soal Kuis:
+  - Impor batch dari Bank Soal (`importQuestions`) beserta opsi & kunci jawaban.
+  - Penambahan soal manual khusus kuis (`storeQuestion`) dan opsi dinamis.
+  - Penghapusan soal kuis (`destroyQuestion`).
+- Proteksi otorisasi mata pelajaran: Guru hanya dapat membuat/mengubah kuis pada mata pelajaran yang diampunya (`subject_user`).
+- Blade Views Tabler UI di `resources/views/admin/quizzes/`: `index.blade.php`, `create.blade.php`, `edit.blade.php`, `show.blade.php`.
+- Feature Test `tests/Feature/Admin/QuizCrudTest.php` untuk memverifikasi pembuatan kuis, impor soal dari Bank Soal, penambahan/penghapusan soal manual, validasi otorisasi mata pelajaran, dan proteksi role siswa.
+
+### Diubah
+- `routes/web.php`: Menambahkan rute resource `quizzes` serta rute penanganan `import-questions`, `questions`, dan `destroy-question` di dalam grup `/admin`.
+
 ## [Fase 10] Master — Tugas CRUD + Broadcast Event — 2026-09-11
 
 ### Ditambahkan
