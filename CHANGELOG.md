@@ -2,6 +2,16 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 4] Master — Role CRUD — 2026-09-11
+
+### Ditambahkan
+- `RoleController` (`app/Http/Controllers/Admin/RoleController.php`) dengan fungsi CRUD lengkap untuk pengelolaan role pengguna.
+- Blade Views Tabler UI di `resources/views/admin/roles/`: `index.blade.php`, `create.blade.php`, `edit.blade.php`.
+- Feature Test `tests/Feature/Admin/RoleCrudTest.php` untuk menguji daftar role, penambahan role unik, pengeditan, proteksi role sistem (`guru`/`siswa`), dan pembatasan akses siswa.
+
+### Diubah
+- `routes/web.php`: Menambahkan rute resource `roles` di dalam grup `/admin`.
+
 ## [Fase 3] Pusher & Echo Setup — 2026-09-11
 
 ### Ditambahkan
