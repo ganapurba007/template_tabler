@@ -2,6 +2,20 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 25] Replacement of Plain White Backgrounds with Warm Light Theme (#F2EFE7) & Footer Social Media Icon Styling — 2026-09-11
+
+### Ditambahkan & Diperbarui
+- **Penggantian Warna Latar Belakang Putih dengan `#F2EFE7`**:
+  - `public/css/theme-custom.css`: Mengubah `.arsha-header`, `.arsha-icon-box`, `.arsha-course-card`, dan `.mobile-bottom-nav` dari latar polos putih menjadi warna warm light `#F2EFE7`.
+  - `resources/views/layouts/navigation.blade.php`: Mengganti `bg-white` pada header navbar container, dropdown user button, dan mobile menu container dengan `style="background-color: #F2EFE7;"`.
+  - `resources/views/layouts/app.blade.php`: Mengganti `bg-white` pada header halaman dan Pre-footer CTA card dengan `style="background-color: #F2EFE7;"`.
+  - `resources/views/dashboard.blade.php`: Mengganti seluruh kartu komponen, search box, floating glassmorphism badges, filter mapel pills, dan kontainer kuis/tugas dari `bg-white` & `bg-light` menjadi `#F2EFE7`.
+- **Rapikan & Beautify Ikon Media Sosial Footer (`layouts/app.blade.php` & `theme-custom.css`)**:
+  - Dibuatkan styling tombol bundar khusus `.social-icon-btn` untuk Instagram, YouTube, Discord, dan WhatsApp dengan animasi hover lifting, glow shadows, dan gradien warna resmi tiap platform.
+
+### Diuji & Diverifikasi
+- Seluruh 111 PHPUnit feature tests passed (100% PASS).
+
 ## [Fase 24] Dedicated Laptop Header Display, Micro-Animations & Arsha Footer Overhaul — 2026-09-11
 
 ### Ditambahkan & Diperbarui

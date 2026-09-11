@@ -32,7 +32,7 @@
 
             <!-- Page Heading -->
             @isset($header)
-                <header class="bg-white shadow-sm border-b" style="border-color: rgba(102, 163, 191, 0.2);">
+                <header class="shadow-sm border-b" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.2);">
                     <div class="max-w-7xl mx-auto py-5 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
@@ -52,7 +52,7 @@
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 position-relative z-10">
                     <div class="row align-items-center g-4">
                         <div class="col-lg-7 text-center text-lg-start">
-                            <span class="badge bg-white text-primary font-bold px-3 py-2 rounded-pill shadow-sm mb-3 d-inline-block" style="color: #3368A0 !important;">
+                            <span class="badge text-primary font-bold px-3 py-2 rounded-pill shadow-sm mb-3 d-inline-block" style="background-color: #F2EFE7; color: #3368A0 !important;">
                                 <i class="ti ti-flame text-warning me-1"></i> GABUNG KOMUNITAS BELAJAR SMA
                             </span>
                             <h2 class="display-6 fw-extrabold mb-3 text-white" style="font-family: 'Jost', sans-serif;">
@@ -74,7 +74,7 @@
                             </div>
                         </div>
                         <div class="col-lg-5 text-center text-lg-end">
-                            <div class="p-4 rounded-4 bg-white text-dark shadow-2xl border max-w-md mx-auto ms-lg-auto" style="backdrop-filter: blur(10px);">
+                            <div class="p-4 rounded-4 text-dark shadow-2xl border max-w-md mx-auto ms-lg-auto" style="background-color: #F2EFE7; backdrop-filter: blur(10px);">
                                 <h5 class="fw-bold mb-2 text-dark" style="font-family: 'Jost', sans-serif;">Mulai Belajar Hari Ini</h5>
                                 <p class="text-muted small mb-3">Pilih modul materi pilihanmu atau uji kemampuan melalui kuis online.</p>
                                 <div class="d-grid gap-2">
@@ -103,23 +103,23 @@
                                 </div>
                                 <span class="arsha-sitename text-white" style="font-size: 1.5rem; letter-spacing: 1px;">ARSHA <span style="color: #66A3BF;">LMS</span></span>
                             </div>
-                            <p class="small text-slate-400 pe-lg-4 mb-4">
+                            <p class="small text-slate-400 pe-lg-4 mb-3">
                                 Platform E-Learning SMA terpadu untuk mengakses modul materi interaktif, mengumpulkan tugas kelas, dan mengikuti kuis online dengan pengalaman belajar yang menyenangkan.
                             </p>
 
-                            <!-- Animated Social Media Badges -->
-                            <div class="d-flex align-items-center gap-2">
-                                <a href="#" class="btn btn-sm btn-outline-light rounded-circle flex items-center justify-center p-0 transition hover-lift" style="width: 38px; height: 38px; border-color: rgba(255,255,255,0.2);">
-                                    <i class="ti ti-brand-instagram fs-5 text-warning"></i>
+                            <!-- Tidy & Beautiful Social Media Badges -->
+                            <div class="d-flex align-items-center gap-2.5 mt-3">
+                                <a href="#" class="social-icon-btn instagram" title="Instagram">
+                                    <i class="ti ti-brand-instagram"></i>
                                 </a>
-                                <a href="#" class="btn btn-sm btn-outline-light rounded-circle flex items-center justify-center p-0 transition hover-lift" style="width: 38px; height: 38px; border-color: rgba(255,255,255,0.2);">
-                                    <i class="ti ti-brand-youtube fs-5 text-danger"></i>
+                                <a href="#" class="social-icon-btn youtube" title="YouTube">
+                                    <i class="ti ti-brand-youtube"></i>
                                 </a>
-                                <a href="#" class="btn btn-sm btn-outline-light rounded-circle flex items-center justify-center p-0 transition hover-lift" style="width: 38px; height: 38px; border-color: rgba(255,255,255,0.2);">
-                                    <i class="ti ti-brand-discord fs-5 text-info"></i>
+                                <a href="#" class="social-icon-btn discord" title="Discord">
+                                    <i class="ti ti-brand-discord"></i>
                                 </a>
-                                <a href="#" class="btn btn-sm btn-outline-light rounded-circle flex items-center justify-center p-0 transition hover-lift" style="width: 38px; height: 38px; border-color: rgba(255,255,255,0.2);">
-                                    <i class="ti ti-brand-whatsapp fs-5 text-success"></i>
+                                <a href="#" class="social-icon-btn whatsapp" title="WhatsApp">
+                                    <i class="ti ti-brand-whatsapp"></i>
                                 </a>
                             </div>
                         </div>

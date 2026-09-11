@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="edusite-header arsha-header sticky-top bg-white border-bottom shadow-sm">
+<nav x-data="{ open: false }" class="edusite-header arsha-header sticky-top border-bottom shadow-sm" style="background-color: #F2EFE7;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-20 items-center">
             
@@ -17,25 +17,25 @@
 
             <!-- Middle: Main Menu Navigation Links (ALWAYS Visible on Laptop/Desktop - GUARANTEED NO HAMBURGER) -->
             <div class="arsha-nav-desktop items-center space-x-1 lg:space-x-2">
-                <a href="{{ route('dashboard') }}" class="text-xs lg:text-sm font-bold text-decoration-none px-3 py-2 rounded-full transition flex items-center gap-1.5 {{ request()->routeIs('dashboard') ? 'text-white' : 'text-gray-700 hover:text-primary hover:bg-gray-100' }}" style="{{ request()->routeIs('dashboard') ? 'background-color: #3368A0; color: #ffffff !important;' : '' }}">
+                <a href="{{ route('dashboard') }}" class="text-xs lg:text-sm font-bold text-decoration-none px-3 py-2 rounded-full transition flex items-center gap-1.5 {{ request()->routeIs('dashboard') ? 'text-white' : 'text-gray-700 hover:text-primary' }}" style="{{ request()->routeIs('dashboard') ? 'background-color: #3368A0; color: #ffffff !important;' : '' }}">
                     <i class="ti ti-smart-home text-base"></i>
                     <span>Dashboard</span>
                 </a>
 
                 @if(Auth::user() && Auth::user()->isSiswa())
-                    <a href="{{ route('student.materials.index') }}" class="text-xs lg:text-sm font-bold text-decoration-none px-3 py-2 rounded-full transition flex items-center gap-1.5 {{ request()->routeIs('student.materials.*') ? 'text-white' : 'text-gray-700 hover:text-primary hover:bg-gray-100' }}" style="{{ request()->routeIs('student.materials.*') ? 'background-color: #3368A0; color: #ffffff !important;' : '' }}">
+                    <a href="{{ route('student.materials.index') }}" class="text-xs lg:text-sm font-bold text-decoration-none px-3 py-2 rounded-full transition flex items-center gap-1.5 {{ request()->routeIs('student.materials.*') ? 'text-white' : 'text-gray-700 hover:text-primary' }}" style="{{ request()->routeIs('student.materials.*') ? 'background-color: #3368A0; color: #ffffff !important;' : '' }}">
                         <i class="ti ti-book-2 text-base"></i>
                         <span>Courses / Materi</span>
                     </a>
-                    <a href="{{ route('student.assignments.index') }}" class="text-xs lg:text-sm font-bold text-decoration-none px-3 py-2 rounded-full transition flex items-center gap-1.5 {{ request()->routeIs('student.assignments.*') ? 'text-white' : 'text-gray-700 hover:text-primary hover:bg-gray-100' }}" style="{{ request()->routeIs('student.assignments.*') ? 'background-color: #3368A0; color: #ffffff !important;' : '' }}">
+                    <a href="{{ route('student.assignments.index') }}" class="text-xs lg:text-sm font-bold text-decoration-none px-3 py-2 rounded-full transition flex items-center gap-1.5 {{ request()->routeIs('student.assignments.*') ? 'text-white' : 'text-gray-700 hover:text-primary' }}" style="{{ request()->routeIs('student.assignments.*') ? 'background-color: #3368A0; color: #ffffff !important;' : '' }}">
                         <i class="ti ti-clipboard-list text-base"></i>
                         <span>Tugas Kelas</span>
                     </a>
-                    <a href="{{ route('student.quizzes.index') }}" class="text-xs lg:text-sm font-bold text-decoration-none px-3 py-2 rounded-full transition flex items-center gap-1.5 {{ request()->routeIs('student.quizzes.*') ? 'text-white' : 'text-gray-700 hover:text-primary hover:bg-gray-100' }}" style="{{ request()->routeIs('student.quizzes.*') ? 'background-color: #3368A0; color: #ffffff !important;' : '' }}">
+                    <a href="{{ route('student.quizzes.index') }}" class="text-xs lg:text-sm font-bold text-decoration-none px-3 py-2 rounded-full transition flex items-center gap-1.5 {{ request()->routeIs('student.quizzes.*') ? 'text-white' : 'text-gray-700 hover:text-primary' }}" style="{{ request()->routeIs('student.quizzes.*') ? 'background-color: #3368A0; color: #ffffff !important;' : '' }}">
                         <i class="ti ti-help-hexagon text-base"></i>
                         <span>Kuis Online</span>
                     </a>
-                    <a href="{{ route('student.report.index') }}" class="text-xs lg:text-sm font-bold text-decoration-none px-3 py-2 rounded-full transition flex items-center gap-1.5 {{ request()->routeIs('student.report.*') ? 'text-white' : 'text-gray-700 hover:text-primary hover:bg-gray-100' }}" style="{{ request()->routeIs('student.report.*') ? 'background-color: #3368A0; color: #ffffff !important;' : '' }}">
+                    <a href="{{ route('student.report.index') }}" class="text-xs lg:text-sm font-bold text-decoration-none px-3 py-2 rounded-full transition flex items-center gap-1.5 {{ request()->routeIs('student.report.*') ? 'text-white' : 'text-gray-700 hover:text-primary' }}" style="{{ request()->routeIs('student.report.*') ? 'background-color: #3368A0; color: #ffffff !important;' : '' }}">
                         <i class="ti ti-chart-dots text-base"></i>
                         <span>Laporan Diri</span>
                     </a>
@@ -46,7 +46,7 @@
             <div class="arsha-nav-desktop items-center gap-3">
                 <!-- Notification Indicator Icon -->
                 <div class="relative">
-                    <button class="p-2 rounded-full text-gray-500 hover:text-primary hover:bg-gray-100 focus:outline-none transition relative pulse-glow">
+                    <button class="p-2 rounded-full text-gray-500 hover:text-primary focus:outline-none transition relative pulse-glow">
                         <i class="ti ti-bell fs-5"></i>
                         <span class="position-absolute top-1 end-1 p-1 bg-danger border border-light rounded-circle">
                             <span class="visually-hidden">Notifikasi Baru</span>
@@ -62,7 +62,7 @@
 
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3.5 py-1.5 border border-gray-200 text-sm font-bold rounded-full text-gray-700 bg-white hover:bg-gray-50 focus:outline-none transition shadow-sm gap-2">
+                        <button class="inline-flex items-center px-3.5 py-1.5 border border-gray-300 text-sm font-bold rounded-full text-gray-700 hover:bg-gray-200 focus:outline-none transition shadow-sm gap-2" style="background-color: #F2EFE7;">
                             <div class="rounded-circle text-white flex items-center justify-center font-bold shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 32px; height: 32px; font-size: 0.85rem;">
                                 {{ strtoupper(substr(Auth::user()->name ?? 'U', 0, 2)) }}
                             </div>
@@ -103,7 +103,7 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden md:hidden border-t border-gray-200 shadow-lg" style="background-color: #F2EFE7;">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 <i class="ti ti-smart-home me-2"></i> Home / Dashboard

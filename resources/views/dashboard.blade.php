@@ -14,7 +14,7 @@
             </div>
             
             <div class="d-flex align-items-center gap-2">
-                <span class="badge bg-white text-dark shadow-sm px-3 py-2 rounded-pill border d-inline-flex align-items-center gap-1.5" style="color: #3368A0 !important; font-size: 0.85rem;">
+                <span class="badge text-dark shadow-sm px-3 py-2 rounded-pill border d-inline-flex align-items-center gap-1.5" style="background-color: #F2EFE7; color: #3368A0 !important; font-size: 0.85rem; border-color: rgba(102, 163, 191, 0.3) !important;">
                     <i class="ti ti-school text-primary"></i> Kelas: <strong class="text-dark">{{ $user->schoolClass->name ?? 'Siswa SMA' }}</strong>
                 </span>
                 <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-3 py-2 rounded-pill d-inline-flex align-items-center gap-1" style="font-size: 0.85rem;">
@@ -35,7 +35,7 @@
             <div class="row align-items-center g-5">
                 <div class="col-lg-6 d-flex flex-column justify-content-center text-center text-lg-start">
                     <div class="mb-3" data-aos="fade-up" data-aos-delay="150">
-                        <span class="badge bg-white text-primary fw-bold px-3 py-2 rounded-pill shadow-sm" style="color: #3368A0 !important;">
+                        <span class="badge text-primary font-bold px-3 py-2 rounded-pill shadow-sm" style="background-color: #F2EFE7; color: #3368A0 !important;">
                             <i class="ti ti-sparkles text-warning me-1"></i> LMS SMA DANI — PORTAL BELAJAR MODERN
                         </span>
                     </div>
@@ -49,7 +49,7 @@
                     </p>
 
                     <!-- Quick Search Bar inside Hero -->
-                    <div class="bg-white p-2 rounded-pill shadow-lg mb-4 d-flex align-items-center max-w-lg mx-auto mx-lg-0" data-aos="fade-up" data-aos-delay="350">
+                    <div class="p-2 rounded-pill shadow-lg mb-4 d-flex align-items-center max-w-lg mx-auto mx-lg-0 border" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.3) !important;" data-aos="fade-up" data-aos-delay="350">
                         <i class="ti ti-search text-muted fs-4 ms-3 me-2"></i>
                         <input type="text" class="form-borderless form-control shadow-none bg-transparent text-dark" placeholder="Cari modul materi, tugas, atau kuis..." style="border: none;">
                         <a href="{{ route('student.materials.index') }}" class="btn text-white rounded-pill px-4 py-2 font-bold shrink-0 text-decoration-none" style="background-color: #3368A0;">
@@ -71,10 +71,10 @@
                 <div class="col-lg-6 text-center text-lg-end" data-aos="zoom-in" data-aos-delay="200">
                     <div class="position-relative d-inline-block">
                         <!-- High Quality SMA Learning Image -->
-                        <img src="{{ asset('images/hero-sma.jpg') }}" alt="Siswa SMA Belajar Interaktif" class="img-fluid rounded-4 shadow-2xl border-4 border-white" style="max-height: 380px; object-fit: cover; width: 100%;">
+                        <img src="{{ asset('images/hero-sma.jpg') }}" alt="Siswa SMA Belajar Interaktif" class="img-fluid rounded-4 shadow-2xl border-4" style="border-color: #F2EFE7; max-height: 380px; object-fit: cover; width: 100%;">
                         
                         <!-- Floating Glassmorphism Badge 1: Top Right -->
-                        <div class="position-absolute top-0 end-0 translate-middle-y me-n3 bg-white p-3 rounded-3 shadow-lg d-flex align-items-center gap-3 border" style="max-width: 220px; text-align: left;" data-aos="fade-left" data-aos-delay="500">
+                        <div class="position-absolute top-0 end-0 translate-middle-y me-n3 p-3 rounded-3 shadow-lg d-flex align-items-center gap-3 border" style="background-color: #F2EFE7; max-width: 220px; text-align: left; border-color: rgba(102, 163, 191, 0.3) !important;" data-aos="fade-left" data-aos-delay="500">
                             <div class="rounded-circle text-white flex items-center justify-center p-2 shrink-0" style="background-color: #10B981; width: 40px; height: 40px;">
                                 <i class="ti ti-circle-check fs-4"></i>
                             </div>
@@ -85,7 +85,7 @@
                         </div>
 
                         <!-- Floating Glassmorphism Badge 2: Bottom Left -->
-                        <div class="position-absolute bottom-0 start-0 translate-middle-y ms-n3 bg-white p-3 rounded-3 shadow-lg d-flex align-items-center gap-3 border" style="max-width: 230px; text-align: left;" data-aos="fade-right" data-aos-delay="600">
+                        <div class="position-absolute bottom-0 start-0 translate-middle-y ms-n3 p-3 rounded-3 shadow-lg d-flex align-items-center gap-3 border" style="background-color: #F2EFE7; max-width: 230px; text-align: left; border-color: rgba(102, 163, 191, 0.3) !important;" data-aos="fade-right" data-aos-delay="600">
                             <div class="rounded-circle text-white flex items-center justify-center p-2 shrink-0" style="background-color: #3368A0; width: 40px; height: 40px;">
                                 <i class="ti ti-award fs-4 text-warning"></i>
                             </div>
@@ -115,19 +115,19 @@
                 <a href="{{ route('student.materials.index') }}" class="btn btn-primary rounded-pill px-4 py-2 font-bold shadow-sm d-inline-flex align-items-center gap-2 text-decoration-none">
                     <i class="ti ti-layout-grid fs-5"></i> Semua Mapel
                 </a>
-                <a href="{{ route('student.materials.index') }}" class="btn bg-white text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none">
+                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none" style="background-color: #F2EFE7;">
                     <i class="ti ti-calculator text-danger fs-5"></i> Matematika
                 </a>
-                <a href="{{ route('student.materials.index') }}" class="btn bg-white text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none">
+                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none" style="background-color: #F2EFE7;">
                     <i class="ti ti-atom text-info fs-5"></i> Fisika & IPA
                 </a>
-                <a href="{{ route('student.materials.index') }}" class="btn bg-white text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none">
+                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none" style="background-color: #F2EFE7;">
                     <i class="ti ti-dna text-success fs-5"></i> Biologi
                 </a>
-                <a href="{{ route('student.materials.index') }}" class="btn bg-white text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none">
+                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none" style="background-color: #F2EFE7;">
                     <i class="ti ti-language text-purple fs-5" style="color: #8b5cf6;"></i> Bahasa Inggris
                 </a>
-                <a href="{{ route('student.materials.index') }}" class="btn bg-white text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none">
+                <a href="{{ route('student.materials.index') }}" class="btn text-dark border hover-shadow rounded-pill px-4 py-2 font-semibold d-inline-flex align-items-center gap-2 text-decoration-none" style="background-color: #F2EFE7;">
                     <i class="ti ti-device-laptop text-warning fs-5"></i> Informatika & TIK
                 </a>
             </div>
@@ -142,7 +142,7 @@
 
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                    <div class="arsha-icon-box h-100 p-4 border rounded-4 bg-white shadow-sm hover-shadow transition-all text-center">
+                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-shadow transition-all text-center" style="background-color: #F2EFE7;">
                         <div class="icon-wrapper mx-auto mb-3 text-white rounded-circle flex items-center justify-center p-3 shadow" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 60px; height: 60px;">
                             <i class="ti ti-book-2 fs-2"></i>
                         </div>
@@ -152,7 +152,7 @@
                 </div>
 
                 <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                    <div class="arsha-icon-box h-100 p-4 border rounded-4 bg-white shadow-sm hover-shadow transition-all text-center">
+                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-shadow transition-all text-center" style="background-color: #F2EFE7;">
                         <div class="icon-wrapper mx-auto mb-3 text-white rounded-circle flex items-center justify-center p-3 shadow" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); width: 60px; height: 60px;">
                             <i class="ti ti-pencil fs-2"></i>
                         </div>
@@ -162,7 +162,7 @@
                 </div>
 
                 <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                    <div class="arsha-icon-box h-100 p-4 border rounded-4 bg-white shadow-sm hover-shadow transition-all text-center">
+                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-shadow transition-all text-center" style="background-color: #F2EFE7;">
                         <div class="icon-wrapper mx-auto mb-3 text-white rounded-circle flex items-center justify-center p-3 shadow" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); width: 60px; height: 60px;">
                             <i class="ti ti-clock-play fs-2"></i>
                         </div>
@@ -172,7 +172,7 @@
                 </div>
 
                 <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
-                    <div class="arsha-icon-box h-100 p-4 border rounded-4 bg-white shadow-sm hover-shadow transition-all text-center">
+                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-shadow transition-all text-center" style="background-color: #F2EFE7;">
                         <div class="icon-wrapper mx-auto mb-3 text-white rounded-circle flex items-center justify-center p-3 shadow" style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); width: 60px; height: 60px;">
                             <i class="ti ti-chart-dots fs-2"></i>
                         </div>
@@ -201,7 +201,7 @@
                             </a>
                         </div>
                         <div class="col-lg-7 text-center">
-                            <img src="{{ asset('images/quiz-achievement.jpg') }}" alt="Prestasi Kuis Siswa SMA" class="img-fluid rounded-4 shadow-md border-3 border-white" style="max-height: 320px; width: 100%; object-fit: cover;">
+                            <img src="{{ asset('images/quiz-achievement.jpg') }}" alt="Prestasi Kuis Siswa SMA" class="img-fluid rounded-4 shadow-md border-3" style="border-color: #F2EFE7; max-height: 320px; width: 100%; object-fit: cover;">
                         </div>
                     </div>
                 </div>
@@ -218,10 +218,10 @@
             <div class="row g-4">
                 @forelse($materials as $mat)
                     <div class="col-12 col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="card h-100 border-0 rounded-4 shadow-sm hover-shadow transition-all overflow-hidden d-flex flex-column justify-content-between bg-white">
+                        <div class="card h-100 border rounded-4 shadow-sm hover-shadow transition-all overflow-hidden d-flex flex-column justify-content-between" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.25) !important;">
                             <div>
                                 <div class="p-4 text-white position-relative" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); min-height: 120px;">
-                                    <span class="badge bg-white text-primary font-bold px-3 py-1.5 rounded-pill shadow-sm mb-2 d-inline-block">
+                                    <span class="badge text-primary font-bold px-3 py-1.5 rounded-pill shadow-sm mb-2 d-inline-block" style="background-color: #F2EFE7; color: #3368A0 !important;">
                                         <i class="ti ti-bookmark me-1"></i> {{ $mat->subject->name ?? 'Mata Pelajaran' }}
                                     </span>
                                     <h5 class="fw-bold text-white mb-0" style="font-family: 'Jost', sans-serif; font-size: 1.25rem;">{{ $mat->title }}</h5>
@@ -244,7 +244,7 @@
                     </div>
                 @empty
                     <div class="col-12">
-                        <div class="arsha-icon-box py-5 text-center text-muted bg-white rounded-4 border">
+                        <div class="arsha-icon-box py-5 text-center text-muted rounded-4 border" style="background-color: #F2EFE7;">
                             <i class="ti ti-notes-off fs-1 text-secondary mb-2 d-block"></i>
                             <h5>Belum ada materi untuk kelas Anda saat ini.</h5>
                         </div>
@@ -285,7 +285,7 @@
             
             <!-- Active Quizzes -->
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="bg-white p-4 rounded-4 border shadow-sm text-start h-100">
+                <div class="p-4 rounded-4 border shadow-sm text-start h-100" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.25) !important;">
                     <div class="d-flex align-items-center justify-content-between mb-4 border-bottom pb-3">
                         <h4 class="fw-bold text-dark m-0 d-flex align-items-center" style="font-family: 'Jost', sans-serif;">
                             <i class="ti ti-help-hexagon text-primary me-2 fs-3"></i> Kuis Online Aktif
@@ -295,7 +295,7 @@
 
                     <div class="d-flex flex-column gap-3">
                         @forelse($activeQuizzes as $qz)
-                            <div class="p-3 rounded-3 border bg-light shadow-sm d-flex align-items-center justify-content-between transition-all hover-shadow">
+                            <div class="p-3 rounded-3 border shadow-sm d-flex align-items-center justify-content-between transition-all hover-shadow" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.2) !important;">
                                 <div>
                                     <span class="badge text-white px-2.5 py-1 mb-1 me-2" style="background-color: #3368A0;">{{ $qz->subject->name ?? 'Kuis' }}</span>
                                     <h6 class="fw-bold text-dark mb-1">{{ $qz->title }}</h6>
@@ -320,7 +320,7 @@
 
             <!-- Upcoming Assignments -->
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="bg-white p-4 rounded-4 border shadow-sm text-start h-100">
+                <div class="p-4 rounded-4 border shadow-sm text-start h-100" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.25) !important;">
                     <div class="d-flex align-items-center justify-content-between mb-4 border-bottom pb-3">
                         <h4 class="fw-bold text-dark m-0 d-flex align-items-center" style="font-family: 'Jost', sans-serif;">
                             <i class="ti ti-notebook text-warning me-2 fs-3"></i> Tugas Perlu Dikumpulkan
@@ -330,7 +330,7 @@
 
                     <div class="d-flex flex-column gap-3">
                         @forelse($upcomingAssignments as $asg)
-                            <div class="p-3 rounded-3 border bg-light shadow-sm d-flex align-items-center justify-content-between transition-all hover-shadow">
+                            <div class="p-3 rounded-3 border shadow-sm d-flex align-items-center justify-content-between transition-all hover-shadow" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.2) !important;">
                                 <div>
                                     <span class="badge bg-warning text-dark px-2.5 py-1 mb-1 me-2">{{ $asg->subject->name ?? 'Tugas' }}</span>
                                     <h6 class="fw-bold text-dark mb-1">{{ $asg->title }}</h6>
