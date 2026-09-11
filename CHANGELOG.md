@@ -2,6 +2,18 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 9] Master — Materi CRUD + Broadcast Event — 2026-09-11
+
+### Ditambahkan
+- `MaterialController` (`app/Http/Controllers/Admin/MaterialController.php`) untuk pengelolaan CRUD Materi Pembelajaran (Teks/HTML, Dokumen Upload, dan Video YouTube).
+- Proteksi otorisasi mata pelajaran: Guru hanya dapat menambahkan/mengubah materi pada mata pelajaran yang diampunya (`subject_user`).
+- Dispatching Event Realtime `MaterialCreated` (`event(new MaterialCreated($material))`) pada channel `class.{class_id}` saat materi baru dibuat.
+- Blade Views Tabler UI di `resources/views/admin/materials/`: `index.blade.php`, `create.blade.php`, `edit.blade.php`.
+- Feature Test `tests/Feature/Admin/MaterialCrudTest.php` untuk memverifikasi pembuatan materi per tipe, pengunggahan berkas dokumen, validasi otorisasi mata pelajaran guru, penyiaran event realtime, dan proteksi role siswa.
+
+### Diubah
+- `routes/web.php`: Menambahkan rute resource `materials` di dalam grup `/admin`.
+
 ## [Fase 8] Master — Bank Soal CRUD — 2026-09-11
 
 ### Ditambahkan

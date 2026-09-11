@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\QuestionBankController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SchoolClassController;
@@ -37,6 +38,9 @@ Route::middleware(['auth', 'role:guru'])->prefix('admin')->as('admin.')->group(f
 
     // Master Bank Soal CRUD
     Route::resource('question-banks', QuestionBankController::class);
+
+    // Master Materi CRUD
+    Route::resource('materials', MaterialController::class);
 });
 
 // Profile Routes
