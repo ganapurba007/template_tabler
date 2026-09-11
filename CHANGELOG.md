@@ -2,6 +2,22 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 20] Polish & Audit Final — 2026-09-11
+
+### Ditambahkan
+- Final audit Eager Loading (`with()`) pada seluruh Controller untuk mencegah N+1 Query.
+- Verifikasi konsistensi UI Tabler Blade & Bootstrap 5 pada antarmuka admin, guru, dan siswa.
+- Full automated test suite (111 tests, 370 assertions) 100% PASS.
+
+## [Fase 19] Testing & Security Audit — 2026-09-11
+
+### Ditambahkan
+- Feature Test `tests/Feature/SecurityAuditTest.php` untuk memverifikasi:
+  - Resilience terhadap serangan SQL Injection pada parameter pencarian/filter query (`' OR '1'='1' --`).
+  - Pembersihan/Escaping XSS (`e()` dan `{!! nl2br(e(...)) !!}`) pada render diskusi dan materi.
+  - Otorisasi Role Middleware (`EnsureUserHasRole` & `role:guru`) yang mengisolasi rute admin dari siswa.
+  - Proteksi otentikasi Guest pada seluruh rute terlindungi (`/dashboard`, `/student/*`, `/admin/*`).
+
 ## [Fase 18] Student Profil & Laporan Diri — 2026-09-11
 
 ### Ditambahkan
