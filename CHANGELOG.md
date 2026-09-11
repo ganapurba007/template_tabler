@@ -2,6 +2,17 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 12] Admin Koreksi Tugas — 2026-09-11
+
+### Ditambahkan
+- `AssignmentSubmissionController` (`app/Http/Controllers/Admin/AssignmentSubmissionController.php`) untuk pengelolaan daftar pengumpulan tugas siswa, penayangan jawaban siswa, serta pemberian nilai (0-100) dan umpan balik/catatan guru (`grade`).
+- Otorisasi mata pelajaran: Guru hanya dapat menilai pengumpulan tugas pada mata pelajaran yang diampunya (`subject_user`).
+- Blade Views Tabler UI di `resources/views/admin/submissions/`: `index.blade.php` (dengan filter dropdown berdasarkan tugas) dan `show.blade.php` (form penilaian & feedback).
+- Feature Test `tests/Feature/Admin/AssignmentSubmissionGradeTest.php` untuk memverifikasi penayangan daftar submission, proses penilaian & feedback guru, validasi otorisasi mata pelajaran, dan proteksi role siswa.
+
+### Diubah
+- `routes/web.php`: Menambahkan rute `submissions.index`, `submissions.show`, dan `submissions.grade` di dalam grup `/admin`.
+
 ## [Fase 11] Master — Kuis CRUD & Question Management — 2026-09-11
 
 ### Ditambahkan

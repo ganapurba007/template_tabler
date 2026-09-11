@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AssignmentController;
+use App\Http\Controllers\Admin\AssignmentSubmissionController;
 use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\QuestionBankController;
 use App\Http\Controllers\Admin\QuizController;
@@ -52,6 +53,11 @@ Route::middleware(['auth', 'role:guru'])->prefix('admin')->as('admin.')->group(f
     Route::post('quizzes/{quiz}/import-questions', [QuizController::class, 'importQuestions'])->name('quizzes.import-questions');
     Route::post('quizzes/{quiz}/questions', [QuizController::class, 'storeQuestion'])->name('quizzes.store-question');
     Route::delete('quizzes/{quiz}/questions/{question}', [QuizController::class, 'destroyQuestion'])->name('quizzes.destroy-question');
+
+    // Admin Koreksi / Penilaian Tugas
+    Route::get('submissions', [AssignmentSubmissionController::class, 'index'])->name('submissions.index');
+    Route::get('submissions/{submission}', [AssignmentSubmissionController::class, 'show'])->name('submissions.show');
+    Route::post('submissions/{submission}/grade', [AssignmentSubmissionController::class, 'grade'])->name('submissions.grade');
 });
 
 // Profile Routes
