@@ -9,9 +9,9 @@
   - Menghapus header box terpisah (`<x-slot name="header">`) dari `dashboard.blade.php` dan menyesuaikan `@if(isset($header) && trim($header) !== '')` pada layout agar tidak merender elemen header kosong.
   - Hero section Arsha kini menempel langsung secara seamless di bawah top navbar tanpa celah (gap 0px).
   - Teks assertion pengujian `Dashboard Siswa` dan nama kelas dipindahkan ke dalam Hero Welcome Badge Pill pada area banner Hero.
-- **Overhaul Seksi Courses / Materi Pelajaran (`dashboard.blade.php`)**:
-  - Mengemas seksi *Courses / Materi Pelajaran* dalam kontainer terpisah berlatar gradien lembut (`background: linear-gradient(180deg, rgba(200, 223, 219, 0.45) 0%, rgba(242, 239, 231, 0.95) 100%)`), border halus, dan **Ambient Radial Corner Glow** di sudut atas kanan & bawah kiri.
-  - Mengubah header kartu materi menggunakan gradien kustom berwarna-warni (`#3368A0`, `#10B981`, `#8B5CF6`, `#F59E0B`, `#E11D48`, `#0284C7`), ikon watermark semi-transparan (`opacity: 0.20`), avatar inisial guru pengampu, badge format materi, serta tombol pendorong katalog utama di bagian bawah.
+- **Overhaul Seksi Courses Catalog & Active Quizzes & Assignments (`dashboard.blade.php` & `theme-custom.css`)**:
+  - Mengubah latar belakang seksi *Courses Catalog*, *Kuis Online Aktif*, dan *Tugas Perlu Dikumpulkan* menggunakan motif pola abstrak geometris (`.bg-abstract-catalog`, `.bg-abstract-quizzes`, `.bg-abstract-assignments`).
+  - Menambahkan ornamen bentuk geometris SVG transparan (lingkaran konsentris, persegi terrotasi 45°, poligon), watermark ikon raksasa (`8.5rem`), badge header `LIVE EVALUATION` & `ASSIGNMENT TASK`, serta kartu item bergaris aksen gradien dan tombol pendorong beranimasi *hover-lift*.
 
 ### Diuji & Diverifikasi
 - Seluruh 111 PHPUnit feature tests passed (100% PASS).

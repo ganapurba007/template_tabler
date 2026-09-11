@@ -310,11 +310,23 @@
             </div>
         </div>
 
-        <!-- Arsha Courses Catalog Section (Styled Container with Soft Tint Background) -->
-        <div class="p-4 p-md-5 rounded-4 shadow-sm mb-5 position-relative overflow-hidden border" style="background: linear-gradient(180deg, rgba(200, 223, 219, 0.45) 0%, rgba(242, 239, 231, 0.95) 100%); border-color: rgba(102, 163, 191, 0.35) !important;">
-            <!-- Ambient Corner Glow Effects -->
-            <div class="position-absolute top-0 end-0 translate-middle-y me-n5 mt-n5 pointer-events-none rounded-circle" style="width: 350px; height: 350px; background: radial-gradient(circle, rgba(102, 163, 191, 0.22) 0%, rgba(242, 239, 231, 0) 70%);"></div>
-            <div class="position-absolute bottom-0 start-0 translate-middle-y ms-n5 mb-n5 pointer-events-none rounded-circle" style="width: 300px; height: 300px; background: radial-gradient(circle, rgba(51, 104, 160, 0.15) 0%, rgba(242, 239, 231, 0) 70%);"></div>
+        <!-- Arsha Courses Catalog Section (Styled Container with Abstract Geometric Motif Background) -->
+        <div class="p-4 p-md-5 rounded-4 shadow-sm mb-5 position-relative overflow-hidden border bg-abstract-catalog" style="border-color: rgba(102, 163, 191, 0.35) !important;">
+            <!-- Floating Decorative Abstract SVG Motif Elements -->
+            <div class="position-absolute top-0 end-0 pointer-events-none opacity-20 me-n3 mt-n3" style="width: 280px; height: 280px;">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#3368A0" stroke-width="1.5">
+                    <circle cx="100" cy="100" r="80" stroke-dasharray="4 4" />
+                    <circle cx="100" cy="100" r="60" />
+                    <circle cx="100" cy="100" r="40" stroke-dasharray="6 6" />
+                    <rect x="65" y="65" width="70" height="70" transform="rotate(45 100 100)" stroke="#66A3BF" stroke-opacity="0.6" />
+                </svg>
+            </div>
+            <div class="position-absolute bottom-0 start-0 pointer-events-none opacity-15 ms-n4 mb-n4" style="width: 250px; height: 250px;">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#8B5CF6" stroke-width="1.5">
+                    <polygon points="100,20 180,160 20,160" stroke-dasharray="5 5" />
+                    <circle cx="100" cy="110" r="35" stroke="#3368A0" />
+                </svg>
+            </div>
 
             <div class="arsha-section-title text-center mb-5 position-relative z-1" data-aos="fade-up">
                 <span class="badge rounded-pill px-3.5 py-2 font-bold uppercase tracking-wider text-xs mb-2 d-inline-flex align-items-center gap-1.5 shadow-sm" style="background: linear-gradient(135deg, #3368A0, #66A3BF); color: #ffffff !important;">
@@ -425,75 +437,124 @@
 
     </div>
 
-    <!-- Active Quizzes & Assignments Section -->
+    <!-- Active Quizzes & Assignments Section (Abstract Geometric Motif Styling) -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-5">
         <div class="row g-4">
             
-            <!-- Active Quizzes -->
+            <!-- Active Quizzes Section Container -->
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="p-4 rounded-4 border shadow-sm text-start h-100 position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(139, 92, 246, 0.3) !important;">
-                    <div class="position-absolute top-0 start-0 bottom-0" style="width: 5px; background: linear-gradient(180deg, #8B5CF6, #6D28D9);"></div>
-                    <div class="d-flex align-items-center justify-content-between mb-4 border-bottom pb-3">
-                        <h4 class="fw-bold text-dark m-0 d-flex align-items-center" style="font-family: 'Jost', sans-serif;">
-                            <i class="ti ti-help-hexagon text-purple me-2 fs-3" style="color: #8B5CF6;"></i> Kuis Online Aktif
-                        </h4>
-                        <a href="{{ route('student.quizzes.index') }}" class="text-decoration-none small font-bold text-primary">Lihat Semua <i class="ti ti-chevron-right"></i></a>
+                <div class="p-4 p-md-4.5 rounded-4 border shadow-sm text-start h-100 position-relative overflow-hidden bg-abstract-quizzes" style="border-color: rgba(139, 92, 246, 0.35) !important;">
+                    <!-- Floating Abstract Watermark & SVG Geometrics -->
+                    <i class="ti ti-help-hexagon position-absolute bottom-0 end-0 me-n3 mb-n4 text-purple opacity-10 pointer-events-none" style="font-size: 8.5rem; color: #8B5CF6 !important;"></i>
+                    <div class="position-absolute top-0 end-0 me-n2 mt-n2 pointer-events-none opacity-20" style="width: 140px; height: 140px;">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#8B5CF6" stroke-width="2">
+                            <rect x="20" y="20" width="60" height="60" rx="10" transform="rotate(30 50 50)" stroke-dasharray="3 3" />
+                            <circle cx="50" cy="50" r="25" />
+                        </svg>
                     </div>
 
-                    <div class="d-flex flex-column gap-3">
+                    <div class="d-flex align-items-center justify-content-between mb-4 border-bottom pb-3 position-relative z-1" style="border-color: rgba(139, 92, 246, 0.2) !important;">
+                        <div>
+                            <span class="badge rounded-pill text-white px-3 py-1 font-bold shadow-sm d-inline-flex align-items-center gap-1.5 mb-1" style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); font-size: 0.72rem;">
+                                <i class="ti ti-point-filled text-danger animate-ping"></i> LIVE EVALUATION
+                            </span>
+                            <h4 class="fw-extrabold text-dark m-0 d-flex align-items-center gap-2" style="font-family: 'Jost', sans-serif;">
+                                <i class="ti ti-help-hexagon text-purple fs-3" style="color: #8B5CF6;"></i> Kuis Online Aktif
+                            </h4>
+                        </div>
+                        <a href="{{ route('student.quizzes.index') }}" class="btn text-white btn-sm rounded-pill px-3 py-1.5 font-bold shadow-sm hover-lift text-decoration-none" style="background-color: #8B5CF6;">
+                            Lihat Semua <i class="ti ti-chevron-right ms-0.5"></i>
+                        </a>
+                    </div>
+
+                    <div class="d-flex flex-column gap-3 position-relative z-1">
                         @forelse($activeQuizzes as $qz)
-                            <div class="p-3 rounded-3 border shadow-sm d-flex align-items-center justify-content-between transition-all hover-lift" style="background-color: #F2EFE7; border-color: rgba(139, 92, 246, 0.25) !important;">
-                                <div>
-                                    <span class="badge text-white px-2.5 py-1 mb-1 me-2 rounded-pill shadow-sm" style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);">{{ $qz->subject->name ?? 'Kuis' }}</span>
-                                    <h6 class="fw-bold text-dark mb-1">{{ $qz->title }}</h6>
-                                    <div class="small text-muted">
-                                        <i class="ti ti-clock me-1 text-primary"></i> {{ $qz->duration_minutes }} Menit | 
-                                        <i class="ti ti-calendar me-1 text-danger"></i> Deadline: {{ $qz->deadline ? $qz->deadline->format('d M H:i') : '-' }}
+                            <div class="p-3.5 rounded-4 border shadow-sm d-flex align-items-center justify-content-between transition-all hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(139, 92, 246, 0.3) !important;">
+                                <div class="position-absolute top-0 start-0 bottom-0" style="width: 4px; background: linear-gradient(180deg, #8B5CF6, #6D28D9);"></div>
+                                <div class="ps-2">
+                                    <div class="d-flex align-items-center gap-2 mb-1">
+                                        <span class="badge text-white px-2.5 py-1 rounded-pill shadow-sm" style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); font-size: 0.72rem;">
+                                            {{ $qz->subject->name ?? 'Kuis' }}
+                                        </span>
+                                        <span class="badge bg-danger-subtle text-danger rounded-pill px-2 py-0.5 font-semibold" style="font-size: 0.7rem;">
+                                            <i class="ti ti-flame me-0.5"></i> Timer Aktif
+                                        </span>
+                                    </div>
+                                    <h6 class="fw-bold text-dark mb-1" style="font-size: 0.98rem;">{{ $qz->title }}</h6>
+                                    <div class="small text-muted d-flex flex-wrap gap-2" style="font-size: 0.78rem;">
+                                        <span><i class="ti ti-clock me-1 text-primary"></i> {{ $qz->duration_minutes }} Menit</span>
+                                        <span>|</span>
+                                        <span><i class="ti ti-calendar me-1 text-danger"></i> Deadline: <strong class="text-dark">{{ $qz->deadline ? $qz->deadline->format('d M H:i') : '-' }}</strong></span>
                                     </div>
                                 </div>
-                                <a href="{{ route('student.quizzes.show', $qz) }}" class="btn text-white btn-sm px-4 py-2 text-decoration-none rounded-pill shadow-sm font-bold hover-lift" style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);">
-                                    Mulai
+                                <a href="{{ route('student.quizzes.show', $qz) }}" class="btn text-white btn-sm px-4 py-2 text-decoration-none rounded-pill shadow-sm font-bold hover-lift shrink-0 ms-2" style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);">
+                                    Mulai <i class="ti ti-player-play-filled ms-1" style="font-size: 0.75rem;"></i>
                                 </a>
                             </div>
                         @empty
-                            <div class="text-center py-4 text-muted">
+                            <div class="text-center py-4 text-muted bg-white bg-opacity-40 rounded-4 border p-4">
                                 <i class="ti ti-circle-check fs-1 text-success mb-2 d-block"></i>
-                                Tidak ada kuis aktif saat ini.
+                                <div class="fw-bold text-dark mb-1">Tidak Ada Kuis Aktif</div>
+                                <div class="small">Semua evaluasi kuis online untuk kelas Anda telah selesai dikerjakan.</div>
                             </div>
                         @endforelse
                     </div>
                 </div>
             </div>
 
-            <!-- Upcoming Assignments -->
+            <!-- Upcoming Assignments Section Container -->
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="p-4 rounded-4 border shadow-sm text-start h-100 position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(245, 158, 11, 0.3) !important;">
-                    <div class="position-absolute top-0 start-0 bottom-0" style="width: 5px; background: linear-gradient(180deg, #F59E0B, #D97706);"></div>
-                    <div class="d-flex align-items-center justify-content-between mb-4 border-bottom pb-3">
-                        <h4 class="fw-bold text-dark m-0 d-flex align-items-center" style="font-family: 'Jost', sans-serif;">
-                            <i class="ti ti-notebook text-warning me-2 fs-3"></i> Tugas Perlu Dikumpulkan
-                        </h4>
-                        <a href="{{ route('student.assignments.index') }}" class="text-decoration-none small font-bold text-primary">Lihat Semua <i class="ti ti-chevron-right"></i></a>
+                <div class="p-4 p-md-4.5 rounded-4 border shadow-sm text-start h-100 position-relative overflow-hidden bg-abstract-assignments" style="border-color: rgba(245, 158, 11, 0.35) !important;">
+                    <!-- Floating Abstract Watermark & SVG Geometrics -->
+                    <i class="ti ti-notebook position-absolute bottom-0 end-0 me-n3 mb-n4 text-warning opacity-10 pointer-events-none" style="font-size: 8.5rem;"></i>
+                    <div class="position-absolute top-0 end-0 me-n2 mt-n2 pointer-events-none opacity-20" style="width: 140px; height: 140px;">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#F59E0B" stroke-width="2">
+                            <polygon points="50,15 90,85 10,85" stroke-dasharray="3 3" />
+                            <circle cx="50" cy="55" r="20" />
+                        </svg>
                     </div>
 
-                    <div class="d-flex flex-column gap-3">
+                    <div class="d-flex align-items-center justify-content-between mb-4 border-bottom pb-3 position-relative z-1" style="border-color: rgba(245, 158, 11, 0.2) !important;">
+                        <div>
+                            <span class="badge rounded-pill text-dark px-3 py-1 font-bold shadow-sm d-inline-flex align-items-center gap-1.5 mb-1" style="background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%); font-size: 0.72rem;">
+                                <i class="ti ti-clock me-1 text-dark"></i> ASSIGNMENT TASK
+                            </span>
+                            <h4 class="fw-extrabold text-dark m-0 d-flex align-items-center gap-2" style="font-family: 'Jost', sans-serif;">
+                                <i class="ti ti-notebook text-warning fs-3"></i> Tugas Perlu Dikumpulkan
+                            </h4>
+                        </div>
+                        <a href="{{ route('student.assignments.index') }}" class="btn text-dark btn-sm rounded-pill px-3 py-1.5 font-bold shadow-sm hover-lift text-decoration-none" style="background-color: #F59E0B;">
+                            Lihat Semua <i class="ti ti-chevron-right ms-0.5"></i>
+                        </a>
+                    </div>
+
+                    <div class="d-flex flex-column gap-3 position-relative z-1">
                         @forelse($upcomingAssignments as $asg)
-                            <div class="p-3 rounded-3 border shadow-sm d-flex align-items-center justify-content-between transition-all hover-lift" style="background-color: #F2EFE7; border-color: rgba(245, 158, 11, 0.25) !important;">
-                                <div>
-                                    <span class="badge text-white px-2.5 py-1 mb-1 me-2 rounded-pill shadow-sm" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);">{{ $asg->subject->name ?? 'Tugas' }}</span>
-                                    <h6 class="fw-bold text-dark mb-1">{{ $asg->title }}</h6>
-                                    <div class="small text-muted">
-                                        <i class="ti ti-calendar-event me-1 text-danger"></i> Deadline: <span class="fw-bold text-danger">{{ $asg->due_date ? $asg->due_date->format('d M H:i') : '-' }}</span>
+                            <div class="p-3.5 rounded-4 border shadow-sm d-flex align-items-center justify-content-between transition-all hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(245, 158, 11, 0.3) !important;">
+                                <div class="position-absolute top-0 start-0 bottom-0" style="width: 4px; background: linear-gradient(180deg, #F59E0B, #D97706);"></div>
+                                <div class="ps-2">
+                                    <div class="d-flex align-items-center gap-2 mb-1">
+                                        <span class="badge text-white px-2.5 py-1 rounded-pill shadow-sm" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); font-size: 0.72rem;">
+                                            {{ $asg->subject->name ?? 'Tugas' }}
+                                        </span>
+                                        <span class="badge bg-warning-subtle text-warning-emphasis rounded-pill px-2 py-0.5 font-semibold" style="font-size: 0.7rem;">
+                                            <i class="ti ti-file-pencil me-0.5"></i> Essay Task
+                                        </span>
+                                    </div>
+                                    <h6 class="fw-bold text-dark mb-1" style="font-size: 0.98rem;">{{ $asg->title }}</h6>
+                                    <div class="small text-muted" style="font-size: 0.78rem;">
+                                        <i class="ti ti-calendar-event me-1 text-danger"></i> Batas Waktu: <strong class="text-danger">{{ $asg->due_date ? $asg->due_date->format('d M H:i') : '-' }}</strong>
                                     </div>
                                 </div>
-                                <a href="{{ route('student.assignments.show', $asg) }}" class="btn text-white btn-sm px-4 py-2 text-decoration-none rounded-pill shadow-sm font-bold hover-lift" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);">
-                                    Kerjakan
+                                <a href="{{ route('student.assignments.show', $asg) }}" class="btn text-white btn-sm px-4 py-2 text-decoration-none rounded-pill shadow-sm font-bold hover-lift shrink-0 ms-2" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);">
+                                    Kerjakan <i class="ti ti-send ms-1" style="font-size: 0.75rem;"></i>
                                 </a>
                             </div>
                         @empty
-                            <div class="text-center py-4 text-muted">
+                            <div class="text-center py-4 text-muted bg-white bg-opacity-40 rounded-4 border p-4">
                                 <i class="ti ti-mood-smile fs-1 text-primary mb-2 d-block"></i>
-                                Semua tugas kelas sudah selesai dikumpulkan!
+                                <div class="fw-bold text-dark mb-1">Tugas Tuntas!</div>
+                                <div class="small">Semua tugas kelas Anda sudah berhasil dikumpulkan tepat waktu.</div>
                             </div>
                         @endforelse
                     </div>
