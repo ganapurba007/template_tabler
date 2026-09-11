@@ -2,6 +2,16 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 8] Master — Bank Soal CRUD — 2026-09-11
+
+### Ditambahkan
+- `QuestionBankController` (`app/Http/Controllers/Admin/QuestionBankController.php`) untuk pengelolaan CRUD Bank Soal pilihan ganda beserta opsi jawaban dinamis dan penandaan jawaban benar.
+- Blade Views Tabler UI di `resources/views/admin/question-banks/`: `index.blade.php`, `create.blade.php`, `edit.blade.php`.
+- Feature Test `tests/Feature/Admin/QuestionBankCrudTest.php` untuk memverifikasi pembuatan soal dengan opsi & jawaban benar, pengeditan, penghapusan cascade opsi, dan proteksi role siswa.
+
+### Diubah
+- `routes/web.php`: Menambahkan rute resource `question-banks` di dalam grup `/admin`.
+
 ## [Fase 7] Master — Kelas CRUD — 2026-09-11
 
 ### Ditambahkan
