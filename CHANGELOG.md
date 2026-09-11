@@ -2,6 +2,16 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 7] Master — Kelas CRUD — 2026-09-11
+
+### Ditambahkan
+- `SchoolClassController` (`app/Http/Controllers/Admin/SchoolClassController.php`) untuk pengelolaan CRUD Kelas sekolah.
+- Blade Views Tabler UI di `resources/views/admin/classes/`: `index.blade.php`, `create.blade.php`, `edit.blade.php`.
+- Feature Test `tests/Feature/Admin/SchoolClassCrudTest.php` untuk memverifikasi daftar kelas, penambahan & pengeditan kelas, validasi keunikan nama kelas, penghapusan, dan pembatasan akses siswa.
+
+### Diubah
+- `routes/web.php`: Menambahkan rute resource `classes` di dalam grup `/admin`.
+
 ## [Fase 6] Master — Mata Pelajaran CRUD + Guru Pengampu — 2026-09-11
 
 ### Ditambahkan

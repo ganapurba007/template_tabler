@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\SchoolClassController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
@@ -29,6 +30,9 @@ Route::middleware(['auth', 'role:guru'])->prefix('admin')->as('admin.')->group(f
 
     // Master Mata Pelajaran CRUD
     Route::resource('subjects', SubjectController::class);
+
+    // Master Kelas CRUD
+    Route::resource('classes', SchoolClassController::class);
 });
 
 // Profile Routes
