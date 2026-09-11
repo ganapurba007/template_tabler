@@ -75,23 +75,52 @@
         </div>
     </section>
 
-    <!-- Upgraded & Beautiful Statistics Section Cards -->
+    <!-- Modern & Dynamic Interactive Statistics Section -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-5" data-aos="fade-up">
+        <!-- Section Header Bar -->
+        <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between mb-4 pb-2 border-bottom" style="border-color: rgba(102, 163, 191, 0.25) !important;">
+            <div>
+                <span class="badge rounded-pill text-primary px-3 py-1.5 font-bold uppercase tracking-wider text-xs mb-1 d-inline-flex align-items-center gap-1.5" style="background: rgba(102, 163, 191, 0.15); color: #3368A0 !important;">
+                    <i class="ti ti-chart-dots text-primary"></i> Live Analytics
+                </span>
+                <h3 class="fw-extrabold text-dark m-0 d-flex align-items-center gap-2" style="font-family: 'Jost', sans-serif;">
+                    Ringkasan Progres Belajar Saya
+                </h3>
+            </div>
+            <div class="text-muted small mt-2 mt-md-0 d-flex align-items-center gap-2">
+                <i class="ti ti-reload text-primary"></i> Data Diperbarui Otomatis
+            </div>
+        </div>
+
         <div class="row g-4">
-            <!-- Stat Card 1: Total Materi -->
+            <!-- Stat Card 1: Total Materi Pelajaran -->
             <div class="col-6 col-md-3">
-                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift overflow-hidden position-relative" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); color: #ffffff;">
-                    <div class="card-body p-4">
+                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border: 1px solid rgba(102, 163, 191, 0.3) !important;">
+                    <!-- Top Accent Color Bar -->
+                    <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #3368A0, #66A3BF);"></div>
+                    <!-- Giant Watermark Background Icon -->
+                    <i class="ti ti-books position-absolute bottom-0 end-0 me-n2 mb-n3 text-primary opacity-10 pointer-events-none" style="font-size: 6.5rem; color: #3368A0 !important;"></i>
+                    
+                    <div class="card-body p-4 position-relative z-1 d-flex flex-column justify-content-between">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="rounded-circle flex items-center justify-center p-2.5" style="background: rgba(255, 255, 255, 0.2); width: 48px; height: 48px;">
-                                <i class="ti ti-books fs-2 text-white"></i>
+                            <div class="rounded-4 d-flex align-items-center justify-content-center text-white shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 52px; height: 52px; box-shadow: 0 8px 18px rgba(51, 104, 160, 0.3) !important;">
+                                <i class="ti ti-books fs-2"></i>
                             </div>
-                            <span class="badge bg-white bg-opacity-20 text-white rounded-pill px-2.5 py-1 small" style="backdrop-filter: blur(5px);">Mapel Kelas</span>
+                            <span class="badge rounded-pill px-2.5 py-1 text-primary fw-bold small" style="background: rgba(51, 104, 160, 0.12);">
+                                <i class="ti ti-category me-1"></i> All Subject
+                            </span>
                         </div>
-                        <h2 class="display-6 font-extrabold text-white mb-1" style="font-family: 'Jost', sans-serif;">{{ $totalClassMaterials }}</h2>
-                        <div class="font-semibold text-white-50 small mb-2">Total Materi Pelajaran</div>
-                        <div class="progress bg-white bg-opacity-20" style="height: 5px;">
-                            <div class="progress-bar bg-white" style="width: 100%;"></div>
+
+                        <div>
+                            <div class="d-flex align-items-baseline gap-2 mb-1">
+                                <span class="display-5 fw-extrabold text-dark" style="font-family: 'Jost', sans-serif;">{{ $totalClassMaterials }}</span>
+                                <span class="text-muted small fw-semibold">Modul</span>
+                            </div>
+                            <div class="fw-bold text-secondary text-uppercase tracking-wider mb-3" style="font-size: 0.78rem;">Total Materi Pelajaran</div>
+                            
+                            <div class="progress rounded-pill" style="height: 6px; background: rgba(51, 104, 160, 0.15);">
+                                <div class="progress-bar rounded-pill" style="width: 100%; background: linear-gradient(90deg, #3368A0, #66A3BF);"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -99,56 +128,98 @@
 
             <!-- Stat Card 2: Materi Selesai -->
             <div class="col-6 col-md-3">
-                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift overflow-hidden position-relative" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: #ffffff;">
-                    <div class="card-body p-4">
+                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border: 1px solid rgba(16, 185, 129, 0.3) !important;">
+                    <!-- Top Accent Color Bar -->
+                    <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #10B981, #34D399);"></div>
+                    <!-- Giant Watermark Background Icon -->
+                    <i class="ti ti-circle-check position-absolute bottom-0 end-0 me-n2 mb-n3 text-success opacity-10 pointer-events-none" style="font-size: 6.5rem;"></i>
+
+                    <div class="card-body p-4 position-relative z-1 d-flex flex-column justify-content-between">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="rounded-circle flex items-center justify-center p-2.5" style="background: rgba(255, 255, 255, 0.2); width: 48px; height: 48px;">
-                                <i class="ti ti-circle-check fs-2 text-white"></i>
+                            <div class="rounded-4 d-flex align-items-center justify-content-center text-white shadow-sm pulse-glow" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); width: 52px; height: 52px; box-shadow: 0 8px 18px rgba(16, 185, 129, 0.3) !important;">
+                                <i class="ti ti-circle-check fs-2"></i>
                             </div>
-                            <span class="badge bg-white bg-opacity-20 text-white rounded-pill px-2.5 py-1 small" style="backdrop-filter: blur(5px);">Completed</span>
+                            <span class="badge rounded-pill px-2.5 py-1 text-success fw-bold small" style="background: rgba(16, 185, 129, 0.15);">
+                                <i class="ti ti-trending-up me-1"></i> {{ $totalClassMaterials > 0 ? min(100, round(($completedMaterialsCount / $totalClassMaterials) * 100)) : 0 }}% Selesai
+                            </span>
                         </div>
-                        <h2 class="display-6 font-extrabold text-white mb-1" style="font-family: 'Jost', sans-serif;">{{ $completedMaterialsCount }}</h2>
-                        <div class="font-semibold text-white-50 small mb-2">Materi Selesai Dipelajari</div>
-                        <div class="progress bg-white bg-opacity-20" style="height: 5px;">
-                            <div class="progress-bar bg-white" style="width: {{ $totalClassMaterials > 0 ? min(100, round(($completedMaterialsCount / $totalClassMaterials) * 100)) : 0 }}%;"></div>
+
+                        <div>
+                            <div class="d-flex align-items-baseline gap-2 mb-1">
+                                <span class="display-5 fw-extrabold text-dark" style="font-family: 'Jost', sans-serif;">{{ $completedMaterialsCount }}</span>
+                                <span class="text-muted small fw-semibold">/ {{ $totalClassMaterials }} Modul</span>
+                            </div>
+                            <div class="fw-bold text-secondary text-uppercase tracking-wider mb-3" style="font-size: 0.78rem;">Materi Telah Dipelajari</div>
+                            
+                            <div class="progress rounded-pill" style="height: 6px; background: rgba(16, 185, 129, 0.15);">
+                                <div class="progress-bar rounded-pill" style="width: {{ $totalClassMaterials > 0 ? min(100, round(($completedMaterialsCount / $totalClassMaterials) * 100)) : 0 }}%; background: linear-gradient(90deg, #10B981, #34D399);"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Stat Card 3: Tugas Mendatang -->
+            <!-- Stat Card 3: Tugas Perlu Dikumpulkan -->
             <div class="col-6 col-md-3">
-                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift overflow-hidden position-relative" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #ffffff;">
-                    <div class="card-body p-4">
+                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border: 1px solid rgba(245, 158, 11, 0.3) !important;">
+                    <!-- Top Accent Color Bar -->
+                    <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #F59E0B, #FBBF24);"></div>
+                    <!-- Giant Watermark Background Icon -->
+                    <i class="ti ti-notebook position-absolute bottom-0 end-0 me-n2 mb-n3 text-warning opacity-10 pointer-events-none" style="font-size: 6.5rem;"></i>
+
+                    <div class="card-body p-4 position-relative z-1 d-flex flex-column justify-content-between">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="rounded-circle flex items-center justify-center p-2.5" style="background: rgba(255, 255, 255, 0.2); width: 48px; height: 48px;">
-                                <i class="ti ti-notebook fs-2 text-white"></i>
+                            <div class="rounded-4 d-flex align-items-center justify-content-center text-white shadow-sm" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); width: 52px; height: 52px; box-shadow: 0 8px 18px rgba(245, 158, 11, 0.3) !important;">
+                                <i class="ti ti-notebook fs-2"></i>
                             </div>
-                            <span class="badge bg-white bg-opacity-20 text-white rounded-pill px-2.5 py-1 small" style="backdrop-filter: blur(5px);">Deadline</span>
+                            <span class="badge rounded-pill px-2.5 py-1 text-warning-emphasis fw-bold small" style="background: rgba(245, 158, 11, 0.15);">
+                                <i class="ti ti-clock me-1"></i> {{ $upcomingAssignments->count() > 0 ? 'Perlu Dikirim' : 'Tuntas' }}
+                            </span>
                         </div>
-                        <h2 class="display-6 font-extrabold text-white mb-1" style="font-family: 'Jost', sans-serif;">{{ $upcomingAssignments->count() }}</h2>
-                        <div class="font-semibold text-white-50 small mb-2">Tugas Perlu Dikumpulkan</div>
-                        <div class="progress bg-white bg-opacity-20" style="height: 5px;">
-                            <div class="progress-bar bg-white" style="width: 75%;"></div>
+
+                        <div>
+                            <div class="d-flex align-items-baseline gap-2 mb-1">
+                                <span class="display-5 fw-extrabold text-dark" style="font-family: 'Jost', sans-serif;">{{ $upcomingAssignments->count() }}</span>
+                                <span class="text-muted small fw-semibold">Tugas</span>
+                            </div>
+                            <div class="fw-bold text-secondary text-uppercase tracking-wider mb-3" style="font-size: 0.78rem;">Tugas Perlu Dikumpulkan</div>
+                            
+                            <div class="progress rounded-pill" style="height: 6px; background: rgba(245, 158, 11, 0.15);">
+                                <div class="progress-bar rounded-pill" style="width: {{ $upcomingAssignments->count() > 0 ? '75%' : '100%' }}; background: linear-gradient(90deg, #F59E0B, #FBBF24);"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Stat Card 4: Kuis Aktif -->
+            <!-- Stat Card 4: Kuis Online Aktif -->
             <div class="col-6 col-md-3">
-                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift overflow-hidden position-relative" style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); color: #ffffff;">
-                    <div class="card-body p-4">
+                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border: 1px solid rgba(139, 92, 246, 0.3) !important;">
+                    <!-- Top Accent Color Bar -->
+                    <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #8B5CF6, #A78BFA);"></div>
+                    <!-- Giant Watermark Background Icon -->
+                    <i class="ti ti-help-hexagon position-absolute bottom-0 end-0 me-n2 mb-n3 text-purple opacity-10 pointer-events-none" style="font-size: 6.5rem; color: #8B5CF6 !important;"></i>
+
+                    <div class="card-body p-4 position-relative z-1 d-flex flex-column justify-content-between">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="rounded-circle flex items-center justify-center p-2.5" style="background: rgba(255, 255, 255, 0.2); width: 48px; height: 48px;">
-                                <i class="ti ti-help-hexagon fs-2 text-white"></i>
+                            <div class="rounded-4 d-flex align-items-center justify-content-center text-white shadow-sm" style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); width: 52px; height: 52px; box-shadow: 0 8px 18px rgba(139, 92, 246, 0.3) !important;">
+                                <i class="ti ti-help-hexagon fs-2"></i>
                             </div>
-                            <span class="badge bg-white bg-opacity-20 text-white rounded-pill px-2.5 py-1 small" style="backdrop-filter: blur(5px);">Real-Time</span>
+                            <span class="badge rounded-pill px-2.5 py-1 fw-bold small" style="background: rgba(139, 92, 246, 0.15); color: #7c3aed;">
+                                <i class="ti ti-point-filled text-danger me-1"></i> Live Test
+                            </span>
                         </div>
-                        <h2 class="display-6 font-extrabold text-white mb-1" style="font-family: 'Jost', sans-serif;">{{ $activeQuizzes->count() }}</h2>
-                        <div class="font-semibold text-white-50 small mb-2">Kuis Online Aktif</div>
-                        <div class="progress bg-white bg-opacity-20" style="height: 5px;">
-                            <div class="progress-bar bg-white" style="width: 90%;"></div>
+
+                        <div>
+                            <div class="d-flex align-items-baseline gap-2 mb-1">
+                                <span class="display-5 fw-extrabold text-dark" style="font-family: 'Jost', sans-serif;">{{ $activeQuizzes->count() }}</span>
+                                <span class="text-muted small fw-semibold">Evaluasi</span>
+                            </div>
+                            <div class="fw-bold text-secondary text-uppercase tracking-wider mb-3" style="font-size: 0.78rem;">Kuis Online Aktif</div>
+                            
+                            <div class="progress rounded-pill" style="height: 6px; background: rgba(139, 92, 246, 0.15);">
+                                <div class="progress-bar rounded-pill" style="width: {{ $activeQuizzes->count() > 0 ? '90%' : '100%' }}; background: linear-gradient(90deg, #8B5CF6, #A78BFA);"></div>
+                            </div>
                         </div>
                     </div>
                 </div>

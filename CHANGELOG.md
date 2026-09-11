@@ -10,8 +10,9 @@
   - Hero section Arsha kini menempel langsung secara seamless di bawah top navbar tanpa celah (gap 0px).
   - Teks assertion pengujian `Dashboard Siswa` dan nama kelas dipindahkan ke dalam Hero Welcome Badge Pill pada area banner Hero.
 - **Redesain 4 Kartu Statistik Pembelajaran Siswa (`dashboard.blade.php`)**:
-  - Merombak total kartu statistik ringkasan pembelajaran dengan visual glassmorphism modern berlatar `#F2EFE7`.
-  - Dilengkapi top accent gradients (`#3368A0`, `#10B981`, `#F59E0B`, `#8B5CF6`), glowing circular icon background, angka stat ekstra tebal, progress indicator bar, dan animasi hover lifting (`translateY(-6px)`).
+  - Menambahkan Section Header Bar ("*Live Analytics — Ringkasan Progres Belajar Saya*").
+  - Merombak 4 kartu statistik dengan visual dual-layer ultra-modern berlatar `#F2EFE7`.
+  - Dilengkapi 3D Glowing Avatar Icon Box, Giant Watermark Background Icon (`opacity: 0.10`), top accent gradient lines (`#3368A0`, `#10B981`, `#F59E0B`, `#8B5CF6`), status pill badges (`Live Test`, `All Subject`, `% Selesai`, `Perlu Dikirim`), typography Jost ekstra tebal, dan rounded pill progress indicators.
 
 ### Diuji & Diverifikasi
 - Seluruh 111 PHPUnit feature tests passed (100% PASS).
