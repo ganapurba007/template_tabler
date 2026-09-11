@@ -533,6 +533,28 @@ a:hover {
   color: #ffffff;
 }
 
+/* Light & White Buttons with Crisp Border */
+.btn-light,
+.btn-white,
+.btn-secondary {
+  background-color: var(--tblr-surface-bg) !important;
+  border: 1px solid var(--tblr-border-color) !important;
+  color: var(--tblr-body-color) !important;
+  box-shadow: var(--tblr-shadow-sm);
+}
+
+.btn-light:hover,
+.btn-white:hover,
+.btn-secondary:hover,
+.btn-light:focus,
+.btn-white:focus,
+.btn-secondary:focus {
+  background-color: var(--tblr-border-color) !important;
+  border-color: var(--tblr-border-color-hover) !important;
+  color: var(--tblr-heading-color) !important;
+  transform: translateY(-1px);
+}
+
 /* Soft Buttons */
 .btn-soft-primary { background-color: rgba(32, 107, 196, 0.12); color: #206bc4; border: 1px solid rgba(32, 107, 196, 0.2); }
 .btn-soft-primary:hover { background-color: #206bc4; color: #ffffff; }

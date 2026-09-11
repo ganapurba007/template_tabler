@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="d-flex justify-content-end gap-2">
-                        <a href="{{ route('admin.roles.index') }}" class="btn btn-light">Batal</a>
+                        <a href="{{ route('admin.roles.index') }}" class="btn btn-light border border-gray-100">Batal</a>
                         <button type="submit" class="btn btn-primary"><i class="ti ti-device-floppy me-1"></i> Simpan Role</button>
                     </div>
                 </form>

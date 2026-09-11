@@ -28,19 +28,19 @@
       <li class="sidebar-nav-item">
         <a href="{{ route('admin.roles.index') }}" class="sidebar-nav-link {{ request()->routeIs('admin.roles.*') ? 'active' : '' }}">
           <i class="ti ti-shield-check"></i>
-          <span>Master Role</span>
+          <span>Role</span>
         </a>
       </li>
       <li class="sidebar-nav-item">
         <a href="{{ route('admin.users.index') }}" class="sidebar-nav-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
           <i class="ti ti-users"></i>
-          <span>Master User</span>
+          <span>User</span>
         </a>
       </li>
       <li class="sidebar-nav-item">
         <a href="{{ route('admin.classes.index') }}" class="sidebar-nav-link {{ request()->routeIs('admin.classes.*') ? 'active' : '' }}">
           <i class="ti ti-school"></i>
-          <span>Master Kelas</span>
+          <span>Kelas</span>
         </a>
       </li>
       <li class="sidebar-nav-item">
