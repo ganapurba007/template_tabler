@@ -12,5 +12,6 @@ class SubjectSeeder extends Seeder
         Subject::firstOrCreate(['name' => 'Matematika']);
         Subject::firstOrCreate(['name' => 'Fisika']);
         Subject::firstOrCreate(['name' => 'Bahasa Indonesia']);
+        Subject::firstOrCreate(['name' => 'Geografi']);
     }
 }

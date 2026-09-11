@@ -53,14 +53,14 @@ class FoundationTest extends TestCase
         $this->assertDatabaseHas('roles', ['name' => 'siswa']);
 
         $this->assertDatabaseCount('classes', 3);
-        $this->assertDatabaseCount('subjects', 3);
+        $this->assertDatabaseCount('subjects', 4);
 
         $guru = User::where('email', 'guru@lms.com')->first();
         $this->assertNotNull($guru);
         $this->assertTrue($guru->isGuru());
         $this->assertEquals('198501012010011001', $guru->nip);
 
-        $this->assertCount(3, $guru->subjects);
+        $this->assertCount(4, $guru->subjects);
 
         $siswaCount = User::whereHas('role', fn ($q) => $q->where('name', 'siswa'))->count();
         $this->assertEquals(3, $siswaCount);

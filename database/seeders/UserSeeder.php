@@ -31,9 +31,22 @@ class UserSeeder extends Seeder
             ]
         );
 
+        // Akun Guru Test (Sesuai Permintaan User)
+        $guruTest = User::firstOrCreate(
+            ['email' => 'test@example.com'],
+            [
+                'name' => 'Guru Test',
+                'nip' => '198501012010011002',
+                'password' => Hash::make('password'),
+                'role_id' => $guruRole->id,
+                'class_id' => null,
+            ]
+        );
+
         // Assign Guru ke semua mata pelajaran
         $subjects = Subject::all();
         $guru->subjects()->sync($subjects->pluck('id'));
+        $guruTest->subjects()->sync($subjects->pluck('id'));
 
         // Akun Siswa Dummy
         User::firstOrCreate(
