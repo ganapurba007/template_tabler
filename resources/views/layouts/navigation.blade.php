@@ -1,56 +1,75 @@
-<nav x-data="{ open: false }" class="edusite-header arsha-header sticky-top">
+<nav x-data="{ open: false }" class="edusite-header arsha-header sticky-top bg-white border-bottom shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-20 items-center">
             
             <!-- Left: Brand Logo (Arsha Style) -->
-            <div class="flex items-center space-x-6">
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ Auth::user() && Auth::user()->isGuru() ? route('admin.dashboard') : route('dashboard') }}" class="flex items-center gap-3 text-decoration-none">
-                        <div class="rounded-circle text-white flex items-center justify-center p-2.5 shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 44px; height: 44px;">
-                            <i class="ti ti-school text-2xl"></i>
-                        </div>
-                        <span class="arsha-sitename" style="font-family: 'Jost', sans-serif; font-size: 1.6rem; font-weight: 800; color: #3368A0; letter-spacing: 0.5px;">ARSHA <span style="color: #66A3BF;">LMS</span></span>
-                    </a>
-                </div>
-
-                <!-- Edusite Main Menu Navigation Links -->
-                <div class="hidden md:flex space-x-1 items-center ms-6">
-                    <a href="{{ route('dashboard') }}" class="text-sm font-bold text-decoration-none px-3.5 py-2 rounded-full transition {{ request()->routeIs('dashboard') ? 'text-white' : 'text-gray-700 hover:text-primary' }}" style="{{ request()->routeIs('dashboard') ? 'background-color: #66A3BF; color: #ffffff !important;' : '' }}">
-                        Home / Dashboard
-                    </a>
-
-                    @if(Auth::user() && Auth::user()->isSiswa())
-                        <a href="{{ route('student.materials.index') }}" class="text-sm font-bold text-decoration-none px-3.5 py-2 rounded-full transition {{ request()->routeIs('student.materials.*') ? 'text-white' : 'text-gray-700 hover:text-primary' }}" style="{{ request()->routeIs('student.materials.*') ? 'background-color: #66A3BF; color: #ffffff !important;' : '' }}">
-                            Courses / Materi
-                        </a>
-                        <a href="{{ route('student.assignments.index') }}" class="text-sm font-bold text-decoration-none px-3.5 py-2 rounded-full transition {{ request()->routeIs('student.assignments.*') ? 'text-white' : 'text-gray-700 hover:text-primary' }}" style="{{ request()->routeIs('student.assignments.*') ? 'background-color: #66A3BF; color: #ffffff !important;' : '' }}">
-                            Tugas Kelas
-                        </a>
-                        <a href="{{ route('student.quizzes.index') }}" class="text-sm font-bold text-decoration-none px-3.5 py-2 rounded-full transition {{ request()->routeIs('student.quizzes.*') ? 'text-white' : 'text-gray-700 hover:text-primary' }}" style="{{ request()->routeIs('student.quizzes.*') ? 'background-color: #66A3BF; color: #ffffff !important;' : '' }}">
-                            Kuis Online
-                        </a>
-                        <a href="{{ route('student.report.index') }}" class="text-sm font-bold text-decoration-none px-3.5 py-2 rounded-full transition {{ request()->routeIs('student.report.*') ? 'text-white' : 'text-gray-700 hover:text-primary' }}" style="{{ request()->routeIs('student.report.*') ? 'background-color: #66A3BF; color: #ffffff !important;' : '' }}">
-                            Laporan Diri
-                        </a>
-                    @endif
-                </div>
+            <div class="flex items-center gap-4">
+                <a href="{{ Auth::user() && Auth::user()->isGuru() ? route('admin.dashboard') : route('dashboard') }}" class="flex items-center gap-3 text-decoration-none">
+                    <div class="rounded-circle text-white flex items-center justify-center p-2.5 shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 44px; height: 44px;">
+                        <i class="ti ti-school text-2xl"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="arsha-sitename leading-tight" style="font-family: 'Jost', sans-serif; font-size: 1.5rem; font-weight: 800; color: #3368A0; letter-spacing: 0.5px;">ARSHA <span style="color: #66A3BF;">LMS</span></span>
+                        <span class="badge bg-light text-primary border border-primary-subtle rounded-pill font-bold" style="font-size: 0.65rem; padding: 2px 8px; width: fit-content;">SMA Edition</span>
+                    </div>
+                </a>
             </div>
 
-            <!-- Right: User Account Dropdown -->
+            <!-- Middle: Main Menu Navigation Links (Always Visible on Laptop/Desktop - NEVER Hamburger) -->
+            <div class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                <a href="{{ route('dashboard') }}" class="text-xs lg:text-sm font-bold text-decoration-none px-3 py-2 rounded-full transition flex items-center gap-1.5 {{ request()->routeIs('dashboard') ? 'text-white' : 'text-gray-700 hover:text-primary hover:bg-gray-100' }}" style="{{ request()->routeIs('dashboard') ? 'background-color: #3368A0; color: #ffffff !important;' : '' }}">
+                    <i class="ti ti-smart-home text-base"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                @if(Auth::user() && Auth::user()->isSiswa())
+                    <a href="{{ route('student.materials.index') }}" class="text-xs lg:text-sm font-bold text-decoration-none px-3 py-2 rounded-full transition flex items-center gap-1.5 {{ request()->routeIs('student.materials.*') ? 'text-white' : 'text-gray-700 hover:text-primary hover:bg-gray-100' }}" style="{{ request()->routeIs('student.materials.*') ? 'background-color: #3368A0; color: #ffffff !important;' : '' }}">
+                        <i class="ti ti-book-2 text-base"></i>
+                        <span>Courses / Materi</span>
+                    </a>
+                    <a href="{{ route('student.assignments.index') }}" class="text-xs lg:text-sm font-bold text-decoration-none px-3 py-2 rounded-full transition flex items-center gap-1.5 {{ request()->routeIs('student.assignments.*') ? 'text-white' : 'text-gray-700 hover:text-primary hover:bg-gray-100' }}" style="{{ request()->routeIs('student.assignments.*') ? 'background-color: #3368A0; color: #ffffff !important;' : '' }}">
+                        <i class="ti ti-clipboard-list text-base"></i>
+                        <span>Tugas Kelas</span>
+                    </a>
+                    <a href="{{ route('student.quizzes.index') }}" class="text-xs lg:text-sm font-bold text-decoration-none px-3 py-2 rounded-full transition flex items-center gap-1.5 {{ request()->routeIs('student.quizzes.*') ? 'text-white' : 'text-gray-700 hover:text-primary hover:bg-gray-100' }}" style="{{ request()->routeIs('student.quizzes.*') ? 'background-color: #3368A0; color: #ffffff !important;' : '' }}">
+                        <i class="ti ti-help-hexagon text-base"></i>
+                        <span>Kuis Online</span>
+                    </a>
+                    <a href="{{ route('student.report.index') }}" class="text-xs lg:text-sm font-bold text-decoration-none px-3 py-2 rounded-full transition flex items-center gap-1.5 {{ request()->routeIs('student.report.*') ? 'text-white' : 'text-gray-700 hover:text-primary hover:bg-gray-100' }}" style="{{ request()->routeIs('student.report.*') ? 'background-color: #3368A0; color: #ffffff !important;' : '' }}">
+                        <i class="ti ti-chart-dots text-base"></i>
+                        <span>Laporan Diri</span>
+                    </a>
+                @endif
+            </div>
+
+            <!-- Right: User Account & Notifications -->
             <div class="hidden md:flex items-center gap-3">
+                <!-- Notification Indicator Icon -->
+                <div class="relative">
+                    <button class="p-2 rounded-full text-gray-500 hover:text-primary hover:bg-gray-100 focus:outline-none transition relative">
+                        <i class="ti ti-bell fs-5"></i>
+                        <span class="position-absolute top-1 end-1 p-1 bg-danger border border-light rounded-circle">
+                            <span class="visually-hidden">Notifikasi Baru</span>
+                        </span>
+                    </button>
+                </div>
+
                 @if(Auth::user() && Auth::user()->isGuru())
-                    <a href="{{ route('admin.dashboard') }}" class="btn btn-sm text-white font-bold rounded-full px-4 py-2 text-decoration-none" style="background-color: #3368A0;">
+                    <a href="{{ route('admin.dashboard') }}" class="btn btn-sm text-white font-bold rounded-full px-4 py-2 text-decoration-none shadow-sm" style="background-color: #3368A0;">
                         <i class="ti ti-dashboard me-1"></i> Admin Guru
                     </a>
                 @endif
 
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-4 py-2 border border-gray-200 text-sm font-bold rounded-full text-gray-700 bg-white hover:bg-gray-50 focus:outline-none transition shadow-sm">
-                            <div class="rounded-circle text-white flex items-center justify-center me-2 font-bold" style="background-color: #3368A0; width: 30px; height: 30px; font-size: 0.8rem;">
+                        <button class="inline-flex items-center px-3.5 py-1.5 border border-gray-200 text-sm font-bold rounded-full text-gray-700 bg-white hover:bg-gray-50 focus:outline-none transition shadow-sm gap-2">
+                            <div class="rounded-circle text-white flex items-center justify-center font-bold shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 32px; height: 32px; font-size: 0.85rem;">
                                 {{ strtoupper(substr(Auth::user()->name ?? 'U', 0, 2)) }}
                             </div>
-                            <div class="me-1">{{ Auth::user()->name }}</div>
+                            <div class="text-start leading-tight">
+                                <div class="font-bold text-dark text-xs">{{ Auth::user()->name }}</div>
+                                <div class="text-gray-400" style="font-size: 0.68rem;">{{ Auth::user()->schoolClass->name ?? 'Siswa SMA' }}</div>
+                            </div>
                             <i class="ti ti-chevron-down text-gray-400 ms-1"></i>
                         </button>
                     </x-slot>
@@ -71,7 +90,7 @@
                 </x-dropdown>
             </div>
 
-            <!-- Mobile Hamburger Button -->
+            <!-- Mobile Hamburger Button (ONLY visible on mobile phones under 768px) -->
             <div class="-me-2 flex items-center md:hidden">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-xl text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:outline-none transition">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
