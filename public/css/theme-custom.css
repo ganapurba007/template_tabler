@@ -1,5 +1,5 @@
 /* ==========================================================================
-   LMS Dani Custom Theme - Arsha Bootstrap Template Style (For SMA Students)
+   RuangTera Custom Theme - Arsha Bootstrap Template Style (For SMA Students)
    Primary Main : #66A3BF
    Primary Dark : #3368A0 (Arsha Navy)
    Soft Mint    : #C8DFDB
@@ -21,7 +21,8 @@
     --tblr-body-bg: #F2EFE7;
 }
 
-[data-bs-theme="dark"], body.theme-dark {
+[data-bs-theme="dark"],
+body.theme-dark {
     --color-warm-light: #0f172a;
     --color-soft-mint: #1e293b;
     --tblr-body-bg: #0f172a;
@@ -30,12 +31,34 @@
 
 body {
     background-color: var(--tblr-body-bg, #F2EFE7);
+    background-image: 
+        radial-gradient(at 90% 10%, rgba(51, 104, 160, 0.07) 0px, transparent 60%),
+        radial-gradient(at 10% 90%, rgba(102, 163, 191, 0.06) 0px, transparent 60%);
+    background-attachment: fixed;
+    background-size: 100% 100%;
     font-family: 'Open Sans', 'Poppins', 'Plus Jakarta Sans', sans-serif;
     color: #374151;
     -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6, .sitename {
+/* Main Page Content - Clean & Elegant Palette */
+main {
+    position: relative;
+    background-color: var(--tblr-body-bg, #F2EFE7);
+    background-image: 
+        radial-gradient(at 85% 15%, rgba(51, 104, 160, 0.06) 0px, transparent 50%),
+        radial-gradient(at 15% 85%, rgba(102, 163, 191, 0.05) 0px, transparent 50%);
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.sitename {
     font-family: 'Jost', 'Poppins', sans-serif;
 }
 
@@ -46,6 +69,7 @@ h1, h2, h3, h4, h5, h6, .sitename {
         align-items: center;
         gap: 0.5rem;
     }
+
     .arsha-hamburger-btn {
         display: none !important;
     }
@@ -55,6 +79,7 @@ h1, h2, h3, h4, h5, h6, .sitename {
     .arsha-nav-desktop {
         display: none !important;
     }
+
     .arsha-hamburger-btn {
         display: flex !important;
     }
@@ -62,20 +87,41 @@ h1, h2, h3, h4, h5, h6, .sitename {
 
 /* Micro-Animations & Glow Effects */
 @keyframes img-float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-16px); }
-    100% { transform: translateY(0px); }
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-16px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 @keyframes pulse-glow {
-    0% { box-shadow: 0 0 0 0 rgba(102, 163, 191, 0.4); }
-    70% { box-shadow: 0 0 0 15px rgba(102, 163, 191, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(102, 163, 191, 0); }
+    0% {
+        box-shadow: 0 0 0 0 rgba(102, 163, 191, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(102, 163, 191, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(102, 163, 191, 0);
+    }
 }
 
 @keyframes shine-sweep {
-    0% { left: -100%; }
-    100% { left: 200%; }
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 200%;
+    }
 }
 
 .animated-float {
@@ -96,37 +142,36 @@ h1, h2, h3, h4, h5, h6, .sitename {
     box-shadow: 0 20px 35px rgba(51, 104, 160, 0.18) !important;
 }
 
-/* Elegant Clean Abstract Geometric Backgrounds (Clean, Non-Cluttered UI/UX) */
-.bg-abstract-catalog {
+/* Elegant Clean Abstract Backgrounds (Harmonious & Non-Cluttered) */
+.bg-abstract-catalog,
+.bg-abstract-quizzes,
+.bg-abstract-assignments,
+.bg-card-clean {
     background-color: #F2EFE7;
     background-image: 
-        radial-gradient(circle at 95% 10%, rgba(102, 163, 191, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 5% 90%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 95% 10%, rgba(102, 163, 191, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 5% 90%, rgba(51, 104, 160, 0.06) 0%, transparent 60%);
     background-size: 100% 100%;
 }
 
-.bg-abstract-quizzes {
-    background-color: #F2EFE7;
-    background-image: 
-        radial-gradient(circle at 90% 10%, rgba(139, 92, 246, 0.14) 0%, transparent 60%),
-        radial-gradient(circle at 10% 90%, rgba(51, 104, 160, 0.1) 0%, transparent 60%);
-    background-size: 100% 100%;
-}
-
-.bg-abstract-assignments {
-    background-color: #F2EFE7;
-    background-image: 
-        radial-gradient(circle at 10% 10%, rgba(245, 158, 11, 0.14) 0%, transparent 60%),
-        radial-gradient(circle at 90% 90%, rgba(16, 185, 129, 0.1) 0%, transparent 60%);
-    background-size: 100% 100%;
-}
-
-/* Arsha Header & Navbar (Warm Light Background) */
+/* Arsha Header & Sticky Translucent Navbar */
 .arsha-header {
-    background: #F2EFE7;
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(102, 163, 191, 0.2);
-    box-shadow: 0 4px 20px rgba(51, 104, 160, 0.08);
+    transition: background-color 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    z-index: 1040;
+}
+
+.arsha-nav-top {
+    background: linear-gradient(135deg, #3368A0 0%, #20456E 100%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: none !important;
+}
+
+.arsha-nav-scrolled {
+    background: rgba(32, 69, 110, 0.88) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.28) !important;
 }
 
 .arsha-sitename {
@@ -134,8 +179,91 @@ h1, h2, h3, h4, h5, h6, .sitename {
     font-size: 1.75rem;
     font-weight: 800;
     letter-spacing: 1px;
-    color: #3368A0;
+    color: #ffffff;
     text-transform: uppercase;
+}
+
+/* Header Main Navigation Links (Active Pill vs Clean Text Inactive Styling) */
+.arsha-nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 700;
+    padding: 0.5rem 0.85rem;
+    border-radius: 0;
+    text-decoration: none !important;
+    transition: all 0.22s ease-in-out;
+    letter-spacing: 0.3px;
+    position: relative;
+    /* Inactive State Styling: Pure clean text without rounded background box */
+    color: rgba(255, 255, 255, 0.85) !important;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+}
+
+@media (min-width: 1024px) {
+    .arsha-nav-link {
+        font-size: 0.925rem;
+        padding: 0.55rem 1rem;
+    }
+}
+
+.arsha-nav-link:hover {
+    color: #ffffff !important;
+    background: transparent;
+    border-bottom-color: rgba(56, 189, 248, 0.75);
+    transform: translateY(-1px);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.arsha-nav-link.active {
+    color: #ffffff !important;
+    font-weight: 800;
+    border-radius: 50px;
+    padding: 0.5rem 1.25rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.18) 100%);
+    border: 1.5px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-shadow: none;
+}
+
+@media (min-width: 1024px) {
+    .arsha-nav-link.active {
+        padding: 0.55rem 1.35rem;
+    }
+}
+
+/* Mobile Drawer Links */
+.arsha-mobile-link {
+    display: flex;
+    align-items: center;
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+    background: transparent;
+    border-left: 3px solid transparent;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+}
+
+.arsha-mobile-link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    border-left-color: rgba(56, 189, 248, 0.6);
+}
+
+.arsha-mobile-link.active {
+    color: #ffffff;
+    font-weight: 800;
+    border-radius: 0.6rem;
+    background: linear-gradient(90deg, rgba(56, 189, 248, 0.22) 0%, rgba(255, 255, 255, 0.1) 100%);
+    border-left: 4px solid #38bdf8;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
 /* Arsha Hero Section */

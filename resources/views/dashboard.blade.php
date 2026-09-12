@@ -15,13 +15,13 @@
                         </span>
                     </div>
                     
-                    <h1 class="text-white fw-extrabold display-5 mb-3" style="font-family: 'Jost', sans-serif; line-height: 1.2;" data-aos="fade-up" data-aos-delay="200">
-                        Solusi Belajar Interaktif Terbaik Untuk Masa Depan SMA-mu!
-                    </h1>
-                    
-                    <p class="lead text-white-50 fs-5 mb-4" data-aos="fade-up" data-aos-delay="300">
-                        Selamat datang kembali, <strong>{{ $user->name }}</strong>! Akses modul materi pelajaran terlengkap, kerjakan tugas online, dan uji pemahamanmu melalui kuis real-time.
-                    </p>
+                   <h1 class="text-white fw-extrabold display-5 mb-3" style="font-family: 'Jost', sans-serif; line-height: 1.2;" data-aos="fade-up" data-aos-delay="200">
+    Belajar Jadi Lebih Seru, Satu Ruang untuk Semua Progresmu
+</h1>
+
+<p class="lead text-white-50 fs-5 mb-4" data-aos="fade-up" data-aos-delay="300">
+    Halo, <strong>{{ $user->name }}</strong>! Yuk lanjutkan perjalanan belajarmu — semua materi, tugas, dan kuis interaktif sudah menunggu di sini.
+</p>
 
                     <!-- Quick Search Bar inside Hero -->
                     <div class="p-2 rounded-pill shadow-lg mb-4 d-flex align-items-center max-w-lg mx-auto mx-lg-0 border" style="background-color: #F2EFE7; border-color: rgba(102, 163, 191, 0.3) !important;" data-aos="fade-up" data-aos-delay="350">
@@ -80,9 +80,6 @@
         <!-- Section Header Bar -->
         <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between mb-4 pb-2 border-bottom" style="border-color: rgba(102, 163, 191, 0.25) !important;">
             <div>
-                <span class="badge rounded-pill text-primary px-3 py-1.5 font-bold uppercase tracking-wider text-xs mb-1 d-inline-flex align-items-center gap-1.5" style="background: rgba(102, 163, 191, 0.15); color: #3368A0 !important;">
-                    <i class="ti ti-chart-dots text-primary"></i> Live Analytics
-                </span>
                 <h3 class="fw-extrabold text-dark m-0 d-flex align-items-center gap-2" style="font-family: 'Jost', sans-serif;">
                     Ringkasan Progres Belajar Saya
                 </h3>
@@ -95,7 +92,7 @@
         <div class="row g-4">
             <!-- Stat Card 1: Total Materi Pelajaran -->
             <div class="col-6 col-md-3">
-                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border: 1px solid rgba(102, 163, 191, 0.3) !important;">
+                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border: 1px solid rgba(51, 104, 160, 0.2) !important;">
                     <!-- Top Accent Color Bar -->
                     <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #3368A0, #66A3BF);"></div>
                     <!-- Giant Watermark Background Icon -->
@@ -103,7 +100,7 @@
                     
                     <div class="card-body p-4 position-relative z-1 d-flex flex-column justify-content-between">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="rounded-4 d-flex align-items-center justify-content-center text-white shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 52px; height: 52px; box-shadow: 0 8px 18px rgba(51, 104, 160, 0.3) !important;">
+                            <div class="rounded-4 d-flex align-items-center justify-content-center text-white shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 52px; height: 52px; box-shadow: 0 8px 18px rgba(51, 104, 160, 0.25) !important;">
                                 <i class="ti ti-books fs-2"></i>
                             </div>
                             <span class="badge rounded-pill px-2.5 py-1 text-primary fw-bold small" style="background: rgba(51, 104, 160, 0.12);">
@@ -118,7 +115,7 @@
                             </div>
                             <div class="fw-bold text-secondary text-uppercase tracking-wider mb-3" style="font-size: 0.78rem;">Total Materi Pelajaran</div>
                             
-                            <div class="progress rounded-pill" style="height: 6px; background: rgba(51, 104, 160, 0.15);">
+                            <div class="progress rounded-pill" style="height: 6px; background: rgba(51, 104, 160, 0.12);">
                                 <div class="progress-bar rounded-pill" style="width: 100%; background: linear-gradient(90deg, #3368A0, #66A3BF);"></div>
                             </div>
                         </div>
@@ -128,15 +125,15 @@
 
             <!-- Stat Card 2: Materi Selesai -->
             <div class="col-6 col-md-3">
-                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border: 1px solid rgba(16, 185, 129, 0.3) !important;">
+                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border: 1px solid rgba(51, 104, 160, 0.2) !important;">
                     <!-- Top Accent Color Bar -->
-                    <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #10B981, #34D399);"></div>
+                    <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #3368A0, #66A3BF);"></div>
                     <!-- Giant Watermark Background Icon -->
-                    <i class="ti ti-circle-check position-absolute bottom-0 end-0 me-n2 mb-n3 text-success opacity-10 pointer-events-none" style="font-size: 6.5rem;"></i>
+                    <i class="ti ti-circle-check position-absolute bottom-0 end-0 me-n2 mb-n3 text-primary opacity-10 pointer-events-none" style="font-size: 6.5rem; color: #3368A0 !important;"></i>
 
                     <div class="card-body p-4 position-relative z-1 d-flex flex-column justify-content-between">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="rounded-4 d-flex align-items-center justify-content-center text-white shadow-sm pulse-glow" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); width: 52px; height: 52px; box-shadow: 0 8px 18px rgba(16, 185, 129, 0.3) !important;">
+                            <div class="rounded-4 d-flex align-items-center justify-content-center text-white shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 52px; height: 52px; box-shadow: 0 8px 18px rgba(51, 104, 160, 0.25) !important;">
                                 <i class="ti ti-circle-check fs-2"></i>
                             </div>
                             <span class="badge rounded-pill px-2.5 py-1 text-success fw-bold small" style="background: rgba(16, 185, 129, 0.15);">
@@ -151,8 +148,8 @@
                             </div>
                             <div class="fw-bold text-secondary text-uppercase tracking-wider mb-3" style="font-size: 0.78rem;">Materi Telah Dipelajari</div>
                             
-                            <div class="progress rounded-pill" style="height: 6px; background: rgba(16, 185, 129, 0.15);">
-                                <div class="progress-bar rounded-pill" style="width: {{ $totalClassMaterials > 0 ? min(100, round(($completedMaterialsCount / $totalClassMaterials) * 100)) : 0 }}%; background: linear-gradient(90deg, #10B981, #34D399);"></div>
+                            <div class="progress rounded-pill" style="height: 6px; background: rgba(51, 104, 160, 0.12);">
+                                <div class="progress-bar rounded-pill" style="width: {{ $totalClassMaterials > 0 ? min(100, round(($completedMaterialsCount / $totalClassMaterials) * 100)) : 0 }}%; background: linear-gradient(90deg, #3368A0, #66A3BF);"></div>
                             </div>
                         </div>
                     </div>
@@ -161,15 +158,15 @@
 
             <!-- Stat Card 3: Tugas Perlu Dikumpulkan -->
             <div class="col-6 col-md-3">
-                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border: 1px solid rgba(245, 158, 11, 0.3) !important;">
+                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border: 1px solid rgba(51, 104, 160, 0.2) !important;">
                     <!-- Top Accent Color Bar -->
-                    <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #F59E0B, #FBBF24);"></div>
+                    <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #3368A0, #66A3BF);"></div>
                     <!-- Giant Watermark Background Icon -->
-                    <i class="ti ti-notebook position-absolute bottom-0 end-0 me-n2 mb-n3 text-warning opacity-10 pointer-events-none" style="font-size: 6.5rem;"></i>
+                    <i class="ti ti-notebook position-absolute bottom-0 end-0 me-n2 mb-n3 text-primary opacity-10 pointer-events-none" style="font-size: 6.5rem; color: #3368A0 !important;"></i>
 
                     <div class="card-body p-4 position-relative z-1 d-flex flex-column justify-content-between">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="rounded-4 d-flex align-items-center justify-content-center text-white shadow-sm" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); width: 52px; height: 52px; box-shadow: 0 8px 18px rgba(245, 158, 11, 0.3) !important;">
+                            <div class="rounded-4 d-flex align-items-center justify-content-center text-white shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 52px; height: 52px; box-shadow: 0 8px 18px rgba(51, 104, 160, 0.25) !important;">
                                 <i class="ti ti-notebook fs-2"></i>
                             </div>
                             <span class="badge rounded-pill px-2.5 py-1 text-warning-emphasis fw-bold small" style="background: rgba(245, 158, 11, 0.15);">
@@ -184,8 +181,8 @@
                             </div>
                             <div class="fw-bold text-secondary text-uppercase tracking-wider mb-3" style="font-size: 0.78rem;">Tugas Perlu Dikumpulkan</div>
                             
-                            <div class="progress rounded-pill" style="height: 6px; background: rgba(245, 158, 11, 0.15);">
-                                <div class="progress-bar rounded-pill" style="width: {{ $upcomingAssignments->count() > 0 ? '75%' : '100%' }}; background: linear-gradient(90deg, #F59E0B, #FBBF24);"></div>
+                            <div class="progress rounded-pill" style="height: 6px; background: rgba(51, 104, 160, 0.12);">
+                                <div class="progress-bar rounded-pill" style="width: {{ $upcomingAssignments->count() > 0 ? '75%' : '100%' }}; background: linear-gradient(90deg, #3368A0, #66A3BF);"></div>
                             </div>
                         </div>
                     </div>
@@ -194,18 +191,18 @@
 
             <!-- Stat Card 4: Kuis Online Aktif -->
             <div class="col-6 col-md-3">
-                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border: 1px solid rgba(139, 92, 246, 0.3) !important;">
+                <div class="card h-100 border-0 rounded-4 shadow-sm hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border: 1px solid rgba(51, 104, 160, 0.2) !important;">
                     <!-- Top Accent Color Bar -->
-                    <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #8B5CF6, #A78BFA);"></div>
+                    <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #3368A0, #66A3BF);"></div>
                     <!-- Giant Watermark Background Icon -->
-                    <i class="ti ti-help-hexagon position-absolute bottom-0 end-0 me-n2 mb-n3 text-purple opacity-10 pointer-events-none" style="font-size: 6.5rem; color: #8B5CF6 !important;"></i>
+                    <i class="ti ti-help-hexagon position-absolute bottom-0 end-0 me-n2 mb-n3 text-primary opacity-10 pointer-events-none" style="font-size: 6.5rem; color: #3368A0 !important;"></i>
 
                     <div class="card-body p-4 position-relative z-1 d-flex flex-column justify-content-between">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="rounded-4 d-flex align-items-center justify-content-center text-white shadow-sm" style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); width: 52px; height: 52px; box-shadow: 0 8px 18px rgba(139, 92, 246, 0.3) !important;">
+                            <div class="rounded-4 d-flex align-items-center justify-content-center text-white shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 52px; height: 52px; box-shadow: 0 8px 18px rgba(51, 104, 160, 0.25) !important;">
                                 <i class="ti ti-help-hexagon fs-2"></i>
                             </div>
-                            <span class="badge rounded-pill px-2.5 py-1 fw-bold small" style="background: rgba(139, 92, 246, 0.15); color: #7c3aed;">
+                            <span class="badge rounded-pill px-2.5 py-1 text-primary fw-bold small" style="background: rgba(51, 104, 160, 0.12);">
                                 <i class="ti ti-point-filled text-danger me-1"></i> Live Test
                             </span>
                         </div>
@@ -217,8 +214,8 @@
                             </div>
                             <div class="fw-bold text-secondary text-uppercase tracking-wider mb-3" style="font-size: 0.78rem;">Kuis Online Aktif</div>
                             
-                            <div class="progress rounded-pill" style="height: 6px; background: rgba(139, 92, 246, 0.15);">
-                                <div class="progress-bar rounded-pill" style="width: {{ $activeQuizzes->count() > 0 ? '90%' : '100%' }}; background: linear-gradient(90deg, #8B5CF6, #A78BFA);"></div>
+                            <div class="progress rounded-pill" style="height: 6px; background: rgba(51, 104, 160, 0.12);">
+                                <div class="progress-bar rounded-pill" style="width: {{ $activeQuizzes->count() > 0 ? '90%' : '100%' }}; background: linear-gradient(90deg, #3368A0, #66A3BF);"></div>
                             </div>
                         </div>
                     </div>
@@ -240,9 +237,9 @@
 
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-lift text-center position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(51, 104, 160, 0.25) !important;">
+                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-lift text-center position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(51, 104, 160, 0.2) !important;">
                         <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #3368A0, #66A3BF);"></div>
-                        <div class="icon-wrapper mx-auto mb-3 text-white rounded-4 d-flex align-items-center justify-content-center shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 60px; height: 60px; box-shadow: 0 8px 18px rgba(51, 104, 160, 0.3) !important;">
+                        <div class="icon-wrapper mx-auto mb-3 text-white rounded-4 d-flex align-items-center justify-content-center shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 60px; height: 60px; box-shadow: 0 8px 18px rgba(51, 104, 160, 0.25) !important;">
                             <i class="ti ti-book-2 fs-2"></i>
                         </div>
                         <h5 class="fw-bold text-dark mb-2" style="font-family: 'Jost', sans-serif;">Modul Interaktif</h5>
@@ -251,9 +248,9 @@
                 </div>
 
                 <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-lift text-center position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(16, 185, 129, 0.25) !important;">
-                        <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #10B981, #34D399);"></div>
-                        <div class="icon-wrapper mx-auto mb-3 text-white rounded-4 d-flex align-items-center justify-content-center shadow-sm pulse-glow" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); width: 60px; height: 60px; box-shadow: 0 8px 18px rgba(16, 185, 129, 0.3) !important;">
+                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-lift text-center position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(51, 104, 160, 0.2) !important;">
+                        <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #3368A0, #66A3BF);"></div>
+                        <div class="icon-wrapper mx-auto mb-3 text-white rounded-4 d-flex align-items-center justify-content-center shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 60px; height: 60px; box-shadow: 0 8px 18px rgba(51, 104, 160, 0.25) !important;">
                             <i class="ti ti-pencil fs-2"></i>
                         </div>
                         <h5 class="fw-bold text-dark mb-2" style="font-family: 'Jost', sans-serif;">Tugas Essay Online</h5>
@@ -262,9 +259,9 @@
                 </div>
 
                 <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-lift text-center position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(245, 158, 11, 0.25) !important;">
-                        <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #F59E0B, #FBBF24);"></div>
-                        <div class="icon-wrapper mx-auto mb-3 text-white rounded-4 d-flex align-items-center justify-content-center shadow-sm" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); width: 60px; height: 60px; box-shadow: 0 8px 18px rgba(245, 158, 11, 0.3) !important;">
+                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-lift text-center position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(51, 104, 160, 0.2) !important;">
+                        <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #3368A0, #66A3BF);"></div>
+                        <div class="icon-wrapper mx-auto mb-3 text-white rounded-4 d-flex align-items-center justify-content-center shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 60px; height: 60px; box-shadow: 0 8px 18px rgba(51, 104, 160, 0.25) !important;">
                             <i class="ti ti-clock-play fs-2"></i>
                         </div>
                         <h5 class="fw-bold text-dark mb-2" style="font-family: 'Jost', sans-serif;">Kuis Realtime</h5>
@@ -273,9 +270,9 @@
                 </div>
 
                 <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
-                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-lift text-center position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(139, 92, 246, 0.25) !important;">
-                        <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #8B5CF6, #A78BFA);"></div>
-                        <div class="icon-wrapper mx-auto mb-3 text-white rounded-4 d-flex align-items-center justify-content-center shadow-sm" style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); width: 60px; height: 60px; box-shadow: 0 8px 18px rgba(139, 92, 246, 0.3) !important;">
+                    <div class="arsha-icon-box h-100 p-4 border rounded-4 shadow-sm hover-lift text-center position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(51, 104, 160, 0.2) !important;">
+                        <div class="position-absolute top-0 start-0 end-0" style="height: 4px; background: linear-gradient(90deg, #3368A0, #66A3BF);"></div>
+                        <div class="icon-wrapper mx-auto mb-3 text-white rounded-4 d-flex align-items-center justify-content-center shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 60px; height: 60px; box-shadow: 0 8px 18px rgba(51, 104, 160, 0.25) !important;">
                             <i class="ti ti-chart-dots fs-2"></i>
                         </div>
                         <h5 class="fw-bold text-dark mb-2" style="font-family: 'Jost', sans-serif;">Laporan Diri</h5>
@@ -310,8 +307,8 @@
             </div>
         </div>
 
-        <!-- Arsha Courses Catalog Section (Clean & Open Layout) -->
-        <div class="mb-5">
+        <!-- Arsha Courses Catalog Section (Ambient Gradient Container Layout) -->
+        <div class="p-4 p-md-5 rounded-4 shadow-sm mb-5 position-relative overflow-hidden border bg-abstract-catalog" style="border-color: rgba(102, 163, 191, 0.2) !important;">
             <div class="arsha-section-title text-center mb-4" data-aos="fade-up">
                 <span class="badge rounded-pill px-3.5 py-2 font-bold uppercase tracking-wider text-xs mb-2 d-inline-flex align-items-center gap-1.5 shadow-sm" style="background: linear-gradient(135deg, #3368A0, #66A3BF); color: #ffffff !important;">
                     <i class="ti ti-books text-white"></i> Modul Terpopuler SMA
@@ -323,14 +320,12 @@
             <div class="row g-4">
                 @forelse($materials as $index => $mat)
                     @php
-                        // Color theme presets for course card headers
+                        // Elegant cohesive Arsha Navy gradients for course card headers
                         $gradients = [
                             'linear-gradient(135deg, #1e3a8a 0%, #3368A0 100%)',
-                            'linear-gradient(135deg, #059669 0%, #10B981 100%)',
-                            'linear-gradient(135deg, #6D28D9 0%, #8B5CF6 100%)',
-                            'linear-gradient(135deg, #D97706 0%, #F59E0B 100%)',
-                            'linear-gradient(135deg, #E11D48 0%, #F43F5E 100%)',
-                            'linear-gradient(135deg, #0284C7 0%, #38BDF8 100%)',
+                            'linear-gradient(135deg, #3368A0 0%, #66A3BF 100%)',
+                            'linear-gradient(135deg, #0f172a 0%, #3368A0 100%)',
+                            'linear-gradient(135deg, #20456E 0%, #66A3BF 100%)',
                         ];
                         $cardBgGradient = $gradients[$index % count($gradients)];
                     @endphp
@@ -346,7 +341,7 @@
                                         <span class="badge text-white font-bold px-3 py-1.5 rounded-pill shadow-sm d-inline-flex align-items-center gap-1" style="background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(6px);">
                                             <i class="ti ti-tag me-1"></i> {{ $mat->subject->name ?? 'Mata Pelajaran' }}
                                         </span>
-                                        <span class="badge bg-white text-dark rounded-pill px-2.5 py-1 font-bold shadow-sm" style="font-size: 0.72rem;">
+                                        <span class="badge text-dark rounded-pill px-2.5 py-1 font-bold shadow-sm" style="background-color: #F2EFE7; font-size: 0.72rem;">
                                             <i class="ti ti-star-filled text-warning me-1"></i> Modul SMA
                                         </span>
                                     </div>
@@ -357,7 +352,7 @@
                                 </div>
 
                                 <!-- Card Body Content -->
-                                <div class="p-4">
+                                <div class="p-4" style="background: linear-gradient(180deg, rgba(242, 239, 231, 0.95) 0%, rgba(200, 223, 219, 0.2) 100%);">
                                     <!-- Instructor Row -->
                                     <div class="d-flex align-items-center gap-2.5 mb-3">
                                         <div class="rounded-circle text-white fw-bold d-flex align-items-center justify-content-center shadow-sm" style="background: linear-gradient(135deg, #3368A0, #66A3BF); width: 34px; height: 34px; font-size: 0.85rem;">
@@ -394,7 +389,7 @@
                                 </div>
                             </div>
 
-                            <div class="p-4 pt-0">
+                            <div class="p-4 pt-0" style="background: linear-gradient(180deg, rgba(200, 223, 219, 0.2) 0%, rgba(242, 239, 231, 0.95) 100%);">
                                 <a href="{{ route('student.materials.show', $mat) }}" class="btn text-white w-100 rounded-pill py-2.5 font-bold shadow-sm d-flex align-items-center justify-content-center gap-2 hover-lift" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%);">
                                     Pelajari Modul Ini <i class="ti ti-arrow-right"></i>
                                 </a>
@@ -421,112 +416,127 @@
 
     </div>
 
-    <!-- Active Quizzes & Assignments Section (Ultra Clean & Neat Layout) -->
+    <!-- Active Quizzes & Assignments Section (Rich Ambient Tinted Widgets) -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-5">
         <div class="row g-4">
-            
-            <!-- Active Quizzes Column -->
+                       <!-- Left Column: Active Quizzes Widget -->
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="h-100">
-                    <!-- Column Header -->
-                    <div class="d-flex align-items-center justify-content-between mb-3 pb-2 border-bottom" style="border-color: rgba(139, 92, 246, 0.2) !important;">
-                        <div class="d-flex align-items-center gap-2">
-                            <div class="rounded-3 d-flex align-items-center justify-content-center text-white shrink-0" style="background: linear-gradient(135deg, #8B5CF6, #6D28D9); width: 36px; height: 36px;">
-                                <i class="ti ti-help-hexagon fs-4"></i>
-                            </div>
-                            <div>
-                                <h4 class="fw-extrabold text-dark m-0" style="font-family: 'Jost', sans-serif; font-size: 1.25rem;">
-                                    Kuis Online Aktif
-                                </h4>
-                                <div class="text-muted small" style="font-size: 0.75rem;">Evaluasi pengerjaan real-time</div>
-                            </div>
-                        </div>
-                        <a href="{{ route('student.quizzes.index') }}" class="btn text-white btn-sm rounded-pill px-3 py-1 font-semibold hover-lift text-decoration-none shadow-sm" style="background-color: #8B5CF6; font-size: 0.8rem;">
-                            Lihat Semua <i class="ti ti-chevron-right ms-0.5"></i>
-                        </a>
-                    </div>
-
-                    <!-- Quizzes Item List -->
-                    <div class="d-flex flex-column gap-3">
-                        @forelse($activeQuizzes as $qz)
-                            <div class="p-3.5 rounded-4 border shadow-sm d-flex align-items-center justify-content-between transition-all hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(139, 92, 246, 0.25) !important;">
-                                <div class="position-absolute top-0 start-0 bottom-0" style="width: 4px; background: linear-gradient(180deg, #8B5CF6, #6D28D9);"></div>
-                                <div class="ps-2">
-                                    <div class="d-flex align-items-center gap-2 mb-1">
-                                        <span class="badge text-white px-2.5 py-1 rounded-pill" style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); font-size: 0.72rem;">
-                                            {{ $qz->subject->name ?? 'Kuis' }}
-                                        </span>
-                                    </div>
-                                    <h6 class="fw-bold text-dark mb-1" style="font-size: 0.98rem;">{{ $qz->title }}</h6>
-                                    <div class="small text-muted d-flex flex-wrap gap-2" style="font-size: 0.78rem;">
-                                        <span><i class="ti ti-clock me-1 text-primary"></i> {{ $qz->duration_minutes }} Menit</span>
-                                        <span>|</span>
-                                        <span><i class="ti ti-calendar me-1 text-danger"></i> Deadline: <strong class="text-dark">{{ $qz->deadline ? $qz->deadline->format('d M H:i') : '-' }}</strong></span>
-                                    </div>
+                <div class="card h-100 border-0 rounded-4 shadow-sm overflow-hidden bg-card-clean" style="border: 1px solid rgba(51, 104, 160, 0.2) !important;">
+                    <div class="card-body p-4 p-md-4.5">
+                        
+                        <!-- Clean Unified Section Header -->
+                        <div class="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom" style="border-color: rgba(51, 104, 160, 0.2) !important;">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="rounded-4 text-white d-flex align-items-center justify-content-center shrink-0 shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 44px; height: 44px;">
+                                    <i class="ti ti-help-hexagon fs-3"></i>
                                 </div>
-                                <a href="{{ route('student.quizzes.show', $qz) }}" class="btn text-white btn-sm px-4 py-2 text-decoration-none rounded-pill shadow-sm font-bold hover-lift shrink-0 ms-2" style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);">
-                                    Mulai <i class="ti ti-player-play-filled ms-1" style="font-size: 0.75rem;"></i>
-                                </a>
+                                <div>
+                                    <h4 class="fw-extrabold text-dark m-0" style="font-family: 'Jost', sans-serif; font-size: 1.25rem;">
+                                        Kuis Online Aktif
+                                    </h4>
+                                    <div class="text-muted small" style="font-size: 0.78rem;">Evaluasi pengerjaan real-time</div>
+                                </div>
                             </div>
-                        @empty
-                            <div class="text-center py-4 text-muted rounded-4 p-4" style="background-color: rgba(139, 92, 246, 0.06); border: 1px dashed rgba(139, 92, 246, 0.25) !important;">
-                                <i class="ti ti-circle-check fs-1 text-success mb-2 d-block"></i>
-                                <div class="fw-bold text-dark mb-1">Tidak Ada Kuis Aktif</div>
-                                <div class="small">Semua evaluasi kuis online untuk kelas Anda telah selesai dikerjakan.</div>
-                            </div>
-                        @endforelse
+                            <a href="{{ route('student.quizzes.index') }}" class="btn btn-sm rounded-pill px-3.5 py-1.5 font-bold hover-lift text-decoration-none shadow-sm" style="background: rgba(51, 104, 160, 0.12); color: #3368A0 !important; font-size: 0.8rem;">
+                                Lihat Semua <i class="ti ti-arrow-right ms-0.5"></i>
+                            </a>
+                        </div>
+
+                        <!-- Quizzes Item List -->
+                        <div class="d-flex flex-column gap-3.5">
+                            @forelse($activeQuizzes as $qz)
+                                <div class="p-4 rounded-4 shadow-sm d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between gap-3 transition-all hover-lift" style="background: rgba(242, 239, 231, 0.95); border: 1px solid rgba(51, 104, 160, 0.2) !important;">
+                                    <div class="min-w-0 flex-grow-1">
+                                        <div class="mb-2">
+                                            <span class="badge text-white px-3 py-1 rounded-pill font-bold shadow-xs d-inline-flex align-items-center gap-1" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); font-size: 0.75rem;">
+                                                <i class="ti ti-tag"></i> {{ $qz->subject->name ?? 'Kuis' }}
+                                            </span>
+                                        </div>
+                                        <h5 class="fw-extrabold text-dark mb-2" style="font-family: 'Jost', sans-serif; font-size: 1.05rem; line-height: 1.4;">
+                                            {{ $qz->title }}
+                                        </h5>
+                                        <div class="text-muted small d-flex flex-wrap align-items-center gap-3" style="font-size: 0.8rem;">
+                                            <span class="d-inline-flex align-items-center gap-1">
+                                                <i class="ti ti-clock text-primary fs-6"></i> {{ $qz->duration_minutes }} Menit
+                                            </span>
+                                            <span class="opacity-30">•</span>
+                                            <span class="d-inline-flex align-items-center gap-1">
+                                                <i class="ti ti-calendar-event text-danger fs-6"></i> Batas Waktu: <strong class="text-dark">{{ $qz->deadline ? $qz->deadline->format('d M H:i') : '-' }}</strong>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <a href="{{ route('student.quizzes.show', $qz) }}" class="btn text-white px-4 py-2.5 rounded-pill shadow-sm font-bold hover-lift shrink-0 text-decoration-none" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); font-size: 0.85rem;">
+                                        Ikuti Kuis <i class="ti ti-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
+                            @empty
+                                <div class="text-center py-4 text-muted rounded-4 p-4" style="background: rgba(51, 104, 160, 0.04); border: 1px dashed rgba(51, 104, 160, 0.2) !important;">
+                                    <i class="ti ti-circle-check fs-1 text-success mb-2 d-block"></i>
+                                    <div class="fw-bold text-dark mb-1">Tidak Ada Kuis Aktif</div>
+                                    <div class="small">Semua evaluasi kuis online kelas Anda telah tuntas.</div>
+                                </div>
+                            @endforelse
+                        </div>
+
                     </div>
                 </div>
             </div>
 
-            <!-- Upcoming Assignments Column -->
+            <!-- Right Column: Upcoming Assignments Widget -->
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="h-100">
-                    <!-- Column Header -->
-                    <div class="d-flex align-items-center justify-content-between mb-3 pb-2 border-bottom" style="border-color: rgba(245, 158, 11, 0.2) !important;">
-                        <div class="d-flex align-items-center gap-2">
-                            <div class="rounded-3 d-flex align-items-center justify-content-center text-white shrink-0" style="background: linear-gradient(135deg, #F59E0B, #D97706); width: 36px; height: 36px;">
-                                <i class="ti ti-notebook fs-4"></i>
-                            </div>
-                            <div>
-                                <h4 class="fw-extrabold text-dark m-0" style="font-family: 'Jost', sans-serif; font-size: 1.25rem;">
-                                    Tugas Perlu Dikumpulkan
-                                </h4>
-                                <div class="text-muted small" style="font-size: 0.75rem;">Pengumpulan jawaban essay & dokumen</div>
-                            </div>
-                        </div>
-                        <a href="{{ route('student.assignments.index') }}" class="btn text-white btn-sm rounded-pill px-3 py-1 font-semibold hover-lift text-decoration-none shadow-sm" style="background-color: #F59E0B; font-size: 0.8rem;">
-                            Lihat Semua <i class="ti ti-chevron-right ms-0.5"></i>
-                        </a>
-                    </div>
-
-                    <!-- Assignments Item List -->
-                    <div class="d-flex flex-column gap-3">
-                        @forelse($upcomingAssignments as $asg)
-                            <div class="p-3.5 rounded-4 border shadow-sm d-flex align-items-center justify-content-between transition-all hover-lift position-relative overflow-hidden" style="background-color: #F2EFE7; border-color: rgba(245, 158, 11, 0.25) !important;">
-                                <div class="position-absolute top-0 start-0 bottom-0" style="width: 4px; background: linear-gradient(180deg, #F59E0B, #D97706);"></div>
-                                <div class="ps-2">
-                                    <div class="d-flex align-items-center gap-2 mb-1">
-                                        <span class="badge text-white px-2.5 py-1 rounded-pill" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); font-size: 0.72rem;">
-                                            {{ $asg->subject->name ?? 'Tugas' }}
-                                        </span>
-                                    </div>
-                                    <h6 class="fw-bold text-dark mb-1" style="font-size: 0.98rem;">{{ $asg->title }}</h6>
-                                    <div class="small text-muted" style="font-size: 0.78rem;">
-                                        <i class="ti ti-calendar-event me-1 text-danger"></i> Batas Waktu: <strong class="text-danger">{{ $asg->due_date ? $asg->due_date->format('d M H:i') : '-' }}</strong>
-                                    </div>
+                <div class="card h-100 border-0 rounded-4 shadow-sm overflow-hidden bg-card-clean" style="border: 1px solid rgba(51, 104, 160, 0.2) !important;">
+                    <div class="card-body p-4 p-md-4.5">
+                        
+                        <!-- Clean Unified Section Header -->
+                        <div class="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom" style="border-color: rgba(51, 104, 160, 0.2) !important;">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="rounded-4 text-white d-flex align-items-center justify-content-center shrink-0 shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 44px; height: 44px;">
+                                    <i class="ti ti-notebook fs-3"></i>
                                 </div>
-                                <a href="{{ route('student.assignments.show', $asg) }}" class="btn text-white btn-sm px-4 py-2 text-decoration-none rounded-pill shadow-sm font-bold hover-lift shrink-0 ms-2" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);">
-                                    Kerjakan <i class="ti ti-send ms-1" style="font-size: 0.75rem;"></i>
-                                </a>
+                                <div>
+                                    <h4 class="fw-extrabold text-dark m-0" style="font-family: 'Jost', sans-serif; font-size: 1.25rem;">
+                                        Tugas Perlu Dikumpulkan
+                                    </h4>
+                                    <div class="text-muted small" style="font-size: 0.78rem;">Pengumpulkan jawaban essay & dokumen</div>
+                                </div>
                             </div>
-                        @empty
-                            <div class="text-center py-4 text-muted rounded-4 p-4" style="background-color: rgba(245, 158, 11, 0.06); border: 1px dashed rgba(245, 158, 11, 0.25) !important;">
-                                <i class="ti ti-mood-smile fs-1 text-primary mb-2 d-block"></i>
-                                <div class="fw-bold text-dark mb-1">Tugas Tuntas!</div>
-                                <div class="small">Semua tugas kelas Anda sudah berhasil dikumpulkan tepat waktu.</div>
-                            </div>
-                        @endforelse
+                            <a href="{{ route('student.assignments.index') }}" class="btn btn-sm rounded-pill px-3.5 py-1.5 font-bold hover-lift text-decoration-none shadow-sm" style="background: rgba(51, 104, 160, 0.12); color: #3368A0 !important; font-size: 0.8rem;">
+                                Lihat Semua <i class="ti ti-arrow-right ms-0.5"></i>
+                            </a>
+                        </div>
+
+                        <!-- Assignments Item List -->
+                        <div class="d-flex flex-column gap-3.5">
+                            @forelse($upcomingAssignments as $asg)
+                                <div class="p-4 rounded-4 shadow-sm d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between gap-3 transition-all hover-lift" style="background: rgba(242, 239, 231, 0.95); border: 1px solid rgba(51, 104, 160, 0.2) !important;">
+                                    <div class="min-w-0 flex-grow-1">
+                                        <div class="mb-2">
+                                            <span class="badge text-white px-3 py-1 rounded-pill font-bold shadow-xs d-inline-flex align-items-center gap-1" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); font-size: 0.75rem;">
+                                                <i class="ti ti-bookmark"></i> {{ $asg->subject->name ?? 'Tugas' }}
+                                            </span>
+                                        </div>
+                                        <h5 class="fw-extrabold text-dark mb-2" style="font-family: 'Jost', sans-serif; font-size: 1.05rem; line-height: 1.4;">
+                                            {{ $asg->title }}
+                                        </h5>
+                                        <div class="text-muted small d-flex flex-wrap align-items-center gap-3" style="font-size: 0.8rem;">
+                                            <span class="d-inline-flex align-items-center gap-1">
+                                                <i class="ti ti-calendar-event text-danger fs-6"></i> Batas Waktu: <strong class="text-danger">{{ $asg->due_date ? $asg->due_date->format('d M H:i') : '-' }}</strong>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <a href="{{ route('student.assignments.show', $asg) }}" class="btn text-white px-4 py-2.5 rounded-pill shadow-sm font-bold hover-lift shrink-0 text-decoration-none align-self-sm-center" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); font-size: 0.85rem;">
+                                        Kerjakan Tugas <i class="ti ti-send ms-1"></i>
+                                    </a>
+                                </div>
+                            @empty
+                                <div class="text-center py-4 text-muted rounded-4 p-4" style="background: rgba(51, 104, 160, 0.04); border: 1px dashed rgba(51, 104, 160, 0.2) !important;">
+                                    <i class="ti ti-mood-smile fs-1 text-primary mb-2 d-block"></i>
+                                    <div class="fw-bold text-dark mb-1">Tugas Tuntas!</div>
+                                    <div class="small">Semua tugas kelas Anda telah dikumpulkan tepat waktu.</div>
+                                </div>
+                            @endforelse
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -90,11 +90,14 @@ Route::middleware(['auth', 'role:guru'])->prefix('admin')->as('admin.')->group(f
     Route::get('reports/export-csv', [ReportController::class, 'exportCsv'])->name('reports.export-csv');
 });
 
-// Profile Routes
+// Profile & Notification Routes
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::post('/notifications/mark-all-read', [\App\Http\Controllers\NotificationController::class, 'markAllAsRead'])->name('notifications.mark-all-read');
+    Route::post('/notifications/{notification}/mark-read', [\App\Http\Controllers\NotificationController::class, 'markAsRead'])->name('notifications.mark-read');
 });
 
 require __DIR__.'/auth.php';

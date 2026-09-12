@@ -27,6 +27,6 @@ class Notification extends Model
 
     public function user(): BelongsTo
     {
-        return $table = $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 }

@@ -1,4 +1,4 @@
-# CHANGELOG — LMS Dani
+# CHANGELOG — RuangTera
 
 > Catat setiap perubahan kode di sini selama implementasi.
 

@@ -9,7 +9,7 @@
   <link rel="manifest" href="{{ asset('manifest.json') }}">
   <link rel="apple-touch-icon" href="{{ asset('tabler/static/logo-small.svg') }}">
 
-  <title>@yield('title', config('app.name', 'LMS Dani'))</title>
+  <title>@yield('title', config('app.name', 'RuangTera'))</title>
 
   <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">

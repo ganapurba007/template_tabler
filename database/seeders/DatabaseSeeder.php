@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
             SchoolClassSeeder::class,
             SubjectSeeder::class,
             UserSeeder::class,
+            NotificationSeeder::class,
         ]);
     }
 }

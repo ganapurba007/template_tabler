@@ -1,7 +1,7 @@
 {
-  "name": "LMS Dani - Learning Management System",
-  "short_name": "LMS Dani",
-  "description": "LMS Mobile-First Clean & User-Friendly Learning Platform",
+  "name": "RuangTera - Learning Management System",
+  "short_name": "RuangTera",
+  "description": "RuangTera Mobile-First Clean & User-Friendly Learning Platform",
   "start_url": "/dashboard",
   "display": "standalone",
   "background_color": "#F2EFE7",

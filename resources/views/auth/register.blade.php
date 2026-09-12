@@ -9,7 +9,7 @@
                         <div class="rounded-circle bg-white text-primary d-flex align-items-center justify-content-center p-2" style="width: 42px; height: 42px;">
                             <i class="ti ti-school fs-3" style="color: #3368A0;"></i>
                         </div>
-                        <span class="fs-4 fw-bold text-white tracking-wide">LMS Dani</span>
+                        <span class="fs-4 fw-bold text-white tracking-wide">RuangTera</span>
                     </div>
 
                     <span class="badge rounded-pill bg-white text-dark fw-bold px-3 py-2 mb-3 shadow-sm" style="color: #3368A0 !important;">
@@ -32,7 +32,7 @@
                         <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center p-2" style="width: 40px; height: 40px; background-color: #66A3BF !important;">
                             <i class="ti ti-school fs-3"></i>
                         </div>
-                        <span class="fs-3 fw-bold" style="color: #3368A0;">LMS Dani</span>
+                        <span class="fs-3 fw-bold" style="color: #3368A0;">RuangTera</span>
                     </div>
                 </div>
 

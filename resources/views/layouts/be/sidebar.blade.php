@@ -5,7 +5,7 @@
       <div class="sidebar-brand-icon">
         <i class="ti ti-brand-tabler"></i>
       </div>
-      <span>LMS Dani</span>
+      <span>RuangTera</span>
     </a>
     <button type="button" class="navbar-toggle-btn d-lg-none sidebar-toggle-btn" aria-label="Close sidebar">
       <i class="ti ti-x"></i>
