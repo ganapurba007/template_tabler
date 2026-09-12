@@ -105,6 +105,12 @@ class AssignmentController extends Controller
             abort(403);
         }
 
+        // Cegah pengumpulan jika batas waktu telah lewat
+        if ($assignment->due_date && $assignment->due_date->isPast()) {
+            return redirect()->route('student.assignments.show', $assignment)
+                ->with('error', 'Batas waktu pengerjaan tugas telah berakhir. Pengumpulan jawaban telah ditutup.');
+        }
+
         $request->validate([
             'answer_text' => ['required', 'string', 'max:5000'],
         ]);

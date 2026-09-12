@@ -97,4 +97,22 @@ class StudentAssignmentTest extends TestCase
         $response = $this->actingAs($this->siswa)->get(route('student.assignments.show', $this->assignmentClassB));
         $response->assertStatus(403);
     }
+
+    public function test_siswa_cannot_submit_when_assignment_is_overdue(): void
+    {
+        $this->assignmentClassA->due_date = now()->subDays(1);
+        $this->assignmentClassA->save();
+
+        $response = $this->actingAs($this->siswa)->post(route('student.assignments.submit', $this->assignmentClassA), [
+            'answer_text' => 'Jawaban setelah batas waktu lewat',
+        ]);
+
+        $response->assertRedirect(route('student.assignments.show', $this->assignmentClassA));
+        $response->assertSessionHas('error');
+        $this->assertDatabaseMissing('assignment_submissions', [
+            'assignment_id' => $this->assignmentClassA->id,
+            'student_id' => $this->siswa->id,
+            'answer_text' => 'Jawaban setelah batas waktu lewat',
+        ]);
+    }
 }

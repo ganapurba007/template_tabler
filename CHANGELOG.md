@@ -18,11 +18,15 @@
     - Grid View: Kartu tugas bergaya modern dengan watermark icon, badge tenggat waktu dengan indikasi urgensi (warna merah untuk mendekati deadline), avatar guru pengampu, serta badge status bergradien.
     - List View: Tabel modern dengan baris bergaris halus, pill tenggat waktu, dan tombol aksi terintegrasi.
 - **Perombakan Halaman Detail & Pengumpulan Tugas ([`resources/views/student/assignments/show.blade.php`](file:///c:/laragon/www/KELAS/lms_dani/resources/views/student/assignments/show.blade.php))**:
-  - Mengganti layout dasar dengan Page Hero Header bergradien RuangTerra, badge mapel, kelas, dan status penyerahan/penilaian.
+  - Mengganti layout dasar dengan Page Hero Header bergradien RuangTerra, badge mapel, kelas, dan status penyerahan/penilaian yang lapang (*spacious* dan tidak sempit).
+  - Memperbaiki pemformatan tanggal zona waktu PHP agar tidak menghasilkan string `370750` melainkan string `WIB` yang bersih.
+  - Memperjelas kontras teks batas waktu (*deadline*) dengan pill berkontras tinggi pada hero banner.
+  - **Sistem Kunci Tenggat Waktu (Overdue Lock)**: Jika batas waktu telah lewat, formulir pengumpulan tugas terkunci secara otomatis, textarea menjadi *disabled*, dan tombol kirim dinonaktifkan dengan label *"Waktu Habis"* serta dicegah di sisi backend controller.
   - Layout 2 kolom terstruktur:
     - **Kolom Utama**: Detail instruksi tugas dengan styling dokumen profesional, kartu nilai & feedback guru (jika tugas sudah diperiksa), serta formulir pengumpulan tugas responsif dengan textarea modern dan catatan waktu pengiriman terakhir.
     - **Sidebar Kanan**: Kartu informasi tenggat waktu (*Deadline Alert*), panduan & checklist pengumpulan tugas siswa, profil guru pengampu (avatar, kontak, NIP), dan tombol navigasi kembali.
-- **Peningkatan Controller ([`app/Http/Controllers/Student/AssignmentController.php`](file:///c:/laragon/www/KELAS/lms_dani/app/Http/Controllers/Student/AssignmentController.php))**:
+- **Peningkatan Controller & Keamanan ([`app/Http/Controllers/Student/AssignmentController.php`](file:///c:/laragon/www/KELAS/lms_dani/app/Http/Controllers/Student/AssignmentController.php))**:
+  - Menambahkan validasi penolakan pengumpulan tugas yang telah melewati tenggat waktu (`isPast()`) di sisi backend.
   - Menambahkan dukungan filter pencarian keyword judul dan deskripsi tugas, filter mapel (`subject_id`), filter status pengumpulan, penghitungan metrics progres tugas, serta data mata pelajaran untuk filter pills.
 
 ### Diuji & Diverifikasi

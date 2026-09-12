@@ -468,7 +468,7 @@
                                             <i class="ti ti-clock-hour-4 {{ $isOverdue ? 'text-danger' : 'text-primary' }}"></i> Batas Waktu:
                                         </span>
                                         <span class="small fw-bold {{ $isOverdue ? 'text-danger' : 'text-dark' }}">
-                                            {{ $asg->due_date ? $asg->due_date->format('d M Y H:i') : 'Tanpa Batas' }}
+                                            {{ $asg->due_date ? $asg->due_date->format('d M Y H:i') . ' WIB' : 'Tanpa Batas' }}
                                         </span>
                                     </div>
                                 </div>
@@ -591,7 +591,7 @@
                                     <td>
                                         <div class="small fw-semibold {{ $isOverdue ? 'text-danger' : 'text-dark' }}">
                                             <i class="ti ti-clock {{ $isOverdue ? 'text-danger' : 'text-muted' }} me-1"></i>
-                                            {{ $asg->due_date ? $asg->due_date->format('d M Y H:i') : '-' }}
+                                            {{ $asg->due_date ? $asg->due_date->format('d M Y H:i') . ' WIB' : '-' }}
                                         </div>
                                     </td>
                                     <td>

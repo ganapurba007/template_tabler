@@ -103,31 +103,38 @@
                             <i class="ti ti-calendar me-1"></i> Dibuat: {{ $assignment->created_at ? $assignment->created_at->format('d F Y') : '-' }}
                         </span>
                         <span>•</span>
-                        <span class="{{ $isOverdue ? 'text-danger fw-bold' : 'text-warning fw-semibold' }}">
-                            <i class="ti ti-clock-hour-4 me-1"></i> Batas: {{ $assignment->due_date ? $assignment->due_date->format('d F Y - H:i WIB') : 'Tanpa Batas' }}
-                        </span>
+                        @if($isOverdue)
+                            <span class="badge px-3 py-1.5 rounded-pill shadow-sm d-inline-flex align-items-center gap-1.5 font-bold" style="background-color: #FFE8E8; color: #DC2626 !important; border: 1px solid #FFA8A8; font-size: 0.82rem;">
+                                <i class="ti ti-alert-triangle-filled text-danger fs-6"></i> Batas: {{ $assignment->due_date ? $assignment->due_date->format('d F Y - H:i') . ' WIB' : 'Tanpa Batas' }}
+                            </span>
+                        @else
+                            <span class="badge px-3 py-1.5 rounded-pill shadow-sm d-inline-flex align-items-center gap-1.5 font-bold" style="background-color: #FEF3C7; color: #92400E !important; border: 1px solid #FCD34D; font-size: 0.82rem;">
+                                <i class="ti ti-clock-hour-4 text-warning fs-6"></i> Batas: {{ $assignment->due_date ? $assignment->due_date->format('d F Y - H:i') . ' WIB' : 'Tanpa Batas' }}
+                            </span>
+                        @endif
                     </div>
                 </div>
 
-                <!-- Hero Right: Clean Status Pill (Tanpa tombol ganda) -->
+                <!-- Hero Right: Spacious Status Pill -->
                 <div class="col-lg-4 text-lg-end">
-                    <div class="d-inline-flex align-items-center gap-2.5 px-4 py-2.5 rounded-pill shadow-sm border" style="background: rgba(242, 239, 231, 0.95); backdrop-filter: blur(10px); border-color: rgba(255, 255, 255, 0.5) !important;">
-                        <span class="text-muted small fw-bold text-uppercase" style="font-size: 0.75rem;">Status:</span>
+                    <div class="d-inline-flex align-items-center gap-3 shadow-sm border" 
+                         style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-color: rgba(255, 255, 255, 0.6) !important; border-radius: 50rem; padding: 8px 12px 8px 22px;">
+                        <span class="text-secondary fw-bold text-uppercase" style="font-size: 0.78rem; letter-spacing: 0.8px;">Status:</span>
                         @if($isGraded)
-                            <span class="badge bg-success rounded-pill px-3 py-1.5 d-inline-flex align-items-center gap-1.5 font-bold">
-                                <i class="ti ti-award"></i> Dinilai: {{ number_format($submission->grade, 1) }} / 100
+                            <span class="badge bg-success rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2 font-bold shadow-sm" style="font-size: 0.85rem;">
+                                <i class="ti ti-award fs-6"></i> Dinilai: {{ number_format($submission->grade, 1) }} / 100
                             </span>
                         @elseif($isSubmitted)
-                            <span class="badge bg-info text-white rounded-pill px-3 py-1.5 d-inline-flex align-items-center gap-1.5 font-bold">
-                                <i class="ti ti-circle-check"></i> Sudah Dikumpulkan
+                            <span class="badge bg-info text-white rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2 font-bold shadow-sm" style="font-size: 0.85rem;">
+                                <i class="ti ti-circle-check fs-6"></i> Sudah Dikumpulkan
                             </span>
                         @elseif($isOverdue)
-                            <span class="badge bg-danger rounded-pill px-3 py-1.5 d-inline-flex align-items-center gap-1.5 font-bold">
-                                <i class="ti ti-alert-triangle"></i> Terlewat Tenggat
+                            <span class="badge bg-danger rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2 font-bold shadow-sm" style="font-size: 0.85rem;">
+                                <i class="ti ti-alert-triangle fs-6"></i> Waktu Habis
                             </span>
                         @else
-                            <span class="badge rounded-pill px-3 py-1.5 d-inline-flex align-items-center gap-1.5 font-bold" style="background: #e2e8f0; color: #475569;">
-                                <i class="ti ti-clock"></i> Belum Dikumpulkan
+                            <span class="badge rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2 font-bold" style="background: #e2e8f0; color: #475569; font-size: 0.85rem;">
+                                <i class="ti ti-clock fs-6"></i> Belum Dikumpulkan
                             </span>
                         @endif
                     </div>
@@ -145,6 +152,13 @@
             <div class="alert alert-success alert-dismissible fade show border-0 rounded-4 shadow-sm mb-4 d-flex align-items-center gap-2 p-3 p-md-4" role="alert" style="background-color: #d1fae5; color: #065f46; border: 1px solid #a7f3d0 !important;">
                 <i class="ti ti-circle-check fs-4"></i>
                 <div class="fw-semibold">{{ session('success') }}</div>
+                <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        @if(session('error'))
+            <div class="alert alert-danger alert-dismissible fade show border-0 rounded-4 shadow-sm mb-4 d-flex align-items-center gap-2 p-3 p-md-4" role="alert" style="background-color: #fee2e2; color: #991b1b; border: 1px solid #fecaca !important;">
+                <i class="ti ti-alert-triangle fs-4"></i>
+                <div class="fw-semibold">{{ session('error') }}</div>
                 <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
@@ -230,7 +244,11 @@
                                 Formulir Pengumpulan Jawaban
                             </h5>
                         </div>
-                        @if($isSubmitted)
+                        @if($isOverdue)
+                            <span class="badge bg-danger-subtle text-danger-emphasis rounded-pill px-3 py-1 font-bold small">
+                                <i class="ti ti-lock me-1"></i> Pengumpulan Ditutup
+                            </span>
+                        @elseif($isSubmitted)
                             <span class="badge bg-info-subtle text-info-emphasis rounded-pill px-3 py-1 font-bold small">
                                 <i class="ti ti-history me-1"></i> Revisi Jawaban Aktif
                             </span>
@@ -243,7 +261,19 @@
 
                     <div class="p-4 p-md-5">
                         
-                        @if($isSubmitted)
+                        @if($isOverdue)
+                            <div class="alert alert-danger border-0 rounded-4 shadow-sm mb-4 d-flex align-items-center gap-3 p-3 p-md-4" style="background-color: #fee2e2; color: #991b1b; border: 1px solid #fecaca !important;">
+                                <div class="rounded-circle bg-danger text-white d-flex align-items-center justify-content-center shrink-0" style="width: 40px; height: 40px;">
+                                    <i class="ti ti-lock fs-4"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold fs-6 mb-0.5">Batas Waktu Pengumpulan Telah Berakhir</div>
+                                    <div class="small opacity-90">
+                                        Tenggat waktu pengerjaan tugas ini telah lewat pada <strong>{{ $assignment->due_date ? $assignment->due_date->format('d F Y - H:i') . ' WIB' : '-' }}</strong>. Pengumpulan jawaban baru maupun pembaruan telah dinonaktifkan.
+                                    </div>
+                                </div>
+                            </div>
+                        @elseif($isSubmitted)
                             <div class="alert alert-info border-0 rounded-4 shadow-sm mb-4 d-flex align-items-center gap-2 p-3" style="background-color: #e0f2fe; color: #0369a1;">
                                 <i class="ti ti-info-circle fs-4"></i>
                                 <div class="small">
@@ -263,14 +293,18 @@
                                           id="answer_text" 
                                           rows="8" 
                                           class="form-control rounded-3 p-3 shadow-none @error('answer_text') is-invalid @enderror" 
-                                          style="border: 1.5px solid rgba(51, 104, 160, 0.2); font-size: 0.95rem; line-height: 1.7;" 
-                                          required 
-                                          placeholder="Ketik jawaban tugas essay, uraian, atau tautan berkas pengerjaan Anda di sini...">{{ old('answer_text', $submission?->answer_text) }}</textarea>
+                                          style="border: 1.5px solid {{ $isOverdue ? 'rgba(220, 53, 69, 0.3)' : 'rgba(51, 104, 160, 0.2)' }}; font-size: 0.95rem; line-height: 1.7; {{ $isOverdue ? 'background-color: #f8fafc; cursor: not-allowed;' : '' }}" 
+                                          {{ $isOverdue ? 'disabled' : 'required' }}
+                                          placeholder="{{ $isOverdue ? 'Batas waktu pengerjaan telah berakhir. Pengumpulan tugas telah dinonaktifkan.' : 'Ketik jawaban tugas essay, uraian, atau tautan berkas pengerjaan Anda di sini...' }}">{{ old('answer_text', $submission?->answer_text) }}</textarea>
                                 @error('answer_text')
                                     <div class="invalid-feedback fw-semibold">{{ $message }}</div>
                                 @enderror
                                 <div class="form-text text-muted small mt-1.5">
-                                    <i class="ti ti-info-circle me-1"></i> Tuliskan jawaban secara lengkap dan jelas sesuai instruksi soal di atas.
+                                    @if($isOverdue)
+                                        <span class="text-danger fw-semibold"><i class="ti ti-lock me-1"></i> Form telah dikunci karena melewati batas waktu pengerjaan.</span>
+                                    @else
+                                        <i class="ti ti-info-circle me-1"></i> Tuliskan jawaban secara lengkap dan jelas sesuai instruksi soal di atas.
+                                    @endif
                                 </div>
                             </div>
 
@@ -278,17 +312,29 @@
                                 <div class="text-muted small">
                                     @if($submission)
                                         <i class="ti ti-history me-1"></i> Terakhir disimpan: {{ $submission->submitted_at ? $submission->submitted_at->diffForHumans() : '-' }}
+                                    @elseif($isOverdue)
+                                        <span class="text-danger fw-semibold"><i class="ti ti-alert-triangle me-1"></i> Pengumpulan ditutup</span>
                                     @else
                                         <i class="ti ti-pencil me-1"></i> Pastikan jawaban sudah lengkap sebelum dikirim
                                     @endif
                                 </div>
 
-                                <button type="submit" 
-                                        class="btn text-white rounded-pill px-4 py-2.5 font-bold shadow-sm d-inline-flex align-items-center gap-2 hover-lift" 
-                                        style="background: {{ $isSubmitted ? 'linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)' : 'linear-gradient(135deg, #3368A0 0%, #66A3BF 100%)' }};">
-                                    <i class="ti ti-device-floppy fs-5"></i>
-                                    {{ $isSubmitted ? 'Perbarui Pengumpulan' : 'Kirim Jawaban Tugas' }}
-                                </button>
+                                @if($isOverdue)
+                                    <button type="button" 
+                                            class="btn btn-secondary rounded-pill px-4 py-2.5 font-bold shadow-none d-inline-flex align-items-center gap-2" 
+                                            disabled 
+                                            style="cursor: not-allowed; opacity: 0.65; background-color: #94a3b8; border-color: #94a3b8;">
+                                        <i class="ti ti-lock fs-5"></i>
+                                        Waktu Berakhir — Pengumpulan Ditutup
+                                    </button>
+                                @else
+                                    <button type="submit" 
+                                            class="btn text-white rounded-pill px-4 py-2.5 font-bold shadow-sm d-inline-flex align-items-center gap-2 hover-lift" 
+                                            style="background: {{ $isSubmitted ? 'linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)' : 'linear-gradient(135deg, #3368A0 0%, #66A3BF 100%)' }};">
+                                        <i class="ti ti-device-floppy fs-5"></i>
+                                        {{ $isSubmitted ? 'Perbarui Pengumpulan' : 'Kirim Jawaban Tugas' }}
+                                    </button>
+                                @endif
                             </div>
                         </form>
 
@@ -314,7 +360,7 @@
                             <div class="p-3 rounded-3 mb-3" style="background: {{ $isOverdue ? '#fef2f2' : '#F8FAFC' }}; border: 1px dashed {{ $isOverdue ? '#fca5a5' : 'rgba(51, 104, 160, 0.2)' }};">
                                 <div class="small text-muted mb-1">Batas Akhir:</div>
                                 <div class="fw-bold {{ $isOverdue ? 'text-danger' : 'text-dark' }} fs-6">
-                                    <i class="ti ti-calendar me-1"></i> {{ $assignment->due_date ? $assignment->due_date->format('d M Y - H:i WIB') : 'Tanpa Batas Waktu' }}
+                                    <i class="ti ti-calendar me-1"></i> {{ $assignment->due_date ? $assignment->due_date->format('d M Y - H:i') . ' WIB' : 'Tanpa Batas Waktu' }}
                                 </div>
                                 <div class="small mt-1 {{ $isOverdue ? 'text-danger fw-semibold' : 'text-secondary' }}">
                                     @if($assignment->due_date)

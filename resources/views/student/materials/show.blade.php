@@ -155,17 +155,18 @@
                     </div>
                 </div>
 
-                <!-- Hero Right: Status Indicator Badge (Tanpa tombol aksi, aksi hanya di sidebar Status Penyelesaian) -->
+                <!-- Hero Right: Spacious Status Indicator Badge -->
                 <div class="col-lg-4 text-lg-end">
-                    <div class="d-inline-flex align-items-center gap-2.5 px-4 py-2.5 rounded-pill shadow-sm border" style="background: rgba(242, 239, 231, 0.95); backdrop-filter: blur(10px); border-color: rgba(255, 255, 255, 0.5) !important;">
-                        <span class="text-muted small fw-bold text-uppercase" style="font-size: 0.75rem;">Status:</span>
+                    <div class="d-inline-flex align-items-center gap-3 shadow-sm border" 
+                         style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-color: rgba(255, 255, 255, 0.6) !important; border-radius: 50rem; padding: 8px 12px 8px 22px;">
+                        <span class="text-secondary fw-bold text-uppercase" style="font-size: 0.78rem; letter-spacing: 0.8px;">Status:</span>
                         @if($isCompleted)
-                            <span class="badge bg-success rounded-pill px-3 py-1.5 d-inline-flex align-items-center gap-1.5 font-bold">
-                                <i class="ti ti-circle-check"></i> Selesai Dipelajari
+                            <span class="badge bg-success rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2 font-bold shadow-sm" style="font-size: 0.85rem;">
+                                <i class="ti ti-circle-check fs-6"></i> Selesai Dipelajari
                             </span>
                         @else
-                            <span class="badge rounded-pill px-3 py-1.5 d-inline-flex align-items-center gap-1.5 font-bold" style="background: #e2e8f0; color: #475569;">
-                                <i class="ti ti-clock"></i> Belum Ditinjau
+                            <span class="badge rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2 font-bold" style="background: #e2e8f0; color: #475569; font-size: 0.85rem;">
+                                <i class="ti ti-clock fs-6"></i> Belum Ditinjau
                             </span>
                         @endif
                     </div>
