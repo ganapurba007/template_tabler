@@ -1,6 +1,55 @@
-# CHANGELOG — RuangTera
+# CHANGELOG — RuangTerra
 
 > Catat setiap perubahan kode di sini selama implementasi.
+
+## [Fase 29] Authentication UI Enhancements (Eye Toggle Icon & Submit Auto-Disable) — 2026-09-12
+
+### Ditambahkan & Diperbarui
+- **Icon Mata (Show/Hide Password & Konfirmasi)**:
+  - Ditambahkan tombol toggle mata interaktif (`ti-eye` / `ti-eye-off`) pada seluruh input password dan konfirmasi password di:
+    - Login Siswa & Guru (`resources/views/auth/login.blade.php`)
+    - Pendaftaran Siswa Baru (`resources/views/auth/register.blade.php`)
+    - Login Backend Guru / Admin (`resources/views/admin/auth/login.blade.php`)
+    - Lupa Kata Sandi & Reset Password (`resources/views/auth/reset-password.blade.php`, `resources/views/admin/auth/forgot-password.blade.php`, `resources/views/auth/confirm-password.blade.php`)
+- **Efek Hover & State Auto-Disable Tombol Submit**:
+  - Ditambahkan styling hover terangkat (`translateY(-2px)`) dan efek glow pada `.btn-auth-submit`.
+  - Mengimplementasikan handler JavaScript submit otomatis: tombol menjadi `disabled` seketika saat form dikirim (setelah validasi HTML5 lolos) dengan indikator animasi spinner dan teks loading dinamis untuk mencegah pengiriman formulir ganda (*double-submission*).
+
+### Diuji & Diverifikasi
+- Seluruh 124 pengujian PHPUnit lulus 100% (413 assertions).
+- Diverifikasi langsung melalui subagent browser: toggle mata berfungsi mulus, form input teks dan tombol disable beroperasi sesuai spesifikasi.
+
+## [Fase 28] Dedicated Backend & Frontend Authentication Architecture — 2026-09-12
+
+### Ditambahkan & Diperbarui
+- **Autentikasi Khusus Backend (`admin/login` & `admin/forgot-password`)**:
+  - Dibuat [`AdminAuthenticatedSessionController`](file:///c:/laragon/www/KELAS/lms_dani/app/Http/Controllers/Admin/Auth/AdminAuthenticatedSessionController.php) dan [`AdminPasswordResetLinkController`](file:///c:/laragon/www/KELAS/lms_dani/app/Http/Controllers/Admin/Auth/AdminPasswordResetLinkController.php).
+  - Tampilan login backend [`resources/views/admin/auth/login.blade.php`](file:///c:/laragon/www/KELAS/lms_dani/resources/views/admin/auth/login.blade.php) bergaya Tabler admin theme:
+    - Judul: **Masuk Panel Guru**
+    - **Tidak ada tautan/tombol registrasi** sama sekali.
+    - **Siswa diblokir dari login backend**: jika siswa mencoba masuk, autentikasi ditolak dengan pesan error *"Akses ditolak. Halaman login ini hanya untuk Guru dan Administrator. Siswa silakan login melalui portal utama."*.
+    - Hanya akun dengan role `guru` yang dapat masuk, langsung diarahkan ke `/admin/dashboard`.
+  - Halaman lupa kata sandi backend [`resources/views/admin/auth/forgot-password.blade.php`](file:///c:/laragon/www/KELAS/lms_dani/resources/views/admin/auth/forgot-password.blade.php) dengan proteksi hanya untuk email Guru.
+- **Autentikasi Frontend (`login`)**:
+  - Halaman [`resources/views/auth/login.blade.php`](file:///c:/laragon/www/KELAS/lms_dani/resources/views/auth/login.blade.php) tetap melayani login Guru & Siswa.
+  - Tautan registrasi *"Daftar Siswa Baru"* (`route('register')`) dan lupa kata sandi (`route('password.request')`) tetap aktif dan berfungsi normal.
+
+### Diuji & Diverifikasi
+- Dibuat unit test suite [`tests/Feature/Admin/AdminAuthTest.php`](file:///c:/laragon/www/KELAS/lms_dani/tests/Feature/Admin/AdminAuthTest.php).
+- Seluruh 124 PHPUnit tests passed (413 assertions, 100% PASS).
+
+## [Fase 27] Enable Frontend Registration & Application Rebrand to RuangTerra — 2026-09-12
+
+### Ditambahkan & Diperbarui
+- **Akses Halaman Register di Front End (`routes/auth.php`)**:
+  - Mengubah route `GET /register` dari redirect ke login menjadi memanggil `RegisteredUserController::create` yang merender form pendaftaran siswa beserta pilihan kelas.
+  - Pengguna di halaman login kini dapat mengklik tautan **Daftar Siswa Baru** dan langsung masuk ke form registrasi tanpa di-redirect.
+- **Rebrand Aplikasi Menjadi RuangTerra**:
+  - Memperbarui nama aplikasi menjadi `RuangTerra` pada konfigurasi `.env`, `config/app.php`, manifest PWA, layout navigasi, header/footer, dan halaman autentikasi.
+
+### Diuji & Diverifikasi
+- Seluruh 114 PHPUnit tests passed (100% PASS).
+- Verifikasi langsung via browser: tautan "Daftar Siswa Baru" pada halaman login sukses membuka form registrasi dengan seluruh field (Nama, Email, Pilih Kelas, Password, Konfirmasi Password).
 
 ## [Fase 26] Direct Hero Section Attachment & Modern Glassmorphism Statistics Cards Overhaul — 2026-09-11
 

@@ -17,10 +17,26 @@ use App\Http\Controllers\Student\DashboardController as StudentDashboardControll
 use App\Http\Controllers\Student\MaterialController as StudentMaterialController;
 use App\Http\Controllers\Student\QuizController as StudentQuizController;
 use App\Http\Controllers\Student\ReportController as StudentReportController;
+use App\Http\Controllers\Admin\Auth\AdminAuthenticatedSessionController;
+use App\Http\Controllers\Admin\Auth\AdminPasswordResetLinkController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect()->route('dashboard');
+});
+
+// Alias & Shortcut Akses Backend / Admin
+Route::get('admin', function () {
+    return redirect()->route('admin.dashboard');
+});
+
+// Rute Autentikasi Khusus Backend (Admin / Guru)
+Route::prefix('admin')->as('admin.')->group(function () {
+    Route::get('login', [AdminAuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('login', [AdminAuthenticatedSessionController::class, 'store']);
+    Route::get('forgot-password', [AdminPasswordResetLinkController::class, 'create'])->name('password.request');
+    Route::post('forgot-password', [AdminPasswordResetLinkController::class, 'store'])->name('password.email');
+    Route::post('logout', [AdminAuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
 
 // Route Dashboard Siswa

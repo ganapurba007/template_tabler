@@ -9,7 +9,7 @@
                         <div class="rounded-circle bg-white text-primary d-flex align-items-center justify-content-center p-2" style="width: 42px; height: 42px;">
                             <i class="ti ti-school fs-3" style="color: #3368A0;"></i>
                         </div>
-                        <span class="fs-4 fw-bold text-white tracking-wide">RuangTera</span>
+                        <span class="fs-4 fw-bold text-white tracking-wide">RuangTerra</span>
                     </div>
 
                     <span class="badge rounded-pill bg-white text-dark fw-bold px-3 py-2 mb-3 shadow-sm" style="color: #3368A0 !important;">
@@ -32,7 +32,7 @@
                         <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center p-2" style="width: 40px; height: 40px; background-color: #66A3BF !important;">
                             <i class="ti ti-school fs-3"></i>
                         </div>
-                        <span class="fs-3 fw-bold" style="color: #3368A0;">RuangTera</span>
+                        <span class="fs-3 fw-bold" style="color: #3368A0;">RuangTerra</span>
                     </div>
                 </div>
 
@@ -85,7 +85,10 @@
                             <label class="form-label fw-semibold text-dark small" for="password">{{ __('Kata Sandi') }}</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-end-0 text-muted"><i class="ti ti-lock"></i></span>
-                                <input type="password" id="password" class="form-control bg-light border-start-0 ps-1 @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="••••••••">
+                                <input type="password" id="password" class="form-control bg-light border-start-0 border-end-0 ps-1 @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="••••••••">
+                                <button type="button" class="btn btn-light border border-start-0 text-muted toggle-password" data-target="password" title="Lihat Kata Sandi">
+                                    <i class="ti ti-eye fs-5"></i>
+                                </button>
                             </div>
                             <x-input-error :messages="$errors->get('password')" class="mt-1 text-danger small" />
                         </div>
@@ -93,13 +96,16 @@
                             <label class="form-label fw-semibold text-dark small" for="password_confirmation">{{ __('Konfirmasi Sandi') }}</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-end-0 text-muted"><i class="ti ti-lock-check"></i></span>
-                                <input type="password" id="password_confirmation" class="form-control bg-light border-start-0 ps-1 @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required autocomplete="new-password" placeholder="••••••••">
+                                <input type="password" id="password_confirmation" class="form-control bg-light border-start-0 border-end-0 ps-1 @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required autocomplete="new-password" placeholder="••••••••">
+                                <button type="button" class="btn btn-light border border-start-0 text-muted toggle-password" data-target="password_confirmation" title="Lihat Konfirmasi Sandi">
+                                    <i class="ti ti-eye fs-5"></i>
+                                </button>
                             </div>
                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-1 text-danger small" />
                         </div>
                     </div>
 
-                    <button type="submit" class="btn w-100 py-3 text-white fw-bold shadow-sm rounded-3 mb-3" style="background-color: #66A3BF; border: none;">
+                    <button type="submit" class="btn btn-auth-submit w-100 py-3 text-white fw-bold shadow-sm rounded-3 mb-3" style="background-color: #66A3BF; border: none;" data-loading-text="Mendaftarkan Akun...">
                         <i class="ti ti-user-plus me-1"></i> {{ __('Daftar Sekarang') }}
                     </button>
                 </form>

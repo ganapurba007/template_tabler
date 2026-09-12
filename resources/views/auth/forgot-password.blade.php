@@ -28,7 +28,7 @@
                     <x-input-error :messages="$errors->get('email')" class="mt-1 text-danger small" />
                 </div>
 
-                <button type="submit" class="btn w-100 py-3 text-white fw-bold shadow-sm rounded-3 mb-3" style="background-color: #66A3BF; border: none;">
+                <button type="submit" class="btn btn-auth-submit w-100 py-3 text-white fw-bold shadow-sm rounded-3 mb-3" style="background-color: #66A3BF; border: none;" data-loading-text="Mengirim Tautan...">
                     <i class="ti ti-send me-1"></i> {{ __('Kirim Tautan Reset Sandi') }}
                 </button>
             </form>

@@ -7,7 +7,7 @@
         <link rel="manifest" href="{{ asset('manifest.json') }}">
         <link rel="apple-touch-icon" href="{{ asset('tabler/static/logo-small.svg') }}">
 
-        <title>{{ config('app.name', 'RuangTera') }}</title>
+        <title>{{ config('app.name', 'RuangTerra') }}</title>
 
         <!-- Google Fonts: Montserrat & Plus Jakarta Sans -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +27,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen pb-16 lg:pb-0" style="background-color: var(--color-warm-light, #F2EFE7);">
+        <div class="min-h-screen pb-16 lg:pb-0 bg-geometric-canvas">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -54,7 +54,7 @@
                                 <div class="rounded-circle text-white flex items-center justify-center p-2.5 shadow-sm" style="background: linear-gradient(135deg, #3368A0 0%, #66A3BF 100%); width: 42px; height: 42px;">
                                     <i class="ti ti-school text-xl"></i>
                                 </div>
-                                <span class="arsha-sitename text-white" style="font-size: 1.5rem; letter-spacing: 1px;">Ruang<span style="color: #66A3BF;">Tera</span></span>
+                                <span class="arsha-sitename text-white" style="font-size: 1.5rem; letter-spacing: 1px;">Ruang<span style="color: #66A3BF;">Terra</span></span>
                             </div>
                             <p class="small text-slate-400 pe-lg-4 mb-3">
                                 Platform E-Learning SMA terpadu untuk mengakses modul materi interaktif, mengumpulkan tugas kelas, dan mengikuti kuis online dengan pengalaman belajar yang menyenangkan.
@@ -94,8 +94,8 @@
                         <div class="col-lg-4">
                             <h5 class="text-white font-bold mb-3" style="font-family: 'Jost', sans-serif;">Bantuan & Kontak</h5>
                             <div class="d-flex flex-column gap-2 small text-slate-400 mb-3">
-                                <div><i class="ti ti-map-pin me-2 text-primary fs-6"></i> Kampus RuangTera, Indonesia</div>
-                                <div><i class="ti ti-mail me-2 text-primary fs-6"></i> support@ruangtera.sch.id</div>
+                                <div><i class="ti ti-map-pin me-2 text-primary fs-6"></i> Kampus RuangTerra, Indonesia</div>
+                                <div><i class="ti ti-mail me-2 text-primary fs-6"></i> support@ruangterra.sch.id</div>
                                 <div><i class="ti ti-phone me-2 text-primary fs-6"></i> (021) 555-0199</div>
                             </div>
                         </div>
@@ -104,7 +104,7 @@
                     <!-- Bottom Copyright Bar & Scroll Top -->
                     <div class="border-top border-slate-800 pt-4 d-flex flex-wrap align-items-center justify-content-between text-center text-md-start small text-slate-500 gap-3">
                         <div>
-                            &copy; {{ date('Y') }} <strong>RuangTera</strong>. All rights reserved.
+                            &copy; {{ date('Y') }} <strong>RuangTerra</strong>. All rights reserved.
                         </div>
                         <div class="d-flex align-items-center gap-3 mx-auto mx-md-0">
                             <a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;" class="btn btn-sm btn-outline-secondary rounded-pill text-white px-3 py-1 text-decoration-none">

@@ -9,7 +9,7 @@
                         <div class="rounded-circle bg-white text-primary d-flex align-items-center justify-content-center p-2" style="width: 42px; height: 42px;">
                             <i class="ti ti-school fs-3" style="color: #3368A0;"></i>
                         </div>
-                        <span class="fs-4 fw-bold text-white tracking-wide">RuangTera</span>
+                        <span class="fs-4 fw-bold text-white tracking-wide">RuangTerra</span>
                     </div>
 
                     <span class="badge rounded-pill bg-white text-dark fw-bold px-3 py-2 mb-3 shadow-sm" style="color: #3368A0 !important;">
@@ -37,7 +37,7 @@
                         <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center p-2" style="width: 40px; height: 40px; background-color: #66A3BF !important;">
                             <i class="ti ti-school fs-3"></i>
                         </div>
-                        <span class="fs-3 fw-bold" style="color: #3368A0;">RuangTera</span>
+                        <span class="fs-3 fw-bold" style="color: #3368A0;">RuangTerra</span>
                     </div>
                 </div>
 
@@ -73,7 +73,9 @@
                         <div class="input-group">
                             <span class="input-group-text bg-light border-end-0 text-muted"><i class="ti ti-lock"></i></span>
                             <input type="password" id="password" class="form-control bg-light border-start-0 border-end-0 ps-1 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="••••••••">
-                            <button type="button" class="btn btn-light border toggle-password" data-target="password"><i class="ti ti-eye"></i></button>
+                            <button type="button" class="btn btn-light border border-start-0 text-muted toggle-password" data-target="password" title="Lihat Kata Sandi">
+                                <i class="ti ti-eye fs-5"></i>
+                            </button>
                         </div>
                         <x-input-error :messages="$errors->get('password')" class="mt-1 text-danger small" />
                     </div>
@@ -84,35 +86,21 @@
                         <label class="form-check-label text-muted small" for="remember_me">{{ __('Ingat saya di perangkat ini') }}</label>
                     </div>
 
-                    <button type="submit" class="btn w-100 py-3 text-white fw-bold shadow-sm rounded-3 mb-3" style="background-color: #66A3BF; border: none;">
+                    <button type="submit" class="btn btn-auth-submit w-100 py-3 text-white fw-bold shadow-sm rounded-3 mb-3" style="background-color: #66A3BF; border: none;" data-loading-text="Memverifikasi Akun...">
                         <i class="ti ti-login me-1"></i> {{ __('Masuk Sekarang') }}
                     </button>
                 </form>
 
                 <div class="text-center pt-3 border-top">
-                    <p class="text-muted small mb-0">Belum memiliki akun siswa? 
+                    <p class="text-muted small mb-2">Belum memiliki akun siswa? 
                         <a href="{{ route('register') }}" class="fw-bold text-decoration-none" style="color: #3368A0;">Daftar Siswa Baru</a>
+                    </p>
+                    <p class="text-muted small mb-0">Login khusus Guru & Admin: 
+                        <a href="{{ route('admin.login') }}" class="fw-bold text-decoration-none" style="color: #206bc4;"><i class="ti ti-shield-lock me-1"></i>Portal Admin</a>
                     </p>
                 </div>
             </div>
 
         </div>
     </div>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('.toggle-password').forEach(function(btn){
-        btn.addEventListener('click', function(){
-          const target = document.getElementById(this.dataset.target);
-          if (target.type === 'password') {
-            target.type = 'text';
-            this.innerHTML = '<i class="ti ti-eye-off"></i>';
-          } else {
-            target.type = 'password';
-            this.innerHTML = '<i class="ti ti-eye"></i>';
-          }
-        });
-      });
-    });
-    </script>
 </x-guest-layout>

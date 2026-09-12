@@ -33,7 +33,10 @@
                     <label class="form-label fw-semibold text-dark small" for="password">{{ __('Kata Sandi Baru') }}</label>
                     <div class="input-group">
                         <span class="input-group-text bg-light border-end-0 text-muted"><i class="ti ti-lock"></i></span>
-                        <input type="password" id="password" class="form-control bg-light border-start-0 ps-1 @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="••••••••">
+                        <input type="password" id="password" class="form-control bg-light border-start-0 border-end-0 ps-1 @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="••••••••">
+                        <button type="button" class="btn btn-light border border-start-0 text-muted toggle-password" data-target="password" title="Lihat Kata Sandi">
+                            <i class="ti ti-eye fs-5"></i>
+                        </button>
                     </div>
                     <x-input-error :messages="$errors->get('password')" class="mt-1 text-danger small" />
                 </div>
@@ -43,12 +46,15 @@
                     <label class="form-label fw-semibold text-dark small" for="password_confirmation">{{ __('Konfirmasi Kata Sandi Baru') }}</label>
                     <div class="input-group">
                         <span class="input-group-text bg-light border-end-0 text-muted"><i class="ti ti-lock-check"></i></span>
-                        <input type="password" id="password_confirmation" class="form-control bg-light border-start-0 ps-1 @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required autocomplete="new-password" placeholder="••••••••">
+                        <input type="password" id="password_confirmation" class="form-control bg-light border-start-0 border-end-0 ps-1 @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required autocomplete="new-password" placeholder="••••••••">
+                        <button type="button" class="btn btn-light border border-start-0 text-muted toggle-password" data-target="password_confirmation" title="Lihat Konfirmasi Sandi">
+                            <i class="ti ti-eye fs-5"></i>
+                        </button>
                     </div>
                     <x-input-error :messages="$errors->get('password_confirmation')" class="mt-1 text-danger small" />
                 </div>
 
-                <button type="submit" class="btn w-100 py-3 text-white fw-bold shadow-sm rounded-3 mb-3" style="background-color: #66A3BF; border: none;">
+                <button type="submit" class="btn btn-auth-submit w-100 py-3 text-white fw-bold shadow-sm rounded-3 mb-3" style="background-color: #66A3BF; border: none;" data-loading-text="Menyimpan Kata Sandi...">
                     <i class="ti ti-check me-1"></i> {{ __('Simpan Kata Sandi Baru') }}
                 </button>
             </form>

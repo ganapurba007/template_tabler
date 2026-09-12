@@ -12,21 +12,21 @@
         <div class="flex justify-between h-20 items-center">
             
             <!-- Left: Brand Logo -->
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-4 shrink-0">
                 <a href="{{ Auth::user() && Auth::user()->isGuru() ? route('admin.dashboard') : route('dashboard') }}"
                    style="display: flex; align-items: center; gap: 10px; text-decoration: none;"
                    onmouseenter="this.querySelector('.brand-icon').style.transform='scale(1.08) rotate(-4deg)'; this.querySelector('.brand-name').style.color='#bae6fd';"
                    onmouseleave="this.querySelector('.brand-icon').style.transform='scale(1) rotate(0deg)'; this.querySelector('.brand-name').style.color='#ffffff';">
                     <!-- Icon Image -->
                     <img src="{{ asset('images/icon.png') }}"
-                         alt="RuangTera Icon"
+                         alt="RuangTerra Icon"
                          class="brand-icon"
                          style="width: 56px; height: 62px; object-fit: contain; filter: drop-shadow(0 2px 10px rgba(56,189,248,0.55)); transition: transform 0.25s ease;">
                     <!-- Brand Name -->
                     <div style="line-height: 1.1;">
                         <div class="brand-name"
                              style="font-family: 'Jost', sans-serif; font-size: 1.5rem; font-weight: 900; color: #ffffff; letter-spacing: 0.5px; transition: color 0.2s ease;">
-                            Ruang<span style="color: #38bdf8; text-shadow: 0 0 16px rgba(56,189,248,0.6);">Tera</span>
+                            Ruang<span style="color: #38bdf8; text-shadow: 0 0 16px rgba(56,189,248,0.6);">Terra</span>
                         </div>
                         <div style="font-size: 9.5px; font-weight: 600; color: rgba(148,197,253,0.75); letter-spacing: 1.8px; text-transform: uppercase; margin-top: 1px;">
                             Learning Platform
@@ -203,7 +203,7 @@
 
                         <!-- Footer -->
                         <div style="padding: 10px 16px; border-top: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); text-align: center;">
-                            <span style="font-size: 10px; font-weight: 600; color: #546988ff; letter-spacing: 0.5px; text-transform: uppercase;">RuangTera · Learning Management System</span>
+                            <span style="font-size: 10px; font-weight: 600; color: #546988ff; letter-spacing: 0.5px; text-transform: uppercase;">RuangTerra · Learning Management System</span>
                         </div>
                     </div>
                 </div>

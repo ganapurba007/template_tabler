@@ -19,12 +19,15 @@
                     <label class="form-label" for="password">{{ __('Password') }}</label>
                     <div class="input-group">
                         <span class="input-group-text bg-transparent border-end-0 text-muted-custom"><i class="ti ti-lock"></i></span>
-                        <input type="password" id="password" class="form-control border-start-0 ps-0 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="••••••••">
+                        <input type="password" id="password" class="form-control border-start-0 border-end-0 ps-1 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="••••••••">
+                        <button type="button" class="btn btn-outline-secondary border-start-0 text-muted toggle-password" data-target="password" title="Lihat Kata Sandi">
+                            <i class="ti ti-eye fs-5"></i>
+                        </button>
                     </div>
                     <x-input-error :messages="$errors->get('password')" class="mt-1" />
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100 py-2"><i class="ti ti-check me-1"></i> {{ __('Konfirmasi') }}</button>
+                <button type="submit" class="btn btn-primary btn-auth-submit w-100 py-2" data-loading-text="Memverifikasi..."><i class="ti ti-check me-1"></i> {{ __('Konfirmasi') }}</button>
             </form>
         </div>
     </div>

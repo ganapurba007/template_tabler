@@ -100,4 +100,29 @@ class AuthMiddlewareTest extends TestCase
         $response->assertRedirect('/login');
         $this->assertGuest();
     }
+
+    public function test_admin_shortcut_redirects_to_admin_dashboard(): void
+    {
+        $response = $this->get('/admin');
+
+        $response->assertRedirect(route('admin.dashboard'));
+    }
+
+    public function test_admin_login_can_be_accessed(): void
+    {
+        $response = $this->get('/admin/login');
+
+        $response->assertStatus(200);
+        $response->assertSee('Masuk Panel Guru');
+    }
+
+    public function test_logged_in_siswa_accessing_admin_login_is_logged_out(): void
+    {
+        $siswa = User::where('email', 'siswa1@lms.com')->first();
+
+        $response = $this->actingAs($siswa)->get('/admin/login');
+
+        $response->assertStatus(200);
+        $this->assertGuest();
+    }
 }
