@@ -2,6 +2,30 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 30] Redesign & Visual Enhancement of Student Courses, Toolbar Spacing & Material Detail Page — 2026-09-12
+
+### Ditambahkan & Diperbarui
+- **Perombakan Halaman Courses / Materi Siswa ([`resources/views/student/materials/index.blade.php`](file:///c:/laragon/www/KELAS/lms_dani/resources/views/student/materials/index.blade.php))**:
+  - **Page Hero Header**: Desain banner modern dengan gradien khas RuangTerra (`#20456E` - `#3368A0`), breadcrumb navigasi, badge kelas siswa, judul modul, serta search bar terintegrasi.
+  - **Widget Ringkasan Progres Materi**: Menampilkan bar progres pencapaian materi (`progressPercent%`), counter total modul, modul selesai, dan modul yang belum ditinjau secara real-time.
+  - **Toolbar Filter Interaktif & Pengalih Tampilan**:
+    - Memperbaiki padding dan margin kartu toolbar (`padding: 1.25rem 1.5rem`) agar rapi dan tidak mepet ke tepi.
+    - Filter pills mata pelajaran dengan counter dinamis (*Semua Mapel*, *Geografi*, dll.).
+    - Filter status penyelesaian (*Semua Status*, *Selesai*, *Belum Ditinjau*).
+    - Tombol *View Mode Switcher* untuk beralih secara instan antara **Tampilan Kartu (Grid View)** dan **Tampilan Daftar (List View / Modern Table)** dengan penyimpanan preferensi di `localStorage`.
+    - Live client-side instant search saat siswa mengetikkan kata kunci.
+- **Perombakan Halaman Detail Materi ([`resources/views/student/materials/show.blade.php`](file:///c:/laragon/www/KELAS/lms_dani/resources/views/student/materials/show.blade.php))**:
+  - Mengganti header lama dengan Page Hero Header bergradien RuangTerra, badge mapel & kelas, tombol kembali, serta pill status penyelesaian.
+  - Layout 2 kolom terstruktur:
+    - **Kolom Utama**: Pemutar Video Pembelajaran responsif 16:9, artikel bacaan modul WYSIWYG dengan tipografi nyaman dibaca, kartu berkas unduhan dokumen PDF, serta Ruang Diskusi interaktif real-time dengan pesan bergelembung (*chat bubbles*) dan pembeda peran Guru/Siswa.
+    - **Sidebar Kanan**: Kartu status & checkpoint progres penyelesaian modul, tombol toggle tandai selesai, kartu profil guru pengampu (avatar, NIP, email), dan pintasan navigasi cepat ke tugas serta kuis kelas.
+- **Peningkatan Controller ([`app/Http/Controllers/Student/MaterialController.php`](file:///c:/laragon/www/KELAS/lms_dani/app/Http/Controllers/Student/MaterialController.php))**:
+  - Menambahkan dukungan filter pencarian judul, guru, dan mata pelajaran, filter subject ID, status penyelesaian, serta kalkulasi persentase progres belajar.
+
+### Diuji & Diverifikasi
+- Seluruh 124 pengujian otomatis PHPUnit lulus 100% (413 assertions).
+- Pengujian interaktif browser: Grid View, List View toggle, filter toolbar spacing, dan halaman detail materi teruji sempurna.
+
 ## [Fase 29] Authentication UI Enhancements (Eye Toggle Icon & Submit Auto-Disable) — 2026-09-12
 
 ### Ditambahkan & Diperbarui

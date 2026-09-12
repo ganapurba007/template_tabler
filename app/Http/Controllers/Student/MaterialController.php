@@ -12,21 +12,73 @@ use Illuminate\Support\Facades\Auth;
 
 class MaterialController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
-        $materials = Material::where('class_id', $user->class_id)
-            ->with(['subject', 'instructor'])
-            ->orderBy('order', 'asc')
-            ->latest()
-            ->paginate(10);
+        $classId = $user->class_id;
 
+        // Base query untuk materi kelas siswa
+        $query = Material::where('class_id', $classId)
+            ->with(['subject', 'instructor', 'schoolClass']);
+
+        // Filter pencarian judul, mata pelajaran, atau guru pengampu
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhereHas('subject', function ($sq) use ($search) {
+                      $sq->where('name', 'like', "%{$search}%");
+                  })
+                  ->orWhereHas('instructor', function ($iq) use ($search) {
+                      $iq->where('name', 'like', "%{$search}%");
+                  });
+            });
+        }
+
+        // Filter spesifik mata pelajaran
+        if ($request->filled('subject_id')) {
+            $query->where('subject_id', $request->input('subject_id'));
+        }
+
+        // ID materi yang telah diselesaikan oleh siswa saat ini
         $completedIds = MaterialProgress::where('user_id', $user->id)
             ->where('is_completed', true)
             ->pluck('material_id')
             ->toArray();
 
-        return view('student.materials.index', compact('materials', 'completedIds'));
+        // Filter berdasarkan status penyelesaian
+        if ($request->input('status') === 'completed') {
+            $query->whereIn('id', $completedIds);
+        } elseif ($request->input('status') === 'uncompleted') {
+            $query->whereNotIn('id', $completedIds);
+        }
+
+        $materials = $query->orderBy('order', 'asc')
+            ->latest()
+            ->paginate(12)
+            ->withQueryString();
+
+        // Hitung statistik progres belajar materi siswa
+        $allClassMaterialIds = Material::where('class_id', $classId)->pluck('id');
+        $totalMaterials = $allClassMaterialIds->count();
+        $completedCount = count(array_intersect($completedIds, $allClassMaterialIds->toArray()));
+        $uncompletedCount = max(0, $totalMaterials - $completedCount);
+        $progressPercent = $totalMaterials > 0 ? round(($completedCount / $totalMaterials) * 100) : 0;
+
+        // Daftar mata pelajaran yang memiliki materi di kelas ini
+        $subjects = \App\Models\Subject::whereIn('id', Material::where('class_id', $classId)->pluck('subject_id')->unique())
+            ->orderBy('name')
+            ->get();
+
+        return view('student.materials.index', compact(
+            'materials',
+            'completedIds',
+            'totalMaterials',
+            'completedCount',
+            'uncompletedCount',
+            'progressPercent',
+            'subjects'
+        ));
     }
 
     public function show(Material $material)
