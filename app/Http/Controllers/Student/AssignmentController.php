@@ -10,19 +10,76 @@ use Illuminate\Support\Facades\Auth;
 
 class AssignmentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
-        $assignments = Assignment::where('class_id', $user->class_id)
-            ->with(['subject', 'instructor'])
-            ->orderBy('due_date', 'asc')
-            ->paginate(10);
+        $classId = $user->class_id;
 
-        $submissions = AssignmentSubmission::where('student_id', $user->id)
-            ->get()
-            ->keyBy('assignment_id');
+        $query = Assignment::where('class_id', $classId)
+            ->with(['subject', 'instructor', 'schoolClass']);
 
-        return view('student.assignments.index', compact('assignments', 'submissions'));
+        // Filter pencarian judul, deskripsi, mata pelajaran, atau guru
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('description', 'like', "%{$search}%")
+                  ->orWhereHas('subject', function ($sq) use ($search) {
+                      $sq->where('name', 'like', "%{$search}%");
+                  })
+                  ->orWhereHas('instructor', function ($iq) use ($search) {
+                      $iq->where('name', 'like', "%{$search}%");
+                  });
+            });
+        }
+
+        // Filter spesifik mata pelajaran
+        if ($request->filled('subject_id')) {
+            $query->where('subject_id', $request->input('subject_id'));
+        }
+
+        $allSubmissions = AssignmentSubmission::where('student_id', $user->id)->get()->keyBy('assignment_id');
+        $submittedIds = $allSubmissions->keys()->toArray();
+
+        // Filter status pengumpulan
+        if ($request->input('status') === 'submitted') {
+            $query->whereIn('id', $submittedIds);
+        } elseif ($request->input('status') === 'unsubmitted') {
+            $query->whereNotIn('id', $submittedIds);
+        } elseif ($request->input('status') === 'graded') {
+            $gradedIds = $allSubmissions->whereNotNull('grade')->keys()->toArray();
+            $query->whereIn('id', $gradedIds);
+        }
+
+        $assignments = $query->orderBy('due_date', 'asc')
+            ->paginate(12)
+            ->withQueryString();
+
+        $submissions = $allSubmissions;
+
+        // Hitung statistik penugasan kelas siswa
+        $allClassAssignments = Assignment::where('class_id', $classId)->get();
+        $totalAssignments = $allClassAssignments->count();
+        $submittedCount = count(array_intersect($submittedIds, $allClassAssignments->pluck('id')->toArray()));
+        $unsubmittedCount = max(0, $totalAssignments - $submittedCount);
+        $gradedCount = $allSubmissions->whereIn('assignment_id', $allClassAssignments->pluck('id'))->whereNotNull('grade')->count();
+        $progressPercent = $totalAssignments > 0 ? round(($submittedCount / $totalAssignments) * 100) : 0;
+
+        // Daftar mata pelajaran yang memiliki tugas di kelas ini
+        $subjects = \App\Models\Subject::whereIn('id', $allClassAssignments->pluck('subject_id')->unique())
+            ->orderBy('name')
+            ->get();
+
+        return view('student.assignments.index', compact(
+            'assignments',
+            'submissions',
+            'totalAssignments',
+            'submittedCount',
+            'unsubmittedCount',
+            'gradedCount',
+            'progressPercent',
+            'subjects'
+        ));
     }
 
     public function show(Assignment $assignment)

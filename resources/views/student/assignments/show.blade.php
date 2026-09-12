@@ -1,94 +1,403 @@
 <x-app-layout>
-    <x-slot name="header">
-        <div class="d-flex justify-content-between align-items-center">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ $assignment->title }}
-            </h2>
-            <a href="{{ route('student.assignments.index') }}" class="btn btn-outline-secondary btn-sm">
-                <i class="ti ti-arrow-left me-1"></i> Kembali ke Daftar Tugas
-            </a>
-        </div>
-    </x-slot>
-
-    <!-- Include Bootstrap & Custom CSS -->
+    <!-- Include Bootstrap, Tabler Icons & Custom CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-    <link rel="stylesheet" href="{{ asset('template/be/assets/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/theme-custom.css') }}">
 
-    <div class="py-6 px-4">
-        <div class="max-w-4xl mx-auto">
-            @if(session('success'))
-                <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm mb-4" role="alert">
-                    <i class="ti ti-check me-2"></i> {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <style>
+        .assignment-detail-hero {
+            background: linear-gradient(135deg, #20456E 0%, #3368A0 55%, #2b5788 100%);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid #66A3BF;
+            color: #ffffff;
+        }
+        .assignment-detail-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 100%;
+            background: radial-gradient(circle, rgba(102, 163, 191, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .content-card-modern {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid rgba(51, 104, 160, 0.12);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            margin-bottom: 1.75rem;
+            transition: border-color 0.2s ease;
+        }
+        .content-card-modern:hover {
+            border-color: rgba(102, 163, 191, 0.35);
+        }
+        .content-card-header {
+            padding: 1.25rem 1.5rem;
+            background: #F2EFE7;
+            border-bottom: 1px solid rgba(51, 104, 160, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sidebar-sticky-box {
+            position: sticky;
+            top: 6.5rem;
+        }
+    </style>
+
+    @php
+        $isSubmitted = !is_null($submission);
+        $isGraded = $isSubmitted && !is_null($submission->grade);
+        $isOverdue = $assignment->due_date && $assignment->due_date->isPast() && !$isSubmitted;
+    @endphp
+
+    <!-- 1. Dedicated Assignment Detail Page Hero -->
+    <section class="assignment-detail-hero py-5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 position-relative z-1">
+            
+            <!-- Breadcrumbs & Badges -->
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+                <div class="d-flex flex-wrap align-items-center gap-2">
+                    <span class="badge px-3 py-1.5 rounded-pill shadow-sm font-bold d-inline-flex align-items-center gap-1.5" style="background-color: #F2EFE7; color: #20456E !important; font-size: 0.8rem;">
+                        <i class="ti ti-tag text-primary"></i> {{ $assignment->subject->name ?? 'Mata Pelajaran' }}
+                    </span>
+                    <span class="badge px-3 py-1.5 rounded-pill shadow-sm font-semibold d-inline-flex align-items-center gap-1.5" style="background: rgba(255, 255, 255, 0.18); backdrop-filter: blur(8px); font-size: 0.8rem;">
+                        <i class="ti ti-school"></i> Kelas {{ $assignment->schoolClass->name ?? 'Siswa' }}
+                    </span>
+                    <span class="badge px-3 py-1.5 rounded-pill font-semibold d-inline-flex align-items-center gap-1" style="background: rgba(255, 255, 255, 0.15); font-size: 0.8rem;">
+                        <a href="{{ route('dashboard') }}" class="text-white text-decoration-none opacity-80 hover:opacity-100">Dashboard</a>
+                        <i class="ti ti-chevron-right fs-6"></i>
+                        <a href="{{ route('student.assignments.index') }}" class="text-white text-decoration-none opacity-80 hover:opacity-100">Tugas Kelas</a>
+                        <i class="ti ti-chevron-right fs-6"></i>
+                        <span class="text-white font-bold">Detail Tugas</span>
+                    </span>
                 </div>
-            @endif
 
-            <!-- Assignment Info Card -->
-            <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-white py-3">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <span class="badge bg-primary-subtle text-primary me-2">{{ $assignment->subject->name ?? '-' }}</span>
-                            <span class="text-muted small"><i class="ti ti-user me-1"></i> Guru: {{ $assignment->instructor->name ?? '-' }}</span>
-                        </div>
-                        <div class="small fw-semibold text-danger">
-                            <i class="ti ti-clock me-1"></i> Batas Waktu: {{ $assignment->due_date ? $assignment->due_date->format('d M Y H:i') : '-' }}
-                        </div>
+                <!-- Back to Index Button -->
+                <div>
+                    <a href="{{ route('student.assignments.index') }}" 
+                       class="btn btn-sm rounded-pill px-3.5 py-1.5 font-bold d-inline-flex align-items-center gap-1.5 text-white text-decoration-none shadow-sm" 
+                       style="background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.4); backdrop-filter: blur(6px);">
+                        <i class="ti ti-arrow-left"></i> Kembali ke Daftar Tugas
+                    </a>
+                </div>
+            </div>
+
+            <!-- Assignment Title Header -->
+            <div class="row align-items-center g-4 mt-1">
+                <div class="col-lg-8">
+                    <h1 class="display-6 fw-extrabold mb-3 text-white" style="font-family: 'Jost', sans-serif; letter-spacing: -0.5px; line-height: 1.25;">
+                        {{ $assignment->title }}
+                    </h1>
+                    
+                    <div class="d-flex flex-wrap align-items-center gap-3 text-white-50 small">
+                        <span class="d-inline-flex align-items-center gap-1.5 text-white">
+                            <i class="ti ti-user-circle fs-5 text-warning"></i>
+                            <strong>{{ $assignment->instructor->name ?? 'Guru Pengampu' }}</strong>
+                        </span>
+                        <span>•</span>
+                        <span>
+                            <i class="ti ti-calendar me-1"></i> Dibuat: {{ $assignment->created_at ? $assignment->created_at->format('d F Y') : '-' }}
+                        </span>
+                        <span>•</span>
+                        <span class="{{ $isOverdue ? 'text-danger fw-bold' : 'text-warning fw-semibold' }}">
+                            <i class="ti ti-clock-hour-4 me-1"></i> Batas: {{ $assignment->due_date ? $assignment->due_date->format('d F Y - H:i WIB') : 'Tanpa Batas' }}
+                        </span>
                     </div>
                 </div>
-                <div class="card-body p-4">
-                    <h6 class="fw-bold text-dark mb-2">Petunjuk & Deskripsi Tugas</h6>
-                    <div class="p-3 bg-light rounded text-dark fs-6 mb-3">
-                        {!! nl2br(e($assignment->description ?? 'Tidak ada petunjuk khusus.')) !!}
+
+                <!-- Hero Right: Clean Status Pill (Tanpa tombol ganda) -->
+                <div class="col-lg-4 text-lg-end">
+                    <div class="d-inline-flex align-items-center gap-2.5 px-4 py-2.5 rounded-pill shadow-sm border" style="background: rgba(242, 239, 231, 0.95); backdrop-filter: blur(10px); border-color: rgba(255, 255, 255, 0.5) !important;">
+                        <span class="text-muted small fw-bold text-uppercase" style="font-size: 0.75rem;">Status:</span>
+                        @if($isGraded)
+                            <span class="badge bg-success rounded-pill px-3 py-1.5 d-inline-flex align-items-center gap-1.5 font-bold">
+                                <i class="ti ti-award"></i> Dinilai: {{ number_format($submission->grade, 1) }} / 100
+                            </span>
+                        @elseif($isSubmitted)
+                            <span class="badge bg-info text-white rounded-pill px-3 py-1.5 d-inline-flex align-items-center gap-1.5 font-bold">
+                                <i class="ti ti-circle-check"></i> Sudah Dikumpulkan
+                            </span>
+                        @elseif($isOverdue)
+                            <span class="badge bg-danger rounded-pill px-3 py-1.5 d-inline-flex align-items-center gap-1.5 font-bold">
+                                <i class="ti ti-alert-triangle"></i> Terlewat Tenggat
+                            </span>
+                        @else
+                            <span class="badge rounded-pill px-3 py-1.5 d-inline-flex align-items-center gap-1.5 font-bold" style="background: #e2e8f0; color: #475569;">
+                                <i class="ti ti-clock"></i> Belum Dikumpulkan
+                            </span>
+                        @endif
                     </div>
                 </div>
             </div>
 
-            <!-- Grade & Feedback Banner if Graded -->
-            @if($submission && !is_null($submission->grade))
-                <div class="alert alert-success border-0 shadow-sm mb-4">
-                    <h5 class="alert-heading fw-bold mb-1"><i class="ti ti-award me-2"></i> Hasil Penilaian Guru</h5>
-                    <div class="fs-4 fw-bold mb-2">Nilai: {{ number_format($submission->grade, 1) }} / 100</div>
-                    @if($submission->feedback)
-                        <div class="small text-dark"><strong>Umpan Balik Guru:</strong> {{ $submission->feedback }}</div>
-                    @endif
-                </div>
-            @endif
+        </div>
+    </section>
 
-            <!-- Submission Form Card -->
-            <div class="card shadow-sm border-0">
-                <div class="card-header bg-white py-3">
-                    <h5 class="card-title fw-bold mb-0 text-dark">
-                        <i class="ti ti-send me-2 text-primary"></i> Form Pengumpulan Jawaban
-                    </h5>
-                </div>
-                <div class="card-body p-4">
-                    <form action="{{ route('student.assignments.submit', $assignment) }}" method="POST">
-                        @csrf
+    <!-- 2. Main Content Area -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+        
+        <!-- Flash Message Notification -->
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show border-0 rounded-4 shadow-sm mb-4 d-flex align-items-center gap-2 p-3 p-md-4" role="alert" style="background-color: #d1fae5; color: #065f46; border: 1px solid #a7f3d0 !important;">
+                <i class="ti ti-circle-check fs-4"></i>
+                <div class="fw-semibold">{{ session('success') }}</div>
+                <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
 
-                        <div class="mb-3">
-                            <label for="answer_text" class="form-label fw-semibold">Jawaban / Catatan Pengumpulan <span class="text-danger">*</span></label>
-                            <textarea name="answer_text" id="answer_text" rows="6" class="form-control @error('answer_text') is-invalid @enderror" required placeholder="Tuliskan jawaban tugas Anda di sini...">{{ old('answer_text', $submission?->answer_text) }}</textarea>
-                            @error('answer_text')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+        <div class="row g-4">
+            
+            <!-- Left Main Column (Instructions, Grade & Feedback, Submission Form) -->
+            <div class="col-lg-8">
+                
+                <!-- 2.1 Hasil Penilaian & Umpan Balik Guru (If Graded) -->
+                @if($isGraded)
+                    <div class="content-card-modern border-success" style="border-width: 2px;">
+                        <div class="content-card-header" style="background: linear-gradient(135deg, #065f46 0%, #059669 100%); color: #ffffff;">
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="rounded-circle bg-white text-success d-flex align-items-center justify-content-center" style="width: 34px; height: 34px;">
+                                    <i class="ti ti-trophy fs-5"></i>
+                                </div>
+                                <h5 class="fw-bold mb-0 text-white" style="font-family: 'Jost', sans-serif; font-size: 1.15rem;">
+                                    Hasil Penilaian & Koreksi Guru
+                                </h5>
+                            </div>
+                            <span class="badge bg-white text-success rounded-pill px-3 py-1 font-bold">
+                                Nilai Terverifikasi
+                            </span>
                         </div>
+                        <div class="p-4 p-md-5 bg-white">
+                            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3 p-4 rounded-4 mb-3" style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2);">
+                                <div>
+                                    <div class="text-muted small fw-bold text-uppercase">Perolehan Nilai Akhir</div>
+                                    <div class="display-5 fw-extrabold text-success" style="font-family: 'Jost', sans-serif;">
+                                        {{ number_format($submission->grade, 1) }} <span class="fs-4 text-muted font-normal">/ 100</span>
+                                    </div>
+                                </div>
+                                <div class="text-sm-end">
+                                    <span class="badge bg-success px-3 py-1.5 rounded-pill font-bold">
+                                        <i class="ti ti-check me-1"></i> Tuntas Dinilai
+                                    </span>
+                                </div>
+                            </div>
 
-                        @if($submission)
-                            <div class="small text-muted mb-3">
-                                <i class="ti ti-history me-1"></i> Terakhir dikumpulkan pada: {{ $submission->submitted_at ? $submission->submitted_at->format('d M Y H:i:s') : '-' }}
+                            @if($submission->feedback)
+                                <div class="p-3.5 rounded-3" style="background: #F8FAFC; border-left: 4px solid #059669;">
+                                    <div class="small fw-bold text-dark mb-1 d-flex align-items-center gap-1">
+                                        <i class="ti ti-message-dots text-success"></i> Catatan & Feedback Guru:
+                                    </div>
+                                    <p class="mb-0 text-secondary small" style="line-height: 1.6;">{{ $submission->feedback }}</p>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                @endif
+
+                <!-- 2.2 Petunjuk & Deskripsi Tugas Card -->
+                <div class="content-card-modern">
+                    <div class="content-card-header">
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="rounded-circle text-white d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #3368A0, #66A3BF); width: 32px; height: 32px;">
+                                <i class="ti ti-file-description fs-5"></i>
+                            </div>
+                            <h5 class="fw-bold mb-0 text-dark" style="font-family: 'Jost', sans-serif; font-size: 1.1rem;">
+                                Petunjuk & Lembar Soal Tugas
+                            </h5>
+                        </div>
+                        <span class="badge rounded-pill px-3 py-1 font-bold small" style="background: rgba(51, 104, 160, 0.1); color: #3368A0;">
+                            <i class="ti ti-writing me-1"></i> Tugas Essay / Mandiri
+                        </span>
+                    </div>
+                    <div class="p-4 p-md-5">
+                        <div class="p-4 rounded-4 text-dark fs-6" style="background: #F8FAFC; border: 1px solid rgba(51, 104, 160, 0.12); line-height: 1.8;">
+                            {!! nl2br(e($assignment->description ?? 'Tidak ada petunjuk khusus untuk tugas ini.')) !!}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2.3 Formulir Pengumpulan Jawaban -->
+                <div class="content-card-modern">
+                    <div class="content-card-header">
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="rounded-circle text-white d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #0284c7, #38bdf8); width: 32px; height: 32px;">
+                                <i class="ti ti-send fs-5"></i>
+                            </div>
+                            <h5 class="fw-bold mb-0 text-dark" style="font-family: 'Jost', sans-serif; font-size: 1.1rem;">
+                                Formulir Pengumpulan Jawaban
+                            </h5>
+                        </div>
+                        @if($isSubmitted)
+                            <span class="badge bg-info-subtle text-info-emphasis rounded-pill px-3 py-1 font-bold small">
+                                <i class="ti ti-history me-1"></i> Revisi Jawaban Aktif
+                            </span>
+                        @else
+                            <span class="badge bg-warning-subtle text-warning-emphasis rounded-pill px-3 py-1 font-bold small">
+                                <i class="ti ti-edit me-1"></i> Belum Mengirim
+                            </span>
+                        @endif
+                    </div>
+
+                    <div class="p-4 p-md-5">
+                        
+                        @if($isSubmitted)
+                            <div class="alert alert-info border-0 rounded-4 shadow-sm mb-4 d-flex align-items-center gap-2 p-3" style="background-color: #e0f2fe; color: #0369a1;">
+                                <i class="ti ti-info-circle fs-4"></i>
+                                <div class="small">
+                                    <strong>Status:</strong> Anda telah mengirimkan jawaban tugas ini pada <strong>{{ $submission->submitted_at ? $submission->submitted_at->format('d M Y H:i:s') : '-' }}</strong>. Anda masih dapat memperbarui jawaban sebelum dinilai oleh guru.
+                                </div>
                             </div>
                         @endif
 
-                        <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-primary px-4">
-                                <i class="ti ti-device-floppy me-1"></i> {{ $submission ? 'Perbarui Pengumpulan' : 'Kirim Jawaban' }}
-                            </button>
+                        <form action="{{ route('student.assignments.submit', $assignment) }}" method="POST">
+                            @csrf
+
+                            <div class="mb-4">
+                                <label for="answer_text" class="form-label fw-bold text-dark mb-2">
+                                    Teks Jawaban / Catatan Pengerjaan Tugas <span class="text-danger">*</span>
+                                </label>
+                                <textarea name="answer_text" 
+                                          id="answer_text" 
+                                          rows="8" 
+                                          class="form-control rounded-3 p-3 shadow-none @error('answer_text') is-invalid @enderror" 
+                                          style="border: 1.5px solid rgba(51, 104, 160, 0.2); font-size: 0.95rem; line-height: 1.7;" 
+                                          required 
+                                          placeholder="Ketik jawaban tugas essay, uraian, atau tautan berkas pengerjaan Anda di sini...">{{ old('answer_text', $submission?->answer_text) }}</textarea>
+                                @error('answer_text')
+                                    <div class="invalid-feedback fw-semibold">{{ $message }}</div>
+                                @enderror
+                                <div class="form-text text-muted small mt-1.5">
+                                    <i class="ti ti-info-circle me-1"></i> Tuliskan jawaban secara lengkap dan jelas sesuai instruksi soal di atas.
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 pt-3 border-top" style="border-color: rgba(51, 104, 160, 0.12) !important;">
+                                <div class="text-muted small">
+                                    @if($submission)
+                                        <i class="ti ti-history me-1"></i> Terakhir disimpan: {{ $submission->submitted_at ? $submission->submitted_at->diffForHumans() : '-' }}
+                                    @else
+                                        <i class="ti ti-pencil me-1"></i> Pastikan jawaban sudah lengkap sebelum dikirim
+                                    @endif
+                                </div>
+
+                                <button type="submit" 
+                                        class="btn text-white rounded-pill px-4 py-2.5 font-bold shadow-sm d-inline-flex align-items-center gap-2 hover-lift" 
+                                        style="background: {{ $isSubmitted ? 'linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)' : 'linear-gradient(135deg, #3368A0 0%, #66A3BF 100%)' }};">
+                                    <i class="ti ti-device-floppy fs-5"></i>
+                                    {{ $isSubmitted ? 'Perbarui Pengumpulan' : 'Kirim Jawaban Tugas' }}
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Sidebar Column (Sticky Timeline, Teacher Profile, Quick Navigation) -->
+            <div class="col-lg-4">
+                <div class="sidebar-sticky-box">
+                    
+                    <!-- Sidebar Card 1: Batas Waktu & Urgensi -->
+                    <div class="content-card-modern p-4">
+                        <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom" style="border-color: rgba(51, 104, 160, 0.12) !important;">
+                            <div class="rounded-circle text-white d-flex align-items-center justify-content-center" style="background: {{ $isOverdue ? '#DC2626' : 'linear-gradient(135deg, #D97706, #F59E0B)' }}; width: 34px; height: 34px;">
+                                <i class="ti ti-alarm fs-5"></i>
+                            </div>
+                            <h6 class="fw-bold mb-0 text-dark" style="font-family: 'Jost', sans-serif;">Tenggat Waktu (Deadline)</h6>
                         </div>
-                    </form>
+
+                        <div class="mb-3">
+                            <div class="p-3 rounded-3 mb-3" style="background: {{ $isOverdue ? '#fef2f2' : '#F8FAFC' }}; border: 1px dashed {{ $isOverdue ? '#fca5a5' : 'rgba(51, 104, 160, 0.2)' }};">
+                                <div class="small text-muted mb-1">Batas Akhir:</div>
+                                <div class="fw-bold {{ $isOverdue ? 'text-danger' : 'text-dark' }} fs-6">
+                                    <i class="ti ti-calendar me-1"></i> {{ $assignment->due_date ? $assignment->due_date->format('d M Y - H:i WIB') : 'Tanpa Batas Waktu' }}
+                                </div>
+                                <div class="small mt-1 {{ $isOverdue ? 'text-danger fw-semibold' : 'text-secondary' }}">
+                                    @if($assignment->due_date)
+                                        @if($assignment->due_date->isPast())
+                                            <i class="ti ti-alert-circle me-1"></i> Waktu pengerjaan telah berakhir.
+                                        @else
+                                            <i class="ti ti-clock me-1"></i> Berakhir {{ $assignment->due_date->diffForHumans() }}.
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Checkpoint Checklist -->
+                        <div class="pt-3 border-top" style="border-color: rgba(51, 104, 160, 0.1) !important;">
+                            <div class="d-flex align-items-center gap-2 small text-success mb-2">
+                                <i class="ti ti-circle-check-filled"></i> Lembar tugas dibuka
+                            </div>
+                            <div class="d-flex align-items-center gap-2 small {{ $isSubmitted ? 'text-success' : 'text-muted' }} mb-2">
+                                <i class="ti {{ $isSubmitted ? 'ti-circle-check-filled' : 'ti-circle' }}"></i> Jawaban dikirimkan
+                            </div>
+                            <div class="d-flex align-items-center gap-2 small {{ $isGraded ? 'text-success' : 'text-muted' }}">
+                                <i class="ti {{ $isGraded ? 'ti-circle-check-filled' : 'ti-circle' }}"></i> Nilai & umpan balik guru
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Card 2: Profil Guru Pengampu -->
+                    <div class="content-card-modern p-4">
+                        <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom" style="border-color: rgba(51, 104, 160, 0.12) !important;">
+                            <div class="rounded-circle text-white d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #3368A0, #66A3BF); width: 34px; height: 34px;">
+                                <i class="ti ti-user fs-5"></i>
+                            </div>
+                            <h6 class="fw-bold mb-0 text-dark" style="font-family: 'Jost', sans-serif;">Guru Pengampu</h6>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="rounded-circle text-white fw-bold d-flex align-items-center justify-content-center shadow-sm shrink-0" style="background: linear-gradient(135deg, #3368A0, #66A3BF); width: 48px; height: 48px; font-size: 1.1rem;">
+                                {{ strtoupper(substr($assignment->instructor->name ?? 'G', 0, 1)) }}
+                            </div>
+                            <div class="overflow-hidden">
+                                <div class="fw-bold text-dark text-truncate fs-6">{{ $assignment->instructor->name ?? 'Guru Pengampu' }}</div>
+                                <div class="text-muted small" style="font-size: 0.75rem;">
+                                    NIP: {{ $assignment->instructor->nip ?? '-' }}
+                                </div>
+                                <span class="badge rounded-pill px-2 py-0.5 mt-1" style="background: rgba(51, 104, 160, 0.1); color: #3368A0; font-size: 0.68rem;">
+                                    Guru Mata Pelajaran
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 border-top d-flex justify-content-between text-muted small" style="border-color: rgba(51, 104, 160, 0.1) !important;">
+                            <span>Email:</span>
+                            <span class="text-dark fw-semibold text-truncate ms-2">{{ $assignment->instructor->email ?? '-' }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Card 3: Pintasan Navigasi -->
+                    <div class="content-card-modern p-4">
+                        <h6 class="fw-bold text-dark mb-3" style="font-family: 'Jost', sans-serif;">Pintasan Menu Belajar</h6>
+                        <div class="d-grid gap-2">
+                            <a href="{{ route('student.assignments.index') }}" class="btn btn-light border text-start py-2.5 px-3 rounded-3 d-flex align-items-center justify-content-between small fw-semibold text-dark hover-lift">
+                                <span><i class="ti ti-clipboard-list text-primary me-2"></i> Semua Tugas Kelas</span>
+                                <i class="ti ti-chevron-right text-muted"></i>
+                            </a>
+                            <a href="{{ route('student.materials.index') }}" class="btn btn-light border text-start py-2.5 px-3 rounded-3 d-flex align-items-center justify-content-between small fw-semibold text-dark hover-lift">
+                                <span><i class="ti ti-books text-success me-2"></i> Modul Materi Pelajaran</span>
+                                <i class="ti ti-chevron-right text-muted"></i>
+                            </a>
+                            <a href="{{ route('student.quizzes.index') }}" class="btn btn-light border text-start py-2.5 px-3 rounded-3 d-flex align-items-center justify-content-between small fw-semibold text-dark hover-lift">
+                                <span><i class="ti ti-help-hexagon text-warning me-2"></i> Kuis Online Aktif</span>
+                                <i class="ti ti-chevron-right text-muted"></i>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+
         </div>
+
     </div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </x-app-layout>

@@ -2,6 +2,33 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 31] Redesign & Visual Enhancement of Student Assignment Pages (Tugas Kelas) — 2026-09-12
+
+### Ditambahkan & Diperbarui
+- **Perombakan Halaman Tugas Kelas Siswa ([`resources/views/student/assignments/index.blade.php`](file:///c:/laragon/www/KELAS/lms_dani/resources/views/student/assignments/index.blade.php))**:
+  - **Page Hero Header**: Desain banner modern RuangTerra dengan gradien `#20456E` - `#3368A0`, breadcrumb navigasi, pill status pengumpulan (*x Terkumpul*), judul modul tugas, serta search bar responsif.
+  - **Widget Ringkasan Progres Tugas**: Kartu ringkasan terintegrasi dengan progress bar (`progressPercent%`), counter total tugas, sudah dikumpulkan, dan belum dikumpulkan dengan visual badge modern.
+  - **Toolbar Filter Interaktif & Pengalih Tampilan (Grid & List View)**:
+    - Spacing dan padding kartu toolbar yang nyaman (`padding: 1.25rem 1.5rem !important;`), tidak mepet ke tepi.
+    - Filter pills mata pelajaran dengan counter dinamis.
+    - Filter status penyerahan (*Semua Status*, *Belum Mengumpulkan*, *Sudah Dikumpulkan*, *Sudah Dinilai*).
+    - Tombol *View Mode Switcher* (Grid View vs List View) dengan preferensi tersimpan di `localStorage`.
+    - Live client-side instant search saat siswa mengetikkan kata kunci tugas.
+  - **Grid View & List View Modern**:
+    - Grid View: Kartu tugas bergaya modern dengan watermark icon, badge tenggat waktu dengan indikasi urgensi (warna merah untuk mendekati deadline), avatar guru pengampu, serta badge status bergradien.
+    - List View: Tabel modern dengan baris bergaris halus, pill tenggat waktu, dan tombol aksi terintegrasi.
+- **Perombakan Halaman Detail & Pengumpulan Tugas ([`resources/views/student/assignments/show.blade.php`](file:///c:/laragon/www/KELAS/lms_dani/resources/views/student/assignments/show.blade.php))**:
+  - Mengganti layout dasar dengan Page Hero Header bergradien RuangTerra, badge mapel, kelas, dan status penyerahan/penilaian.
+  - Layout 2 kolom terstruktur:
+    - **Kolom Utama**: Detail instruksi tugas dengan styling dokumen profesional, kartu nilai & feedback guru (jika tugas sudah diperiksa), serta formulir pengumpulan tugas responsif dengan textarea modern dan catatan waktu pengiriman terakhir.
+    - **Sidebar Kanan**: Kartu informasi tenggat waktu (*Deadline Alert*), panduan & checklist pengumpulan tugas siswa, profil guru pengampu (avatar, kontak, NIP), dan tombol navigasi kembali.
+- **Peningkatan Controller ([`app/Http/Controllers/Student/AssignmentController.php`](file:///c:/laragon/www/KELAS/lms_dani/app/Http/Controllers/Student/AssignmentController.php))**:
+  - Menambahkan dukungan filter pencarian keyword judul dan deskripsi tugas, filter mapel (`subject_id`), filter status pengumpulan, penghitungan metrics progres tugas, serta data mata pelajaran untuk filter pills.
+
+### Diuji & Diverifikasi
+- Seluruh 124 pengujian otomatis PHPUnit lulus 100% (413 assertions).
+- Pengujian interaktif browser: Grid View, List View toggle, filter toolbar, dan halaman detail serta formulir penyerahan tugas teruji sempurna.
+
 ## [Fase 30] Redesign & Visual Enhancement of Student Courses, Toolbar Spacing & Material Detail Page — 2026-09-12
 
 ### Ditambahkan & Diperbarui
