@@ -2,6 +2,99 @@
 
 > Catat setiap perubahan kode di sini selama implementasi.
 
+## [Fase 33] Real-Time Persistent Server Timer, Question Navigation Palette, Color Status Legend & Enhanced Quiz Guidelines — 2026-09-13
+
+### Ditambahkan & Diperbarui
+- **Penghitungan Waktu Kuis Persisten Mutlak di Server ([`app/Http/Controllers/Student/QuizController.php`](file:///c:/laragon/www/KELAS/lms_dani/app/Http/Controllers/Student/QuizController.php))**:
+  - Waktu pengerjaan kuis dihitung secara akurat menggunakan **UNIX Epoch Integer Timestamp** (`$attempt->started_at->getTimestamp()`), bebas dari ambiguitas tanda minus Carbon `diffInSeconds` atau perbedaan zona waktu database.
+  - Formula server: `$remainingSeconds = max(0, ($startTimestamp + $durationSeconds) - time())`.
+  - Ketika siswa keluar dari halaman kuis, menutup tab, berpindah halaman, maupun me-refresh browser, **waktu pengerjaan tetap terus berjalan mundur** secara nyata tanpa ter-reset ke durasi awal.
+  - Frontend (`attempt.blade.php`) menyinkronkan target waktu selesai dengan server dan `localStorage`, serta menghitung mundur berbasis waktu riil (`Date.now()`).
+  - Jika waktu pengerjaan telah habis saat siswa kembali ke halaman kuis, sistem secara otomatis menghitung skor dari jawaban yang tersimpan, menandai kuis selesai (`submitted_at = now()`), dan mengarahkan siswa ke halaman hasil kuis dengan alert informatif.
+  - Jika waktu kuis habis saat siswa masih membuka tab kuis, auto-submit dipicu di frontend dan divalidasi juga di backend (`saveAnswer` menolak pengisian setelah expired).
+- **Auto-Save Jawaban Real-Time via AJAX ([`routes/web.php`](file:///c:/laragon/www/KELAS/lms_dani/routes/web.php) & [`QuizController::saveAnswer`](file:///c:/laragon/www/KELAS/lms_dani/app/Http/Controllers/Student/QuizController.php))**:
+  - Route baru `student.quizzes.save-answer` untuk menyimpan pilihan jawaban secara instan via AJAX begitu siswa memilih radio opsi.
+  - Micro-feedback status sinkronisasi jawaban (*Menyimpan...* -> *Jawaban Tersimpan Otomatis*) pada header ujian.
+- **Tampilan Satu Halaman Satu Soal & Panel Navigasi Nomor Soal ([`resources/views/student/quizzes/attempt.blade.php`](file:///c:/laragon/www/KELAS/lms_dani/resources/views/student/quizzes/attempt.blade.php))**:
+  - **Sistem Stepper Satu Halaman Satu Soal (Fit Viewport)**: Soal kuis disajikan bertahap satu per satu dengan layout compact dan proporsional (ukuran font, spasi opsi, dan padding kartu dioptimalkan agar pas dalam satu layar tanpa perlu scroll ke bawah), dilengkapi tombol navigasi *"← Sebelumnya"* dan *"Selanjutnya →"*, serta tombol *"Selesai & Kumpulkan"* pada baris bawah kartu soal.
+  - **Panel Navigasi Nomor Soal Interaktif (Question Palette)**: Siswa dapat melompat ke nomor soal mana pun secara instan dengan mengklik kotak nomor di sidebar kanan.
+  - **Pembeda 3 Warna Status Nomor Soal**:
+    - 🔵 **Warna Biru (`#2563EB`)**: Menandakan nomor soal yang **sedang dibuka / sedang dikerjakan saat ini**, dengan efek *glow ring* biru aktif (`box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.35)`).
+    - 🟢 **Warna Hijau (`#10B981`)**: Menandakan nomor soal yang **Sudah Dijawab**.
+    - ⚪ **Warna Abu-abu Netral (`#F1F5F9` / `#CBD5E1`)**: Menandakan nomor soal yang **Belum Dijawab**.
+  - **Keterangan Warna (Legend)** di bawah navigasi soal:
+    - Box legenda dengan 3 indikator warna:
+      - 🔵 **Sedang Dikerjakan**: Badge nomor soal aktif saat ini (misal: *No. 1*).
+      - 🟢 **Sudah Dijawab**: Counter dinamis jumlah soal terjawab.
+      - ⚪ **Belum Dijawab**: Counter dinamis jumlah soal yang belum terjawab.
+    - Progress bar persentase penyelesaian kuis.
+  - Timer countdown di frontend disinkronkan dengan target timestamp server (`Date.now() + remainingSeconds * 1000`) dan otomatis melakukan submit jika waktu habis.
+- **Redesain Halaman Hasil & Preview Kuis Serupa Layout Pengerjaan ([`resources/views/student/quizzes/result.blade.php`](file:///c:/laragon/www/KELAS/lms_dani/resources/views/student/quizzes/result.blade.php))**:
+  - **Tampilan Konsisten 1:1 dengan Lembar Kuis**: Mengusung layout modern 2-kolom dengan sticky header bar, kartu soal compact satu halaman satu soal (stepper) dengan tombol *"← Sebelumnya"* dan *"Selanjutnya →"*, serta panel navigasi nomor soal di sebelah kanan.
+  - **Penghitungan & Penampilan Waktu Pengerjaan**:
+    - Menghitung durasi aktual pengerjaan kuis secara presisi dari selisih `attempt->started_at` dan `attempt->submitted_at` (`$durationSeconds`).
+    - Ditampilkan secara elegan dan mencolok pada **Header Bar** (Badge *"Waktu Pengerjaan: X Menit Y Detik"*) dan pada **Sidebar Ringkasan Hasil**.
+  - **Panel Navigasi Nomor Soal Interaktif (Review Palette)**:
+    - Siswa dapat melompat ke pembahasan nomor mana pun dengan mengklik kotak nomor soal.
+    - Pembeda warna status hasil kuis:
+      - 🔵 **Ring Biru Glowing**: Nomor soal yang sedang dibuka/dilihat.
+      - 🟢 **Warna Hijau (`#10B981`)**: Soal dijawab **Benar**.
+      - 🔴 **Warna Merah (`#EF4444`)**: Soal dijawab **Salah**.
+      - ⚪ **Warna Abu-abu Netral (`#F1F5F9`)**: Soal **Tidak Dijawab**.
+    - Dilengkapi **Legenda Keterangan Warna** dinamis yang memperlihatkan counter jumlah soal benar, salah, tidak dijawab, dan nomor yang sedang dilihat.
+  - **Tampilan Review Opsi Jawaban**:
+    - Opsi yang dipilih siswa dan benar ditandai dengan badge *"Jawaban Anda & Jawaban Benar"* (hijau).
+    - Opsi yang dipilih siswa namun salah ditandai *"Jawaban Anda"* (merah).
+    - Opsi kunci jawaban benar ditandai dengan *"Jawaban Benar"* (hijau outline).
+- **Penyempurnaan Petunjuk & Tata Tertib Pengerjaan Kuis ([`resources/views/student/quizzes/show.blade.php`](file:///c:/laragon/www/KELAS/lms_dani/resources/views/student/quizzes/show.blade.php))**:
+  - Kartu petunjuk didesain sangat lega, mewah, dan terstruktur dengan 6 kartu poin ketentuan:
+    1. Waktu berjalan real-time di server (tetap berjalan meski tab ditutup).
+    2. Penyimpanan otomatis (*Auto-Save*) jawaban setiap kali opsi diklik.
+    3. Tampilan satu halaman satu soal beserta mini legenda visual 3 warna: biru (sedang dikerjakan), hijau (sudah dijawab), dan abu-abu (belum dijawab).
+    4. Auto-submit otomatis ke sistem saat waktu mencapai 00:00.
+    5. Kestabilan koneksi internet & daya baterai.
+    6. Tombol kumpulkan jawaban kuis setelah yakin dengan hasil pengerjaan.
+
+### Diuji & Diverifikasi
+- Menambahkan test suite baru di [`tests/Feature/Student/StudentQuizTest.php`](file:///c:/laragon/www/KELAS/lms_dani/tests/Feature/Student/StudentQuizTest.php):
+  1. `test_quiz_timer_decreases_accurately_on_page_refresh`
+  2. `test_quiz_auto_submits_when_attempt_timer_has_expired`
+  3. `test_save_answer_returns_expired_when_time_exceeded`
+  4. `test_siswa_can_view_quiz_result_with_duration_and_palette`
+- Seluruh **129 automated unit & feature tests** di Laravel lulus 100% (433 assertions).
+
+
+## [Fase 32] Redesign & Visual Enhancement of Student Quiz Pages (Kuis Online) — 2026-09-12
+
+### Ditambahkan & Diperbarui
+- **Perombakan Halaman Katalog Kuis Siswa ([`resources/views/student/quizzes/index.blade.php`](file:///c:/laragon/www/KELAS/lms_dani/resources/views/student/quizzes/index.blade.php))**:
+  - **Page Hero Header**: Desain banner modern RuangTerra dengan gradien `#20456E` - `#3368A0`, breadcrumb navigasi, pill status pencapaian, judul kuis, serta search bar responsif.
+  - **Widget Pencapaian Kuis Saya**: Progress bar pencapaian kelulusan kuis, counter total kuis, selesai, dan belum ikut kuis dengan layout kartu lega (*spacious*).
+  - **Toolbar Filter Interaktif & Pengalih Tampilan (Grid & List View)**:
+    - Spacing dan padding kartu toolbar yang longgar dan nyaman (`padding: 1.25rem 1.5rem !important;`), tidak sempit.
+    - Filter pills mata pelajaran dinamis dengan counter jumlah kuis.
+    - Filter status kuis (*Semua Status*, *Selesai*, *Sedang Dikerjakan*, *Belum Dikerjakan*).
+    - Tombol *View Mode Switcher* (Grid View vs List View) dengan preferensi tersimpan di `localStorage`.
+    - Live client-side instant search judul, mapel, atau guru.
+  - **Grid View & List View Modern**:
+    - Grid View: Kartu kuis bergaya modern dengan watermark piala, pill durasi waktu, butir soal, badge tenggat waktu dengan indikasi urgensi, avatar guru pengampu, serta badge status bergradien.
+    - List View: Tabel modern dengan baris bergaris halus, pill tenggat waktu, dan tombol aksi terintegrasi.
+- **Perombakan Halaman Petunjuk & Detail Kuis ([`resources/views/student/quizzes/show.blade.php`](file:///c:/laragon/www/KELAS/lms_dani/resources/views/student/quizzes/show.blade.php))**:
+  - Hero header dengan badge mapel, kelas, guru pengampu, dan status capsule yang lapang (*spacious*).
+  - Layout 2 kolom terstruktur: Petunjuk dan tata tertib kuis, kartu status pengerjaan, tombol aksi mulai kuis yang elegan, 4 kotak parameter kuis (durasi, jumlah butir, bobot poin, format pilihan ganda), profil guru, serta kartu deadline dengan penanda `WIB`.
+  - Sistem penguncian waktu habis (*overdue*): Jika batas waktu kuis telah terlewat dan belum pernah dikerjakan, tombol terkunci otomatis dengan status *"Waktu Habis — Kuis Ditutup"*.
+- **Perombakan Halaman Pengerjaan Kuis Interaktif ([`resources/views/student/quizzes/attempt.blade.php`](file:///c:/laragon/www/KELAS/lms_dani/resources/views/student/quizzes/attempt.blade.php))**:
+  - Sticky countdown timer header dengan indikator sisa waktu yang jelas dan animasi pulsa peringatan saat waktu tersisa kurang dari 5 menit.
+  - Kartu butir soal yang lega, tipografi nyaman dibaca (`fs-5`, line-height 1.7), dan opsi jawaban berupa ubin interaktif (*option tiles*) yang ergonomis dengan efek hover dan active state halus.
+- **Perombakan Halaman Hasil & Pembahasan Kuis ([`resources/views/student/quizzes/result.blade.php`](file:///c:/laragon/www/KELAS/lms_dani/resources/views/student/quizzes/result.blade.php))**:
+  - Hero header dengan skor kuis, kartu showcase perolehan nilai, ringkasan jawaban benar/salah, serta review pembahasan butir soal yang informatif.
+- **Peningkatan Controller & Keamanan ([`app/Http/Controllers/Student/QuizController.php`](file:///c:/laragon/www/KELAS/lms_dani/app/Http/Controllers/Student/QuizController.php))**:
+  - Menambahkan filter pencarian kata kunci, filter mapel (`subject_id`), filter status kuis, penghitungan metrics pencapaian kuis, serta proteksi penolakan mulai kuis jika waktu telah berakhir.
+
+### Diuji & Diverifikasi
+- Seluruh 125 pengujian otomatis PHPUnit lulus 100% (417 assertions).
+- Pengujian browser subagent: Grid View, List View toggle, filter toolbar, dan halaman petunjuk kuis teruji sempurna dan bebas dari elemen sempit (*not cramped*).
+
 ## [Fase 31] Redesign & Visual Enhancement of Student Assignment Pages (Tugas Kelas) — 2026-09-12
 
 ### Ditambahkan & Diperbarui

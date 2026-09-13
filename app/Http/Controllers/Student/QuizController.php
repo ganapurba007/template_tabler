@@ -11,17 +11,92 @@ use Illuminate\Support\Facades\Auth;
 
 class QuizController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
-        $quizzes = Quiz::with(['subject', 'instructor', 'questions', 'attempts' => function ($q) use ($user) {
+        $classId = $user->class_id;
+
+        $query = Quiz::with(['subject', 'instructor', 'questions', 'attempts' => function ($q) use ($user) {
             $q->where('student_id', $user->id);
         }])
-        ->where('class_id', $user->class_id)
-        ->latest()
-        ->paginate(10);
+        ->where('class_id', $classId);
 
-        return view('student.quizzes.index', compact('quizzes'));
+        // Filter pencarian
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('description', 'like', "%{$search}%")
+                  ->orWhereHas('subject', function ($sq) use ($search) {
+                      $sq->where('name', 'like', "%{$search}%");
+                  })
+                  ->orWhereHas('instructor', function ($iq) use ($search) {
+                      $iq->where('name', 'like', "%{$search}%");
+                  });
+            });
+        }
+
+        // Filter spesifik mata pelajaran
+        if ($request->filled('subject_id')) {
+            $query->where('subject_id', $request->input('subject_id'));
+        }
+
+        // Ambil semua quiz kelas untuk perhitungan metrics
+        $allClassQuizzes = Quiz::where('class_id', $classId)
+            ->with(['attempts' => function ($q) use ($user) {
+                $q->where('student_id', $user->id);
+            }])
+            ->get();
+
+        $totalQuizzes = $allClassQuizzes->count();
+        $completedCount = 0;
+        $inProgressCount = 0;
+        $unattemptedCount = 0;
+        $completedQuizIds = [];
+        $inProgressQuizIds = [];
+        $unattemptedQuizIds = [];
+
+        foreach ($allClassQuizzes as $qItem) {
+            $att = $qItem->attempts->first();
+            if ($att && $att->submitted_at) {
+                $completedCount++;
+                $completedQuizIds[] = $qItem->id;
+            } elseif ($att) {
+                $inProgressCount++;
+                $inProgressQuizIds[] = $qItem->id;
+            } else {
+                $unattemptedCount++;
+                $unattemptedQuizIds[] = $qItem->id;
+            }
+        }
+
+        // Filter status
+        if ($request->input('status') === 'completed') {
+            $query->whereIn('id', $completedQuizIds);
+        } elseif ($request->input('status') === 'in_progress') {
+            $query->whereIn('id', $inProgressQuizIds);
+        } elseif ($request->input('status') === 'unattempted') {
+            $query->whereIn('id', $unattemptedQuizIds);
+        }
+
+        $quizzes = $query->latest()->paginate(12)->withQueryString();
+
+        $progressPercent = $totalQuizzes > 0 ? round(($completedCount / $totalQuizzes) * 100) : 0;
+
+        // Daftar mapel untuk filter pills
+        $subjects = \App\Models\Subject::whereIn('id', $allClassQuizzes->pluck('subject_id')->unique())
+            ->orderBy('name')
+            ->get();
+
+        return view('student.quizzes.index', compact(
+            'quizzes',
+            'totalQuizzes',
+            'completedCount',
+            'inProgressCount',
+            'unattemptedCount',
+            'progressPercent',
+            'subjects'
+        ));
     }
 
     public function show(Quiz $quiz)
@@ -54,6 +129,12 @@ class QuizController extends Controller
             return redirect()->route('student.quizzes.result', $quiz);
         }
 
+        // Cegah pengerjaan jika kuis melewati batas waktu dan belum pernah dimulai
+        if (!$attempt && $quiz->deadline && $quiz->deadline->isPast()) {
+            return redirect()->route('student.quizzes.show', $quiz)
+                ->with('error', 'Batas waktu kuis telah berakhir. Kuis tidak dapat dimulai lagi.');
+        }
+
         if (!$attempt) {
             $attempt = QuizAttempt::create([
                 'student_id' => $user->id,
@@ -84,14 +165,95 @@ class QuizController extends Controller
             return redirect()->route('student.quizzes.result', $quiz);
         }
 
+        if (!$attempt->started_at) {
+            $attempt->update(['started_at' => now()]);
+            $attempt->refresh();
+        }
+
         $quiz->load(['questions.options']);
 
-        // Calculate remaining seconds
+        // Calculate remaining seconds based on fixed started_at timestamp in database
         $durationSeconds = ($quiz->duration_minutes ?? 30) * 60;
-        $elapsedSeconds = now()->diffInSeconds($attempt->started_at);
-        $remainingSeconds = max(0, $durationSeconds - $elapsedSeconds);
+        $startTimestamp = $attempt->started_at->getTimestamp();
+        $endTimestamp = $startTimestamp + $durationSeconds;
+        $currentTimestamp = time();
+        $remainingSeconds = max(0, $endTimestamp - $currentTimestamp);
 
-        return view('student.quizzes.attempt', compact('quiz', 'attempt', 'remainingSeconds'));
+        // Jika waktu pengerjaan telah habis saat siswa membuka/kembali ke halaman kuis
+        if ($remainingSeconds <= 0) {
+            $questions = $quiz->questions()->with('options')->get();
+            $existingAnswers = $attempt->answers()->get();
+            $correctCount = 0;
+            $totalQuestions = $questions->count();
+
+            foreach ($questions as $question) {
+                $ans = $existingAnswers->firstWhere('quiz_question_id', $question->id);
+                if ($ans && $ans->selected_option_id) {
+                    $cOpt = $question->options->firstWhere('is_correct', true);
+                    if ($cOpt && $cOpt->id === $ans->selected_option_id) {
+                        $correctCount++;
+                    }
+                }
+            }
+
+            $score = $totalQuestions > 0 ? round(($correctCount / $totalQuestions) * 100, 2) : 0;
+            $attempt->update([
+                'score' => $score,
+                'submitted_at' => now(),
+            ]);
+
+            return redirect()->route('student.quizzes.result', $quiz)
+                ->with('info', 'Waktu pengerjaan kuis telah habis! Jawaban Anda telah otomatis dikumpulkan.');
+        }
+
+        $savedAnswers = $attempt->answers()->pluck('selected_option_id', 'quiz_question_id')->toArray();
+
+        return view('student.quizzes.attempt', compact('quiz', 'attempt', 'remainingSeconds', 'savedAnswers'));
+    }
+
+    public function saveAnswer(Request $request, Quiz $quiz)
+    {
+        $user = Auth::user();
+        if ($quiz->class_id !== $user->class_id) {
+            return response()->json(['error' => 'Unauthorized'], 403);
+        }
+
+        $attempt = QuizAttempt::where('quiz_id', $quiz->id)
+            ->where('student_id', $user->id)
+            ->first();
+
+        if (!$attempt || $attempt->submitted_at) {
+            return response()->json(['error' => 'Kuis sudah selesai atau belum dimulai.'], 400);
+        }
+
+        if (!$attempt->started_at) {
+            $attempt->update(['started_at' => now()]);
+            $attempt->refresh();
+        }
+
+        $durationSeconds = ($quiz->duration_minutes ?? 30) * 60;
+        $startTimestamp = $attempt->started_at->getTimestamp();
+        $endTimestamp = $startTimestamp + $durationSeconds;
+        if (time() > $endTimestamp + 10) {
+            return response()->json(['status' => 'expired'], 200);
+        }
+
+        $validated = $request->validate([
+            'question_id' => 'required|exists:quiz_questions,id',
+            'option_id' => 'required|exists:quiz_question_options,id',
+        ]);
+
+        QuizAnswer::updateOrCreate(
+            [
+                'quiz_attempt_id' => $attempt->id,
+                'quiz_question_id' => $validated['question_id'],
+            ],
+            [
+                'selected_option_id' => $validated['option_id'],
+            ]
+        );
+
+        return response()->json(['status' => 'saved']);
     }
 
     public function submit(Request $request, Quiz $quiz)

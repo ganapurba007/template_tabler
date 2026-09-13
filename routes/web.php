@@ -59,6 +59,7 @@ Route::middleware(['auth'])->prefix('student')->as('student.')->group(function (
     Route::get('quizzes/{quiz}', [StudentQuizController::class, 'show'])->name('quizzes.show');
     Route::post('quizzes/{quiz}/start', [StudentQuizController::class, 'start'])->name('quizzes.start');
     Route::get('quizzes/{quiz}/attempt', [StudentQuizController::class, 'attempt'])->name('quizzes.attempt');
+    Route::post('quizzes/{quiz}/save-answer', [StudentQuizController::class, 'saveAnswer'])->name('quizzes.save-answer');
     Route::post('quizzes/{quiz}/submit', [StudentQuizController::class, 'submit'])->name('quizzes.submit');
     Route::get('quizzes/{quiz}/result', [StudentQuizController::class, 'result'])->name('quizzes.result');
 

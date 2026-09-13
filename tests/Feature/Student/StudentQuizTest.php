@@ -158,4 +158,100 @@ class StudentQuizTest extends TestCase
         $response = $this->actingAs($this->student)->get(route('student.quizzes.show', $otherQuiz));
         $response->assertStatus(403);
     }
+
+    public function test_quiz_timer_decreases_accurately_on_page_refresh(): void
+    {
+        // Siswa memulai kuis (durasi 30 menit)
+        $this->actingAs($this->student)->post(route('student.quizzes.start', $this->quiz));
+
+        $attempt = QuizAttempt::where('quiz_id', $this->quiz->id)
+            ->where('student_id', $this->student->id)
+            ->first();
+
+        // Simulasikan 10 menit telah berlalu (halaman ditutup/berpindah)
+        $attempt->update([
+            'started_at' => now()->subMinutes(10),
+        ]);
+
+        // Siswa me-refresh / membuka kembali halaman kuis
+        $response = $this->actingAs($this->student)->get(route('student.quizzes.attempt', $this->quiz));
+        $response->assertStatus(200);
+
+        // Sisa waktu seharusnya berkurang dari 1800 detik menjadi ~1200 detik (20 menit tersisa)
+        $remainingSeconds = $response->viewData('remainingSeconds');
+        $this->assertLessThanOrEqual(1201, $remainingSeconds);
+        $this->assertGreaterThanOrEqual(1195, $remainingSeconds);
+    }
+
+    public function test_quiz_auto_submits_when_attempt_timer_has_expired(): void
+    {
+        $this->actingAs($this->student)->post(route('student.quizzes.start', $this->quiz));
+
+        $attempt = QuizAttempt::where('quiz_id', $this->quiz->id)
+            ->where('student_id', $this->student->id)
+            ->first();
+
+        // Simulasikan waktu pengerjaan telah lewat 31 menit (melebihi durasi 30 menit)
+        $attempt->update([
+            'started_at' => now()->subMinutes(31),
+        ]);
+
+        // Saat siswa kembali/refresh halaman kuis setelah waktu habis
+        $response = $this->actingAs($this->student)->get(route('student.quizzes.attempt', $this->quiz));
+
+        // Harus otomatis diarahkan ke halaman hasil dengan pesan bahwa kuis sudah dikumpulkan
+        $response->assertRedirect(route('student.quizzes.result', $this->quiz));
+        $response->assertSessionHas('info');
+
+        $attempt->refresh();
+        $this->assertNotNull($attempt->submitted_at);
+    }
+
+    public function test_save_answer_returns_expired_when_time_exceeded(): void
+    {
+        $this->actingAs($this->student)->post(route('student.quizzes.start', $this->quiz));
+
+        $attempt = QuizAttempt::where('quiz_id', $this->quiz->id)
+            ->where('student_id', $this->student->id)
+            ->first();
+
+        // Simulasikan waktu habis saat mencoba mengirim jawaban
+        $attempt->update([
+            'started_at' => now()->subMinutes(35),
+        ]);
+
+        $response = $this->actingAs($this->student)->postJson(route('student.quizzes.save-answer', $this->quiz), [
+            'question_id' => $this->question->id,
+            'option_id' => $this->optionCorrect->id,
+        ]);
+
+        $response->assertStatus(200);
+        $response->assertJson(['status' => 'expired']);
+    }
+
+    public function test_siswa_can_view_quiz_result_with_duration_and_palette(): void
+    {
+        $attempt = QuizAttempt::create([
+            'student_id' => $this->student->id,
+            'quiz_id' => $this->quiz->id,
+            'score' => 100,
+            'started_at' => now()->subMinutes(12)->subSeconds(35),
+            'submitted_at' => now(),
+        ]);
+
+        \App\Models\QuizAnswer::create([
+            'quiz_attempt_id' => $attempt->id,
+            'quiz_question_id' => $this->question->id,
+            'selected_option_id' => $this->optionCorrect->id,
+        ]);
+
+        $response = $this->actingAs($this->student)->get(route('student.quizzes.result', $this->quiz));
+        $response->assertStatus(200);
+        $response->assertSee('Waktu Pengerjaan');
+        $response->assertSee('12 Menit');
+        $response->assertSee('Navigasi Soal');
+        $response->assertSee('Jawaban Benar');
+    }
 }
+
+
